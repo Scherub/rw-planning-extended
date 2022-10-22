@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <DesignationDef>
+        <defName>PlanDoors</defName>
+        <texturePath>Designations/PlanDoors</texturePath>
+        <targetType>Cell</targetType>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+        <DesignationDef>
+        <defName>PlanDoorsColored</defName>
+        <texturePath>Designations/PlanDoors</texturePath>
+        <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+    <DesignationDef>
+        <defName>PlanFloors</defName>
+        <texturePath>Designations/PlanFloors</texturePath>
+        <targetType>Cell</targetType>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+    <DesignationDef>
+        <defName>PlanFloorsColored</defName>
+        <texturePath>Designations/PlanFloors</texturePath>
+        <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+    
+    <DesignationDef>
+        <defName>PlanObjects</defName>
+        <texturePath>Designations/PlanObjects</texturePath>
+        <targetType>Cell</targetType>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+    <DesignationDef>
+        <defName>PlanObjectsColored</defName>
+        <texturePath>Designations/PlanObjects</texturePath>
+        <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+    <DesignationDef>
+        <defName>PlanWalls</defName>
+        <texturePath>Designations/PlanWalls</texturePath>
+        <targetType>Cell</targetType>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+        <!-- <designateCancelable>false</designateCancelable> -->
+    </DesignationDef>
+
+    <DesignationDef>
+        <defName>PlanWallsColored</defName>
+        <texturePath>Designations/PlanWalls</texturePath>
+        <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
+        <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
+    </DesignationDef>
+
+</Defs>

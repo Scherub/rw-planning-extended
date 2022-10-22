@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>Scherub.PlanningExtended</packageId>
+  <name>Planning Extended</name>
+  <author>Scherub</author>
+  <description>This mod adds a more advanced planning menu.
+
+Features
+
+- Draw colored designations, such as walls, doors, objects and floors
+- Optionally skip (don't overwrite) already placed plan designations
+- Use different shapes, e.g. rectangle, area, cross
+- Copy / Paste your plans
+- Undo / Redo your planned actions
+- More coming soon</description>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+</ModMetaData>
