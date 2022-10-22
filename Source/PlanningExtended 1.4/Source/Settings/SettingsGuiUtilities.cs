@@ -31,6 +31,8 @@ namespace PlanningExtended.Settings
 
             settings.maxUndoOperations = listingStandard.SliderLabel(settings.maxUndoOperations, 5, 50, () => "PlanningExtended.Settings.MaxUndoRedoOperations.Label".Translate() + " (5 - 50): " + settings.maxUndoOperations);
 
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayCutDesignator.Label".Translate(), ref settings.displayCutDesignator, "PlanningExtended.Settings.DisplayCutDesignator.Desc".Translate());
+            
             listingStandard.EndSubSection();
 
             listingStandard.Gap(24f);

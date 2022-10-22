@@ -19,6 +19,9 @@
   <PlanningExtended.CopyPlan.Label>Copy Plan</PlanningExtended.CopyPlan.Label>
   <PlanningExtended.CopyPlan.Desc>Copy a plan of the selected area to the clipboard.</PlanningExtended.CopyPlan.Desc>
 
+  <PlanningExtended.CutPlan.Label>Cut Plan</PlanningExtended.CutPlan.Label>
+  <PlanningExtended.CutPlan.Desc>Cut a plan of the selected area to the clipboard.</PlanningExtended.CutPlan.Desc>
+
   <PlanningExtended.PastePlan.Label>Paste Plan</PlanningExtended.PastePlan.Label>
   <PlanningExtended.PastePlan.Desc>Paste a plan from the clipboard to the map.\n\nUse keys to rotate and flip. (Images for flipping will be replaced later on.)</PlanningExtended.PastePlan.Desc>
 
@@ -47,11 +50,13 @@
   
   <PlanningExtended.Settings.UndoRedo.Label>Undo-Redo</PlanningExtended.Settings.UndoRedo.Label>
   
-  <PlanningExtended.Settings.UseUndoRedo.Label>Use Undo-Redo System?</PlanningExtended.Settings.UseUndoRedo.Label>
+  <PlanningExtended.Settings.UseUndoRedo.Label>Use Undo-Redo System</PlanningExtended.Settings.UseUndoRedo.Label>
   <PlanningExtended.Settings.UseUndoRedo.Desc>Determines whether to use the undo-redo system and whether the buttons are visible.</PlanningExtended.Settings.UseUndoRedo.Desc>
   
   <PlanningExtended.Settings.MaxUndoRedoOperations.Label>Number of undo-redo operations</PlanningExtended.Settings.MaxUndoRedoOperations.Label>
 
+  <PlanningExtended.Settings.DisplayCutDesignator.Label>Display Cut Designator</PlanningExtended.Settings.DisplayCutDesignator.Label>
+  <PlanningExtended.Settings.DisplayCutDesignator.Desc>Determines whether the cut designator button is visible.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
 
 
 
