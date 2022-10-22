@@ -1,0 +1,127 @@
+﻿using System.Collections.Generic;
+using RimWorld;
+using UnityEngine;
+using Verse;
+
+namespace PlanningExtended.Designators
+{
+    public abstract class BasePlanDesignator : Designator
+    {
+        public override int DraggableDimensions => 2;
+
+        public override bool DragDrawMeasurements => true;
+
+        public override bool DragDrawOutline => false;
+
+        protected virtual bool HasPopupMenu => false;
+
+        protected bool IsModifierKeyPressed { get; set; }
+
+        string _mouseAttachmentText;
+        protected string MouseAttachmentText
+        {
+            get
+            {
+                _mouseAttachmentText ??= GetMouseAttachmentText();
+
+                return _mouseAttachmentText;
+            }
+        }
+
+        protected BasePlanDesignator(string name)
+        {
+            defaultLabel = $"PlanningExtended.{name}.Label".Translate();
+            defaultDesc = $"PlanningExtended.{name}.Desc".Translate();
+            icon = ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
+
+            soundSucceeded = SoundDefOf.Designate_PlanAdd;
+            soundDragSustain = SoundDefOf.Designate_DragStandard;
+            soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
+            useMouseIcon = true;
+        }
+
+        public override void ProcessInput(Event ev)
+        {
+            if (!CheckCanInteract())
+                return;
+
+            if (HasPopupMenu)
+                ShowPopupMenu();
+            else
+                base.ProcessInput(ev);
+
+            Find.DesignatorManager.Select(this);
+        }
+
+        public override AcceptanceReport CanDesignateCell(IntVec3 loc)
+        {
+            if (!loc.InBounds(Map))
+                return false;
+
+            if (loc.InNoBuildEdgeArea(Map))
+                return "TooCloseToMapEdge".Translate();
+
+            return true;
+        }
+
+        public override void DrawMouseAttachments()
+        {
+            CheckModifierKey();
+
+            if (this.useMouseIcon)
+                GenUI.DrawMouseAttachment(this.icon, MouseAttachmentText, this.iconAngle, this.iconOffset, null, false, default, null, null);
+            }
+
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
+        {
+            GizmoResult gizmoResult = base.GizmoOnGUI(topLeft, maxWidth, parms);
+
+            if (HasPopupMenu)
+                Designator_Dropdown.DrawExtraOptionsIcon(topLeft, this.GetWidth(maxWidth));
+
+            return gizmoResult;
+        }
+
+        public override void RenderHighlight(List<IntVec3> dragCells)
+        {
+            DesignatorUtility.RenderHighlightOverSelectableCells(this, dragCells);
+        }
+
+        public override void SelectedUpdate()
+        {
+            GenUI.RenderMouseoverBracket();
+            GenDraw.DrawNoBuildEdgeLines();
+        }
+
+        protected virtual void ShowPopupMenu()
+        {
+
+        }
+
+        protected virtual string GetMouseAttachmentText()
+        {
+            return "";
+        }
+
+        protected void CheckModifierKey()
+        {
+            if (IsModifierKeyPressed != PlanningKeyBindingDefOf.Planning_Modifier.IsDown)
+            {
+                IsModifierKeyPressed = PlanningKeyBindingDefOf.Planning_Modifier.IsDown;
+                OnModifierKeyChanged(IsModifierKeyPressed);
+                Log.Warning("Modifier Key Changed: " + IsModifierKeyPressed);
+            }
+        }
+
+        protected virtual void OnModifierKeyChanged(bool isPressed)
+        {
+
+        }
+
+        protected void ResetMouseAttachmentText()
+        {
+            _mouseAttachmentText = null;
+        }
+
+    }
+}
