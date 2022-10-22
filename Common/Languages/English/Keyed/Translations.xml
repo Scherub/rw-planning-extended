@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <PlanningExtended.PlanDoors.Label>Plan Doors</PlanningExtended.PlanDoors.Label>
+  <PlanningExtended.PlanDoors.Desc>Place planning designations for doors.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.PlanDoors.Desc>
+
+  <PlanningExtended.PlanFloors.Label>Plan Floors</PlanningExtended.PlanFloors.Label>
+  <PlanningExtended.PlanFloors.Desc>Place planning designations for floors.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.PlanFloors.Desc>
+
+  <PlanningExtended.PlanObjects.Label>Plan Objects</PlanningExtended.PlanObjects.Label>
+  <PlanningExtended.PlanObjects.Desc>Place planning designations for objects.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.PlanObjects.Desc>
+
+  <PlanningExtended.PlanWalls.Label>Plan Walls</PlanningExtended.PlanWalls.Label>
+  <PlanningExtended.PlanWalls.Desc>Place planning designations for walls.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.PlanWalls.Desc>
+
+  <PlanningExtended.RemovePlan.Label>Remove Plans</PlanningExtended.RemovePlan.Label>
+  <PlanningExtended.RemovePlan.Desc>Remove planning designations.</PlanningExtended.RemovePlan.Desc>
+
+  <PlanningExtended.CopyPlan.Label>Copy Plan</PlanningExtended.CopyPlan.Label>
+  <PlanningExtended.CopyPlan.Desc>Copy a plan of the selected area to the clipboard.</PlanningExtended.CopyPlan.Desc>
+
+  <PlanningExtended.PastePlan.Label>Paste Plan</PlanningExtended.PastePlan.Label>
+  <PlanningExtended.PastePlan.Desc>Paste a plan from the clipboard to the map.\n\nUse keys to rotate and flip. (Images for flipping will be replaced later on.)</PlanningExtended.PastePlan.Desc>
+
+  <PlanningExtended.UndoPlan.Label>Undo</PlanningExtended.UndoPlan.Label>
+  <PlanningExtended.UndoPlan.Desc>Undo the last planning action.</PlanningExtended.UndoPlan.Desc>
+
+  <PlanningExtended.RedoPlan.Label>Redo</PlanningExtended.RedoPlan.Label>
+  <PlanningExtended.RedoPlan.Desc>Redo the last undo action.</PlanningExtended.RedoPlan.Desc>
+
+  <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>
+  <PlanningExtended.PickColorFromPlan>Grab a color from an existing plan.</PlanningExtended.PickColorFromPlan>
+  
+  <PlanningExtended.NoPlanningDesignationsFound>No planning designations found.</PlanningExtended.NoPlanningDesignationsFound>
+  <PlanningExtended.PlanningDesignationsCopied>Planning designations copied.</PlanningExtended.PlanningDesignationsCopied>
+  
+  
+  <PlanningExtended.Mode>Mode</PlanningExtended.Mode>
+
+  <PlanningExtended.Copy>Copy</PlanningExtended.Copy>
+  <PlanningExtended.Cut>Cut</PlanningExtended.Cut>
+  
+  <PlanningExtended.Skip>Skip</PlanningExtended.Skip>
+  <PlanningExtended.Replace>Replace</PlanningExtended.Replace>
+  
+  <PlanningExtended.SwitchToCut>switch to cut</PlanningExtended.SwitchToCut>
+  
+  <PlanningExtended.Settings.UndoRedo.Label>Undo-Redo</PlanningExtended.Settings.UndoRedo.Label>
+  
+  <PlanningExtended.Settings.UseUndoRedo.Label>Use Undo-Redo System?</PlanningExtended.Settings.UseUndoRedo.Label>
+  <PlanningExtended.Settings.UseUndoRedo.Desc>Determines whether to use the undo-redo system and whether the buttons are visible.</PlanningExtended.Settings.UseUndoRedo.Desc>
+  
+  <PlanningExtended.Settings.MaxUndoRedoOperations.Label>Number of undo-redo operations</PlanningExtended.Settings.MaxUndoRedoOperations.Label>
+
+
+
+
+  
+</LanguageData>

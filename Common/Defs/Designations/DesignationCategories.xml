@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <DesignationCategoryDef>
+    <defName>Planning</defName>
+    <label>Planning</label>
+    <order>10</order>
+    <specialDesignatorClasses>
+      <li>PlanningExtended.Designators.RemovePlanDesignator</li>
+      <li>PlanningExtended.Designators.PlanWallsDesignator</li>
+      <li>PlanningExtended.Designators.PlanDoorsDesignator</li>
+      <li>PlanningExtended.Designators.PlanObjectsDesignator</li>
+      <li>PlanningExtended.Designators.PlanFloorsDesignator</li>
+      <li>PlanningExtended.Designators.CopyPlanDesignator</li>
+      <li>PlanningExtended.Designators.PastePlanDesignator</li>
+      <li>PlanningExtended.Designators.UndoPlanDesignator</li>
+      <li>PlanningExtended.Designators.RedoPlanDesignator</li>
+      <!-- <li>PlannerExtended.Designators.AddTemplateDesignator</li>
+      <li>PlannerExtended.Designators.RemoveTemplateDesignator</li> -->
+    </specialDesignatorClasses>
+  </DesignationCategoryDef>
+    
+</Defs>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_Modifier</defName>
+        <label>modifier</label>
+        <defaultKeyCodeA>LeftShift</defaultKeyCodeA>
+        <defaultKeyCodeB>RightShift</defaultKeyCodeB>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_FlipHorizontal</defName>
+        <label>flip horizontal</label>
+        <defaultKeyCodeA>Z</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_FlipVertical</defName>
+        <label>flip vertizontal</label>
+        <defaultKeyCodeA>X</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_Undo</defName>
+        <label>undo</label>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_Redo</defName>
+        <label>redo</label>
+    </KeyBindingDef>
+
+</Defs>
