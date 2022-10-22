@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3520-beta" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3524" />
 	</ItemGroup>
 
 	<Target Name="CopyAssemblyToModDirectory" AfterTargets="Build">
