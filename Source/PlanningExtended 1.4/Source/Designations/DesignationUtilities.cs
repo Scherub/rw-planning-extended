@@ -9,14 +9,14 @@ namespace PlanningExtended.Designations
         {
             return type switch
             {
-                PlanDesignitionType.PlanDoors => DesignationDefOf.PlanDoors,
-                PlanDesignitionType.PlanDoorsColored => DesignationDefOf.PlanDoorsColored,
-                PlanDesignitionType.PlanFloors => DesignationDefOf.PlanFloors,
-                PlanDesignitionType.PlanFloorsColored => DesignationDefOf.PlanFloorsColored,
-                PlanDesignitionType.PlanObjects => DesignationDefOf.PlanObjects,
-                PlanDesignitionType.PlanObjectsColored => DesignationDefOf.PlanObjectsColored,
-                PlanDesignitionType.PlanWall => DesignationDefOf.PlanWalls,
-                PlanDesignitionType.PlanWallColored => DesignationDefOf.PlanWallsColored,
+                PlanDesignitionType.PlanDoors => PlanningDesignationDefOf.PlanDoors,
+                PlanDesignitionType.PlanDoorsColored => PlanningDesignationDefOf.PlanDoorsColored,
+                PlanDesignitionType.PlanFloors => PlanningDesignationDefOf.PlanFloors,
+                PlanDesignitionType.PlanFloorsColored => PlanningDesignationDefOf.PlanFloorsColored,
+                PlanDesignitionType.PlanObjects => PlanningDesignationDefOf.PlanObjects,
+                PlanDesignitionType.PlanObjectsColored => PlanningDesignationDefOf.PlanObjectsColored,
+                PlanDesignitionType.PlanWall => PlanningDesignationDefOf.PlanWalls,
+                PlanDesignitionType.PlanWallColored => PlanningDesignationDefOf.PlanWallsColored,
                 _ => throw new NotImplementedException(),
             };
         }
