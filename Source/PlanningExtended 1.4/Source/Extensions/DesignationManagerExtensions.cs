@@ -34,7 +34,6 @@ namespace PlanningExtended
 
         public static Designation GetPlanDesignationAt(this DesignationManager designationManager, IntVec3 c)
         {
-            //return designationManager.AllDesignationsAt(c).Where(d => PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
             return designationManager.AllDesignationsAt(c).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan).FirstOrDefault();
         }
     }

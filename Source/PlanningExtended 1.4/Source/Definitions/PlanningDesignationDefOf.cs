@@ -14,7 +14,6 @@ namespace PlanningExtended
             {
                 _designationDefs ??= new(new[]
                 {
-                    //RimWorldDesignationDefOf.Plan,
                     PlanDoors,
                     PlanDoorsColored,
                     PlanFloors,
