@@ -5,10 +5,11 @@
         <defName>PlanDoors</defName>
         <texturePath>Designations/PlanDoors</texturePath>
         <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
         <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
     </DesignationDef>
 
-        <DesignationDef>
+    <DesignationDef>
         <defName>PlanDoorsColored</defName>
         <texturePath>Designations/PlanDoors</texturePath>
         <targetType>Cell</targetType>
@@ -20,6 +21,7 @@
         <defName>PlanFloors</defName>
         <texturePath>Designations/PlanFloors</texturePath>
         <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
         <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
     </DesignationDef>
 
@@ -35,6 +37,7 @@
         <defName>PlanObjects</defName>
         <texturePath>Designations/PlanObjects</texturePath>
         <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
         <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
     </DesignationDef>
 
@@ -50,6 +53,7 @@
         <defName>PlanWalls</defName>
         <texturePath>Designations/PlanWalls</texturePath>
         <targetType>Cell</targetType>
+        <shouldBatchDraw>false</shouldBatchDraw>
         <removeIfBuildingDespawned>false</removeIfBuildingDespawned>
         <!-- <designateCancelable>false</designateCancelable> -->
     </DesignationDef>

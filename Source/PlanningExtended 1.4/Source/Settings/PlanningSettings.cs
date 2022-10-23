@@ -10,6 +10,8 @@ namespace PlanningExtended.Settings
 
         public const bool DisplayCutDesignator = true;
 
+        public const bool AreDesignationsPersistent = true;
+
         public const bool AlwaysGrabBottom = false;
 
         public bool useUndoRedo = UseUndoRedo;
@@ -18,6 +20,8 @@ namespace PlanningExtended.Settings
 
         public bool displayCutDesignator = DisplayCutDesignator;
 
+        public bool areDesignationsPersistent = AreDesignationsPersistent;
+
         public bool alwaysGrabBottom = AlwaysGrabBottom;
 
         public override void ExposeData()
@@ -25,6 +29,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), UseUndoRedo);
             Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), MaxUndoRedoSteps);
             Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), DisplayCutDesignator);
+            Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), AreDesignationsPersistent);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
 
             base.ExposeData();
@@ -35,6 +40,7 @@ namespace PlanningExtended.Settings
             useUndoRedo = UseUndoRedo;
             maxUndoOperations = MaxUndoRedoSteps;
             displayCutDesignator = DisplayCutDesignator;
+            areDesignationsPersistent = AreDesignationsPersistent;
             alwaysGrabBottom = AlwaysGrabBottom;
         }
     }

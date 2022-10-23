@@ -58,7 +58,10 @@
   <PlanningExtended.Settings.DisplayCutDesignator.Label>Display Cut Designator</PlanningExtended.Settings.DisplayCutDesignator.Label>
   <PlanningExtended.Settings.DisplayCutDesignator.Desc>Determines whether the cut designator button is visible.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
 
+  <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent plans</PlanningExtended.Settings.ArePlansPersistent.Label>
+  <PlanningExtended.Settings.ArePlansPersistent.Desc>Determines whether plans stay after a task has been finished on the same cell.</PlanningExtended.Settings.ArePlansPersistent.Desc>
+  
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
-  <PlanningExtended.Settings.ArePlansVisible.Label>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Label>
+  <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
   
 </LanguageData>

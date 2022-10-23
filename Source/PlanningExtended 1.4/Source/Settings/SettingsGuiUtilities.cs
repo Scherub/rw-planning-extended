@@ -22,9 +22,9 @@ namespace PlanningExtended.Settings
 
             listingStandard.Begin(inRect);
 
-            listingStandard.Heading("PlanningExtended.Settings.UndoRedo.Label".Translate());
+            //listingStandard.Heading("PlanningExtended.Settings.UndoRedo.Label".Translate());
 
-            listingStandard.BeginSubSection();
+            //listingStandard.BeginSubSection();
 
 
             listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseUndoRedo.Label".Translate(), ref settings.useUndoRedo, "PlanningExtended.Settings.UseUndoRedo.Desc".Translate());
@@ -33,7 +33,9 @@ namespace PlanningExtended.Settings
 
             listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayCutDesignator.Label".Translate(), ref settings.displayCutDesignator, "PlanningExtended.Settings.DisplayCutDesignator.Desc".Translate());
             
-            listingStandard.EndSubSection();
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.ArePlansPersistent.Label".Translate(), ref settings.areDesignationsPersistent, "PlanningExtended.Settings.ArePlansPersistent.Desc".Translate());
+            
+            //listingStandard.EndSubSection();
 
             listingStandard.Gap(24f);
 
