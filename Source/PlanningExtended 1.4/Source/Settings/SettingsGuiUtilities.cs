@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlanningExtended.Updates;
+using UnityEngine;
 using Verse;
 
 namespace PlanningExtended.Settings
@@ -56,6 +57,9 @@ namespace PlanningExtended.Settings
             Listing_Standard listingStandard = new();
 
             listingStandard.Begin(inRect);
+
+            if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
+                UpdatePlanDesignations.Update();
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 
