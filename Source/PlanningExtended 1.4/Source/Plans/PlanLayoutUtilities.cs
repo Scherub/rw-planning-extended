@@ -24,6 +24,9 @@ namespace PlanningExtended.Plans
         {
             List<PlanCell> planCells = new();
 
+            if (!areaDimensions.IsValid)
+                return null;
+
             foreach (var cell in CellUtilities.GetCells(areaDimensions))
             {
                 Designation designation = map.designationManager.GetPlanDesignationAt(cell);
@@ -33,7 +36,10 @@ namespace PlanningExtended.Plans
 
                 PlanDesignitionType planDesignitionType = PlanDesignitionTypeConverter.Convert(designation.def.defName);
 
-                PlanCell planCell = new(cell.ToIntVec2, planDesignitionType, designation.colorDef.defName);
+                if (planDesignitionType == PlanDesignitionType.Unknown)
+                    continue;
+                
+                PlanCell planCell = new(cell.ToIntVec2, planDesignitionType, designation?.colorDef?.defName);
 
                 planCells.Add(planCell);
             }
@@ -57,7 +63,10 @@ namespace PlanningExtended.Plans
 
                 PlanDesignitionType planDesignitionType = PlanDesignitionTypeConverter.Convert(designation.def.defName);
 
-                PlanCell planCell = new(position.ToIntVec2, planDesignitionType, designation.colorDef.defName);
+                if (planDesignitionType == PlanDesignitionType.Unknown)
+                    continue;
+
+                PlanCell planCell = new(position.ToIntVec2, planDesignitionType, designation?.colorDef?.defName);
 
                 //Log.Warning($"PlanCell: {planCell}");
 
@@ -134,7 +143,7 @@ namespace PlanningExtended.Plans
                 DesignationDef designationDef = DesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
-                map.designationManager.AddDesignation(new Designation(position, designationDef, colorDef));
+                map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));
             }
         }
 
@@ -154,7 +163,7 @@ namespace PlanningExtended.Plans
                 DesignationDef designationDef = DesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
-                map.designationManager.AddDesignation(new Designation(position, designationDef, colorDef));
+                map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));
             }
         }
     }

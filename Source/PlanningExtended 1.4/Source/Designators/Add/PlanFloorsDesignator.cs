@@ -5,9 +5,9 @@ namespace PlanningExtended.Designators
 {
     public class PlanFloorsDesignator : BaseAddPlanDesignator
     {
-        protected override DesignationDef Designation => DesignationDefOf.PlanFloors;
+        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanFloors;
 
-        protected override DesignationDef ColoredDesignation => DesignationDefOf.PlanFloorsColored;
+        protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanFloorsColored;
 
         public PlanFloorsDesignator()
             : base("PlanFloors")

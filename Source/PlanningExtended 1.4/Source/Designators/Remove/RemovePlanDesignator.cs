@@ -5,7 +5,7 @@ namespace PlanningExtended.Designators
 {
     public class RemovePlanDesignator : BaseShapePlanDesignator
     {
-        protected override DesignationDef Designation => DesignationDefOf.PlanObjects;
+        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanObjects;
 
         public override bool DragDrawOutline => true;
 
