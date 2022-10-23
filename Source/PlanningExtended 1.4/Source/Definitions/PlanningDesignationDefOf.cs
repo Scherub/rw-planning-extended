@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
-using RimWorldDesignationDefOf = RimWorld.DesignationDefOf;
 
 namespace PlanningExtended
 {
     [DefOf]
-    public static class DesignationDefOf
+    public static class PlanningDesignationDefOf
     {
         static List<DesignationDef> _designationDefs;
         public static List<DesignationDef> DesignationDefs
@@ -15,7 +14,6 @@ namespace PlanningExtended
             {
                 _designationDefs ??= new(new[]
                 {
-                    RimWorldDesignationDefOf.Plan,
                     PlanDoors,
                     PlanDoorsColored,
                     PlanFloors,
@@ -25,13 +23,32 @@ namespace PlanningExtended
                     PlanWalls,
                     PlanWallsColored
                 });
-                
+
                 return _designationDefs;
             }
         }
 
+        static List<DesignationDef> _allDesignationDefs;
+        public static List<DesignationDef> AllDesignationDefs
+        {
+            get
+            {
+                if (_allDesignationDefs == null)
+                {
+                    _allDesignationDefs = new(DesignationDefs.Count + 1)
+                    {
+                        DesignationDefOf.Plan,
+                    };
+
+                    _allDesignationDefs.AddRange(DesignationDefs);
+                }
+
+                return _allDesignationDefs;
+            }
+        }
+
         public static DesignationDef PlanDoors;
-        
+
         public static DesignationDef PlanDoorsColored;
 
         public static DesignationDef PlanFloors;
@@ -43,12 +60,12 @@ namespace PlanningExtended
         public static DesignationDef PlanObjectsColored;
 
         public static DesignationDef PlanWalls;
-        
+
         public static DesignationDef PlanWallsColored;
 
-        static DesignationDefOf()
+        static PlanningDesignationDefOf()
         {
-            DefOfHelper.EnsureInitializedInCtor(typeof(DesignationDefOf));
+            DefOfHelper.EnsureInitializedInCtor(typeof(PlanningDesignationDefOf));
         }
     }
 }

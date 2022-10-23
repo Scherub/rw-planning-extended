@@ -97,19 +97,19 @@ namespace PlanningExtended.Designators
 
                 Rect rect = new(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
 
-                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, TexUI.RotLeftTex, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, RotationDirection.Counterclockwise, rotationDirection);
+                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateLeft, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, RotationDirection.Counterclockwise, rotationDirection);
 
                 rect = new(winRect.width / 2f + 5f, 15f, 64f, 64f);
 
-                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, TexUI.RotRightTex, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, RotationDirection.Clockwise, rotationDirection);
+                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateRight, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, RotationDirection.Clockwise, rotationDirection);
 
                 rect = new(winRect.width / 2f - 64f - 5f, winRect.height / 2f + 15f, 64f, 64f);
 
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, TexUI.RotRightTex, PlanningKeyBindingDefOf.Planning_FlipHorizontal.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
+                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_FlipHorizontal.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
 
                 rect = new(winRect.width / 2f + 5f, winRect.height / 2f + 15f, 64f, 64f);
 
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, TexUI.RotLeftTex, PlanningKeyBindingDefOf.Planning_FlipVertical.MainKeyLabel, FlipDirection.Vertically, flipDirection);
+                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_FlipVertical.MainKeyLabel, FlipDirection.Vertically, flipDirection);
 
                 Text.Anchor = TextAnchor.UpperLeft;
                 Text.Font = GameFont.Small;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlanningExtended.Updates;
+using UnityEngine;
 using Verse;
 
 namespace PlanningExtended.Settings
@@ -22,16 +23,20 @@ namespace PlanningExtended.Settings
 
             listingStandard.Begin(inRect);
 
-            listingStandard.Heading("PlanningExtended.Settings.UndoRedo.Label".Translate());
+            //listingStandard.Heading("PlanningExtended.Settings.UndoRedo.Label".Translate());
 
-            listingStandard.BeginSubSection();
+            //listingStandard.BeginSubSection();
 
 
             listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseUndoRedo.Label".Translate(), ref settings.useUndoRedo, "PlanningExtended.Settings.UseUndoRedo.Desc".Translate());
 
             settings.maxUndoOperations = listingStandard.SliderLabel(settings.maxUndoOperations, 5, 50, () => "PlanningExtended.Settings.MaxUndoRedoOperations.Label".Translate() + " (5 - 50): " + settings.maxUndoOperations);
 
-            listingStandard.EndSubSection();
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayCutDesignator.Label".Translate(), ref settings.displayCutDesignator, "PlanningExtended.Settings.DisplayCutDesignator.Desc".Translate());
+            
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.ArePlansPersistent.Label".Translate(), ref settings.areDesignationsPersistent, "PlanningExtended.Settings.ArePlansPersistent.Desc".Translate());
+            
+            //listingStandard.EndSubSection();
 
             listingStandard.Gap(24f);
 
@@ -52,6 +57,9 @@ namespace PlanningExtended.Settings
             Listing_Standard listingStandard = new();
 
             listingStandard.Begin(inRect);
+
+            if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
+                UpdatePlanDesignations.Update();
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 

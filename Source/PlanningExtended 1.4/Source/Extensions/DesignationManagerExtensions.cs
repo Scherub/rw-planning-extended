@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PlanningExtended.Designations;
+using RimWorld;
 using Verse;
 
 namespace PlanningExtended
@@ -21,7 +23,7 @@ namespace PlanningExtended
         {
             List<Designation> designations = designationManager.AllDesignationsAt(c);
 
-            foreach (var designationDef in DesignationDefOf.DesignationDefs)
+            foreach (var designationDef in PlanningDesignationDefOf.AllDesignationDefs)
                 designations.FirstOrDefault(d => d.def == designationDef)?.Delete();
         }
 
@@ -32,7 +34,7 @@ namespace PlanningExtended
 
         public static Designation GetPlanDesignationAt(this DesignationManager designationManager, IntVec3 c)
         {
-            return designationManager.AllDesignationsAt(c).Where(d => DesignationDefOf.DesignationDefs.Contains(d.def)).FirstOrDefault();
+            return designationManager.AllDesignationsAt(c).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan).FirstOrDefault();
         }
     }
 }

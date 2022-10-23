@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
+using PlanningExtended.Designations;
 using UnityEngine;
 using Verse;
 
@@ -14,7 +15,7 @@ namespace PlanningExtended.Designators
         protected BaseAddPlanDesignator(string name)
             : base(name)
         {
-            
+    
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -63,7 +64,7 @@ namespace PlanningExtended.Designators
             Map.designationManager.RemovePlanDesignationsAt(c);
 
             //Log.Warning($"Designating: Cell ({c}), Designation ({Designation}), Color ({colorDef})");
-            Map.designationManager.AddDesignation(new Designation(c, SelectedDesignation, colorDef));
+            Map.designationManager.AddDesignation(new PlanDesignation(c, SelectedDesignation, colorDef));
         }
 
         public override void RenderHighlight(List<IntVec3> dragCells)

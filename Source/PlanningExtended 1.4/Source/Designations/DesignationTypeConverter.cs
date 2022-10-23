@@ -14,8 +14,9 @@ namespace PlanningExtended.Designations
                 "PlanObjectsColored" => PlanDesignitionType.PlanObjectsColored,
                 "PlanFloors" => PlanDesignitionType.PlanFloors,
                 "PlanFloorsColored" => PlanDesignitionType.PlanFloorsColored,
+                "PlanWalls" => PlanDesignitionType.PlanWall,
                 "PlanWallsColored" => PlanDesignitionType.PlanWallColored,
-                _ => PlanDesignitionType.PlanWall
+                _ => PlanDesignitionType.Unknown
             };
         }
 

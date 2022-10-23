@@ -7,16 +7,17 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 * Draw colored designations, such as walls, doors, objects and floors
 * Optionally skip (don't overwrite) already placed plan designations
 * Use different shapes, e.g. rectangle, area, cross
-* Copy / Cut / Paste your plans
+* Cut / Copy / Paste your plans
 * Undo / Redo your planned actions
+* Show / Hide your planning designations
 
 ## Coming soon
 
 * Add more shapes, such as lines, grids and circles
 * Add shape options, e.g. inner grid margin, rotate cross, ...
 * Improved grabbing position while pasting
+* Multiple texture sets
 * Various fixes
-* Hopefully better icons and preview images
 
 ## Planned
 
