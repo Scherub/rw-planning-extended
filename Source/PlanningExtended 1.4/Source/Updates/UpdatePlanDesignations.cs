@@ -10,6 +10,9 @@ namespace PlanningExtended.Updates
         {
             Map map = Find.CurrentMap;
 
+            if (map == null)
+                return;
+
             foreach (IntVec3 cell in map.AllCells)
             {
                 Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
