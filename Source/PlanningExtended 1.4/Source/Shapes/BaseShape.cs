@@ -1,24 +1,52 @@
-﻿using PlanningExtended.Cells;
-using PlanningExtended.Shapes.Options;
+﻿using System.Collections.Generic;
+using PlanningExtended.Cells;
+using PlanningExtended.Shapes.Variants;
 using Verse;
 
 namespace PlanningExtended.Shapes
 {
     public abstract class BaseShape
     {
-        public BaseShapeOptions Options { get; }
+        int _selectedShapeIndex;
 
-        public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
-    }
+        public abstract List<BaseShapeVariant> ShapeVariants { get; }
 
-    public abstract class BaseShape<TOptions> : BaseShape
-        where TOptions : BaseShapeOptions, new()
-    {
-        public new TOptions Options { get; }
+        public BaseShapeVariant SelectedShapeVariant { get; private set; }
 
-        protected BaseShape()
+        public virtual ShapeOptions FirstShapeOption => SelectedShapeVariant.FirstShapeOption;
+
+        public virtual ShapeOptions SecondShapeOption => SelectedShapeVariant.SecondShapeOption;
+
+        public int NumberOfAvailableShapeOtions => SelectedShapeVariant.NumberOfAvailableShapeOtions;
+
+        protected BaseShape(ShapeVariant defaultShapeVariant)
         {
-            Options = new TOptions();
+            SelectVariant(defaultShapeVariant);
+        }
+
+        public bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
+        {
+            return SelectedShapeVariant.IsCellValid(cell, areaDimensions);
+        }
+
+        public void SelectVariant(ShapeVariant shapeVariant)
+        {
+            SelectedShapeVariant = ShapeVariants.FirstOrDefault(sv => sv.ShapeVariant == shapeVariant);
+
+            if (SelectedShapeVariant != null)
+                _selectedShapeIndex = ShapeVariants.IndexOf(SelectedShapeVariant);
+            else
+                SelectedShapeVariant = new NullShapeVariant();
+        }
+
+        public void ChangeToNextShapeVariant()
+        {
+            if (_selectedShapeIndex >= ShapeVariants.Count)
+                _selectedShapeIndex = 0;
+            else
+                _selectedShapeIndex++;
+
+            SelectedShapeVariant = ShapeVariants[_selectedShapeIndex];
         }
     }
 }

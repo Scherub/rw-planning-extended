@@ -1,10 +1,14 @@
 ﻿using PlanningExtended.Cells;
 using Verse;
 
-namespace PlanningExtended.Shapes
+namespace PlanningExtended.Shapes.Variants.Rectangles
 {
-    public class SubdividedRectangle : BaseShape
+    public class OpenRectangleShapeVariant : BaseShapeVariant
     {
+        public override ShapeVariant ShapeVariant => ShapeVariant.OpenRectangle;
+
+        public override ShapeOptions SecondShapeOption => ShapeOptions.Thickness;
+
         public override bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
         {
             if (cell.x == areaDimensions.MinX || cell.x == areaDimensions.MaxX)

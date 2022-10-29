@@ -13,7 +13,7 @@ namespace PlanningExtended.Designators
             : base("PlanWalls")
         {
             hotKey = KeyBindingDefOf.Misc6;
-            SelectShape(Shape.Rectangle);
+            SelectedShape.SelectVariant(ShapeVariant.OpenRectangle);
         }
     }
 }

@@ -1,11 +1,16 @@
 ﻿using PlanningExtended.Cells;
-using PlanningExtended.Shapes.Options;
 using Verse;
 
-namespace PlanningExtended.Shapes
+namespace PlanningExtended.Shapes.Variants.Lines
 {
-    public class CrossShape : BaseShape<NullShapeOptions>
+    public class TwoLinesShapeVariant : BaseShapeVariant
     {
+        public override ShapeVariant ShapeVariant => ShapeVariant.TwoLines;
+
+        public override ShapeOptions FirstShapeOption => ShapeOptions.Rotation;
+
+        //public override ShapeOptions SecondShapeOption => ShapeOptions.Thickness;
+
         public override bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
         {
             IntVec3 center = areaDimensions.Center;
