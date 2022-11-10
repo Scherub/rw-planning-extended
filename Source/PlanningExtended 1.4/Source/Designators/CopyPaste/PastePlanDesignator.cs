@@ -105,11 +105,11 @@ namespace PlanningExtended.Designators
 
                 rect = new(winRect.width / 2f - 64f - 5f, winRect.height / 2f + 15f, 64f, 64f);
 
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_FlipHorizontal.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
+                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_Action1.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
 
                 rect = new(winRect.width / 2f + 5f, winRect.height / 2f + 15f, 64f, 64f);
 
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_FlipVertical.MainKeyLabel, FlipDirection.Vertically, flipDirection);
+                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_Action2.MainKeyLabel, FlipDirection.Vertically, flipDirection);
 
                 Text.Anchor = TextAnchor.UpperLeft;
                 Text.Font = GameFont.Small;
@@ -128,9 +128,9 @@ namespace PlanningExtended.Designators
             if (KeyBindingDefOf.Designator_RotateLeft.KeyDownEvent)
                 rotationDirection = RotationDirection.Counterclockwise;
 
-            if (PlanningKeyBindingDefOf.Planning_FlipHorizontal.KeyDownEvent)
+            if (PlanningKeyBindingDefOf.Planning_Action1.KeyDownEvent)
                 flipDirection = FlipDirection.Horizontally;
-            if (PlanningKeyBindingDefOf.Planning_FlipVertical.KeyDownEvent)
+            if (PlanningKeyBindingDefOf.Planning_Action2.KeyDownEvent)
                 flipDirection = FlipDirection.Vertically;
 
             HandleRotationFlip(rotationDirection, flipDirection);

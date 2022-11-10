@@ -2,12 +2,12 @@
 {
     public enum Shape
     {
-        Area,
+        Fixed,
+        
+        Line,
 
         Rectangle,
 
-        SubdivdedRectangle,
-
-        Cross
+        Ellipse,
     }
 }

@@ -13,7 +13,7 @@ namespace PlanningExtended.Designators
 
         public override bool DragDrawOutline => false;
 
-        protected virtual bool HasPopupMenu => false;
+        protected virtual bool HasLeftClickPopupMenu => false;
 
         protected bool IsModifierKeyPressed { get; set; }
 
@@ -45,9 +45,13 @@ namespace PlanningExtended.Designators
             if (!CheckCanInteract())
                 return;
 
-            if (HasPopupMenu)
-                ShowPopupMenu();
+            bool handleDfaultProcessInput = !HasLeftClickPopupMenu;
+
+            if (HasLeftClickPopupMenu)
+                ShowLeftClickPopupMenu();
             else
+
+            if (handleDfaultProcessInput)
                 base.ProcessInput(ev);
 
             Find.DesignatorManager.Select(this);
@@ -76,7 +80,7 @@ namespace PlanningExtended.Designators
         {
             GizmoResult gizmoResult = base.GizmoOnGUI(topLeft, maxWidth, parms);
 
-            if (HasPopupMenu)
+            if (HasLeftClickPopupMenu)
                 Designator_Dropdown.DrawExtraOptionsIcon(topLeft, this.GetWidth(maxWidth));
 
             return gizmoResult;
@@ -93,9 +97,9 @@ namespace PlanningExtended.Designators
             GenDraw.DrawNoBuildEdgeLines();
         }
 
-        protected virtual void ShowPopupMenu()
+        protected virtual bool ShowLeftClickPopupMenu()
         {
-
+            return false;
         }
 
         protected virtual string GetMouseAttachmentText()
@@ -109,7 +113,7 @@ namespace PlanningExtended.Designators
             {
                 IsModifierKeyPressed = PlanningKeyBindingDefOf.Planning_Modifier.IsDown;
                 OnModifierKeyChanged(IsModifierKeyPressed);
-                Log.Warning("Modifier Key Changed: " + IsModifierKeyPressed);
+                //Log.Warning("Modifier Key Changed: " + IsModifierKeyPressed);
             }
         }
 

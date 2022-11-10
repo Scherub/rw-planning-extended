@@ -10,7 +10,7 @@ namespace PlanningExtended.Designators
     {
         public override Color IconDrawColor => colorDef.color;
 
-        protected override bool HasPopupMenu => true;
+        protected override bool HasLeftClickPopupMenu => true;
 
         protected BaseAddPlanDesignator(string name)
             : base(name)

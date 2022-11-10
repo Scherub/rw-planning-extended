@@ -14,6 +14,8 @@ namespace PlanningExtended.Settings
 
         public const bool AlwaysGrabBottom = false;
 
+        public const bool UseCtrlForColorDialog = false;
+
         public bool useUndoRedo = UseUndoRedo;
 
         public int maxUndoOperations = MaxUndoRedoSteps;
@@ -24,12 +26,15 @@ namespace PlanningExtended.Settings
 
         public bool alwaysGrabBottom = AlwaysGrabBottom;
 
+        public bool useCtrlForColorDialog;
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), UseUndoRedo);
             Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), MaxUndoRedoSteps);
             Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), DisplayCutDesignator);
             Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), AreDesignationsPersistent);
+            Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), UseCtrlForColorDialog);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
 
             base.ExposeData();
@@ -41,6 +46,7 @@ namespace PlanningExtended.Settings
             maxUndoOperations = MaxUndoRedoSteps;
             displayCutDesignator = DisplayCutDesignator;
             areDesignationsPersistent = AreDesignationsPersistent;
+            useCtrlForColorDialog = UseCtrlForColorDialog;
             alwaysGrabBottom = AlwaysGrabBottom;
         }
     }

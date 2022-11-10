@@ -33,35 +33,38 @@
 
   <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Grab a color from an existing plan.</PlanningExtended.PickColorFromPlan>
-  
+
   <PlanningExtended.NoPlanningDesignationsFound>No planning designations found.</PlanningExtended.NoPlanningDesignationsFound>
   <PlanningExtended.PlanningDesignationsCopied>Planning designations copied.</PlanningExtended.PlanningDesignationsCopied>
-  
-  
+
+
   <PlanningExtended.Mode>Mode</PlanningExtended.Mode>
 
   <PlanningExtended.Copy>Copy</PlanningExtended.Copy>
   <PlanningExtended.Cut>Cut</PlanningExtended.Cut>
-  
+
   <PlanningExtended.Skip>Skip</PlanningExtended.Skip>
   <PlanningExtended.Replace>Replace</PlanningExtended.Replace>
-  
+
   <PlanningExtended.SwitchToCut>switch to cut</PlanningExtended.SwitchToCut>
-  
+
   <PlanningExtended.Settings.UndoRedo.Label>Undo-Redo</PlanningExtended.Settings.UndoRedo.Label>
-  
+
   <PlanningExtended.Settings.UseUndoRedo.Label>Use Undo-Redo System</PlanningExtended.Settings.UseUndoRedo.Label>
   <PlanningExtended.Settings.UseUndoRedo.Desc>Determines whether to use the undo-redo system and whether the buttons are visible.</PlanningExtended.Settings.UseUndoRedo.Desc>
-  
+
   <PlanningExtended.Settings.MaxUndoRedoOperations.Label>Number of undo-redo operations</PlanningExtended.Settings.MaxUndoRedoOperations.Label>
 
-  <PlanningExtended.Settings.DisplayCutDesignator.Label>Display Cut Designator</PlanningExtended.Settings.DisplayCutDesignator.Label>
-  <PlanningExtended.Settings.DisplayCutDesignator.Desc>Determines whether the cut designator button is visible.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
+  <PlanningExtended.Settings.DisplayCutDesignator.Label>Display Cut Plan Designator</PlanningExtended.Settings.DisplayCutDesignator.Label>
+  <PlanningExtended.Settings.DisplayCutDesignator.Desc>Determines whether the cut plan designator button is visible.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
 
-  <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent plans</PlanningExtended.Settings.ArePlansPersistent.Label>
+  <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent Plans</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Determines whether plans stay after a task has been finished on the same cell.</PlanningExtended.Settings.ArePlansPersistent.Desc>
-  
+
+  <PlanningExtended.Settings.UseCtrlForColorDialog.Label>Use Ctrl for Color Dialog</PlanningExtended.Settings.UseCtrlForColorDialog.Label>
+  <PlanningExtended.Settings.UseCtrlForColorDialog.Desc>Determines whether Ctrl has to be pressed to display the color dialog.</PlanningExtended.Settings.UseCtrlForColorDialog.Desc>
+
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
-  
+
 </LanguageData>
