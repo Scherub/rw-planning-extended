@@ -16,6 +16,7 @@
       <li>PlanningExtended.Designators.PastePlanDesignator</li>
       <li>PlanningExtended.Designators.UndoPlanDesignator</li>
       <li>PlanningExtended.Designators.RedoPlanDesignator</li>
+      <li>PlanningExtended.Designators.TogglePlanVisibilityDesignator</li>
       <!-- <li>PlannerExtended.Designators.AddTemplateDesignator</li>
       <li>PlannerExtended.Designators.RemoveTemplateDesignator</li> -->
     </specialDesignatorClasses>

@@ -5,10 +5,12 @@ namespace PlanningExtended.Settings
     public class PlanningSettings : ModSettings
     {
         public const bool UseUndoRedo = true;
-        
+
         public const int MaxUndoRedoSteps = 20;
 
         public const bool DisplayCutDesignator = true;
+
+        public const bool DisplayTogglePlanVisibilityDesignator = false;
 
         public const bool AreDesignationsPersistent = true;
 
@@ -22,6 +24,8 @@ namespace PlanningExtended.Settings
 
         public bool displayCutDesignator = DisplayCutDesignator;
 
+        public bool displayTogglePlanVisibilityDesignator = DisplayTogglePlanVisibilityDesignator;
+
         public bool areDesignationsPersistent = AreDesignationsPersistent;
 
         public bool alwaysGrabBottom = AlwaysGrabBottom;
@@ -33,6 +37,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), UseUndoRedo);
             Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), MaxUndoRedoSteps);
             Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), DisplayCutDesignator);
+            Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), DisplayTogglePlanVisibilityDesignator);
             Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), AreDesignationsPersistent);
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), UseCtrlForColorDialog);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
@@ -45,6 +50,7 @@ namespace PlanningExtended.Settings
             useUndoRedo = UseUndoRedo;
             maxUndoOperations = MaxUndoRedoSteps;
             displayCutDesignator = DisplayCutDesignator;
+            displayTogglePlanVisibilityDesignator = DisplayTogglePlanVisibilityDesignator;
             areDesignationsPersistent = AreDesignationsPersistent;
             useCtrlForColorDialog = UseCtrlForColorDialog;
             alwaysGrabBottom = AlwaysGrabBottom;

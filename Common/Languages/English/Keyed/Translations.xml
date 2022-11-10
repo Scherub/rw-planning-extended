@@ -31,6 +31,9 @@
   <PlanningExtended.RedoPlan.Label>Redo</PlanningExtended.RedoPlan.Label>
   <PlanningExtended.RedoPlan.Desc>Redo the last undo action.</PlanningExtended.RedoPlan.Desc>
 
+  <PlanningExtended.TogglePlanVisibility.Label>Toggle Plan Visibility</PlanningExtended.TogglePlanVisibility.Label>
+  <PlanningExtended.TogglePlanVisibility.Desc>Toggle the visibility of all plans.</PlanningExtended.TogglePlanVisibility.Desc>
+
   <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Grab a color from an existing plan.</PlanningExtended.PickColorFromPlan>
 
@@ -57,6 +60,9 @@
 
   <PlanningExtended.Settings.DisplayCutDesignator.Label>Display Cut Plan Designator</PlanningExtended.Settings.DisplayCutDesignator.Label>
   <PlanningExtended.Settings.DisplayCutDesignator.Desc>Determines whether the cut plan designator button is visible.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
+
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>Display Toggle Plan Visibility Designator</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>Determines whether the toggle plan visibility designator button is visible.</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
 
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent Plans</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Determines whether plans stay after a task has been finished on the same cell.</PlanningExtended.Settings.ArePlansPersistent.Desc>
