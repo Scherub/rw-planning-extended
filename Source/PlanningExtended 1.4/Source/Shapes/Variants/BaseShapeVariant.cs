@@ -15,14 +15,19 @@ namespace PlanningExtended.Shapes.Variants
 
         public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
 
-        public virtual void Rotate(RotationDirection rotationDirection)
+        public virtual void ChangeShapeOption(ShapeOptions shapeOptions, ShapeOptionDirection shapeOptionDirection)
         {
 
         }
 
-        public virtual void ChangeShapeOption(ShapeOptions shapeOptions, ShapeOptionDirection shapeOptionDirection)
+        public void ChangeFirstShapeOption(ShapeOptionDirection shapeOptionDirection)
         {
+            ChangeShapeOption(FirstShapeOption, shapeOptionDirection);
+        }
 
+        public void ChangeSecondShapeOption(ShapeOptionDirection shapeOptionDirection)
+        {
+            ChangeShapeOption(SecondShapeOption, shapeOptionDirection);
         }
 
         int NumShapeOptions(ShapeOptions shapeOptions)

@@ -50,9 +50,10 @@ namespace PlanningExtended.Designators
                 GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color));
         }
 
-        protected override void ShowPopupMenu()
+        protected override bool ShowLeftClickPopupMenu()
         {
-            base.ShowPopupMenu();
+            if (base.ShowLeftClickPopupMenu())
+                return true;
 
             if (KeyBindingDefOf.ShowEyedropper.IsDown)
             {
@@ -76,7 +77,11 @@ namespace PlanningExtended.Designators
                 }
 
                 Find.WindowStack.Add(new FloatMenuGrid(list));
+
+                return true;
             }
+
+            return false;
         }
 
         protected override string GetMouseAttachmentText()

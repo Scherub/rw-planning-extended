@@ -9,7 +9,7 @@ namespace PlanningExtended.Designators
 
         public override bool DragDrawOutline => true;
 
-        protected override bool HasPopupMenu => false;
+        protected override bool HasLeftClickPopupMenu => false;
 
         public RemovePlanDesignator()
             : base("RemovePlan")

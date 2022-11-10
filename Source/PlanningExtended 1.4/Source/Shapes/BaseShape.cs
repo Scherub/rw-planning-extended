@@ -21,7 +21,7 @@ namespace PlanningExtended.Shapes
 
         protected BaseShape(ShapeVariant defaultShapeVariant)
         {
-            SelectVariant(defaultShapeVariant);
+            SelectShapeVariant(defaultShapeVariant);
         }
 
         public bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
@@ -29,7 +29,7 @@ namespace PlanningExtended.Shapes
             return SelectedShapeVariant.IsCellValid(cell, areaDimensions);
         }
 
-        public void SelectVariant(ShapeVariant shapeVariant)
+        public void SelectShapeVariant(ShapeVariant shapeVariant)
         {
             SelectedShapeVariant = ShapeVariants.FirstOrDefault(sv => sv.ShapeVariant == shapeVariant);
 
@@ -41,7 +41,7 @@ namespace PlanningExtended.Shapes
 
         public void ChangeToNextShapeVariant()
         {
-            if (_selectedShapeIndex >= ShapeVariants.Count)
+            if (_selectedShapeIndex >= ShapeVariants.Count - 1)
                 _selectedShapeIndex = 0;
             else
                 _selectedShapeIndex++;
