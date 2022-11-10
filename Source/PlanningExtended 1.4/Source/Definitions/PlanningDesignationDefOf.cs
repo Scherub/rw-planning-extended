@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Defs;
 using RimWorld;
 using Verse;
 
@@ -7,21 +8,17 @@ namespace PlanningExtended
     [DefOf]
     public static class PlanningDesignationDefOf
     {
-        static List<DesignationDef> _designationDefs;
-        public static List<DesignationDef> DesignationDefs
+        static List<DesignationDefContainer> _designationDefs;
+        public static List<DesignationDefContainer> DesignationDefs
         {
             get
             {
                 _designationDefs ??= new(new[]
                 {
-                    PlanDoors,
-                    PlanDoorsColored,
-                    PlanFloors,
-                    PlanFloorsColored,
-                    PlanObjects,
-                    PlanObjectsColored,
-                    PlanWalls,
-                    PlanWallsColored
+                    new DesignationDefContainer("Wall", PlanWalls, PlanWallsColored),
+                    new DesignationDefContainer("Floor", PlanFloors, PlanFloorsColored),
+                    new DesignationDefContainer("Door", PlanDoors, PlanDoorsColored),
+                    new DesignationDefContainer("Object", PlanObjects, PlanObjectsColored),
                 });
 
                 return _designationDefs;
@@ -35,12 +32,13 @@ namespace PlanningExtended
             {
                 if (_allDesignationDefs == null)
                 {
-                    _allDesignationDefs = new(DesignationDefs.Count + 1)
+                    _allDesignationDefs = new(DesignationDefs.Count * 2 + 1)
                     {
                         DesignationDefOf.Plan,
                     };
 
-                    _allDesignationDefs.AddRange(DesignationDefs);
+                    foreach (DesignationDefContainer designationDefContainer in DesignationDefs)
+                        _allDesignationDefs.AddRange(designationDefContainer.DesignationDefs);
                 }
 
                 return _allDesignationDefs;

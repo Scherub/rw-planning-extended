@@ -38,6 +38,23 @@ namespace PlanningExtended.Cells
             CenterZ = ((MaxZ - MinZ) / 2) + MinZ;
         }
 
+        public AreaDimensions Merge(AreaDimensions areaDimensions)
+        {
+            if (IsValid && areaDimensions.IsValid)
+            {
+                return new AreaDimensions(
+                    MinX < areaDimensions.MinX ? MinX : areaDimensions.MinX,
+                    MinZ < areaDimensions.MinZ ? MinZ : areaDimensions.MinZ,
+                    MaxX > areaDimensions.MaxX ? MaxX : areaDimensions.MaxX,
+                    MaxZ > areaDimensions.MaxZ ? MaxZ : areaDimensions.MaxZ
+                    );
+            }
+            else if (IsValid)
+                return this;
+
+            return areaDimensions;
+        }
+
         //public AreaDimensions MoveBy(IntVec3 offset)
         //{
         //    return new AreaDimensions(MinX + offset.x, MinZ + offset.z, MaxX + offset.x, MaxZ + offset.z);

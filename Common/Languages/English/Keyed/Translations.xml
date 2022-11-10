@@ -40,7 +40,13 @@
   <PlanningExtended.NoPlanningDesignationsFound>No planning designations found.</PlanningExtended.NoPlanningDesignationsFound>
   <PlanningExtended.PlanningDesignationsCopied>Planning designations copied.</PlanningExtended.PlanningDesignationsCopied>
 
-
+  <PlanningExtended.RemovePlanDesignations>Remove {0} {1} plans.</PlanningExtended.RemovePlanDesignations>
+  
+  <PlanningExtended.Door>Door</PlanningExtended.Door>
+  <PlanningExtended.Floor>Floor</PlanningExtended.Floor>
+  <PlanningExtended.Object>Object</PlanningExtended.Object>
+  <PlanningExtended.Wall>Wall</PlanningExtended.Wall>
+  
   <PlanningExtended.Mode>Mode</PlanningExtended.Mode>
 
   <PlanningExtended.Copy>Copy</PlanningExtended.Copy>
