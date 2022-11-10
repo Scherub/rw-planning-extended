@@ -19,6 +19,8 @@ namespace PlanningExtended.Designators
 
         protected DesignationDef SelectedDesignation => colorDef == ColorDefinitions.NonColoredDef ? Designation : ColoredDesignation;
 
+        bool UseCtrlForColorDialog => PlanningMod.Settings.useCtrlForColorDialog;
+
         protected BaseColorPlanDesignator(string name)
             : base(name)
         {
@@ -55,7 +57,7 @@ namespace PlanningExtended.Designators
             if (base.ShowLeftClickPopupMenu())
                 return true;
 
-            if (KeyBindingDefOf.ShowEyedropper.IsDown)
+            if (!UseCtrlForColorDialog || KeyBindingDefOf.ShowEyedropper.IsDown)
             {
                 List<FloatMenuGridOption> list = new(ColorDefinitions.ColorDefs.Count + 1)
                 {
