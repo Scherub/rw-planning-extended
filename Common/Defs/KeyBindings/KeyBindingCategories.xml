@@ -8,8 +8,6 @@
     <description>Controls used by Planning Extended.</description>
     <checkForConflicts>
       <li>GameMapCamera</li>
-      <li>SelectionMisc</li>
-      <li>Architect</li>
     </checkForConflicts>
   </KeyBindingCategoryDef>
 
