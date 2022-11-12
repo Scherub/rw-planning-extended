@@ -23,13 +23,19 @@
   <PlanningExtended.CutPlan.Desc>Cut a plan of the selected area to the clipboard.</PlanningExtended.CutPlan.Desc>
 
   <PlanningExtended.PastePlan.Label>Paste Plan</PlanningExtended.PastePlan.Label>
-  <PlanningExtended.PastePlan.Desc>Paste a plan from the clipboard to the map.\n\nUse keys to rotate and flip. (Images for flipping will be replaced later on.)</PlanningExtended.PastePlan.Desc>
+  <PlanningExtended.PastePlan.Desc>Paste a plan from the clipboard to the map.\n\nUse keys to rotate and flip.</PlanningExtended.PastePlan.Desc>
 
   <PlanningExtended.UndoPlan.Label>Undo</PlanningExtended.UndoPlan.Label>
   <PlanningExtended.UndoPlan.Desc>Undo the last planning action.</PlanningExtended.UndoPlan.Desc>
 
   <PlanningExtended.RedoPlan.Label>Redo</PlanningExtended.RedoPlan.Label>
-  <PlanningExtended.RedoPlan.Desc>Redo the last undo action.</PlanningExtended.RedoPlan.Desc>
+  <PlanningExtended.RedoPlan.Desc>Redo the last undo planning action.</PlanningExtended.RedoPlan.Desc>
+
+  <PlanningExtended.LoadPlan.Label>Load Plan</PlanningExtended.LoadPlan.Label>
+  <PlanningExtended.LoadPlan.Desc>Load a plan from a file.</PlanningExtended.LoadPlan.Desc>
+
+  <PlanningExtended.SavePlan.Label>Save Plan</PlanningExtended.SavePlan.Label>
+  <PlanningExtended.SavePlan.Desc>Save the last copied plan to a file.</PlanningExtended.SavePlan.Desc>
 
   <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Grab a color from an existing plan.</PlanningExtended.PickColorFromPlan>
@@ -37,6 +43,8 @@
   <PlanningExtended.NoPlanningDesignationsFound>No planning designations found.</PlanningExtended.NoPlanningDesignationsFound>
   <PlanningExtended.PlanningDesignationsCopied>Planning designations copied.</PlanningExtended.PlanningDesignationsCopied>
 
+  <PlanningExtended.DeletePlan>Delete this plan.</PlanningExtended.DeletePlan>
+  <PlanningExtended.SavedPlanInfoAs>Saved plan as '{0}'.</PlanningExtended.SavedPlanInfoAs>
 
   <PlanningExtended.Mode>Mode</PlanningExtended.Mode>
 
