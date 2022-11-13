@@ -10,6 +10,8 @@ namespace PlanningExtended.Plans
 
         public static event Action<PlanLayout> OnCachedPlanLayoutChanged;
 
+        public static event Action<bool> OnPlanVisibilityChanged;
+
         public static void SetCachedPlanLayout(PlanLayout planLayout)
         {
             CachedPlanLayout = planLayout;
@@ -20,6 +22,8 @@ namespace PlanningExtended.Plans
         public static void SetArePlansVisible(bool isVisible)
         {
             ArePlansVisible = isVisible;
+
+            OnPlanVisibilityChanged?.Invoke(isVisible);
         }
     }
 }

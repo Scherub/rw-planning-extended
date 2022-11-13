@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PlanningExtended.Materials;
 using UnityEngine;
@@ -10,7 +11,11 @@ namespace PlanningExtended.Designators
     {
         List<int> OpacityList => Enumerable.Range(1, 100).Where(i => i % 10 == 0).ToList();
 
+        List<PlanTextureSet> PlanTextureSets => Enum.GetValues(typeof(PlanTextureSet)).Cast<PlanTextureSet>().ToList();
+
         public override bool Visible => PlanningMod.Settings.displayChangePlanAppearanceDesignator;
+
+        public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetTextureSetMenuOptions();
 
         public ChangePlanAppearanceDesignator()
             : base("ChangePlanAppearance")
@@ -19,11 +24,12 @@ namespace PlanningExtended.Designators
 
         public override void ProcessInput(Event ev)
         {
-            ShowOpacityMenu();
+            List<FloatMenuOption> list = GetOpacityMenuOptions();
 
+            Find.WindowStack.Add(new FloatMenu(list, "Plan Opacity"));
         }
 
-        void ShowOpacityMenu()
+        List<FloatMenuOption> GetOpacityMenuOptions()
         {
             List<FloatMenuOption> list = new();
 
@@ -35,7 +41,22 @@ namespace PlanningExtended.Designators
                 }));
             }
 
-            Find.WindowStack.Add(new FloatMenu(list, "Plan Opacity"));
+            return list;
+        }
+
+        List<FloatMenuOption> GetTextureSetMenuOptions()
+        {
+            List<FloatMenuOption> list = new();
+
+            foreach (PlanTextureSet planTextureSet in PlanTextureSets)
+            {
+                list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
+                {
+                    MaterialsManager.SetPlanTextureSet(planTextureSet);
+                }));
+            }
+
+            return list;
         }
     }
 }

@@ -15,10 +15,10 @@ namespace PlanningExtended
             {
                 _designationDefs ??= new(new[]
                 {
-                    new DesignationDefContainer("Wall", PlanWalls, PlanWallsColored),
-                    new DesignationDefContainer("Floor", PlanFloors, PlanFloorsColored),
-                    new DesignationDefContainer("Door", PlanDoors, PlanDoorsColored),
-                    new DesignationDefContainer("Object", PlanObjects, PlanObjectsColored),
+                    new DesignationDefContainer(PlanDesignitionType.PlanWall, "PlanWalls", "Wall", PlanWalls, PlanWallsColored),
+                    new DesignationDefContainer(PlanDesignitionType.PlanFloors, "PlanFloors", "Floor", PlanFloors, PlanFloorsColored),
+                    new DesignationDefContainer(PlanDesignitionType.PlanDoors, "PlanDoors", "Door", PlanDoors, PlanDoorsColored),
+                    new DesignationDefContainer(PlanDesignitionType.PlanObjects, "PlanObjects", "Object", PlanObjects, PlanObjectsColored),
                 });
 
                 return _designationDefs;
@@ -43,6 +43,20 @@ namespace PlanningExtended
 
                 return _allDesignationDefs;
             }
+        }
+
+        public static PlanDesignitionType GetType(DesignationDef designationDef)
+        {
+            if (designationDef == PlanDoors || designationDef == PlanDoorsColored)
+                return PlanDesignitionType.PlanDoors;
+            else if (designationDef == PlanFloors || designationDef == PlanFloorsColored)
+                return PlanDesignitionType.PlanFloors;
+            else if (designationDef == PlanObjects || designationDef == PlanObjectsColored)
+                return PlanDesignitionType.PlanObjects;
+            else if (designationDef == PlanWalls || designationDef == PlanWallsColored)
+                return PlanDesignitionType.PlanWall;
+
+            return PlanDesignitionType.Unknown;
         }
 
         public static DesignationDef PlanDoors;

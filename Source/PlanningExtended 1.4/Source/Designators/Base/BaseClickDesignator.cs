@@ -13,14 +13,17 @@ namespace PlanningExtended.Designators
         public override bool DragDrawOutline => false;
 
         protected BaseClickDesignator(string name)
+            : this(name, name)
+        {
+        }
+
+        protected BaseClickDesignator(string name, string iconName)
         {
             defaultLabel = $"PlanningExtended.{name}.Label".Translate();
             defaultDesc = $"PlanningExtended.{name}.Desc".Translate();
-            icon = ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
+            icon = ContentFinder<Texture2D>.Get($"UI/Designators/{iconName}", true);
 
             soundSucceeded = SoundDefOf.Designate_PlanAdd;
-            soundDragSustain = SoundDefOf.Designate_DragStandard;
-            soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             useMouseIcon = true;
         }
 

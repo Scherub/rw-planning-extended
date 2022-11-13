@@ -8,7 +8,9 @@ namespace PlanningExtended.Designations
 {
     public class PlanDesignation : Designation
     {
-        bool requiresColorUpdate;
+        readonly PlanDesignitionType planType;
+        
+        bool requiresMaterialUpdate, requiresColorUpdate;
 
         [Unsaved]
         Material _material;
@@ -16,7 +18,7 @@ namespace PlanningExtended.Designations
         {
             get
             {
-                if (_material == null)
+                if (_material is null || requiresMaterialUpdate)
                 {
                     if (colorDef != null)
                     {
@@ -29,6 +31,8 @@ namespace PlanningExtended.Designations
                     {
                         _material = def.iconMat;
                     }
+
+                    requiresMaterialUpdate = false;
                 }
 
                 if (requiresColorUpdate)
@@ -44,13 +48,13 @@ namespace PlanningExtended.Designations
         public PlanDesignation()
             : base()
         {
-
+            planType = PlanningDesignationDefOf.GetType(def);
         }
 
         public PlanDesignation(LocalTargetInfo target, DesignationDef def, ColorDef colorDef = null)
             : base(target, def, colorDef)
         {
-
+            planType = PlanningDesignationDefOf.GetType(def);
         }
 
         public override void DesignationDraw()
@@ -61,9 +65,16 @@ namespace PlanningExtended.Designations
             Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), Quaternion.identity, Material, 0);
         }
 
-        public void InvokeColorUpdate()
+        public void InvokeMaterialUpdate(PlanDesignitionType planDesignitionType)
         {
-            requiresColorUpdate = true;
+            if (planDesignitionType == PlanDesignitionType.Unknown || planDesignitionType == planType)
+                requiresMaterialUpdate = true;
+        }
+
+        public void InvokeColorUpdate(PlanDesignitionType planDesignitionType)
+        {
+            if (planDesignitionType is PlanDesignitionType.Unknown || planDesignitionType == planType)
+                requiresColorUpdate = true;
         }
     }
 }
