@@ -70,6 +70,8 @@ namespace PlanningExtended.Designators
             //GenDraw.DrawNoBuildEdgeLines();
             //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
 
+            PlanManager.SetArePlansVisible(true);
+
             PlanLayoutUtilities.Draw(_selectedPlanLayout, UI.MouseCell(), Map);
         }
 
