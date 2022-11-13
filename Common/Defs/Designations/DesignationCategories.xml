@@ -18,6 +18,7 @@
       <li>PlanningExtended.Designators.LoadPlanDesignator</li>
       <li>PlanningExtended.Designators.UndoPlanDesignator</li>
       <li>PlanningExtended.Designators.RedoPlanDesignator</li>
+      <li>PlanningExtended.Designators.ChangePlanAppearanceDesignator</li>
       <li>PlanningExtended.Designators.TogglePlanVisibilityDesignator</li>
     </specialDesignatorClasses>
   </DesignationCategoryDef>

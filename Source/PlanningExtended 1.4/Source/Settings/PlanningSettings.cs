@@ -10,6 +10,8 @@ namespace PlanningExtended.Settings
 
         public bool displayCutDesignator = Default.DisplayCutDesignator;
 
+        public bool displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
+
         public bool displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
 
         public bool areDesignationsPersistent = Default.AreDesignationsPersistent;
@@ -23,6 +25,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
             Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), Default.MaxUndoRedoSteps);
             Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), Default.DisplayCutDesignator);
+            Scribe_Values.Look(ref displayChangePlanAppearanceDesignator, nameof(displayChangePlanAppearanceDesignator), Default.DisplayChangePlanAppearanceDesignator);
             Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
             Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
@@ -48,6 +51,8 @@ namespace PlanningExtended.Settings
             public const int MaxUndoRedoSteps = 20;
 
             public const bool DisplayCutDesignator = true;
+
+            public const bool DisplayChangePlanAppearanceDesignator = false;
 
             public const bool DisplayTogglePlanVisibilityDesignator = false;
 
