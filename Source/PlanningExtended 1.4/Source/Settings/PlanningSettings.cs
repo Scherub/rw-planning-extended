@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using PlanningExtended.Defs;
 using PlanningExtended.Designations;
 using Verse;
 
@@ -36,7 +35,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
 
-            Scribe_Collections.Look<PlanDesignationType, PlanDesignationSetting>(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
+            Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
                 InitData();
@@ -56,16 +55,8 @@ namespace PlanningExtended.Settings
 
         public void SetOpacity(PlanDesignationType planDesignationType, float opacity)
         {
-            if (planDesignationType == PlanDesignationType.Unknown)
-            {
-                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
-                    planDesignationSetting.opacity = opacity;
-            }
-            else
-            {
-                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
-                    setting.opacity = opacity;
-            }
+            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+                planDesignationSetting.opacity = opacity;
         }
 
         public float GetOpacity(PlanDesignationType planDesignationType)
@@ -75,35 +66,23 @@ namespace PlanningExtended.Settings
 
         public void SetColor(PlanDesignationType planDesignationType, string color)
         {
-            if (planDesignationType == PlanDesignationType.Unknown)
-            {
-                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
-                    planDesignationSetting.color = color;
-            }
-            else
-            {
-                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
-                    setting.color = color;
-            }
+            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+                planDesignationSetting.color = color;
         }
 
         public string GetColor(PlanDesignationType planDesignationType)
         {
-            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) && string.IsNullOrEmpty(planDesignationSetting.color)) ? planDesignationSetting.color : ColorDefinitions.DefaultColorName;
+            if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+                if (string.IsNullOrEmpty(planDesignationSetting.color))
+                    return planDesignationSetting.color;
+
+            return ColorDefinitions.DefaultColorName;
         }
 
         public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet)
         {
-            if (planDesignationType == PlanDesignationType.Unknown)
-            {
-                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
-                    planDesignationSetting.textureSet = textureSet;
-            }
-            else
-            {
-                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
-                    setting.textureSet = textureSet;
-            }
+            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+                planDesignationSetting.textureSet = textureSet;
         }
 
         public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
@@ -142,9 +121,9 @@ namespace PlanningExtended.Settings
 
             public const bool DisplayCutDesignator = true;
 
-            public const bool DisplayChangePlanAppearanceDesignator = false;
+            public const bool DisplayChangePlanAppearanceDesignator = true;
 
-            public const bool DisplayTogglePlanVisibilityDesignator = false;
+            public const bool DisplayTogglePlanVisibilityDesignator = true;
 
             public const bool AreDesignationsPersistent = true;
 
