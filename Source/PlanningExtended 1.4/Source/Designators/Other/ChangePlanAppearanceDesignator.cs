@@ -52,7 +52,7 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
                 {
-                    MaterialsManager.SetPlanTextureSet(planTextureSet);
+                    MaterialsManager.SetPlanTextureSet(PlanDesignationType.Unknown, planTextureSet);
                 }));
             }
 

@@ -73,6 +73,44 @@ namespace PlanningExtended.Settings
             return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.opacity : 1f;
         }
 
+        public void SetColor(PlanDesignationType planDesignationType, string color)
+        {
+            if (planDesignationType == PlanDesignationType.Unknown)
+            {
+                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
+                    planDesignationSetting.color = color;
+            }
+            else
+            {
+                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
+                    setting.color = color;
+            }
+        }
+
+        public string GetColor(PlanDesignationType planDesignationType)
+        {
+            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.color : ColorDefinitions.DefaultColorName;
+        }
+
+        public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet)
+        {
+            if (planDesignationType == PlanDesignationType.Unknown)
+            {
+                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
+                    planDesignationSetting.textureSet = textureSet;
+            }
+            else
+            {
+                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
+                    setting.textureSet = textureSet;
+            }
+        }
+
+        public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
+        {
+            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.textureSet : PlanTextureSet.Dashed;
+        }
+
         void InitData()
         {
             planDesignationSettings ??= new();
@@ -82,13 +120,6 @@ namespace PlanningExtended.Settings
                 if (!planDesignationSettings.ContainsKey(planDesignationType))
                     planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
             }
-
-            //foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
-            //{
-            //    if (!planDesignationSettings.ContainsKey(designationDefContainer.Type))
-            //        //planDesignationSettings[designationDefContainer.Type] = new PlanDesignationSetting(1f, ColorDefinitions.NonColoredDef.defName, PlanTextureSet.Dashed);
-            //        planDesignationSettings[designationDefContainer.Type] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
-            //}
         }
 
         class Default

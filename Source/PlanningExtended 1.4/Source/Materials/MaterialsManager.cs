@@ -21,6 +21,8 @@ namespace PlanningExtended.Materials
         static MaterialsManager()
         {
             planConfigs = new[] { planDoor, planFloor, planObject, planWall }.ToList();
+
+            UpdateMaterials();
         }
 
         public static float GetPlanOpacity(PlanDesignationType planDesignationType)
@@ -43,34 +45,27 @@ namespace PlanningExtended.Materials
                 if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planConfig.Type)
                     planConfig.Opacity = opacity;
 
+            UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Color);
+
             PlanningMod.Settings.SetOpacity(planDesignationType, opacity);
             PlanningMod.Settings.Write();
-
-            UpdatePlanDesignations(planDesignationType);
         }
 
-        public static void SetPlanTextureSet(PlanTextureSet planTextureSet)
+        public static void SetPlanTextureSet(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
         {
-            Map map = Find.CurrentMap;
+            foreach (PlanConfig planConfig in planConfigs)
+                if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planConfig.Type)
+                    planConfig.TextureSet = planTextureSet;
 
-            if (map == null)
-                return;
+            UpdateMaterials();
 
-            foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
-            {
-                foreach (var designationDef in designationDefContainer.DesignationDefs)
-                {
-                    designationDef.iconMat = MaterialPool.MatFrom($"Designations/{planTextureSet}/{designationDefContainer.TextureName}", ShaderDatabase.MetaOverlay);
+            UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Material);
 
-                    List<PlanDesignation> designations = map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation).ToList();
-
-                    foreach (var designation in designations)
-                        designation.InvokeMaterialUpdate(PlanDesignationType.Unknown);
-                }
-            }
+            PlanningMod.Settings.SetTextureSet(planDesignationType, planTextureSet);
+            PlanningMod.Settings.Write();
         }
 
-        static void UpdatePlanDesignations(PlanDesignationType planDesignationType)
+        static void UpdatePlanDesignations(PlanDesignationType planDesignationType, PlanDesignationUpdateType planDesignationUpdateType)
         {
             Map map = Find.CurrentMap;
 
@@ -84,14 +79,26 @@ namespace PlanningExtended.Materials
                     List<PlanDesignation> designations = map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation).ToList();
 
                     foreach (var designation in designations)
-                        designation.InvokeColorUpdate(planDesignationType);
+                        designation.InvokeUpdate(planDesignationType, planDesignationUpdateType);
                 }
+            }
+        }
+
+        static void UpdateMaterials()
+        {
+            foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
+            {
+                PlanConfig planConfig = planConfigs.FirstOrDefault(pc => pc.Type == designationDefContainer.Type);
+
+                if (planConfig is not null)
+                    foreach (var designationDef in designationDefContainer.DesignationDefs)
+                        designationDef.iconMat = MaterialPool.MatFrom($"Designations/{planConfig.TextureSet}/{designationDefContainer.TextureName}", ShaderDatabase.MetaOverlay);
             }
         }
 
         static PlanConfig CreatePlanConfig(PlanDesignationType planDesignationType)
         {
-            return new PlanConfig(planDesignationType, PlanningMod.Settings.GetOpacity(planDesignationType), PlanTextureSet.Dashed);
+            return new PlanConfig(planDesignationType, PlanningMod.Settings.GetOpacity(planDesignationType), PlanningMod.Settings.GetTextureSet(planDesignationType));
         }
 
         public class PlanConfig

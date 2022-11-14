@@ -10,8 +10,8 @@ namespace PlanningExtended.Designations
     public class PlanDesignation : Designation
     {
         PlanDesignationType planType;
-        
-        bool requiresMaterialUpdate, requiresColorUpdate;
+
+        PlanDesignationUpdateType _planDesignationUpdateType;
 
         [Unsaved]
         Material _material;
@@ -19,7 +19,7 @@ namespace PlanningExtended.Designations
         {
             get
             {
-                if (_material is null || requiresMaterialUpdate)
+                if (_material is null || _planDesignationUpdateType is PlanDesignationUpdateType.Material)
                 {
                     if (planType is PlanDesignationType.Unknown)
                         DeterminePlanType();
@@ -36,13 +36,12 @@ namespace PlanningExtended.Designations
                         _material = def.iconMat;
                     }
 
-                    requiresMaterialUpdate = false;
+                    _planDesignationUpdateType = PlanDesignationUpdateType.None;
                 }
-
-                if (requiresColorUpdate)
+                else if (_planDesignationUpdateType is PlanDesignationUpdateType.Color)
                 {
                     _material.color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(planType));
-                    requiresColorUpdate = false;
+                    _planDesignationUpdateType = PlanDesignationUpdateType.None;
                 }
 
                 return _material;
@@ -68,16 +67,10 @@ namespace PlanningExtended.Designations
             Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), Quaternion.identity, Material, 0);
         }
 
-        public void InvokeMaterialUpdate(PlanDesignationType planDesignationType)
+        internal void InvokeUpdate(PlanDesignationType planDesignationType, PlanDesignationUpdateType planDesignationUpdateType)
         {
             if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planType)
-                requiresMaterialUpdate = true;
-        }
-
-        public void InvokeColorUpdate(PlanDesignationType planDesignationType)
-        {
-            if (planDesignationType is PlanDesignationType.Unknown || planDesignationType == planType)
-                requiresColorUpdate = true;
+                _planDesignationUpdateType = planDesignationUpdateType;
         }
 
         void DeterminePlanType()
