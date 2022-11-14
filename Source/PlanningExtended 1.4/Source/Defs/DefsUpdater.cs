@@ -6,8 +6,11 @@
         {
             bool areDesignationsPersistent = PlanningMod.Settings.areDesignationsPersistent;
 
-            foreach (var designationDef in PlanningDesignationDefOf.DesignationDefs)
-                designationDef.removeIfBuildingDespawned = !areDesignationsPersistent;
+            foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
+            {
+                designationDefContainer.Default.removeIfBuildingDespawned = !areDesignationsPersistent;
+                designationDefContainer.Colored.removeIfBuildingDespawned = !areDesignationsPersistent;
+            }
         }
     }
 }

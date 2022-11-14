@@ -6,14 +6,15 @@ namespace PlanningExtended.Shapes
     {
         readonly Dictionary<Shape, BaseShape> _shapes = new();
 
-        public static List<Shape> AvailableShapes = new(new[] { Shape.Area, Shape.Rectangle, Shape.Cross });
+        //public static List<Shape> AvailableShapes = new(new[] { Shape.Fixed, Shape.Line, Shape.Rectangle, Shape.Ellipse });
+        public static List<Shape> AvailableShapes = new(new[] { Shape.Line, Shape.Rectangle });
 
         public ShapesManager()
         {
-            _shapes.Add(Shape.Area, new Area());
-            _shapes.Add(Shape.Rectangle, new Rectangle());
-            //_shapes.Add(Shape.SubdivdedRectangle, new SubdividedRectangle());
-            _shapes.Add(Shape.Cross, new CrossShape());
+            //_shapes.Add(Shape.Fixed, new FixedShape());
+            _shapes.Add(Shape.Line, new LineShape());
+            _shapes.Add(Shape.Rectangle, new RectangleShape());
+            //_shapes.Add(Shape.Ellipse, new EllipseShape());
         }
 
         public BaseShape GetShape(Shape shape)

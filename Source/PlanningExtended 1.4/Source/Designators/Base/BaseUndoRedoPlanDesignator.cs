@@ -50,6 +50,7 @@ namespace PlanningExtended.Designators
 
             return somethingSucceeded;
         }
+
         public override void SelectedUpdate()
         {
             base.SelectedUpdate();

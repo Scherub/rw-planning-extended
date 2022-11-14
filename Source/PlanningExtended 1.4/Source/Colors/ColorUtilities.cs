@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
+using Verse;
 
 namespace PlanningExtended.Colors
 {
@@ -7,7 +7,7 @@ namespace PlanningExtended.Colors
     {
         public static ColorDef GetColorDefByName(string defName)
         {
-            return ColorDefinitions.ColorDefs.FirstOrDefault(c => c.defName == defName);
+            return ColorDefinitions.ColorDefs.FirstOrFallback(c => c.defName == defName, ColorDefinitions.NonColoredDef);
         }
     }
 }

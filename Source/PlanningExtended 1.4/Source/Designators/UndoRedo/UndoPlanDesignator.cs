@@ -1,5 +1,7 @@
 ﻿using PlanningExtended.UndoRedo;
+using RimWorld;
 using UnityEngine;
+using Verse.Sound;
 
 namespace PlanningExtended.Designators
 {
@@ -18,6 +20,8 @@ namespace PlanningExtended.Designators
         public override void ProcessInput(Event ev)
         {
             UndoRedoManager.Undo(Map);
+
+            SoundDefOf.Tick_Tiny.PlayOneShotOnCamera(null);
         }
 
         void UndoRedoManager_OnChanged()

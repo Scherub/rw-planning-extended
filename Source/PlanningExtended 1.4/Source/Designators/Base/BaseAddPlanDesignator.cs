@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
+using PlanningExtended.Colors;
 using PlanningExtended.Designations;
+using PlanningExtended.Gui;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,14 +11,15 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
     {
-        public override Color IconDrawColor => colorDef.color;
+        protected abstract PlanDesignationType PlanDesignationType { get; }
 
-        protected override bool HasPopupMenu => true;
+        protected override bool HasLeftClickPopupMenu => true;
+
+        public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
 
         protected BaseAddPlanDesignator(string name)
             : base(name)
         {
-    
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -50,7 +54,7 @@ namespace PlanningExtended.Designators
             if (!base.CanDesignateCell(c))
                 return false;
 
-            return !PlanningKeyBindingDefOf.Planning_Modifier.IsDown || !Map.designationManager.HasPlanDesignationAt(c);
+            return !PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown || !Map.designationManager.HasPlanDesignationAt(c);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
@@ -88,6 +92,59 @@ namespace PlanningExtended.Designators
 
         //}
 
+        public override void DoExtraGuiControls(float leftX, float bottomY)
+        {
+            float width = 200f;
+            //float height = 180f;
+            float height = 90f;
+
+            float columnWidthTotal = width / 2f;
+            float columnWidth = columnWidthTotal - 20f;
+            float rowHeight = 64f;
+
+            float marginLeft = (columnWidthTotal - columnWidth) / 2f;
+            float marginTop = (height - rowHeight) / 2f;
+
+
+            Rect winRect = new(leftX, bottomY - height, width, height);
+
+            Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, () =>
+            {
+                Text.Anchor = TextAnchor.MiddleCenter;
+                //Text.Font = GameFont.Medium;
+
+                //RotationDirection rotationDirection = RotationDirection.None;
+                //FlipDirection flipDirection = FlipDirection.None;
+
+                //Rect rect = new(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
+                Rect rect = new(marginLeft, marginTop, columnWidth, rowHeight);
+
+                Widgets.Label(rect, $"Change shape variant: {PlanningKeyBindingDefOf.Planning_ChangeShapeVariant.MainKeyLabel}");
+
+                //rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateLeft, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, RotationDirection.Counterclockwise, rotationDirection);
+
+                //rect = new(winRect.width / 2f + 5f, 15f, 64f, 64f);
+                rect = new(columnWidthTotal + marginLeft, marginTop, columnWidth, rowHeight);
+
+                Widgets.Label(rect, SelectedShape.SelectedShapeVariant.ShapeVariant.ToString());
+
+                //rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateRight, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, RotationDirection.Clockwise, rotationDirection);
+
+                //rect = new(winRect.width / 2f - 64f - 5f, winRect.height / 2f + 15f, 64f, 64f);
+
+                //flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_Action1.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
+
+                //rect = new(winRect.width / 2f + 5f, winRect.height / 2f + 15f, 64f, 64f);
+
+                //flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_Action2.MainKeyLabel, FlipDirection.Vertically, flipDirection);
+
+                Text.Anchor = TextAnchor.UpperLeft;
+                Text.Font = GameFont.Small;
+
+                //HandleRotationFlip(rotationDirection, flipDirection);
+            }, true, false, 1f, null);
+        }
+
         protected override void OnModifierKeyChanged(bool isPressed)
         {
             ResetMouseAttachmentText();
@@ -98,6 +155,21 @@ namespace PlanningExtended.Designators
             string mode = IsModifierKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
 
             return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
+        }
+
+        protected override void SetColorDef(ColorDef newColorDef)
+        {
+            base.SetColorDef(newColorDef);
+
+            PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
+            PlanningMod.Settings.Write();
+        }
+
+        protected override ColorDef GetColorDef()
+        {
+            string color = PlanningMod.Settings.GetColor(PlanDesignationType);
+
+            return ColorUtilities.GetColorDefByName(color);
         }
     }
 }

@@ -27,6 +27,12 @@ namespace PlanningExtended
                 designations.FirstOrDefault(d => d.def == designationDef)?.Delete();
         }
 
+        public static void RemoveDesignations(this DesignationManager designationManager, List<Designation> designations)
+        {
+            for (int i = designations.Count - 1; i >= 0; i--)
+                designationManager.RemoveDesignation(designations[i]);
+        }
+
         //static List<Designation> GetPlanDesignationsAt(this DesignationManager designationManager, IntVec3 c)
         //{
         //    return designationManager.AllDesignationsAt(c).Where(d => DesignationDefOf.DesignationDefs.Contains(d.def)).ToList();

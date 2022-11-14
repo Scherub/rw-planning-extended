@@ -4,27 +4,54 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 
 ## Features
 
-* Draw colored designations, such as walls, doors, objects and floors
-* Optionally skip (don't overwrite) already placed plan designations
-* Use different shapes, e.g. rectangle, area, cross
-* Cut / Copy / Paste your plans
-* Undo / Redo your planned actions
-* Show / Hide your planning designations
+### Implemented
 
-## Coming soon
+- Draw colored designations, such as walls, doors, objects and floors
+- Optionally skip (don't overwrite) already placed plan designations
+- Use different shapes, e.g. rectangle, area, cross
+- Change plan texture sets and opacity
+- Cut / Copy / Paste your plans
+- Undo / Redo your planned actions
+- Show / Hide your planning designations (incl. global shortcut)
+- Change plan texture sets and opacity
 
-* Add more shapes, such as lines, grids and circles
-* Add shape options, e.g. inner grid margin, rotate cross, ...
-* Improved grabbing position while pasting
-* Multiple texture sets
-* Various fixes
+### Coming soon
 
-## Planned
+- Add more shapes, such as lines, grids and circles
+- Add shape options, e.g. inner grid margin, rotate cross, ...
+- Improved grabbing position while pasting
+- Various fixes
+
+### Planned
 
 * Save more than one plan to the clipboard
-* Load / Save / Manage plan blueprints
 * Rotate door designations (not sure' that's possible)
 * If possible, combine wall designations together, similar to real structure preview
+
+## Shapes
+
+- Lines (Rotation, Width)
+  - Line
+  - Cross
+- Rectangle
+  - Open (Rotation, Width)
+  - Grid (Rotation, Number of Segments)
+  - Area (Rotation)
+- Circle
+  - Open Ellipse (Width)
+  - Filled Ellipse
+- Fixed
+  - Max Room-Size
+  - Sun-Lamp
+  - Orbital-Trade-Station
+
+## Shortcuts
+- Q, E: Rotation
+- Z, X: Flip, Width, Number of Segments
+- V: Change Shape-Variant
+- Ctrl: Color-Picker
+- Alt: Skip / Replace
+- Shift: Square
 
 ## FAQ
 

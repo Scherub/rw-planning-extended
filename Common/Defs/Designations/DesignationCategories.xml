@@ -14,10 +14,12 @@
       <li>PlanningExtended.Designators.CutPlanDesignator</li>
       <li>PlanningExtended.Designators.CopyPlanDesignator</li>
       <li>PlanningExtended.Designators.PastePlanDesignator</li>
+      <li>PlanningExtended.Designators.SavePlanDesignator</li>
+      <li>PlanningExtended.Designators.LoadPlanDesignator</li>
       <li>PlanningExtended.Designators.UndoPlanDesignator</li>
       <li>PlanningExtended.Designators.RedoPlanDesignator</li>
-      <!-- <li>PlannerExtended.Designators.AddTemplateDesignator</li>
-      <li>PlannerExtended.Designators.RemoveTemplateDesignator</li> -->
+      <li>PlanningExtended.Designators.ChangePlanAppearanceDesignator</li>
+      <li>PlanningExtended.Designators.TogglePlanVisibilityDesignator</li>
     </specialDesignatorClasses>
   </DesignationCategoryDef>
     

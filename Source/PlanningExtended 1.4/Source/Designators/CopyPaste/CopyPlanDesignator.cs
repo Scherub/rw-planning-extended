@@ -8,7 +8,7 @@ namespace PlanningExtended.Designators
 {
     public class CopyPlanDesignator : BasePlanDesignator
     {
-        CutPlanDesignator cutPlanDesignator;
+        readonly CutPlanDesignator cutPlanDesignator;
 
         public CopyPlanDesignator()
             : base("CopyPlan")
@@ -45,6 +45,13 @@ namespace PlanningExtended.Designators
             PlanManager.SetCachedPlanLayout(planLayout);
 
             Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
+        }
+
+        public override void SelectedUpdate()
+        {
+            base.SelectedUpdate();
+
+            PlanManager.SetArePlansVisible(true);
         }
 
         public override void DrawMouseAttachments()

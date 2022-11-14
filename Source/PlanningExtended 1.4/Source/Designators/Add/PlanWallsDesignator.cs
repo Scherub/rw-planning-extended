@@ -9,11 +9,13 @@ namespace PlanningExtended.Designators
 
         protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanWallsColored;
 
+        protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanWall;
+        
         public PlanWallsDesignator()
             : base("PlanWalls")
         {
             hotKey = KeyBindingDefOf.Misc6;
-            SelectShape(Shape.Rectangle);
+            SelectedShape.SelectShapeVariant(ShapeVariant.OpenRectangle);
         }
     }
 }

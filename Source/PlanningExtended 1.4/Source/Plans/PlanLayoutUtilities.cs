@@ -34,12 +34,12 @@ namespace PlanningExtended.Plans
                 if (designation == null)
                     continue;
 
-                PlanDesignitionType planDesignitionType = PlanDesignitionTypeConverter.Convert(designation.def.defName);
+                PlanDesignationType planDesignationType = PlanDesignationTypeConverter.Convert(designation.def.defName);
 
-                if (planDesignitionType == PlanDesignitionType.Unknown)
+                if (planDesignationType == PlanDesignationType.Unknown)
                     continue;
                 
-                PlanCell planCell = new(cell.ToIntVec2, planDesignitionType, designation?.colorDef?.defName);
+                PlanCell planCell = new(cell.ToIntVec2, planDesignationType, designation?.colorDef?.defName);
 
                 planCells.Add(planCell);
             }
@@ -61,12 +61,12 @@ namespace PlanningExtended.Plans
 
                 IntVec3 position = cell - cellArea.Dimensions.Min;
 
-                PlanDesignitionType planDesignitionType = PlanDesignitionTypeConverter.Convert(designation.def.defName);
+                PlanDesignationType planDesignationType = PlanDesignationTypeConverter.Convert(designation.def.defName);
 
-                if (planDesignitionType == PlanDesignitionType.Unknown)
+                if (planDesignationType == PlanDesignationType.Unknown)
                     continue;
 
-                PlanCell planCell = new(position.ToIntVec2, planDesignitionType, designation?.colorDef?.defName);
+                PlanCell planCell = new(position.ToIntVec2, planDesignationType, designation?.colorDef?.defName);
 
                 //Log.Warning($"PlanCell: {planCell}");
 
@@ -122,7 +122,7 @@ namespace PlanningExtended.Plans
                 Vector3 vector = position.ToVector3Shifted();
                 vector.y = AltitudeLayer.MetaOverlays.AltitudeFor();
 
-                DesignationDef designationDef = DesignationUtilities.GetDesignationDef(planCell.Designation);
+                DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
 
                 Graphics.DrawMesh(MeshPool.plane10, vector, Quaternion.identity, designationDef.iconMat, 0);
 
@@ -140,7 +140,7 @@ namespace PlanningExtended.Plans
             {
                 IntVec3 position = planCell.Position.ToIntVec3;
 
-                DesignationDef designationDef = DesignationUtilities.GetDesignationDef(planCell.Designation);
+                DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
                 map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));
@@ -160,7 +160,7 @@ namespace PlanningExtended.Plans
 
                 map.designationManager.RemovePlanDesignationsAt(position);
 
-                DesignationDef designationDef = DesignationUtilities.GetDesignationDef(planCell.Designation);
+                DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
                 map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));

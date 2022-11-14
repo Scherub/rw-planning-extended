@@ -1,33 +1,51 @@
-﻿using UnityEngine;
-using Verse;
+﻿using Verse;
 
 namespace PlanningExtended.Plans
 {
-    public struct PlanCell
+    public struct PlanCell : IExposable
     {
-        public IntVec2 Position { get; }
+        IntVec2 position;
+        public IntVec2 Position => position;
 
-        public PlanDesignitionType Designation { get; }
+        PlanDesignationType designation;
+        public PlanDesignationType Designation => designation;
 
-        public string Color { get; }
-        
-        public RotationDirection Rotation { get; }
+        string color;
+        public string Color => color;
 
-        public byte Variant { get; }
+        RotationDirection rotation;
+        public RotationDirection Rotation => rotation;
 
-        public PlanCell(IntVec2 position, PlanDesignitionType designation, string color)
+        byte variant;
+        public byte Variant => variant;
+
+        public PlanCell()
+            : this(IntVec2.Zero, PlanDesignationType.Unknown, null)
+        {
+        }
+
+        public PlanCell(IntVec2 position, PlanDesignationType designation, string color)
             : this(position, designation, color, RotationDirection.None, 0)
         {
         
         }
 
-        public PlanCell(IntVec2 position, PlanDesignitionType designation, string color, RotationDirection rotation, byte variant)
+        public PlanCell(IntVec2 position, PlanDesignationType designation, string color, RotationDirection rotation, byte variant)
         {
-            Position = position;
-            Designation = designation;
-            Color = color;
-            Rotation = rotation;
-            Variant = variant;
+            this.position = position;
+            this.designation = designation;
+            this.color = color;
+            this.rotation = rotation;
+            this.variant = variant;
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Values.Look(ref position, nameof(position));
+            Scribe_Values.Look(ref designation, nameof(designation));
+            Scribe_Values.Look(ref color, nameof(color));
+            Scribe_Values.Look(ref rotation, nameof(rotation));
+            Scribe_Values.Look(ref variant, nameof(variant));
         }
 
         public override string ToString()
