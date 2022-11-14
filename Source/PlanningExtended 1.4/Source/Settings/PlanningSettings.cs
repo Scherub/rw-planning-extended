@@ -73,7 +73,7 @@ namespace PlanningExtended.Settings
         public string GetColor(PlanDesignationType planDesignationType)
         {
             if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
-                if (string.IsNullOrEmpty(planDesignationSetting.color))
+                if (!string.IsNullOrEmpty(planDesignationSetting.color))
                     return planDesignationSetting.color;
 
             return ColorDefinitions.DefaultColorName;
