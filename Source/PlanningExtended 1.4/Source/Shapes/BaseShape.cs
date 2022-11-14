@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PlanningExtended.Cells;
 using PlanningExtended.Shapes.Variants;
 using Verse;
@@ -34,7 +35,9 @@ namespace PlanningExtended.Shapes
             SelectedShapeVariant = ShapeVariants.FirstOrDefault(sv => sv.ShapeVariant == shapeVariant);
 
             if (SelectedShapeVariant != null)
-                _selectedShapeIndex = ShapeVariants.IndexOf(SelectedShapeVariant);
+                _selectedShapeIndex = ShapeVariants.FindIndex(sv => sv.ShapeVariant == shapeVariant);
+            else if (ShapeVariants.Count > 0)
+                SelectedShapeVariant = ShapeVariants.First();
             else
                 SelectedShapeVariant = new NullShapeVariant();
         }
