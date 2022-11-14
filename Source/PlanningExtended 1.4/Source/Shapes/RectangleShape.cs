@@ -6,7 +6,7 @@ namespace PlanningExtended.Shapes
 {
     public class RectangleShape : BaseShape
     {
-        public override List<BaseShapeVariant> ShapeVariants => new() { new OpenRectangleShapeVariant(), new GridRectangleShapeVariant(), new FilledRectangleShapeVariant() };
+        public override List<BaseShapeVariant> ShapeVariants => new() { new OpenRectangleShapeVariant(), /* new GridRectangleShapeVariant(), */ new FilledRectangleShapeVariant() };
 
         public RectangleShape()
             : base(ShapeVariant.FilledRectangle)

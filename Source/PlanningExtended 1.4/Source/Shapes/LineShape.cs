@@ -6,10 +6,10 @@ namespace PlanningExtended.Shapes
 {
     public class LineShape : BaseShape
     {
-        public override List<BaseShapeVariant> ShapeVariants => new() { new SimpleLineShapeVariant(), new TwoLinesShapeVariant() };
+        public override List<BaseShapeVariant> ShapeVariants => new() { /* new SimpleLineShapeVariant(), */ new TwoLinesShapeVariant() };
 
         public LineShape()
-            : base(ShapeVariant.SimpleLine)
+            : base(ShapeVariant.TwoLines)
         {
         }
     }
