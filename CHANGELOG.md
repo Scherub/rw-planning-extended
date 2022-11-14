@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.2.0
+- Added saving / loading / deleting of plans
+- Refactored shape code
+  - Added shape variants
+  - Added potential shape options
+- Reworked the interaction with the 'plan xxx' designator buttons
+  - Left click opens color dialog (can force Ctrl+click in options)
+  - Right click opens shape selection
+- Added 'Remove (count) xxx plans' on right click to 'Remove Plan' designator (including Undo/Redo support)
+- Last selected color is now saved and loaded for each plan type
+- Improved Plan Visibility
+  - Added 'Toggle Visibility' designator
+  - Added global shortcut
+  - Plans should now become visible on all plan interactions
+- Added Plan Opacity
+  - Controllable when left clicking the newly added 'Change Appearance' designator
+  - Opacity is saved and loaded for each plan type separately
+- Added Plan TextureSets
+  - Controllable when right clicking the newly added 'Change Appearance' designator
+  - Texture set is saved and loaded for each plan type separately
+- Added sounds to undo / redo clicks
+
 ## 1.1.0
 - Replaced various icons
 - Fixed using Cancel tool removes plan designations
