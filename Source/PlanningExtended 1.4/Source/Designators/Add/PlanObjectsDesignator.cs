@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace PlanningExtended.Designators
@@ -10,6 +9,8 @@ namespace PlanningExtended.Designators
 
         protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanObjectsColored;
 
+        protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanObjects;
+        
         public PlanObjectsDesignator()
             : base("PlanObjects")
         {

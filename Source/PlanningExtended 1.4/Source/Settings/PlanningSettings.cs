@@ -70,7 +70,7 @@ namespace PlanningExtended.Settings
 
         public float GetOpacity(PlanDesignationType planDesignationType)
         {
-            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.opacity : 1f;
+            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.opacity : 1f;
         }
 
         public void SetColor(PlanDesignationType planDesignationType, string color)
@@ -89,7 +89,7 @@ namespace PlanningExtended.Settings
 
         public string GetColor(PlanDesignationType planDesignationType)
         {
-            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.color : ColorDefinitions.DefaultColorName;
+            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) && string.IsNullOrEmpty(planDesignationSetting.color)) ? planDesignationSetting.color : ColorDefinitions.DefaultColorName;
         }
 
         public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet)
@@ -108,7 +108,7 @@ namespace PlanningExtended.Settings
 
         public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
         {
-            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.textureSet : PlanTextureSet.Dashed;
+            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Dashed;
         }
 
         void InitData()
@@ -116,9 +116,21 @@ namespace PlanningExtended.Settings
             planDesignationSettings ??= new();
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
-            {
                 if (!planDesignationSettings.ContainsKey(planDesignationType))
                     planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
+        }
+
+        IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
+        {
+            if (planDesignationType == PlanDesignationType.Unknown)
+            {
+                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
+                    yield return planDesignationSetting;
+            }
+            else
+            {
+                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+                    yield return planDesignationSetting;
             }
         }
 

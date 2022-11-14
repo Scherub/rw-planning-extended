@@ -26,10 +26,11 @@ namespace PlanningExtended.Designators
         {
             defaultDesc = $"PlanningExtended.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
 
-            colorDef = ColorDefinitions.NonColoredDef;
+            colorDef = GetColorDef();
+            
             colorPicker = new ColorPickerDesignator((newColorDef) =>
             {
-                colorDef = newColorDef;
+                SetColorDef(newColorDef);
                 ResetMouseAttachmentText();
 
                 if (!IsColorPickModeEnabled)
@@ -72,7 +73,7 @@ namespace PlanningExtended.Designators
                     list.Add(new FloatMenuGridOption(BaseContent.WhiteTex, () =>
                     {
                         Find.DesignatorManager.Select(this);
-                        this.colorDef = colorDef;
+                        SetColorDef(colorDef);
                         ResetMouseAttachmentText();
 
                     }, new Color?(colorDef.color), new TipSignal?(colorDef.LabelCap)));
@@ -88,7 +89,17 @@ namespace PlanningExtended.Designators
 
         protected override string GetMouseAttachmentText()
         {
-            return "Color".Translate() + ": " + this.colorDef.LabelCap + "\n" + KeyBindingDefOf.ShowEyedropper.MainKeyLabel + ": " + "GrabExistingColor".Translate();
+            return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + KeyBindingDefOf.ShowEyedropper.MainKeyLabel + ": " + "GrabExistingColor".Translate();
+        }
+
+        protected virtual void SetColorDef(ColorDef newColorDef)
+        {
+            colorDef = newColorDef ?? ColorDefinitions.NonColoredDef;
+        }
+
+        protected virtual ColorDef GetColorDef()
+        {
+            return ColorDefinitions.NonColoredDef;
         }
     }
 }

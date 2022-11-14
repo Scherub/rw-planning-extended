@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
+using PlanningExtended.Colors;
 using PlanningExtended.Designations;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,14 +10,15 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
     {
-        public override Color IconDrawColor => colorDef.color;
+        protected abstract PlanDesignationType PlanDesignationType { get; }
 
         protected override bool HasLeftClickPopupMenu => true;
+
+        public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
 
         protected BaseAddPlanDesignator(string name)
             : base(name)
         {
-    
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -98,6 +101,21 @@ namespace PlanningExtended.Designators
             string mode = IsModifierKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
 
             return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
+        }
+
+        protected override void SetColorDef(ColorDef newColorDef)
+        {
+            base.SetColorDef(newColorDef);
+
+            PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
+            PlanningMod.Settings.Write();
+        }
+
+        protected override ColorDef GetColorDef()
+        {
+            string color = PlanningMod.Settings.GetColor(PlanDesignationType);
+
+            return ColorUtilities.GetColorDefByName(color);
         }
     }
 }
