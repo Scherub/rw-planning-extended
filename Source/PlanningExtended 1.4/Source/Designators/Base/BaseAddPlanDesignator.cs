@@ -53,7 +53,7 @@ namespace PlanningExtended.Designators
             if (!base.CanDesignateCell(c))
                 return false;
 
-            return !PlanningKeyBindingDefOf.Planning_Modifier.IsDown || !Map.designationManager.HasPlanDesignationAt(c);
+            return !PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown || !Map.designationManager.HasPlanDesignationAt(c);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
