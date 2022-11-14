@@ -24,7 +24,7 @@ namespace PlanningExtended.Designators
         protected BaseColorPlanDesignator(string name)
             : base(name)
         {
-            defaultDesc = $"PlanningExtended.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
 
             colorDef = GetColorDef();
             

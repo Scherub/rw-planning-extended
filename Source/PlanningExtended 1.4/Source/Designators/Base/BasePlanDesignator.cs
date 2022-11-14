@@ -30,8 +30,8 @@ namespace PlanningExtended.Designators
 
         protected BasePlanDesignator(string name)
         {
-            defaultLabel = $"PlanningExtended.{name}.Label".Translate();
-            defaultDesc = $"PlanningExtended.{name}.Desc".Translate();
+            defaultLabel = $"PlanningExtended.Designator.{name}.Label".Translate();
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate();
             icon = ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
 
             soundSucceeded = SoundDefOf.Designate_PlanAdd;

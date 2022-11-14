@@ -19,8 +19,8 @@ namespace PlanningExtended.Designators
 
         protected BaseClickDesignator(string name, string iconName)
         {
-            defaultLabel = $"PlanningExtended.{name}.Label".Translate();
-            defaultDesc = $"PlanningExtended.{name}.Desc".Translate();
+            defaultLabel = $"PlanningExtended.Designator.{name}.Label".Translate();
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate();
             icon = ContentFinder<Texture2D>.Get($"UI/Designators/{iconName}", true);
 
             soundSucceeded = SoundDefOf.Designate_PlanAdd;
