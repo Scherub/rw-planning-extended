@@ -8,29 +8,45 @@ namespace PlanningExtended.Materials
 {
     public static class MaterialsManager
     {
-        public static int PlanOpacityPercentage { get; private set; }
+        readonly static List<PlanConfig> planConfigs;
 
-        public static float PlanOpacityAlpha { get; private set; }
+        readonly static PlanConfig planDoor = CreatePlanConfig(PlanDesignationType.PlanDoors);
 
-        public static PlanConfig PlanDoor => new(PlanDesignitionType.PlanDoors, 1f, PlanTextureSet.Dashed);
+        readonly static PlanConfig planFloor = CreatePlanConfig(PlanDesignationType.PlanFloors);
 
-        public static PlanConfig PlanFloor => new(PlanDesignitionType.PlanFloors, 1f, PlanTextureSet.Dashed);
+        readonly static PlanConfig planObject = CreatePlanConfig(PlanDesignationType.PlanObjects);
 
-        public static PlanConfig PlanObject => new(PlanDesignitionType.PlanObjects, 1f, PlanTextureSet.Dashed);
+        readonly static PlanConfig planWall = CreatePlanConfig(PlanDesignationType.PlanWall);
 
-        public static PlanConfig PlanWall => new(PlanDesignitionType.PlanWall, 1f, PlanTextureSet.Dashed);
-
-        public static void SetPlanOpacity(int planOpacityPercentage)
+        static MaterialsManager()
         {
-            PlanOpacityPercentage = planOpacityPercentage;
-            PlanOpacityAlpha = planOpacityPercentage / 100f;
-
-            UpdatePlanDesignations(PlanDesignitionType.Unknown);
+            planConfigs = new[] { planDoor, planFloor, planObject, planWall }.ToList();
         }
 
-        public static void SetPlanOpacity(int planOpacityPercentage, PlanDesignitionType planDesignitionType)
+        public static float GetPlanOpacity(PlanDesignationType planDesignationType)
         {
-            UpdatePlanDesignations(planDesignitionType);
+            return planDesignationType switch
+            {
+                PlanDesignationType.PlanDoors => planDoor.Opacity,
+                PlanDesignationType.PlanFloors => planFloor.Opacity,
+                PlanDesignationType.PlanObjects => planObject.Opacity,
+                PlanDesignationType.PlanWall => planWall.Opacity,
+                _ => 1f,
+            };
+        }
+
+        public static void SetPlanOpacity(PlanDesignationType planDesignationType, int opacityPercentage)
+        {
+            float opacity = opacityPercentage / 100f;
+
+            foreach (PlanConfig planConfig in planConfigs)
+                if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planConfig.Type)
+                    planConfig.Opacity = opacity;
+
+            PlanningMod.Settings.SetOpacity(planDesignationType, opacity);
+            PlanningMod.Settings.Write();
+
+            UpdatePlanDesignations(planDesignationType);
         }
 
         public static void SetPlanTextureSet(PlanTextureSet planTextureSet)
@@ -49,12 +65,12 @@ namespace PlanningExtended.Materials
                     List<PlanDesignation> designations = map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation).ToList();
 
                     foreach (var designation in designations)
-                        designation.InvokeMaterialUpdate(PlanDesignitionType.Unknown);
+                        designation.InvokeMaterialUpdate(PlanDesignationType.Unknown);
                 }
             }
         }
 
-        static void UpdatePlanDesignations(PlanDesignitionType planDesignitionType)
+        static void UpdatePlanDesignations(PlanDesignationType planDesignationType)
         {
             Map map = Find.CurrentMap;
 
@@ -68,23 +84,28 @@ namespace PlanningExtended.Materials
                     List<PlanDesignation> designations = map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation).ToList();
 
                     foreach (var designation in designations)
-                        designation.InvokeColorUpdate(planDesignitionType);
+                        designation.InvokeColorUpdate(planDesignationType);
                 }
             }
         }
 
+        static PlanConfig CreatePlanConfig(PlanDesignationType planDesignationType)
+        {
+            return new PlanConfig(planDesignationType, PlanningMod.Settings.GetOpacity(planDesignationType), PlanTextureSet.Dashed);
+        }
+
         public class PlanConfig
         {
-            public PlanDesignitionType Type { get; }
+            public PlanDesignationType Type { get; }
 
-            public float PlanOpacity { get; set; }
+            public float Opacity { get; set; }
 
             public PlanTextureSet TextureSet { get; set; }
 
-            public PlanConfig(PlanDesignitionType type, float planOpacity, PlanTextureSet textureSet)
+            public PlanConfig(PlanDesignationType type, float opacity, PlanTextureSet textureSet)
             {
                 Type = type;
-                PlanOpacity = planOpacity;
+                Opacity = opacity;
                 TextureSet = textureSet;
             }
         }

@@ -1,4 +1,5 @@
-﻿using PlanningExtended.Materials;
+﻿using PlanningExtended.Defs;
+using PlanningExtended.Materials;
 using PlanningExtended.Plans;
 using RimWorld;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace PlanningExtended.Designations
 {
     public class PlanDesignation : Designation
     {
-        readonly PlanDesignitionType planType;
+        PlanDesignationType planType;
         
         bool requiresMaterialUpdate, requiresColorUpdate;
 
@@ -20,11 +21,14 @@ namespace PlanningExtended.Designations
             {
                 if (_material is null || requiresMaterialUpdate)
                 {
+                    if (planType is PlanDesignationType.Unknown)
+                        DeterminePlanType();
+
                     if (colorDef != null)
                     {
                         _material = new(def.iconMat)
                         {
-                            color = colorDef.color.ToTransparent(MaterialsManager.PlanOpacityAlpha)
+                            color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(planType))
                         };
                     }
                     else
@@ -37,7 +41,7 @@ namespace PlanningExtended.Designations
 
                 if (requiresColorUpdate)
                 {
-                    _material.color = colorDef.color.ToTransparent(MaterialsManager.PlanOpacityAlpha);
+                    _material.color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(planType));
                     requiresColorUpdate = false;
                 }
 
@@ -48,13 +52,12 @@ namespace PlanningExtended.Designations
         public PlanDesignation()
             : base()
         {
-            planType = PlanningDesignationDefOf.GetType(def);
         }
 
         public PlanDesignation(LocalTargetInfo target, DesignationDef def, ColorDef colorDef = null)
             : base(target, def, colorDef)
         {
-            planType = PlanningDesignationDefOf.GetType(def);
+            DeterminePlanType();
         }
 
         public override void DesignationDraw()
@@ -65,16 +68,21 @@ namespace PlanningExtended.Designations
             Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), Quaternion.identity, Material, 0);
         }
 
-        public void InvokeMaterialUpdate(PlanDesignitionType planDesignitionType)
+        public void InvokeMaterialUpdate(PlanDesignationType planDesignationType)
         {
-            if (planDesignitionType == PlanDesignitionType.Unknown || planDesignitionType == planType)
+            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planType)
                 requiresMaterialUpdate = true;
         }
 
-        public void InvokeColorUpdate(PlanDesignitionType planDesignitionType)
+        public void InvokeColorUpdate(PlanDesignationType planDesignationType)
         {
-            if (planDesignitionType is PlanDesignitionType.Unknown || planDesignitionType == planType)
+            if (planDesignationType is PlanDesignationType.Unknown || planDesignationType == planType)
                 requiresColorUpdate = true;
+        }
+
+        void DeterminePlanType()
+        {
+            planType = DesignationDefUtilities.GetType(def);
         }
     }
 }

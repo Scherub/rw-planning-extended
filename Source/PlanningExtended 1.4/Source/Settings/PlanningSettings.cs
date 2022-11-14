@@ -1,4 +1,7 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
+using PlanningExtended.Defs;
+using PlanningExtended.Designations;
+using Verse;
 
 namespace PlanningExtended.Settings
 {
@@ -20,6 +23,8 @@ namespace PlanningExtended.Settings
 
         public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
 
+        public Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = new();
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
@@ -30,6 +35,11 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
+
+            Scribe_Collections.Look<PlanDesignationType, PlanDesignationSetting>(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
+
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+                InitData();
 
             base.ExposeData();
         }
@@ -42,6 +52,43 @@ namespace PlanningExtended.Settings
             areDesignationsPersistent = Default.AreDesignationsPersistent;
             useCtrlForColorDialog = Default.UseCtrlForColorDialog;
             alwaysGrabBottom = Default.AlwaysGrabBottom;
+        }
+
+        public void SetOpacity(PlanDesignationType planDesignationType, float opacity)
+        {
+            if (planDesignationType == PlanDesignationType.Unknown)
+            {
+                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
+                    planDesignationSetting.opacity = opacity;
+            }
+            else
+            {
+                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting setting))
+                    setting.opacity = opacity;
+            }
+        }
+
+        public float GetOpacity(PlanDesignationType planDesignationType)
+        {
+            return (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting)) ? planDesignationSetting.opacity : 1f;
+        }
+
+        void InitData()
+        {
+            planDesignationSettings ??= new();
+
+            foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
+            {
+                if (!planDesignationSettings.ContainsKey(planDesignationType))
+                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
+            }
+
+            //foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
+            //{
+            //    if (!planDesignationSettings.ContainsKey(designationDefContainer.Type))
+            //        //planDesignationSettings[designationDefContainer.Type] = new PlanDesignationSetting(1f, ColorDefinitions.NonColoredDef.defName, PlanTextureSet.Dashed);
+            //        planDesignationSettings[designationDefContainer.Type] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
+            //}
         }
 
         class Default

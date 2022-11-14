@@ -1,6 +1,6 @@
 ﻿namespace PlanningExtended
 {
-    public enum PlanDesignitionType
+    public enum PlanDesignationType
     {
         Unknown,
 

@@ -7,8 +7,8 @@ namespace PlanningExtended.Plans
         IntVec2 position;
         public IntVec2 Position => position;
 
-        PlanDesignitionType designation;
-        public PlanDesignitionType Designation => designation;
+        PlanDesignationType designation;
+        public PlanDesignationType Designation => designation;
 
         string color;
         public string Color => color;
@@ -20,17 +20,17 @@ namespace PlanningExtended.Plans
         public byte Variant => variant;
 
         public PlanCell()
-            : this(IntVec2.Zero, PlanDesignitionType.Unknown, null)
+            : this(IntVec2.Zero, PlanDesignationType.Unknown, null)
         {
         }
 
-        public PlanCell(IntVec2 position, PlanDesignitionType designation, string color)
+        public PlanCell(IntVec2 position, PlanDesignationType designation, string color)
             : this(position, designation, color, RotationDirection.None, 0)
         {
         
         }
 
-        public PlanCell(IntVec2 position, PlanDesignitionType designation, string color, RotationDirection rotation, byte variant)
+        public PlanCell(IntVec2 position, PlanDesignationType designation, string color, RotationDirection rotation, byte variant)
         {
             this.position = position;
             this.designation = designation;

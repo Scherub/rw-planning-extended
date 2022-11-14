@@ -5,7 +5,7 @@ namespace PlanningExtended.Defs
 {
     public class DesignationDefContainer
     {
-        public PlanDesignitionType Type { get; }
+        public PlanDesignationType Type { get; }
 
         public string TextureName { get; }
 
@@ -25,7 +25,7 @@ namespace PlanningExtended.Defs
         }
 
         // TODO: once PlanDesignationType.PlanWall(s) is fixed, remove separate textureName
-        public DesignationDefContainer(PlanDesignitionType type, string textureName, string label, DesignationDef @default, DesignationDef colored)
+        public DesignationDefContainer(PlanDesignationType type, string textureName, string label, DesignationDef @default, DesignationDef colored)
         {
             Type = type;
             TextureName = textureName;

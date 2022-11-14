@@ -37,7 +37,7 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption($"{opacity}%", () =>
                 {
-                    MaterialsManager.SetPlanOpacity(opacity);
+                    MaterialsManager.SetPlanOpacity(PlanDesignationType.Unknown, opacity);
                 }));
             }
 
