@@ -2,16 +2,16 @@
 <LanguageData>
 
   <PlanningExtended.Designator.PlanDoors.Label>Plan Doors</PlanningExtended.Designator.PlanDoors.Label>
-  <PlanningExtended.Designator.PlanDoors.Desc>Place planning designations for doors.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanDoors.Desc>
+  <PlanningExtended.Designator.PlanDoors.Desc>Place planning designations for doors.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanDoors.Desc>
 
   <PlanningExtended.Designator.PlanFloors.Label>Plan Floors</PlanningExtended.Designator.PlanFloors.Label>
-  <PlanningExtended.Designator.PlanFloors.Desc>Place planning designations for floors.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanFloors.Desc>
+  <PlanningExtended.Designator.PlanFloors.Desc>Place planning designations for floors.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanFloors.Desc>
 
   <PlanningExtended.Designator.PlanObjects.Label>Plan Objects</PlanningExtended.Designator.PlanObjects.Label>
-  <PlanningExtended.Designator.PlanObjects.Desc>Place planning designations for objects.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanObjects.Desc>
+  <PlanningExtended.Designator.PlanObjects.Desc>Place planning designations for objects.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanObjects.Desc>
 
   <PlanningExtended.Designator.PlanWalls.Label>Plan Walls</PlanningExtended.Designator.PlanWalls.Label>
-  <PlanningExtended.Designator.PlanWalls.Desc>Place planning designations for walls.\n\nChoose from different shapes.\n\n({0}) click to open the color picker. Hold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanWalls.Desc>
+  <PlanningExtended.Designator.PlanWalls.Desc>Place planning designations for walls.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanWalls.Desc>
 
   <PlanningExtended.Designator.RemovePlan.Label>Remove Plans</PlanningExtended.Designator.RemovePlan.Label>
   <PlanningExtended.Designator.RemovePlan.Desc>Remove planning designations.</PlanningExtended.Designator.RemovePlan.Desc>
@@ -54,12 +54,12 @@
   <PlanningExtended.SavedPlanInfoAs>Saved plan as '{0}'.</PlanningExtended.SavedPlanInfoAs>
 
   <PlanningExtended.RemovePlanDesignations>Remove {0} {1} plans.</PlanningExtended.RemovePlanDesignations>
-  
+
   <PlanningExtended.Door>Door</PlanningExtended.Door>
   <PlanningExtended.Floor>Floor</PlanningExtended.Floor>
   <PlanningExtended.Object>Object</PlanningExtended.Object>
   <PlanningExtended.Wall>Wall</PlanningExtended.Wall>
-  
+
   <PlanningExtended.Mode>Mode</PlanningExtended.Mode>
 
   <PlanningExtended.Copy>Copy</PlanningExtended.Copy>
@@ -83,7 +83,7 @@
   <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>Display Toggle Plan Visibility Designator</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
   <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>Determines whether the toggle plan visibility designator button is visible.</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
 
-    <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Display Change Plan Appearance Designator</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
+  <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Display Change Plan Appearance Designator</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Determines whether the change plan appearance designator button is visible.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent Plans</PlanningExtended.Settings.ArePlansPersistent.Label>
