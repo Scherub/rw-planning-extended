@@ -6,7 +6,7 @@
         <category>PlanningExtended</category>
         <defName>Planning_TogglePlanVisibility</defName>
         <label>toggle plan visibility</label>
-        <defaultKeyCodeA>R</defaultKeyCodeA>
+        <defaultKeyCodeA>Backslash</defaultKeyCodeA>
     </KeyBindingDef>
 
     <KeyBindingDef>
