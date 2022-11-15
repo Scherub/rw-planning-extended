@@ -22,6 +22,8 @@ namespace PlanningExtended.Plans.Gui
             }
 
             PlanManager.SetCachedPlanLayout(planInfo.PlanLayout);
+
+            PlanningMod.Settings.AddLastLoadedPlan(fileName);
             
             Close();
         }

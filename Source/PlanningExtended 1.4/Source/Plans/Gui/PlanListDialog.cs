@@ -38,68 +38,6 @@ namespace PlanningExtended.Plans.Gui
             ReloadFiles();
         }
 
-        protected abstract void DoFileInteraction(string fileName);
-
-        protected void ReloadFiles()
-        {
-            files.Clear();
-
-            foreach (FileInfo fileInfo in PlanPersistenceManager.GetAllPlanInfoFiles())
-            {
-                try
-                {
-                    PlanFileInfo saveFileInfo = new(fileInfo);
-                    saveFileInfo.LoadData();
-                    files.Add(saveFileInfo);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("Exception loading " + fileInfo.Name + ": " + ex.ToString());
-                }
-            }
-        }
-
-        protected virtual void DoTypeInField(Rect rect)
-        {
-            Widgets.BeginGroup(rect);
-            
-            bool flag = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return;
-            float y = rect.height - 35f;
-            
-            Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.MiddleLeft;
-            
-            GUI.SetNextControlName("PlanNameField");
-            
-            string fileName = Widgets.TextField(new Rect(5f, y, 400f, 35f), typingName);
-            
-            if (GenText.IsValidFilename(fileName))
-                typingName = fileName;
-            
-            if (!isPlanNameAreaFocused)
-            {
-                UI.FocusControl("PlanNameField", this);
-                isPlanNameAreaFocused = true;
-            }
-            
-            if (Widgets.ButtonText(new Rect(420f, y, rect.width - 400f - 20f, 35f), "SaveGameButton".Translate(), true, true, true, null) || flag)
-            {
-                if (typingName.NullOrEmpty())
-                {
-                    Messages.Message("NeedAName".Translate(), MessageTypeDefOf.RejectInput, false);
-                }
-                else
-                {
-                    string text = typingName;
-                    DoFileInteraction(text?.Trim());
-                }
-            }
-            
-            Text.Anchor = TextAnchor.UpperLeft;
-            
-            Widgets.EndGroup();
-        }
-        
         public override void DoWindowContents(Rect inRect)
         {
             Vector2 rowSize = new(inRect.width - 16f, 40f);
@@ -138,6 +76,9 @@ namespace PlanningExtended.Plans.Gui
                         Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmDelete".Translate(localFile.Name), delegate
                         {
                             localFile.Delete();
+
+                            PlanningMod.Settings.RemoveLastLoadedPlan(Path.GetFileNameWithoutExtension(localFile.Name));
+
                             ReloadFiles();
                         }, true, null, WindowLayer.Dialog));
                     }
@@ -191,6 +132,68 @@ namespace PlanningExtended.Plans.Gui
             Rect lastTimeWriteRect = new(0f, 2f, rect.width, rect.height / 2f);
 
             Widgets.Label(lastTimeWriteRect, planFileInfo.LastWriteTime.ToString("yyyy-MM-dd HH:mm"));
+
+            Widgets.EndGroup();
+        }
+
+        protected abstract void DoFileInteraction(string fileName);
+
+        protected void ReloadFiles()
+        {
+            files.Clear();
+
+            foreach (FileInfo fileInfo in PlanPersistenceManager.GetAllPlanInfoFiles())
+            {
+                try
+                {
+                    PlanFileInfo saveFileInfo = new(fileInfo);
+                    saveFileInfo.LoadData();
+                    files.Add(saveFileInfo);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Exception loading " + fileInfo.Name + ": " + ex.ToString());
+                }
+            }
+        }
+
+        protected virtual void DoTypeInField(Rect rect)
+        {
+            Widgets.BeginGroup(rect);
+
+            bool flag = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return;
+            float y = rect.height - 35f;
+
+            Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.MiddleLeft;
+
+            GUI.SetNextControlName("PlanNameField");
+
+            string fileName = Widgets.TextField(new Rect(5f, y, 400f, 35f), typingName);
+
+            if (GenText.IsValidFilename(fileName))
+                typingName = fileName;
+
+            if (!isPlanNameAreaFocused)
+            {
+                UI.FocusControl("PlanNameField", this);
+                isPlanNameAreaFocused = true;
+            }
+
+            if (Widgets.ButtonText(new Rect(420f, y, rect.width - 400f - 20f, 35f), "SaveGameButton".Translate(), true, true, true, null) || flag)
+            {
+                if (typingName.NullOrEmpty())
+                {
+                    Messages.Message("NeedAName".Translate(), MessageTypeDefOf.RejectInput, false);
+                }
+                else
+                {
+                    string text = typingName;
+                    DoFileInteraction(text?.Trim());
+                }
+            }
+
+            Text.Anchor = TextAnchor.UpperLeft;
 
             Widgets.EndGroup();
         }
