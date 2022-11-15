@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.0
+- Added quick selection of last loaded plans by right clicking 'load plan' designator
+
 ## 1.2.0
 - Added saving / loading / deleting of plans
 - Refactored shape code

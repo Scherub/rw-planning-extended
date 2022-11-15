@@ -65,7 +65,6 @@ namespace PlanningExtended.Plans.Persistence
             {
                 Log.Error("Exception loading planInfo: " + ex.ToString());
                 Scribe.ForceStop();
-                throw;
             }
 
             return planInfo != null;

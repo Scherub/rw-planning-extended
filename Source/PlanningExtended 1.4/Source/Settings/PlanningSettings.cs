@@ -6,6 +6,11 @@ namespace PlanningExtended.Settings
 {
     public class PlanningSettings : ModSettings
     {
+        Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = new();
+
+        List<string> lastLoadedPlans = new();
+        public List<string> LastLoadedPlans => lastLoadedPlans;
+
         public bool useUndoRedo = Default.UseUndoRedo;
 
         public int maxUndoOperations = Default.MaxUndoRedoSteps;
@@ -22,8 +27,6 @@ namespace PlanningExtended.Settings
 
         public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
 
-        public Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = new();
-
         public override void ExposeData()
         {
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
@@ -35,6 +38,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
 
+            Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
             Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
@@ -90,8 +94,29 @@ namespace PlanningExtended.Settings
             return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Dashed;
         }
 
+        public void AddLastLoadedPlan(string planName, bool autoSave = true)
+        {
+            lastLoadedPlans.RemoveAll(p => p == planName);
+            lastLoadedPlans.Add(planName);
+
+            if (lastLoadedPlans.Count > 10)
+                lastLoadedPlans.RemoveAt(0);
+
+            if (autoSave)
+                Write();
+        }
+
+        public void RemoveLastLoadedPlan(string planName, bool autoSave = true)
+        {
+            lastLoadedPlans.RemoveAll(p => p == planName);
+
+            if (autoSave)
+                Write();
+        }
+
         void InitData()
         {
+            lastLoadedPlans ??= new();
             planDesignationSettings ??= new();
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())

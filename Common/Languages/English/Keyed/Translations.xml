@@ -32,7 +32,7 @@
   <PlanningExtended.Designator.RedoPlan.Desc>Redo the last undo planning action.</PlanningExtended.Designator.RedoPlan.Desc>
 
   <PlanningExtended.Designator.LoadPlan.Label>Load Plan</PlanningExtended.Designator.LoadPlan.Label>
-  <PlanningExtended.Designator.LoadPlan.Desc>Load a plan from a file.</PlanningExtended.Designator.LoadPlan.Desc>
+  <PlanningExtended.Designator.LoadPlan.Desc>Load a plan from a file.\n\nLeft click opens a dialog.\n\nRight click to quickly select the last loaded plans.</PlanningExtended.Designator.LoadPlan.Desc>
 
   <PlanningExtended.Designator.SavePlan.Label>Save Plan</PlanningExtended.Designator.SavePlan.Label>
   <PlanningExtended.Designator.SavePlan.Desc>Save the last copied plan to a file.</PlanningExtended.Designator.SavePlan.Desc>
