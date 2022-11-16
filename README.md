@@ -13,7 +13,7 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 - Cut / Copy / Paste your plans
 - Undo / Redo your planned actions
 - Show / Hide your planning designations (incl. global shortcut)
-- Change plan texture sets and opacity
+- Change plan texture sets and opacityfor each plan type individually
 
 ### Coming soon
 
