@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using Verse;
+﻿using Verse;
 
 namespace PlanningExtended.Designators
 {
@@ -14,7 +13,7 @@ namespace PlanningExtended.Designators
         public PlanWallsDesignator()
             : base("PlanWalls")
         {
-            hotKey = KeyBindingDefOf.Misc6;
+            hotKey = PlanningKeyBindingDefOf.Planning_PlanWalls;
             SelectedShape.SelectShapeVariant(ShapeVariant.OpenRectangle);
         }
     }

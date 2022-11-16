@@ -27,6 +27,34 @@
 
     <KeyBindingDef>
         <category>PlanningExtended</category>
+        <defName>Planning_PlanDoors</defName>
+        <label>plan doors</label>
+        <defaultKeyCodeA>Y</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_PlanFloors</defName>
+        <label>plan floors</label>
+        <defaultKeyCodeA>H</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_PlanObjects</defName>
+        <label>plan objects</label>
+        <defaultKeyCodeA>F</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_PlanWalls</defName>
+        <label>plan walls</label>
+        <defaultKeyCodeA>R</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
         <defName>Planning_ChangeShapeVariant</defName>
         <label>change shape variant</label>
         <defaultKeyCodeA>V</defaultKeyCodeA>
