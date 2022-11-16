@@ -7,7 +7,7 @@ using Verse;
 
 namespace PlanningExtended.Designators
 {
-    public class ChangePlanAppearanceDesignator : BaseClickDesignator
+    public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
     {
         List<int> OpacityList => Enumerable.Range(1, 100).Where(i => i % 10 == 0).ToList();
 
@@ -15,7 +15,7 @@ namespace PlanningExtended.Designators
 
         public override bool Visible => PlanningMod.Settings.displayChangePlanAppearanceDesignator;
 
-        public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetTextureSetMenuOptions();
+        public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetMenuOptions((planDesignationType) => GetTextureSetMenuOptions(planDesignationType));
 
         public ChangePlanAppearanceDesignator()
             : base("ChangePlanAppearance")
@@ -24,12 +24,12 @@ namespace PlanningExtended.Designators
 
         public override void ProcessInput(Event ev)
         {
-            List<FloatMenuOption> list = GetOpacityMenuOptions();
+            List<FloatMenuOption> list = GetMenuOptions((planDesignationType) => GetOpacityMenuOptions(planDesignationType));
 
-            Find.WindowStack.Add(new FloatMenu(list, "Plan Opacity"));
+            Find.WindowStack.Add(new FloatMenu(list));
         }
 
-        List<FloatMenuOption> GetOpacityMenuOptions()
+        List<FloatMenuOption> GetOpacityMenuOptions(PlanDesignationType planDesignationType)
         {
             List<FloatMenuOption> list = new();
 
@@ -37,14 +37,14 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption($"{opacity}%", () =>
                 {
-                    MaterialsManager.SetPlanOpacity(PlanDesignationType.Unknown, opacity);
+                    MaterialsManager.SetPlanOpacity(planDesignationType, opacity);
                 }));
             }
 
             return list;
         }
 
-        List<FloatMenuOption> GetTextureSetMenuOptions()
+        List<FloatMenuOption> GetTextureSetMenuOptions(PlanDesignationType planDesignationType)
         {
             List<FloatMenuOption> list = new();
 
@@ -52,7 +52,7 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
                 {
-                    MaterialsManager.SetPlanTextureSet(PlanDesignationType.Unknown, planTextureSet);
+                    MaterialsManager.SetPlanTextureSet(planDesignationType, planTextureSet);
                 }));
             }
 

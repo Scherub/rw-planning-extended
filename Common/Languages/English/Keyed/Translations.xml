@@ -2,16 +2,16 @@
 <LanguageData>
 
   <PlanningExtended.Designator.PlanDoors.Label>Plan Doors</PlanningExtended.Designator.PlanDoors.Label>
-  <PlanningExtended.Designator.PlanDoors.Desc>Place planning designations for doors.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanDoors.Desc>
+  <PlanningExtended.Designator.PlanDoors.Desc>Place planning designations for doors.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PlanDoors.Desc>
 
   <PlanningExtended.Designator.PlanFloors.Label>Plan Floors</PlanningExtended.Designator.PlanFloors.Label>
-  <PlanningExtended.Designator.PlanFloors.Desc>Place planning designations for floors.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanFloors.Desc>
+  <PlanningExtended.Designator.PlanFloors.Desc>Place planning designations for floors.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PlanFloors.Desc>
 
   <PlanningExtended.Designator.PlanObjects.Label>Plan Objects</PlanningExtended.Designator.PlanObjects.Label>
-  <PlanningExtended.Designator.PlanObjects.Desc>Place planning designations for objects.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanObjects.Desc>
+  <PlanningExtended.Designator.PlanObjects.Desc>Place planning designations for objects.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PlanObjects.Desc>
 
   <PlanningExtended.Designator.PlanWalls.Label>Plan Walls</PlanningExtended.Designator.PlanWalls.Label>
-  <PlanningExtended.Designator.PlanWalls.Desc>Place planning designations for walls.\n\nRight click to choose from different shapes.\n\nHold ({0}) to pick an already existing color.</PlanningExtended.Designator.PlanWalls.Desc>
+  <PlanningExtended.Designator.PlanWalls.Desc>Place planning designations for walls.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PlanWalls.Desc>
 
   <PlanningExtended.Designator.RemovePlan.Label>Remove Plans</PlanningExtended.Designator.RemovePlan.Label>
   <PlanningExtended.Designator.RemovePlan.Desc>Remove planning designations.</PlanningExtended.Designator.RemovePlan.Desc>
@@ -38,10 +38,10 @@
   <PlanningExtended.Designator.SavePlan.Desc>Save the last copied plan to a file.</PlanningExtended.Designator.SavePlan.Desc>
 
   <PlanningExtended.Designator.TogglePlanVisibility.Label>Visibility</PlanningExtended.Designator.TogglePlanVisibility.Label>
-  <PlanningExtended.Designator.TogglePlanVisibility.Desc>Toggle the visibility of all plans.</PlanningExtended.Designator.TogglePlanVisibility.Desc>
+  <PlanningExtended.Designator.TogglePlanVisibility.Desc>Toggle the visibility of all plans.\n\nHold {0} and click to toggle each plan type individually.</PlanningExtended.Designator.TogglePlanVisibility.Desc>
 
   <PlanningExtended.Designator.ChangePlanAppearance.Label>Change Style</PlanningExtended.Designator.ChangePlanAppearance.Label>
-  <PlanningExtended.Designator.ChangePlanAppearance.Desc>Left click to change the opacity.\n\nRight click to change the texture set.</PlanningExtended.Designator.ChangePlanAppearance.Desc>
+  <PlanningExtended.Designator.ChangePlanAppearance.Desc>Left click to change the opacity.\n\nRight click to change the texture set.\n\nHold {0} and click to change each plan type individually.</PlanningExtended.Designator.ChangePlanAppearance.Desc>
 
 
   <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>

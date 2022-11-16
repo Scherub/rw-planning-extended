@@ -162,7 +162,6 @@ namespace PlanningExtended.Designators
             base.SetColorDef(newColorDef);
 
             PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
-            PlanningMod.Settings.Write();
         }
 
         protected override ColorDef GetColorDef()

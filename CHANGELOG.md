@@ -2,6 +2,7 @@
 
 ## 1.3.0
 - Added quick selection of last loaded plans by right clicking 'load plan' designator
+- Added selection of opacity, texture and visibility for each plan type individually
 
 ## 1.2.0
 - Added saving / loading / deleting of plans

@@ -68,10 +68,13 @@ namespace PlanningExtended.Settings
             return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.opacity : 1f;
         }
 
-        public void SetColor(PlanDesignationType planDesignationType, string color)
+        public void SetColor(PlanDesignationType planDesignationType, string color, bool autoSave = true)
         {
             foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
                 planDesignationSetting.color = color;
+
+            if (autoSave)
+                Write();
         }
 
         public string GetColor(PlanDesignationType planDesignationType)
@@ -83,10 +86,13 @@ namespace PlanningExtended.Settings
             return ColorDefinitions.DefaultColorName;
         }
 
-        public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet)
+        public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet, bool autoSave = true)
         {
             foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
                 planDesignationSetting.textureSet = textureSet;
+
+            if (autoSave)
+                Write();
         }
 
         public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
