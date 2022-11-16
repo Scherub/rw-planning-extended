@@ -76,15 +76,15 @@ namespace PlanningExtended.Designators
                 GenUI.DrawMouseAttachment(this.icon, MouseAttachmentText, this.iconAngle, this.iconOffset, null, false, default, null, null);
             }
 
-        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
-        {
-            GizmoResult gizmoResult = base.GizmoOnGUI(topLeft, maxWidth, parms);
+        //public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
+        //{
+        //    GizmoResult gizmoResult = base.GizmoOnGUI(topLeft, maxWidth, parms);
 
-            if (HasLeftClickPopupMenu)
-                Designator_Dropdown.DrawExtraOptionsIcon(topLeft, this.GetWidth(maxWidth));
+        //    if (HasLeftClickPopupMenu)
+        //        Designator_Dropdown.DrawExtraOptionsIcon(topLeft, this.GetWidth(maxWidth));
 
-            return gizmoResult;
-        }
+        //    return gizmoResult;
+        //}
 
         public override void RenderHighlight(List<IntVec3> dragCells)
         {

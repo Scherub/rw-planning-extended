@@ -9,6 +9,14 @@ namespace PlanningExtended
         public static KeyBindingDef Planning_Modifier;
 
         public static KeyBindingDef Planning_NoOverwrite_Mode;
+        
+        public static KeyBindingDef Planning_PlanDoors;
+        
+        public static KeyBindingDef Planning_PlanFloors;
+        
+        public static KeyBindingDef Planning_PlanObjects;
+
+        public static KeyBindingDef Planning_PlanWalls;
 
         public static KeyBindingDef Planning_TogglePlanVisibility;
 

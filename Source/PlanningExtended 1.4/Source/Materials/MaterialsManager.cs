@@ -62,7 +62,6 @@ namespace PlanningExtended.Materials
             UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Material);
 
             PlanningMod.Settings.SetTextureSet(planDesignationType, planTextureSet);
-            PlanningMod.Settings.Write();
         }
 
         static void UpdatePlanDesignations(PlanDesignationType planDesignationType, PlanDesignationUpdateType planDesignationUpdateType)

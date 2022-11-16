@@ -1,12 +1,11 @@
-﻿using PlanningExtended.Plans;
-using RimWorld;
+﻿using System.Collections.Generic;
+using PlanningExtended.Plans;
 using UnityEngine;
 using Verse;
-using Verse.Sound;
 
 namespace PlanningExtended.Designators
 {
-    public class TogglePlanVisibilityDesignator : BaseClickDesignator
+    public class TogglePlanVisibilityDesignator : BasePlanMenuDesignator
     {
         readonly Texture icon_on, icon_off, icon_partial;
 
@@ -24,17 +23,29 @@ namespace PlanningExtended.Designators
 
         public override void ProcessInput(Event ev)
         {
-            PlanManager.SetArePlansVisible(!PlanManager.ArePlansVisible);
+            if (IsPlanMenuKeyPressed)
+            {
+                List<FloatMenuOption> list = GetPlanTypeMenuOptions((planDesignationType) =>
+                {
+                    PlanManager.ToggleIsPlanVisible(planDesignationType);
+                });
 
-            if (PlanManager.ArePlansVisible)
-                SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
+                Find.WindowStack.Add(new FloatMenu(list));
+            }
             else
-                SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
+            {
+                PlanManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
+            }
         }
 
-        void PlanManager_OnPlanVisibilityChanged(bool isVisible)
+        void PlanManager_OnPlanVisibilityChanged(PlanVisibility planVisibility)
         {
-            icon = isVisible ? icon_on : icon_off;
+            icon = planVisibility switch
+            {
+                PlanVisibility.Visible => icon_on,
+                PlanVisibility.PartiallyVisible => icon_partial,
+                _ => icon_off,
+            };
         }
     }
 }

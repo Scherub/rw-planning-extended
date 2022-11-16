@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using Verse;
+﻿using Verse;
 
 namespace PlanningExtended.Designators
 {
@@ -14,7 +13,7 @@ namespace PlanningExtended.Designators
         public PlanFloorsDesignator()
             : base("PlanFloors")
         {
-            hotKey = KeyBindingDefOf.Misc12;
+            hotKey = PlanningKeyBindingDefOf.Planning_PlanFloors;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace PlanningExtended.Designators
         {
             base.SelectedUpdate();
 
-            PlanManager.SetArePlansVisible(true);
+            PlanManager.SetIsPlanVisible(true);
         }
 
         public override void DrawMouseAttachments()

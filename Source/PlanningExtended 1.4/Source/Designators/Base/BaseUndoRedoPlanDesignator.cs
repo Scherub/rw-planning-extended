@@ -55,7 +55,7 @@ namespace PlanningExtended.Designators
         {
             base.SelectedUpdate();
             
-            PlanManager.SetArePlansVisible(true);
+            PlanManager.SetIsPlanVisible(true);
         }
 
         protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())
