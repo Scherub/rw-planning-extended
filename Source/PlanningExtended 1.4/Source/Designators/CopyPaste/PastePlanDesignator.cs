@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using PlanningExtended.Cells;
+﻿using PlanningExtended.Cells;
 using PlanningExtended.Gui;
 using PlanningExtended.Plans;
 using RimWorld;
@@ -40,7 +39,6 @@ namespace PlanningExtended.Designators
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
         {
-            //return base.CanDesignateCell(loc);
             return true;
         }
 
@@ -118,6 +116,18 @@ namespace PlanningExtended.Designators
 
                 HandleRotationFlip(rotationDirection, flipDirection);
             }, true, false, 1f, null);
+        }
+
+        protected override void OnNoOverwriteKeyChanged(bool isPressed)
+        {
+            ResetMouseAttachmentText();
+        }
+
+        protected override string GetMouseAttachmentText()
+        {
+            string mode = IsNoOverwriteKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
+
+            return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
         }
 
         void HandleShortcuts()

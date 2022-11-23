@@ -15,7 +15,9 @@ namespace PlanningExtended.Designators
 
         protected virtual bool HasLeftClickPopupMenu => false;
 
-        protected bool IsModifierKeyPressed { get; set; }
+        protected bool IsModifierKeyPressed { get; private set; }
+
+        protected bool IsNoOverwriteKeyPressed { get; private set; }
 
         string _mouseAttachmentText;
         protected string MouseAttachmentText
@@ -70,10 +72,10 @@ namespace PlanningExtended.Designators
 
         public override void DrawMouseAttachments()
         {
-            CheckModifierKey();
+            CheckPressedKeys();
 
-            if (this.useMouseIcon)
-                GenUI.DrawMouseAttachment(this.icon, MouseAttachmentText, this.iconAngle, this.iconOffset, null, false, default, null, null);
+            if (useMouseIcon)
+                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, null, null);
             }
 
         //public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
@@ -107,13 +109,18 @@ namespace PlanningExtended.Designators
             return "";
         }
 
-        protected void CheckModifierKey()
+        protected virtual void CheckPressedKeys()
         {
             if (IsModifierKeyPressed != PlanningKeyBindingDefOf.Planning_Modifier.IsDown)
             {
                 IsModifierKeyPressed = PlanningKeyBindingDefOf.Planning_Modifier.IsDown;
                 OnModifierKeyChanged(IsModifierKeyPressed);
-                //Log.Warning("Modifier Key Changed: " + IsModifierKeyPressed);
+            }
+
+            if (IsNoOverwriteKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
+            {
+                IsNoOverwriteKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
+                OnNoOverwriteKeyChanged(IsModifierKeyPressed);
             }
         }
 
@@ -122,10 +129,14 @@ namespace PlanningExtended.Designators
 
         }
 
+        protected virtual void OnNoOverwriteKeyChanged(bool isPressed)
+        {
+
+        }
+
         protected void ResetMouseAttachmentText()
         {
             _mouseAttachmentText = null;
         }
-
     }
 }

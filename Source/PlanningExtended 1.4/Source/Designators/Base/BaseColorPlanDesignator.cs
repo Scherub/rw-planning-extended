@@ -40,8 +40,7 @@ namespace PlanningExtended.Designators
 
         public override void DrawMouseAttachments()
         {
-            IsColorPickModeEnabled = KeyBindingDefOf.ShowEyedropper.IsDown;
-            CheckModifierKey();
+            CheckPressedKeys();
 
             if (IsColorPickModeEnabled)
             {
@@ -85,6 +84,13 @@ namespace PlanningExtended.Designators
             }
 
             return false;
+        }
+
+        protected override void CheckPressedKeys()
+        {
+            base.CheckPressedKeys();
+
+            IsColorPickModeEnabled = KeyBindingDefOf.ShowEyedropper.IsDown;
         }
 
         protected override string GetMouseAttachmentText()
