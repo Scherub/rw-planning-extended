@@ -119,6 +119,9 @@ namespace PlanningExtended.Plans
                 if (!position.InBounds(map) || position.InNoBuildEdgeArea(map))
                     continue;
 
+                if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown && map.designationManager.HasPlanDesignationAt(position))
+                    continue;
+
                 Vector3 vector = position.ToVector3Shifted();
                 vector.y = AltitudeLayer.MetaOverlays.AltitudeFor();
 
@@ -156,6 +159,9 @@ namespace PlanningExtended.Plans
                 IntVec3 position = planCell.Position.ToIntVec3 + origin;
 
                 if (!position.InBounds(map) || position.InNoBuildEdgeArea(map))
+                    continue;
+
+                if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown && map.designationManager.HasPlanDesignationAt(position))
                     continue;
 
                 map.designationManager.RemovePlanDesignationsAt(position);
