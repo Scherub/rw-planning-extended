@@ -56,7 +56,7 @@ namespace PlanningExtended.Designators
 
         public override void DrawMouseAttachments()
         {
-            CheckModifierKey();
+            CheckPressedKeys();
 
             if (IsModifierKeyPressed)
             {

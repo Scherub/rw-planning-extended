@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
-using PlanningExtended.Gui;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -54,7 +54,7 @@ namespace PlanningExtended.Designators
             if (!base.CanDesignateCell(c))
                 return false;
 
-            return !PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown || !Map.designationManager.HasPlanDesignationAt(c);
+            return !IsNoOverwriteKeyPressed || !Map.designationManager.HasPlanDesignationAt(c);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
@@ -145,14 +145,14 @@ namespace PlanningExtended.Designators
             }, true, false, 1f, null);
         }
 
-        protected override void OnModifierKeyChanged(bool isPressed)
+        protected override void OnNoOverwriteKeyChanged(bool isPressed)
         {
             ResetMouseAttachmentText();
         }
 
         protected override string GetMouseAttachmentText()
         {
-            string mode = IsModifierKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
+            string mode = IsNoOverwriteKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
 
             return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
         }
