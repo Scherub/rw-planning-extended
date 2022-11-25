@@ -9,11 +9,24 @@ namespace PlanningExtended.Designations
 {
     public class PlanDesignation : Designation
     {
-        PlanDesignationType planType;
+        PlanDesignationType _planType;
+        public PlanDesignationType PlanType => _planType;
 
         PlanDesignationUpdateType _planDesignationUpdateType;
 
-        [Unsaved]
+        Quaternion _rotationTransform;
+
+        RotationDirection _rotation;
+        public RotationDirection Rotation
+        {
+            get => _rotation;
+            set
+            {
+                _rotation = value;
+                _rotationTransform = GetRotation();
+            }
+        }
+
         Material _material;
         Material Material
         {
@@ -21,14 +34,14 @@ namespace PlanningExtended.Designations
             {
                 if (_material is null || _planDesignationUpdateType is PlanDesignationUpdateType.Material)
                 {
-                    if (planType is PlanDesignationType.Unknown)
-                        DeterminePlanType();
+                    if (_planType is PlanDesignationType.Unknown)
+                        _planType = DesignationDefUtilities.GetType(def);
 
                     if (colorDef != null)
                     {
                         _material = new(def.iconMat)
                         {
-                            color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(planType))
+                            color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(_planType))
                         };
                     }
                     else
@@ -40,7 +53,7 @@ namespace PlanningExtended.Designations
                 }
                 else if (_planDesignationUpdateType is PlanDesignationUpdateType.Color)
                 {
-                    _material.color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(planType));
+                    _material.color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(_planType));
                     _planDesignationUpdateType = PlanDesignationUpdateType.None;
                 }
 
@@ -48,34 +61,48 @@ namespace PlanningExtended.Designations
             }
         }
 
+        public bool IsDoor => _planType == PlanDesignationType.PlanDoors;
+
+        public bool IsWall => _planType == PlanDesignationType.PlanWall;
+
+        public bool IsDoorOrWall => IsDoor | IsWall;
+
         public PlanDesignation()
             : base()
         {
         }
 
-        public PlanDesignation(LocalTargetInfo target, DesignationDef def, ColorDef colorDef = null)
+        public PlanDesignation(PlanDesignationType planType, LocalTargetInfo target, DesignationDef def, ColorDef colorDef, RotationDirection rotation)
             : base(target, def, colorDef)
         {
-            DeterminePlanType();
+            _planType = planType;
+            _rotation = rotation;
+            _rotationTransform = GetRotation();
         }
 
         public override void DesignationDraw()
         {
-            if (!PlanManager.IsPlanVisible(planType))
+            if (!PlanManager.IsPlanVisible(_planType))
                 return;
 
-            Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), Quaternion.identity, Material, 0);
+            Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), _rotationTransform, Material, 0);
         }
 
         internal void InvokeUpdate(PlanDesignationType planDesignationType, PlanDesignationUpdateType planDesignationUpdateType)
         {
-            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planType)
+            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == _planType)
                 _planDesignationUpdateType = planDesignationUpdateType;
         }
 
-        void DeterminePlanType()
+        Quaternion GetRotation()
         {
-            planType = DesignationDefUtilities.GetType(def);
+            return _rotation switch
+            {
+                RotationDirection.Clockwise => Quaternion.LookRotation(Vector3.right),
+                RotationDirection.Counterclockwise => Quaternion.LookRotation(Vector3.left),
+                RotationDirection.Opposite => Quaternion.LookRotation(Vector3.back),
+                _ => Quaternion.identity
+            };
         }
     }
 }

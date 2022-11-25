@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
@@ -65,10 +64,7 @@ namespace PlanningExtended.Designators
                 return;
             }
 
-            Map.designationManager.RemovePlanDesignationsAt(c);
-
-            //Log.Warning($"Designating: Cell ({c}), Designation ({Designation}), Color ({colorDef})");
-            Map.designationManager.AddDesignation(new PlanDesignation(c, SelectedDesignation, colorDef));
+            PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
         }
 
         public override void RenderHighlight(List<IntVec3> dragCells)

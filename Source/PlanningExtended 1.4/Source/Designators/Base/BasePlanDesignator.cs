@@ -95,6 +95,7 @@ namespace PlanningExtended.Designators
 
         public override void SelectedUpdate()
         {
+            // TODO: are both required?
             GenUI.RenderMouseoverBracket();
             GenDraw.DrawNoBuildEdgeLines();
         }

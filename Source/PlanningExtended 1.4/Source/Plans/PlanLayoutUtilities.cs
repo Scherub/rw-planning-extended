@@ -146,7 +146,7 @@ namespace PlanningExtended.Plans
                 DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
-                map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));
+                PlanDesignationPlacerUtilities.Designate(map, position, designationDef, colorDef);
             }
         }
 
@@ -164,12 +164,10 @@ namespace PlanningExtended.Plans
                 if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown && map.designationManager.HasPlanDesignationAt(position))
                     continue;
 
-                map.designationManager.RemovePlanDesignationsAt(position);
-
                 DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
-                map.designationManager.AddDesignation(new PlanDesignation(position, designationDef, colorDef));
+                PlanDesignationPlacerUtilities.Designate(map, position, designationDef, colorDef);
             }
         }
     }

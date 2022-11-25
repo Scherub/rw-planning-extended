@@ -8,23 +8,20 @@ namespace PlanningExtended
 {
     public static class DesignationManagerExtensions
     {
-        public static bool HasPlanDesignationAt(this DesignationManager designationManager, IntVec3 c)
+        public static bool HasPlanDesignationAt(this DesignationManager designationManager, IntVec3 position)
         {
-            return designationManager.GetPlanDesignationAt(c) != null;
-
-            //List<Designation> designations = designationManager.GetPlanDesignationsAt(c);
-
-            ////Log.Warning($"{designations.Count} of {DesignationDefOf.DesignationDefs.Count} possible designations found.");
-
-            //return designations.Any(d => DesignationDefOf.DesignationDefs.Contains(d.def));
+            return designationManager.GetPlanDesignationAt(position) != null;
         }
 
-        public static void RemovePlanDesignationsAt(this DesignationManager designationManager, IntVec3 c)
+        public static bool RemovePlanDesignationsAt(this DesignationManager designationManager, IntVec3 position)
         {
-            List<Designation> designations = designationManager.AllDesignationsAt(c);
+            List<Designation> designations = designationManager.AllDesignationsAt(position).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan).ToList();
 
-            foreach (var designationDef in PlanningDesignationDefOf.AllDesignationDefs)
-                designations.FirstOrDefault(d => d.def == designationDef)?.Delete();
+            bool hasPlanDesignations = designations.Count > 0;
+
+            designations.ForEach(d => d.Delete());
+
+            return hasPlanDesignations;
         }
 
         public static void RemoveDesignations(this DesignationManager designationManager, List<Designation> designations)
@@ -33,14 +30,39 @@ namespace PlanningExtended
                 designationManager.RemoveDesignation(designations[i]);
         }
 
-        //static List<Designation> GetPlanDesignationsAt(this DesignationManager designationManager, IntVec3 c)
-        //{
-        //    return designationManager.AllDesignationsAt(c).Where(d => DesignationDefOf.DesignationDefs.Contains(d.def)).ToList();
-        //}
-
-        public static Designation GetPlanDesignationAt(this DesignationManager designationManager, IntVec3 c)
+        public static Designation GetPlanDesignationAt(this DesignationManager designationManager, IntVec3 position)
         {
-            return designationManager.AllDesignationsAt(c).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan).FirstOrDefault();
+            return designationManager.AllDesignationsAt(position).FirstOrDefault(d => d is PlanDesignation || d.def == DesignationDefOf.Plan);
+        }
+
+        public static PlanDesignation GetOnlyPlanDesignationAt(this DesignationManager designationManager, IntVec3 position)
+        {
+            return designationManager.AllDesignationsAt(position).FirstOrDefault(d => d is PlanDesignation) as PlanDesignation;
+        }
+
+        public static IEnumerable<PlanDesignation> GetOnlyPlanDesignationsAt(this DesignationManager designationManager, IntVec3[] positions)
+        {
+            foreach (IntVec3 position in positions)
+            {
+                PlanDesignation planDesignation = designationManager.GetOnlyPlanDesignationAt(position);
+
+                if (planDesignation != null)
+                    yield return planDesignation;
+            }
+        }
+
+        public static bool IsPlanDesignationOfTypeAt(this DesignationManager designationManager, PlanDesignationType planDesignationType, IntVec3 position)
+        {
+            return designationManager.AllDesignationsAt(position).Any(d => d is PlanDesignation planDesignation && planDesignation.PlanType == planDesignationType);
+        }
+
+        public static bool HasPlanDesignationsOfTypeAt(this DesignationManager designationManager, PlanDesignationType planDesignationType, IntVec3[] positions)
+        {
+            for (int i = 0; i < positions.Length; i++)
+                if (!designationManager.IsPlanDesignationOfTypeAt(planDesignationType, positions[i]))
+                    return false;
+
+            return true;
         }
     }
 }
