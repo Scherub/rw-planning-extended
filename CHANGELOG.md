@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.1
+- Moved designators to its own category to avoid conflict with MorePlanning mod
+
 ## 1.4.0
 - Fixed NoOverwriteMode not reacting to correct button
 - Added support of NoOverwriteMode when pasting a plan
