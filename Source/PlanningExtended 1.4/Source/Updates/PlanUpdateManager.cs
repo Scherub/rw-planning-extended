@@ -22,7 +22,7 @@ namespace PlanningExtended.Updates
             ApplyUpdates(map, 0);
         }
 
-        public static void ApplyUpdates(Map map, int lastUpdate)
+        public static int ApplyUpdates(Map map, int lastUpdate)
         {
             int currentVersion = 0;
 
@@ -36,6 +36,8 @@ namespace PlanningExtended.Updates
                     currentVersion = update.Version;
                 }
             }
+
+            return currentVersion;
         }
     }
 }
