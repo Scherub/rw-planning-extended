@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+- Support of vertical doors
+- Maps are now automatically updated (old plans, vertical doors)
+- Added button to convert plans from MorePlanning mod
+
 ## 1.4.1
 - Moved designators to its own category to avoid conflict with MorePlanning mod
 
