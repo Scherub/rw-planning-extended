@@ -4,15 +4,12 @@ using Verse;
 
 namespace PlanningExtended.Updates
 {
-    internal static class UpdatePlanDesignations
+    internal class UpdateDesignationsToPlanDesignations : BaseUpdate
     {
-        public static void Update()
+        public override int Version => 1;
+
+        protected override void OnUpdate(Map map)
         {
-            Map map = Find.CurrentMap;
-
-            if (map == null)
-                return;
-
             foreach (IntVec3 cell in map.AllCells)
             {
                 Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
@@ -22,7 +19,7 @@ namespace PlanningExtended.Updates
 
                 map.designationManager.RemoveDesignation(designation);
 
-                map.designationManager.AddDesignation(new PlanDesignation(designation.target, designation.def, designation.colorDef));
+                PlanDesignationPlacerUtilities.Designate(map, designation.target.Cell, designation.def, designation.colorDef);
             }
         }
     }

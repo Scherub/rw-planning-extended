@@ -1,4 +1,5 @@
-﻿using PlanningExtended.Updates;
+﻿using PlanningExtended.Plans.Converters;
+using PlanningExtended.Updates;
 using UnityEngine;
 using Verse;
 
@@ -65,7 +66,10 @@ namespace PlanningExtended.Settings
             listingStandard.Begin(inRect);
 
             if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
-                UpdatePlanDesignations.Update();
+                PlanUpdateManager.ApplyUpdates();
+
+            if (listingStandard.ButtonTextLabeled("Convert from MorePlanning", "Convert"))
+                MorePlanningConverter.Convert();
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 

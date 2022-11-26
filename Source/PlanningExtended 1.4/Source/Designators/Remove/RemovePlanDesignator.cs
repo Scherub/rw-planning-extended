@@ -2,9 +2,12 @@
 using System.Linq;
 using PlanningExtended.Cells;
 using PlanningExtended.Defs;
+using PlanningExtended.Designations;
 using PlanningExtended.Plans;
 using RimWorld;
+using UnityEngine.UIElements;
 using Verse;
+using Verse.Noise;
 
 namespace PlanningExtended.Designators
 {
@@ -36,6 +39,8 @@ namespace PlanningExtended.Designators
         public override void DesignateSingleCell(IntVec3 c)
         {
             Map.designationManager.RemovePlanDesignationsAt(c);
+
+            PlanDesignationPlacerUtilities.UpdateAdjecentPositions(Map, c);
         }
 
         List<FloatMenuOption> GetRemovePlanMenuOptions()
