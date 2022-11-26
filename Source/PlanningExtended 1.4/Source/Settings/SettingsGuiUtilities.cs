@@ -65,7 +65,7 @@ namespace PlanningExtended.Settings
             listingStandard.Begin(inRect);
 
             if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
-                UpdatePlanDesignations.Update();
+                PlanUpdateManager.ApplyUpdates();
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 
