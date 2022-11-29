@@ -68,6 +68,9 @@ namespace PlanningExtended.Settings
             if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
                 PlanUpdateManager.ApplyUpdates();
 
+            if (listingStandard.ButtonTextLabeled("Convert from Vanilla Plans", "Convert"))
+                VanillaPlanConverter.Convert();
+
             if (listingStandard.ButtonTextLabeled("Convert from MorePlanning", "Convert"))
                 MorePlanningConverter.Convert();
 
