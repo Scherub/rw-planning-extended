@@ -137,7 +137,7 @@ namespace PlanningExtended.Plans
 
         public static void DesignateSnapshot(PlanLayout planLayout, Map map)
         {
-            CellUtilities.ClearCells(planLayout.Dimensions, map);
+            HashSet<IntVec3> removedCells = CellUtilities.ClearCells(planLayout.Dimensions, map);
 
             foreach (PlanCell planCell in planLayout.Cells)
             {
@@ -146,8 +146,13 @@ namespace PlanningExtended.Plans
                 DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);
                 ColorDef colorDef = ColorUtilities.GetColorDefByName(planCell.Color);
 
-                PlanDesignationPlacerUtilities.Designate(map, position, designationDef, colorDef);
+                PlanDesignationPlacerUtilities.Designate(map, position, designationDef, colorDef, removedCells.Contains(position));
+
+                removedCells.Remove(position);
             }
+
+            foreach (IntVec3 cellPosition in removedCells)
+                PlanDesignationPlacerUtilities.UpdateAdjecentPositions(map, cellPosition);
         }
 
         public static void Designate(PlanLayout planLayout, IntVec3 origin, Map map)

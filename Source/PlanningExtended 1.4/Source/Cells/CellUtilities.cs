@@ -35,10 +35,15 @@ namespace PlanningExtended.Cells
                     yield return new IntVec3(x, 0, z);
         }
 
-        public static void ClearCells(AreaDimensions areaDimensions, Map map)
+        public static HashSet<IntVec3> ClearCells(AreaDimensions areaDimensions, Map map)
         {
+            HashSet<IntVec3> removedCells = new();
+
             foreach (var cell in GetCells(areaDimensions))
-                map.designationManager.RemovePlanDesignationsAt(cell);
+                if (map.designationManager.RemovePlanDesignationsAt(cell))
+                    removedCells.Add(cell);
+
+            return removedCells;
         }
     }
 }

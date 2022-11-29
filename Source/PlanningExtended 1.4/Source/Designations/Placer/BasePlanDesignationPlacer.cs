@@ -11,6 +11,11 @@ namespace PlanningExtended.Designations.Placer
         {
             bool removedPlanDesignation = map.designationManager.RemovePlanDesignationsAt(position);
 
+            Designate(map, position, designationDef, colorDef, removedPlanDesignation);
+        }
+
+        public void Designate(Map map, IntVec3 position, DesignationDef designationDef, ColorDef colorDef, bool removedPlanDesignation)
+        {
             RotationDirection rotation = GetRotation(map, position);
 
             map.designationManager.AddDesignation(new PlanDesignation(Type, position, designationDef, colorDef, rotation));
