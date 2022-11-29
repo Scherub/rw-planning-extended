@@ -24,6 +24,14 @@ namespace PlanningExtended.Designations
                 planDesignationPlacer.Designate(map, position, designationDef, colorDef);
         }
 
+        public static void Designate(Map map, IntVec3 position, DesignationDef designationDef, ColorDef colorDef, bool removedPlanDesignation)
+        {
+            PlanDesignationType planDesignationType = DesignationDefUtilities.GetType(designationDef);
+
+            if (planDesignationPlacers.TryGetValue(planDesignationType, out BasePlanDesignationPlacer planDesignationPlacer))
+                planDesignationPlacer.Designate(map, position, designationDef, colorDef, removedPlanDesignation);
+        }
+
         public static void UpdateAdjecentPositions(Map map, IntVec3 position)
         {
             foreach (var adjecentPosition in GetAdjecent(position))

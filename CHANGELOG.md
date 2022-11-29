@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+- Fixed vertical doors not always working when using undo-redo-system
+- Added vanilla RimWorld plan converter
+
 ## 1.5.0
 - Support of vertical doors
 - Maps are now automatically updated (old plans, vertical doors)
