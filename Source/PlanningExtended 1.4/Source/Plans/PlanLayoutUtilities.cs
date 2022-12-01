@@ -106,7 +106,7 @@ namespace PlanningExtended.Plans
             return new PlanLayout(planCells);
         }
 
-        public static void Draw(PlanLayout planLayout, IntVec3 origin, Map map)
+        public static void Draw(Map map, PlanLayout planLayout, IntVec3 origin, bool overwriteDesignation)
         {
             //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
 
@@ -119,7 +119,7 @@ namespace PlanningExtended.Plans
                 if (!position.InBounds(map) || position.InNoBuildEdgeArea(map))
                     continue;
 
-                if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown && map.designationManager.HasPlanDesignationAt(position))
+                if (!overwriteDesignation && map.designationManager.HasPlanDesignationAt(position))
                     continue;
 
                 Vector3 vector = position.ToVector3Shifted();
@@ -155,7 +155,7 @@ namespace PlanningExtended.Plans
                 PlanDesignationPlacerUtilities.UpdateAdjecentPositions(map, cellPosition);
         }
 
-        public static void Designate(PlanLayout planLayout, IntVec3 origin, Map map)
+        public static void Designate(Map map, PlanLayout planLayout, IntVec3 origin, bool overwriteDesignation)
         {
             //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
 
@@ -166,7 +166,7 @@ namespace PlanningExtended.Plans
                 if (!position.InBounds(map) || position.InNoBuildEdgeArea(map))
                     continue;
 
-                if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown && map.designationManager.HasPlanDesignationAt(position))
+                if (!overwriteDesignation && map.designationManager.HasPlanDesignationAt(position))
                     continue;
 
                 DesignationDef designationDef = PlanDesignationUtilities.GetDesignationDef(planCell.Designation);

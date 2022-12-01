@@ -37,6 +37,18 @@ namespace PlanningExtended.Designators
             HandleShortcuts();
         }
 
+        public override void SelectedUpdate()
+        {
+            //base.SelectedUpdate();
+
+            //GenDraw.DrawNoBuildEdgeLines();
+            //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
+
+            PlanManager.SetIsPlanVisible(true);
+
+            PlanLayoutUtilities.Draw(Map, _selectedPlanLayout, UI.MouseCell(), OverwriteDesignation);
+        }
+
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
         {
             return true;
@@ -51,7 +63,7 @@ namespace PlanningExtended.Designators
 
             PlanLayout undoPlanLayout = CreateUndoPlanLayout(areaDimensions);
 
-            PlanLayoutUtilities.Designate(_selectedPlanLayout, c, Map);
+            PlanLayoutUtilities.Designate(Map, _selectedPlanLayout, c, OverwriteDesignation);
 
             CreateRedoPlanLayout(undoPlanLayout);
         }
@@ -60,18 +72,6 @@ namespace PlanningExtended.Designators
         //{
         //    base.RenderHighlight(dragCells);
         //}
-
-        public override void SelectedUpdate()
-        {
-            //base.SelectedUpdate();
-
-            //GenDraw.DrawNoBuildEdgeLines();
-            //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
-
-            PlanManager.SetIsPlanVisible(true);
-
-            PlanLayoutUtilities.Draw(_selectedPlanLayout, UI.MouseCell(), Map);
-        }
 
         //public override void DrawPanelReadout(ref float curY, float width)
         //{
@@ -125,9 +125,7 @@ namespace PlanningExtended.Designators
 
         protected override string GetMouseAttachmentText()
         {
-            string mode = IsNoOverwriteKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
-
-            return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
+            return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
         }
 
         void HandleShortcuts()

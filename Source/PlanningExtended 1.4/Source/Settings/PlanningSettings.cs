@@ -25,6 +25,8 @@ namespace PlanningExtended.Settings
 
         public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
 
+        public bool useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
+
         public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
 
         public override void ExposeData()
@@ -36,6 +38,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
             Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
             Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
+            Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
 
             Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
@@ -52,8 +55,11 @@ namespace PlanningExtended.Settings
             useUndoRedo = Default.UseUndoRedo;
             maxUndoOperations = Default.MaxUndoRedoSteps;
             displayCutDesignator = Default.DisplayCutDesignator;
+            displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
+            displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
             areDesignationsPersistent = Default.AreDesignationsPersistent;
             useCtrlForColorDialog = Default.UseCtrlForColorDialog;
+            useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
             alwaysGrabBottom = Default.AlwaysGrabBottom;
         }
 
@@ -161,6 +167,8 @@ namespace PlanningExtended.Settings
             public const bool AlwaysGrabBottom = false;
 
             public const bool UseCtrlForColorDialog = false;
+
+            public const bool UseSkipInsteadOfReplaceAsDefault = false;
         }
     }
 }

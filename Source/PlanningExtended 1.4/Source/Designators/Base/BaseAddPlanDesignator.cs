@@ -53,7 +53,7 @@ namespace PlanningExtended.Designators
             if (!base.CanDesignateCell(c))
                 return false;
 
-            return !IsNoOverwriteKeyPressed || !Map.designationManager.HasPlanDesignationAt(c);
+            return OverwriteDesignation || !Map.designationManager.HasPlanDesignationAt(c);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
@@ -148,9 +148,7 @@ namespace PlanningExtended.Designators
 
         protected override string GetMouseAttachmentText()
         {
-            string mode = IsNoOverwriteKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
-
-            return $"{"PlanningExtended.Mode".Translate()}: {mode}\n" + base.GetMouseAttachmentText();
+            return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
         }
 
         protected override void SetColorDef(ColorDef newColorDef)
