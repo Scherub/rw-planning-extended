@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Settings;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -13,11 +14,13 @@ namespace PlanningExtended.Designators
 
         public override bool DragDrawOutline => false;
 
+        protected PlanningSettings Settings => PlanningMod.Settings;
+
         protected virtual bool HasLeftClickPopupMenu => false;
 
         protected bool IsModifierKeyPressed { get; private set; }
 
-        protected bool IsNoOverwriteKeyPressed { get; private set; }
+        protected bool IsSkipExistingDesignationsKeyPressed { get; private set; }
 
         string _mouseAttachmentText;
         protected string MouseAttachmentText
@@ -118,9 +121,9 @@ namespace PlanningExtended.Designators
                 OnModifierKeyChanged(IsModifierKeyPressed);
             }
 
-            if (IsNoOverwriteKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
+            if (IsSkipExistingDesignationsKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
             {
-                IsNoOverwriteKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
+                IsSkipExistingDesignationsKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
                 OnNoOverwriteKeyChanged(IsModifierKeyPressed);
             }
         }

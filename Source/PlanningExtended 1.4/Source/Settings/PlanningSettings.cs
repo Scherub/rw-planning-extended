@@ -25,6 +25,8 @@ namespace PlanningExtended.Settings
 
         public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
 
+        public bool useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
+
         public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
 
         public override void ExposeData()
@@ -161,6 +163,8 @@ namespace PlanningExtended.Settings
             public const bool AlwaysGrabBottom = false;
 
             public const bool UseCtrlForColorDialog = false;
+
+            public const bool UseSkipInsteadOfReplaceAsDefault = false;
         }
     }
 }
