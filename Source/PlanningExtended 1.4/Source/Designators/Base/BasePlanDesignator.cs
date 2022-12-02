@@ -50,11 +50,7 @@ namespace PlanningExtended.Designators
             if (!CheckCanInteract())
                 return;
 
-            bool handleDfaultProcessInput = !HasLeftClickPopupMenu;
-
-            if (HasLeftClickPopupMenu)
-                ShowLeftClickPopupMenu();
-            else
+            bool handleDfaultProcessInput = HasLeftClickPopupMenu ? !ShowLeftClickPopupMenu() : true;
 
             if (handleDfaultProcessInput)
                 base.ProcessInput(ev);
