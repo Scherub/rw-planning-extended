@@ -2,6 +2,7 @@
 using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
+using PlanningExtended.Materials;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -10,6 +11,8 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
     {
+        string _name;
+
         protected abstract PlanDesignationType PlanDesignationType { get; }
 
         protected override bool HasLeftClickPopupMenu => true;
@@ -19,6 +22,10 @@ namespace PlanningExtended.Designators
         protected BaseAddPlanDesignator(string name)
             : base(name)
         {
+            _name = name;
+
+            MaterialsManager.TextureSetChanged -= TextureSetChanged;
+            MaterialsManager.TextureSetChanged += TextureSetChanged;
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -98,6 +105,11 @@ namespace PlanningExtended.Designators
             ResetMouseAttachmentText();
         }
 
+        protected override Texture2D GetIcon(string name)
+        {
+            return ContentFinder<Texture2D>.Get($"UI/Designators/{MaterialsManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
+        }
+
         protected override string GetMouseAttachmentText()
         {
             return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
@@ -115,6 +127,12 @@ namespace PlanningExtended.Designators
             string color = PlanningMod.Settings.GetColor(PlanDesignationType);
 
             return ColorUtilities.GetColorDefByName(color);
+        }
+
+        void TextureSetChanged(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
+        {
+            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == PlanDesignationType)
+                icon = GetIcon(_name);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PlanningExtended.Defs;
 using PlanningExtended.Designations;
@@ -17,6 +18,8 @@ namespace PlanningExtended.Materials
         readonly static PlanConfig planObject = CreatePlanConfig(PlanDesignationType.PlanObjects);
 
         readonly static PlanConfig planWall = CreatePlanConfig(PlanDesignationType.PlanWall);
+
+        public static Action<PlanDesignationType, PlanTextureSet> TextureSetChanged;
 
         static MaterialsManager()
         {
@@ -51,6 +54,18 @@ namespace PlanningExtended.Materials
             PlanningMod.Settings.Write();
         }
 
+        public static PlanTextureSet GetPlanTextureSet(PlanDesignationType planDesignationType)
+        {
+            return planDesignationType switch
+            {
+                PlanDesignationType.PlanDoors => planDoor.TextureSet,
+                PlanDesignationType.PlanFloors => planFloor.TextureSet,
+                PlanDesignationType.PlanObjects => planObject.TextureSet,
+                PlanDesignationType.PlanWall => planWall.TextureSet,
+                _ => PlanTextureSet.Dashed
+            };
+        }
+
         public static void SetPlanTextureSet(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
         {
             foreach (PlanConfig planConfig in planConfigs)
@@ -60,6 +75,8 @@ namespace PlanningExtended.Materials
             UpdateMaterials();
 
             UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Material);
+
+            TextureSetChanged?.Invoke(planDesignationType, planTextureSet);
 
             PlanningMod.Settings.SetTextureSet(planDesignationType, planTextureSet);
         }

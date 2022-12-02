@@ -37,7 +37,7 @@ namespace PlanningExtended.Designators
         {
             defaultLabel = $"PlanningExtended.Designator.{name}.Label".Translate();
             defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate();
-            icon = ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
+            icon = GetIcon(name);
 
             soundSucceeded = SoundDefOf.Designate_PlanAdd;
             soundDragSustain = SoundDefOf.Designate_DragStandard;
@@ -102,6 +102,11 @@ namespace PlanningExtended.Designators
         protected virtual bool ShowLeftClickPopupMenu()
         {
             return false;
+        }
+
+        protected virtual Texture2D GetIcon(string name)
+        {
+            return ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
         }
 
         protected virtual string GetMouseAttachmentText()
