@@ -6,6 +6,8 @@ namespace PlanningExtended
     [DefOf]
     public static class PlanningKeyBindingDefOf
     {
+        public static KeyBindingDef Planning_ColorPicker;
+
         public static KeyBindingDef Planning_Modifier;
 
         public static KeyBindingDef Planning_NoOverwrite_Mode;

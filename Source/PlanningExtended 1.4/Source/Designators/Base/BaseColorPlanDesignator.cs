@@ -29,7 +29,7 @@ namespace PlanningExtended.Designators
         protected BaseColorPlanDesignator(string name)
             : base(name)
         {
-            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
 
             colorDef = GetColorDef();
             
@@ -62,7 +62,7 @@ namespace PlanningExtended.Designators
             if (base.ShowLeftClickPopupMenu())
                 return true;
 
-            if (!UseCtrlForColorDialog || KeyBindingDefOf.ShowEyedropper.IsDown)
+            if (!UseCtrlForColorDialog || PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown)
             {
                 List<FloatMenuGridOption> list = new(ColorDefinitions.ColorDefs.Count + 1)
                 {
@@ -95,12 +95,12 @@ namespace PlanningExtended.Designators
         {
             base.CheckPressedKeys();
 
-            IsColorPickModeEnabled = KeyBindingDefOf.ShowEyedropper.IsDown;
+            IsColorPickModeEnabled = PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown;
         }
 
         protected override string GetMouseAttachmentText()
         {
-            return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + KeyBindingDefOf.ShowEyedropper.MainKeyLabel + ": " + "GrabExistingColor".Translate();
+            return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel + ": " + "GrabExistingColor".Translate();
         }
 
         protected virtual void SetColorDef(ColorDef newColorDef)
