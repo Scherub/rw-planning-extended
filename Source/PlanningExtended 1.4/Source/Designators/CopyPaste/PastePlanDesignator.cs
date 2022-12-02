@@ -118,7 +118,7 @@ namespace PlanningExtended.Designators
             }, true, false, 1f, null);
         }
 
-        protected override void OnNoOverwriteKeyChanged(bool isPressed)
+        protected override void OnSkipExistingDesignationsKeyChanged(bool isPressed)
         {
             ResetMouseAttachmentText();
         }

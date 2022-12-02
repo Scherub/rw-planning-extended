@@ -124,7 +124,7 @@ namespace PlanningExtended.Designators
             if (IsSkipExistingDesignationsKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
             {
                 IsSkipExistingDesignationsKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
-                OnNoOverwriteKeyChanged(IsModifierKeyPressed);
+                OnSkipExistingDesignationsKeyChanged(IsModifierKeyPressed);
             }
         }
 
@@ -133,7 +133,7 @@ namespace PlanningExtended.Designators
 
         }
 
-        protected virtual void OnNoOverwriteKeyChanged(bool isPressed)
+        protected virtual void OnSkipExistingDesignationsKeyChanged(bool isPressed)
         {
 
         }

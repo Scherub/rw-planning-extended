@@ -45,7 +45,7 @@ namespace PlanningExtended.Materials
                 if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planConfig.Type)
                     planConfig.Opacity = opacity;
 
-            UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Color);
+            UpdatePlanDesignations(planDesignationType, PlanDesignationUpdateType.Opacity);
 
             PlanningMod.Settings.SetOpacity(planDesignationType, opacity);
             PlanningMod.Settings.Write();

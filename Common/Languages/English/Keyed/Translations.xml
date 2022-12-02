@@ -13,6 +13,9 @@
   <PlanningExtended.Designator.PlanWalls.Label>Plan Walls</PlanningExtended.Designator.PlanWalls.Label>
   <PlanningExtended.Designator.PlanWalls.Desc>Place planning designations for walls.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PlanWalls.Desc>
 
+  <PlanningExtended.Designator.PaintPlan.Label>Paint Plan</PlanningExtended.Designator.PaintPlan.Label>
+  <PlanningExtended.Designator.PaintPlan.Desc>Paint over existing designations.\n\nRight click to choose from different shapes.\n\nHold {0} to pick an already existing color.</PlanningExtended.Designator.PaintPlan.Desc>
+
   <PlanningExtended.Designator.RemovePlan.Label>Remove Plans</PlanningExtended.Designator.RemovePlan.Label>
   <PlanningExtended.Designator.RemovePlan.Desc>Remove planning designations.</PlanningExtended.Designator.RemovePlan.Desc>
 

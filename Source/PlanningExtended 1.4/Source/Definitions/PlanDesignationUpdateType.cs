@@ -6,6 +6,8 @@
 
         Material,
 
-        Color
+        Color,
+
+        Opacity
     }
 }

@@ -1,5 +1,6 @@
-﻿using RimWorld;
+﻿using System;
 using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,6 +9,8 @@ namespace PlanningExtended.Designators
     public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     {
         public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
+
+        public override Color IconDrawColor => colorDef.color;
 
         protected ColorPickerDesignator colorPicker;
 
@@ -18,6 +21,8 @@ namespace PlanningExtended.Designators
         protected abstract DesignationDef ColoredDesignation { get; }
 
         protected DesignationDef SelectedDesignation => colorDef == ColorDefinitions.NonColoredDef ? Designation : ColoredDesignation;
+
+        protected virtual Action<Rect> OnPostDrawMouseAttachment => null;
 
         bool UseCtrlForColorDialog => PlanningMod.Settings.useCtrlForColorDialog;
 
@@ -49,7 +54,7 @@ namespace PlanningExtended.Designators
             }
 
             if (useMouseIcon)
-                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color));
+                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color), OnPostDrawMouseAttachment);
         }
 
         protected override bool ShowLeftClickPopupMenu()
