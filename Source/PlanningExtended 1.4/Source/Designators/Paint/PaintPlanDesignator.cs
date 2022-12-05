@@ -1,31 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
-using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace PlanningExtended.Designators
 {
-    public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
+    public class PaintPlanDesignator : BaseColorPlanDesignator
     {
-        readonly string _name;
+        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanDoors;
 
-        protected abstract PlanDesignationType PlanDesignationType { get; }
+        protected override DesignationDef ColoredDesignation => throw new NotImplementedException();
 
-        protected override bool HasLeftClickPopupMenu => true;
+        protected override Action<Rect> OnPostDrawMouseAttachment => (rect) => GUI.DrawTexture(rect, IconTopTexture);
 
-        public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
+        Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
 
-        protected BaseAddPlanDesignator(string name)
-            : base(name)
+        public PaintPlanDesignator()
+            : base("PaintPlan")
         {
-            _name = name;
-
-            PlanAppearanceManager.TextureSetChanged -= TextureSetChanged;
-            PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
+            soundSucceeded = SoundDefOf.Designate_Paint;
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -60,7 +57,7 @@ namespace PlanningExtended.Designators
             if (!base.CanDesignateCell(c))
                 return false;
 
-            return OverwriteDesignation || !Map.designationManager.HasPlanDesignationAt(c);
+            return Map.designationManager.HasPlanDesignationAt(c);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
@@ -71,7 +68,11 @@ namespace PlanningExtended.Designators
                 return;
             }
 
-            PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
+            PlanDesignation planDesignation = Map.designationManager.GetOnlyPlanDesignationAt(c);
+
+            planDesignation.colorDef = colorDef;
+
+            planDesignation.InvokeUpdate(PlanDesignationType.Unknown, PlanDesignationUpdateType.Color);
         }
 
         public override void RenderHighlight(List<IntVec3> dragCells)
@@ -88,51 +89,31 @@ namespace PlanningExtended.Designators
             DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
         }
 
-        //public override void DrawPanelReadout(ref float curY, float width)
-        //{
-        //    //base.DrawPanelReadout(ref curY, width);
-        //    Widgets.InfoCardButton(width - 24f - 2f, 6f, this.entDef);
-
-        //}
-
         public override void DoExtraGuiControls(float leftX, float bottomY)
         {
             DrawExtraGuiControls(leftX, bottomY);
         }
 
-        protected override void OnSkipExistingDesignationsKeyChanged(bool isPressed)
+        public override void DrawIcon(Rect rect, Material buttonMat, GizmoRenderParms parms)
         {
-            ResetMouseAttachmentText();
-        }
+            base.DrawIcon(rect, buttonMat, parms);
 
-        protected override Texture2D GetIcon(string name)
-        {
-            return ContentFinder<Texture2D>.Get($"UI/Designators/{PlanAppearanceManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
-        }
-
-        protected override string GetMouseAttachmentText()
-        {
-            return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
+            Widgets.DrawTextureFitted(rect, IconTopTexture, iconDrawScale * 0.85f, iconProportions, iconTexCoords, iconAngle, buttonMat);
         }
 
         protected override void SetColorDef(ColorDef newColorDef)
         {
             base.SetColorDef(newColorDef);
 
-            PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
+            Settings.paintPlanColor = newColorDef.defName;
+            Settings.Write();
         }
 
         protected override ColorDef GetColorDef()
         {
-            string color = PlanningMod.Settings.GetColor(PlanDesignationType);
+            string color = PlanningMod.Settings.paintPlanColor;
 
             return ColorUtilities.GetColorDefByName(color);
-        }
-
-        void TextureSetChanged(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
-        {
-            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == PlanDesignationType)
-                icon = GetIcon(_name);
         }
     }
 }

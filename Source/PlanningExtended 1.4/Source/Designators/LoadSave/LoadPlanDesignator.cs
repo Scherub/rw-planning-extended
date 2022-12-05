@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Plans;
 using PlanningExtended.Plans.Gui;
+using PlanningExtended.Plans.Persistence;
 using UnityEngine;
 using Verse;
-using PlanningExtended.Plans.Persistence;
-using PlanningExtended.Plans;
 
 namespace PlanningExtended.Designators
 {

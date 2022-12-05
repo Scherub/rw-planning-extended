@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
-using PlanningExtended.Gui;
 using PlanningExtended.Shapes;
 using RimWorld;
 using UnityEngine;
@@ -94,6 +93,59 @@ namespace PlanningExtended.Designators
         //        Text.Font = GameFont.Small;
         //    }, true, false, 1f, null);
         //}
+
+        protected void DrawExtraGuiControls(float leftX, float bottomY)
+        {
+            float width = 200f;
+            //float height = 180f;
+            float height = 90f;
+
+            float columnWidthTotal = width / 2f;
+            float columnWidth = columnWidthTotal - 20f;
+            float rowHeight = 64f;
+
+            float marginLeft = (columnWidthTotal - columnWidth) / 2f;
+            float marginTop = (height - rowHeight) / 2f;
+
+
+            Rect winRect = new(leftX, bottomY - height, width, height);
+
+            Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, () =>
+            {
+                Text.Anchor = TextAnchor.MiddleCenter;
+                //Text.Font = GameFont.Medium;
+
+                //RotationDirection rotationDirection = RotationDirection.None;
+                //FlipDirection flipDirection = FlipDirection.None;
+
+                //Rect rect = new(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
+                Rect rect = new(marginLeft, marginTop, columnWidth, rowHeight);
+
+                Widgets.Label(rect, $"Change shape variant: {PlanningKeyBindingDefOf.Planning_ChangeShapeVariant.MainKeyLabel}");
+
+                //rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateLeft, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, RotationDirection.Counterclockwise, rotationDirection);
+
+                //rect = new(winRect.width / 2f + 5f, 15f, 64f, 64f);
+                rect = new(columnWidthTotal + marginLeft, marginTop, columnWidth, rowHeight);
+
+                Widgets.Label(rect, SelectedShape.SelectedShapeVariant.ShapeVariant.ToString());
+
+                //rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateRight, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, RotationDirection.Clockwise, rotationDirection);
+
+                //rect = new(winRect.width / 2f - 64f - 5f, winRect.height / 2f + 15f, 64f, 64f);
+
+                //flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_Action1.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
+
+                //rect = new(winRect.width / 2f + 5f, winRect.height / 2f + 15f, 64f, 64f);
+
+                //flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_Action2.MainKeyLabel, FlipDirection.Vertically, flipDirection);
+
+                Text.Anchor = TextAnchor.UpperLeft;
+                Text.Font = GameFont.Small;
+
+                //HandleRotationFlip(rotationDirection, flipDirection);
+            }, true, false, 1f, null);
+        }
 
         void HandleShortcuts()
         {

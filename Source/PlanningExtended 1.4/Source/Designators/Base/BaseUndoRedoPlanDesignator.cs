@@ -1,8 +1,9 @@
-﻿using PlanningExtended.Cells;
+﻿using System.Collections.Generic;
+using PlanningExtended.Cells;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using PlanningExtended.UndoRedo;
 using RimWorld;
-using System.Collections.Generic;
 using Verse;
 
 namespace PlanningExtended.Designators
@@ -10,6 +11,8 @@ namespace PlanningExtended.Designators
     public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
     {
         protected virtual bool UseUndoRedo => true;
+
+        protected bool OverwriteDesignation => (!Settings.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
 
         protected BaseUndoRedoPlanDesignator(string name)
             : base(name)
@@ -54,8 +57,8 @@ namespace PlanningExtended.Designators
         public override void SelectedUpdate()
         {
             base.SelectedUpdate();
-            
-            PlanManager.SetIsPlanVisible(true);
+
+            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
         }
 
         protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())
@@ -86,6 +89,14 @@ namespace PlanningExtended.Designators
             PlanLayout redoPlanLayout = PlanLayoutUtilities.CreateCopy(undoPlanLayout.Dimensions, Map);
 
             UndoRedoManager.Add(undoPlanLayout, redoPlanLayout);
+        }
+
+        protected string GetSkipReplaceModeString()
+        {
+            if (Settings.useSkipInsteadOfReplaceAsDefault)
+                return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Replace".Translate() : "PlanningExtended.Skip".Translate();
+            else
+                return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
         }
     }
 }

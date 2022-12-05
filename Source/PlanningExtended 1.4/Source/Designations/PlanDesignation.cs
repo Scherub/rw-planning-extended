@@ -1,6 +1,6 @@
 ﻿using PlanningExtended.Defs;
-using PlanningExtended.Materials;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -27,6 +27,8 @@ namespace PlanningExtended.Designations
             }
         }
 
+        Color Color => colorDef.color.ToTransparent(PlanAppearanceManager.GetPlanOpacity(_planType));
+
         Material _material;
         Material Material
         {
@@ -38,22 +40,22 @@ namespace PlanningExtended.Designations
                         _planType = DesignationDefUtilities.GetType(def);
 
                     if (colorDef != null)
-                    {
-                        _material = new(def.iconMat)
-                        {
-                            color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(_planType))
-                        };
-                    }
+                        _material = new(def.iconMat) { color = Color };
                     else
-                    {
                         _material = def.iconMat;
-                    }
 
                     _planDesignationUpdateType = PlanDesignationUpdateType.None;
                 }
                 else if (_planDesignationUpdateType is PlanDesignationUpdateType.Color)
                 {
-                    _material.color = colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(_planType));
+                    if (colorDef != null)
+                        _material = new(def.iconMat) { color = Color };
+
+                    _planDesignationUpdateType = PlanDesignationUpdateType.None;
+                }
+                else if (_planDesignationUpdateType is PlanDesignationUpdateType.Opacity)
+                {
+                    _material.color = Color;
                     _planDesignationUpdateType = PlanDesignationUpdateType.None;
                 }
 
@@ -82,7 +84,7 @@ namespace PlanningExtended.Designations
 
         public override void DesignationDraw()
         {
-            if (!PlanManager.IsPlanVisible(_planType))
+            if (!PlanAppearanceManager.IsPlanVisible(_planType))
                 return;
 
             Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), _rotationTransform, Material, 0);

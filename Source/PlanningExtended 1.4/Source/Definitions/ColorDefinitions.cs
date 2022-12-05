@@ -7,7 +7,7 @@ namespace PlanningExtended
 {
     public static class ColorDefinitions
     {
-        public static readonly string DefaultColorName = "Structure_White";
+        public const string DefaultColorName = "Structure_White";
 
         public static readonly List<ColorDef> ColorDefs = DefDatabase<ColorDef>.AllDefs.Where(cd => cd.defName.EqualsIgnoreCase(DefaultColorName))
             .Concat(DefDatabase<ColorDef>.AllDefs.Where(cd => cd.colorType == ColorType.Structure && !cd.defName.EqualsIgnoreCase(DefaultColorName)).OrderBy(cd => cd.displayOrder))

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PlanningExtended.Materials;
+using PlanningExtended.Plans.Appearances;
 using UnityEngine;
 using Verse;
 
@@ -37,7 +37,7 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption($"{opacity}%", () =>
                 {
-                    MaterialsManager.SetPlanOpacity(planDesignationType, opacity);
+                    PlanAppearanceManager.SetPlanOpacity(planDesignationType, opacity);
                 }));
             }
 
@@ -52,7 +52,7 @@ namespace PlanningExtended.Designators
             {
                 list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
                 {
-                    MaterialsManager.SetPlanTextureSet(planDesignationType, planTextureSet);
+                    PlanAppearanceManager.SetPlanTextureSet(planDesignationType, planTextureSet);
                 }));
             }
 

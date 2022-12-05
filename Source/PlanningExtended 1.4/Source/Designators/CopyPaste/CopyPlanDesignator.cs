@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using Verse;
 
@@ -51,7 +52,7 @@ namespace PlanningExtended.Designators
         {
             base.SelectedUpdate();
 
-            PlanManager.SetIsPlanVisible(true);
+            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
         }
 
         public override void DrawMouseAttachments()

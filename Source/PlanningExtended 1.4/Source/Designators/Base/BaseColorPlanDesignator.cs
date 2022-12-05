@@ -1,5 +1,6 @@
-﻿using RimWorld;
+﻿using System;
 using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,6 +9,8 @@ namespace PlanningExtended.Designators
     public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     {
         public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
+
+        public override Color IconDrawColor => colorDef.color;
 
         protected ColorPickerDesignator colorPicker;
 
@@ -19,12 +22,14 @@ namespace PlanningExtended.Designators
 
         protected DesignationDef SelectedDesignation => colorDef == ColorDefinitions.NonColoredDef ? Designation : ColoredDesignation;
 
+        protected virtual Action<Rect> OnPostDrawMouseAttachment => null;
+
         bool UseCtrlForColorDialog => PlanningMod.Settings.useCtrlForColorDialog;
 
         protected BaseColorPlanDesignator(string name)
             : base(name)
         {
-            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
 
             colorDef = GetColorDef();
             
@@ -49,7 +54,7 @@ namespace PlanningExtended.Designators
             }
 
             if (useMouseIcon)
-                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color));
+                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color), OnPostDrawMouseAttachment);
         }
 
         protected override bool ShowLeftClickPopupMenu()
@@ -57,7 +62,7 @@ namespace PlanningExtended.Designators
             if (base.ShowLeftClickPopupMenu())
                 return true;
 
-            if (!UseCtrlForColorDialog || KeyBindingDefOf.ShowEyedropper.IsDown)
+            if (!UseCtrlForColorDialog || PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown)
             {
                 List<FloatMenuGridOption> list = new(ColorDefinitions.ColorDefs.Count + 1)
                 {
@@ -90,12 +95,12 @@ namespace PlanningExtended.Designators
         {
             base.CheckPressedKeys();
 
-            IsColorPickModeEnabled = KeyBindingDefOf.ShowEyedropper.IsDown;
+            IsColorPickModeEnabled = PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown;
         }
 
         protected override string GetMouseAttachmentText()
         {
-            return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + KeyBindingDefOf.ShowEyedropper.MainKeyLabel + ": " + "GrabExistingColor".Translate();
+            return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel + ": " + "GrabExistingColor".Translate();
         }
 
         protected virtual void SetColorDef(ColorDef newColorDef)

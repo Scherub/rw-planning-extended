@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Settings;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -13,11 +14,13 @@ namespace PlanningExtended.Designators
 
         public override bool DragDrawOutline => false;
 
+        protected PlanningSettings Settings => PlanningMod.Settings;
+
         protected virtual bool HasLeftClickPopupMenu => false;
 
         protected bool IsModifierKeyPressed { get; private set; }
 
-        protected bool IsNoOverwriteKeyPressed { get; private set; }
+        protected bool IsSkipExistingDesignationsKeyPressed { get; private set; }
 
         string _mouseAttachmentText;
         protected string MouseAttachmentText
@@ -34,7 +37,7 @@ namespace PlanningExtended.Designators
         {
             defaultLabel = $"PlanningExtended.Designator.{name}.Label".Translate();
             defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate();
-            icon = ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
+            icon = GetIcon(name);
 
             soundSucceeded = SoundDefOf.Designate_PlanAdd;
             soundDragSustain = SoundDefOf.Designate_DragStandard;
@@ -47,11 +50,7 @@ namespace PlanningExtended.Designators
             if (!CheckCanInteract())
                 return;
 
-            bool handleDfaultProcessInput = !HasLeftClickPopupMenu;
-
-            if (HasLeftClickPopupMenu)
-                ShowLeftClickPopupMenu();
-            else
+            bool handleDfaultProcessInput = HasLeftClickPopupMenu ? !ShowLeftClickPopupMenu() : true;
 
             if (handleDfaultProcessInput)
                 base.ProcessInput(ev);
@@ -105,6 +104,11 @@ namespace PlanningExtended.Designators
             return false;
         }
 
+        protected virtual Texture2D GetIcon(string name)
+        {
+            return ContentFinder<Texture2D>.Get($"UI/Designators/{name}", true);
+        }
+
         protected virtual string GetMouseAttachmentText()
         {
             return "";
@@ -118,10 +122,10 @@ namespace PlanningExtended.Designators
                 OnModifierKeyChanged(IsModifierKeyPressed);
             }
 
-            if (IsNoOverwriteKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
+            if (IsSkipExistingDesignationsKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
             {
-                IsNoOverwriteKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
-                OnNoOverwriteKeyChanged(IsModifierKeyPressed);
+                IsSkipExistingDesignationsKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
+                OnSkipExistingDesignationsKeyChanged(IsModifierKeyPressed);
             }
         }
 
@@ -130,7 +134,7 @@ namespace PlanningExtended.Designators
 
         }
 
-        protected virtual void OnNoOverwriteKeyChanged(bool isPressed)
+        protected virtual void OnSkipExistingDesignationsKeyChanged(bool isPressed)
         {
 
         }

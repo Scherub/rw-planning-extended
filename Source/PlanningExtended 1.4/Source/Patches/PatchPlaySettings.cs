@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using Verse;
 
@@ -13,15 +13,15 @@ namespace PlanningExtended.Patches
             if (worldView || row == null)
                 return;
 
-            bool arePlansVisible = PlanManager.ArePlansVisible;
+            bool arePlansVisible = PlanAppearanceManager.ArePlansVisible;
 
             row.ToggleableIcon(ref arePlansVisible, Textures.ShowPlanToggleIcon, "PlanningExtended.Settings.ArePlansVisible.Label".Translate(), SoundDefOf.Mouseover_ButtonToggle);
 
-            if (arePlansVisible != PlanManager.ArePlansVisible)
-                PlanManager.SetIsPlanVisible(arePlansVisible);
+            if (arePlansVisible != PlanAppearanceManager.ArePlansVisible)
+                PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, arePlansVisible);
 
             if (PlanningKeyBindingDefOf.Planning_TogglePlanVisibility.KeyDownEvent)
-                PlanManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
+                PlanAppearanceManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
         }
     }
 }

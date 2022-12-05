@@ -1,25 +1,25 @@
-﻿using PlanningExtended.Designations;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using Verse;
+using PlanningExtended.Designations;
 using RimWorld;
+using Verse;
 
 namespace PlanningExtended.Designators
 {
     public abstract class BasePlanMenuDesignator : BaseClickDesignator
     {
-        protected bool IsPlanMenuKeyPressed => KeyBindingDefOf.ShowEyedropper?.IsDown == true;
+        protected bool IsPlanMenuKeyPressed => PlanningKeyBindingDefOf.Planning_ColorPicker?.IsDown == true;
 
         protected BasePlanMenuDesignator(string name)
             : base(name)
         {
-            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
         }
 
         protected BasePlanMenuDesignator(string name, string iconName) 
             : base(name, iconName)
         {
-            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(KeyBindingDefOf.ShowEyedropper.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
         }
 
         protected List<FloatMenuOption> GetMenuOptions(Func<PlanDesignationType, List<FloatMenuOption>> getMenuOptions)

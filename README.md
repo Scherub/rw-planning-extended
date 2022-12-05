@@ -9,12 +9,12 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 - Draw colored designations, such as walls, doors, objects and floors
 - Optionally skip (don't overwrite) already placed plan designations
 - Use different shapes, e.g. rectangle, area, cross
-- Load / Save plan blueprints
+- Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans
 - Undo / Redo your planned actions
 - Show / Hide your planning designations (incl. global shortcut)
 - Change plan texture sets and opacity for each plan type individually
-- Convert your plan from MorePlanning mod
+- Convert your plan from vanilla Rimworld or MorePlanning mod
 
 ### Coming soon
 

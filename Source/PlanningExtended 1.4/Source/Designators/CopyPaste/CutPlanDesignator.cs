@@ -1,7 +1,7 @@
-﻿using PlanningExtended.Cells;
+﻿using System.Collections.Generic;
+using PlanningExtended.Cells;
 using PlanningExtended.Plans;
 using RimWorld;
-using System.Collections.Generic;
 using Verse;
 
 namespace PlanningExtended.Designators
