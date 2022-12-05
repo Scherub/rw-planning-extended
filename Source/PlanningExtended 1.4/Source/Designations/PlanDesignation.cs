@@ -84,7 +84,7 @@ namespace PlanningExtended.Designations
 
         public override void DesignationDraw()
         {
-            if (!PlanManager.IsPlanVisible(_planType))
+            if (!PlanAppearanceManager.IsPlanVisible(_planType))
                 return;
 
             Graphics.DrawMesh(MeshPool.plane10, DrawLoc(), _rotationTransform, Material, 0);

@@ -1,6 +1,7 @@
 ﻿using PlanningExtended.Cells;
 using PlanningExtended.Gui;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -44,7 +45,7 @@ namespace PlanningExtended.Designators
             //GenDraw.DrawNoBuildEdgeLines();
             //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
 
-            PlanManager.SetIsPlanVisible(true);
+            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
 
             PlanLayoutUtilities.Draw(Map, _selectedPlanLayout, UI.MouseCell(), OverwriteDesignation);
         }

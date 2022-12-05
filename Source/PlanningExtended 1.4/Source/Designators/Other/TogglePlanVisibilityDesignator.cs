@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using UnityEngine;
 using Verse;
 
@@ -18,7 +18,8 @@ namespace PlanningExtended.Designators
             icon_off = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Off", true);
             icon_partial = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Partial", true);
 
-            PlanManager.OnPlanVisibilityChanged += PlanManager_OnPlanVisibilityChanged;
+            PlanAppearanceManager.VisibilityChanged -= PlanAppearanceManager_VisibilityChanged;
+            PlanAppearanceManager.VisibilityChanged += PlanAppearanceManager_VisibilityChanged;
         }
 
         public override void ProcessInput(Event ev)
@@ -27,18 +28,18 @@ namespace PlanningExtended.Designators
             {
                 List<FloatMenuOption> list = GetPlanTypeMenuOptions((planDesignationType) =>
                 {
-                    PlanManager.ToggleIsPlanVisible(planDesignationType);
+                    PlanAppearanceManager.ToggleIsPlanVisible(planDesignationType);
                 });
 
                 Find.WindowStack.Add(new FloatMenu(list));
             }
             else
             {
-                PlanManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
+                PlanAppearanceManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
             }
         }
 
-        void PlanManager_OnPlanVisibilityChanged(PlanVisibility planVisibility)
+        void PlanAppearanceManager_VisibilityChanged(PlanVisibility planVisibility)
         {
             icon = planVisibility switch
             {

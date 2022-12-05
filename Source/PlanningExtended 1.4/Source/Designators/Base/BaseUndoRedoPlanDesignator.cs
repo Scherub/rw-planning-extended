@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using PlanningExtended.UndoRedo;
 using RimWorld;
 using Verse;
@@ -56,8 +57,8 @@ namespace PlanningExtended.Designators
         public override void SelectedUpdate()
         {
             base.SelectedUpdate();
-            
-            PlanManager.SetIsPlanVisible(true);
+
+            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
         }
 
         protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())

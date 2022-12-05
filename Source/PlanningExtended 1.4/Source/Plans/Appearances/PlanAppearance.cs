@@ -8,11 +8,14 @@
 
         public PlanTextureSet TextureSet { get; set; }
 
-        public PlanAppearance(PlanDesignationType type, float opacity, PlanTextureSet textureSet)
+        public bool IsVisible { get; set; }
+
+        public PlanAppearance(PlanDesignationType type, float opacity, PlanTextureSet textureSet, bool isVisible)
         {
             Type = type;
             Opacity = opacity;
             TextureSet = textureSet;
+            IsVisible = isVisible;
         }
     }
 }
