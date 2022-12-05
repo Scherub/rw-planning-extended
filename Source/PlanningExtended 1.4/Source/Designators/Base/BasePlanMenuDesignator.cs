@@ -1,8 +1,8 @@
-﻿using PlanningExtended.Designations;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using Verse;
+using PlanningExtended.Designations;
 using RimWorld;
+using Verse;
 
 namespace PlanningExtended.Designators
 {

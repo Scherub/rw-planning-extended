@@ -5,9 +5,7 @@ using PlanningExtended.Defs;
 using PlanningExtended.Designations;
 using PlanningExtended.Plans;
 using RimWorld;
-using UnityEngine.UIElements;
 using Verse;
-using Verse.Noise;
 
 namespace PlanningExtended.Designators
 {
