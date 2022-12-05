@@ -5,12 +5,12 @@ using PlanningExtended.Designations;
 using PlanningExtended.Plans.Appearances;
 using Verse;
 
-namespace PlanningExtended.Materials
+namespace PlanningExtended.Plans.Materials
 {
     [StaticConstructorOnStartup]
-    public static class MaterialsManager
+    public static class PlanMaterialsManager
     {
-        static MaterialsManager()
+        static PlanMaterialsManager()
         {
             UpdateMaterials();
 
