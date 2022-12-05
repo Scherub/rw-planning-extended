@@ -1,6 +1,6 @@
 ﻿using PlanningExtended.Defs;
-using PlanningExtended.Materials;
 using PlanningExtended.Plans;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -27,7 +27,7 @@ namespace PlanningExtended.Designations
             }
         }
 
-        Color Color => colorDef.color.ToTransparent(MaterialsManager.GetPlanOpacity(_planType));
+        Color Color => colorDef.color.ToTransparent(PlanAppearanceManager.GetPlanOpacity(_planType));
 
         Material _material;
         Material Material

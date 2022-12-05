@@ -66,10 +66,13 @@ namespace PlanningExtended.Settings
             alwaysGrabBottom = Default.AlwaysGrabBottom;
         }
 
-        public void SetOpacity(PlanDesignationType planDesignationType, float opacity)
+        public void SetOpacity(PlanDesignationType planDesignationType, float opacity, bool autoSave = true)
         {
             foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
                 planDesignationSetting.opacity = opacity;
+
+            if (autoSave)
+                Write();
         }
 
         public float GetOpacity(PlanDesignationType planDesignationType)

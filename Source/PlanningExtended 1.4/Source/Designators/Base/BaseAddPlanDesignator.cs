@@ -2,7 +2,7 @@
 using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
-using PlanningExtended.Materials;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -11,7 +11,7 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
     {
-        string _name;
+        readonly string _name;
 
         protected abstract PlanDesignationType PlanDesignationType { get; }
 
@@ -24,8 +24,8 @@ namespace PlanningExtended.Designators
         {
             _name = name;
 
-            MaterialsManager.TextureSetChanged -= TextureSetChanged;
-            MaterialsManager.TextureSetChanged += TextureSetChanged;
+            PlanAppearanceManager.TextureSetChanged -= TextureSetChanged;
+            PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -107,7 +107,7 @@ namespace PlanningExtended.Designators
 
         protected override Texture2D GetIcon(string name)
         {
-            return ContentFinder<Texture2D>.Get($"UI/Designators/{MaterialsManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
+            return ContentFinder<Texture2D>.Get($"UI/Designators/{PlanAppearanceManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
         }
 
         protected override string GetMouseAttachmentText()
