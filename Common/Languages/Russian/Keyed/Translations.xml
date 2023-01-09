@@ -13,6 +13,9 @@
   <PlanningExtended.Designator.PlanWalls.Label>Стены</PlanningExtended.Designator.PlanWalls.Label>
   <PlanningExtended.Designator.PlanWalls.Desc>Разместите план для стен.\n\nЩелкните правой кнопкой мыши, чтобы выбрать одну из форм.\n\nУдерживайте {0}, чтобы выбрать уже существующий цвет.</PlanningExtended.Designator.PlanWalls.Desc>
 
+  <PlanningExtended.Designator.PaintPlan.Label>Перекрасить</PlanningExtended.Designator.PaintPlan.Label>
+  <PlanningExtended.Designator.PaintPlan.Desc>Перекрасить существующий план.\n\nЩелкните правой кнопкой мыши, чтобы выбрать одну из форм.\n\nУдерживайте {0}, чтобы выбрать уже существующий цвет.</PlanningExtended.Designator.PaintPlan.Desc>
+
   <PlanningExtended.Designator.RemovePlan.Label>Удалить</PlanningExtended.Designator.RemovePlan.Label>
   <PlanningExtended.Designator.RemovePlan.Desc>Удалить план.</PlanningExtended.Designator.RemovePlan.Desc>
 
@@ -42,7 +45,6 @@
 
   <PlanningExtended.Designator.ChangePlanAppearance.Label>Изменить стиль</PlanningExtended.Designator.ChangePlanAppearance.Label>
   <PlanningExtended.Designator.ChangePlanAppearance.Desc>Щелкните левой кнопкой мыши, чтобы изменить прозрачность.\n\nЩелкните правой кнопкой мыши, чтобы изменить набор текстур.\n\nУдерживайте {0} и щелкните, чтобы изменить каждый тип плана отдельно.</PlanningExtended.Designator.ChangePlanAppearance.Desc>
-
 
   <PlanningExtended.SelectColoredPlan>Выберите цвет на плане.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Возьмите цвет из существующего плана.</PlanningExtended.PickColorFromPlan>
@@ -80,10 +82,10 @@
   <PlanningExtended.Settings.DisplayCutDesignator.Label>Показать обозначение плана раскроя</PlanningExtended.Settings.DisplayCutDesignator.Label>
   <PlanningExtended.Settings.DisplayCutDesignator.Desc>Определяет, будет ли видна кнопка обозначения плана разреза.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
 
-  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>Показать Переключить Обозначение видимости плана</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
-  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>Определяет, будет ли видна кнопка указателя видимости плана переключения.</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>Показать кнопку переключения видимости плана</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>Определяет, будет ли видна кнопка переключения видимости плана.</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
 
-  <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Обозначение внешнего вида плана изменения отображения</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
+  <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Показать кнопку внешнего вида плана</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Определяет, будет ли видна кнопка указателя внешнего вида плана.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
   <PlanningExtended.Settings.ArePlansPersistent.Label>Постоянные планы</PlanningExtended.Settings.ArePlansPersistent.Label>
@@ -91,6 +93,9 @@
 
   <PlanningExtended.Settings.UseCtrlForColorDialog.Label>Использовать Ctrl для выбора цвета</PlanningExtended.Settings.UseCtrlForColorDialog.Label>
   <PlanningExtended.Settings.UseCtrlForColorDialog.Desc>Определяет, нужно ли нажимать Ctrl для отображения диалогового окна выбора цвета.</PlanningExtended.Settings.UseCtrlForColorDialog.Desc>
+
+  <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>Пропускать существующие элементы плана по умолчанию</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>
+  <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>Если включено, существующие элементы плана по умолчанию пропускаются. В противном случае они заменяются.</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>
 
   <PlanningExtended.Settings.ArePlansVisible.Label>Показывать план</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Определяет, видны ли обозначения плана.</PlanningExtended.Settings.ArePlansVisible.Desc>

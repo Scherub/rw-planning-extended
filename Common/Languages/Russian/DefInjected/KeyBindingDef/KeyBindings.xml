@@ -3,6 +3,7 @@
 
   <Planning_TogglePlanVisibility.label>переключить видимость плана</Planning_TogglePlanVisibility.label>
   <Planning_Modifier.label>модификатор</Planning_Modifier.label>
+  <Planning_ColorPicker.label>палитра цветов</Planning_ColorPicker.label>
   <Planning_NoOverwrite_Mode.label>без перезаписи</Planning_NoOverwrite_Mode.label>
   <Planning_PlanDoors.label>план дверей</Planning_PlanDoors.label>
   <Planning_PlanFloors.label>план полов</Planning_PlanFloors.label>
@@ -13,7 +14,5 @@
   <Planning_Action2.label>действие 2</Planning_Action2.label>
   <Planning_Undo.label>отменить</Planning_Undo.label>
   <Planning_Redo.label>вернуть</Planning_Redo.label>
-
-<!--  <Planning_ColorPicker.label></Planning_ColorPicker.label>-->
 
 </LanguageData>
