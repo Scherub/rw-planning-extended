@@ -2,6 +2,7 @@
 <LanguageData>
 
   <Planning_TogglePlanVisibility.label>переключить видимость плана</Planning_TogglePlanVisibility.label>
+  <Planning_ColorPicker.label>палитра цветов</Planning_ColorPicker.label>
   <Planning_Modifier.label>модификатор</Planning_Modifier.label>
   <Planning_ColorPicker.label>палитра цветов</Planning_ColorPicker.label>
   <Planning_NoOverwrite_Mode.label>без перезаписи</Planning_NoOverwrite_Mode.label>
