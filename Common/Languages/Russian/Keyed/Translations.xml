@@ -13,6 +13,9 @@
   <PlanningExtended.Designator.PlanWalls.Label>Стены</PlanningExtended.Designator.PlanWalls.Label>
   <PlanningExtended.Designator.PlanWalls.Desc>Разместите план для стен.\n\nЩелкните правой кнопкой мыши, чтобы выбрать одну из форм.\n\nУдерживайте {0}, чтобы выбрать уже существующий цвет.</PlanningExtended.Designator.PlanWalls.Desc>
 
+  <PlanningExtended.Designator.PaintPlan.Label>план покраски</PlanningExtended.Designator.PaintPlan.Label>
+  <PlanningExtended.Designator.PaintPlan.Desc>Закрасьте существующие обозначения.\n\nЩелкните правой кнопкой мыши, чтобы выбрать одну из форм.\n\nУдерживайте {0}, чтобы выбрать уже существующий цвет.</PlanningExtended.Designator.PaintPlan.Desc>
+  
   <PlanningExtended.Designator.PaintPlan.Label>Перекрасить</PlanningExtended.Designator.PaintPlan.Label>
   <PlanningExtended.Designator.PaintPlan.Desc>Перекрасить существующий план.\n\nЩелкните правой кнопкой мыши, чтобы выбрать одну из форм.\n\nУдерживайте {0}, чтобы выбрать уже существующий цвет.</PlanningExtended.Designator.PaintPlan.Desc>
 
