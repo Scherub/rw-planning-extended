@@ -1,7 +1,6 @@
 ﻿using PlanningExtended.Cells;
 using PlanningExtended.Gui;
 using PlanningExtended.Plans;
-using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -16,6 +15,8 @@ namespace PlanningExtended.Designators
         public override int DraggableDimensions => 0;
 
         public override bool DragDrawMeasurements => false;
+
+        protected override bool DrawMouseOverBrackets => false;
 
         public PastePlanDesignator()
             : base("PastePlan")
@@ -40,12 +41,9 @@ namespace PlanningExtended.Designators
 
         public override void SelectedUpdate()
         {
-            //base.SelectedUpdate();
+            base.SelectedUpdate();
 
-            //GenDraw.DrawNoBuildEdgeLines();
             //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
-
-            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
 
             PlanLayoutUtilities.Draw(Map, _selectedPlanLayout, UI.MouseCell(), OverwriteDesignation);
         }

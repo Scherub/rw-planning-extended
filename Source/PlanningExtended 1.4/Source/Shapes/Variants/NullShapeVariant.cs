@@ -1,11 +1,17 @@
 ﻿using PlanningExtended.Cells;
+using PlanningExtended.Shapes.Modifiers;
 using Verse;
 
 namespace PlanningExtended.Shapes.Variants
 {
-    public class NullShapeVariant : BaseShapeVariant
+    internal class NullShapeVariant : BaseShapeVariant
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.Unknown;
+
+        public NullShapeVariant()
+            : base(new NullShapeModifier())
+        {
+        }
 
         public override bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
         {

@@ -10,7 +10,7 @@ namespace PlanningExtended.Shapes
     {
         int _selectedShapeIndex;
 
-        public abstract List<BaseShapeVariant> ShapeVariants { get; }
+        readonly List<BaseShapeVariant> _shapeVariants;
 
         public BaseShapeVariant SelectedShapeVariant { get; private set; }
 
@@ -20,9 +20,27 @@ namespace PlanningExtended.Shapes
 
         public int NumberOfAvailableShapeOtions => SelectedShapeVariant.NumberOfAvailableShapeOtions;
 
-        protected BaseShape(ShapeVariant defaultShapeVariant)
+        public IEnumerable<ShapeOptions> ShapeOptions
         {
+            get
+            {
+                yield return FirstShapeOption;
+                yield return SecondShapeOption;
+            }
+        }
+
+        public ShapeDisplayOptions ShapeDisplayOptions => SelectedShapeVariant.ShapeDisplayOptions;
+
+        protected BaseShape(ShapeVariant defaultShapeVariant, params BaseShapeVariant[] shapeVariants)
+        {
+            _shapeVariants = new(shapeVariants);
+
             SelectShapeVariant(defaultShapeVariant);
+        }
+
+        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 intVec3, bool applyModifier)
+        {
+            SelectedShapeVariant.UpdateShape(areaDimensions, intVec3, applyModifier);
         }
 
         public bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)
@@ -32,24 +50,24 @@ namespace PlanningExtended.Shapes
 
         public void SelectShapeVariant(ShapeVariant shapeVariant)
         {
-            SelectedShapeVariant = ShapeVariants.FirstOrDefault(sv => sv.ShapeVariant == shapeVariant);
+            SelectedShapeVariant = _shapeVariants.FirstOrDefault(sv => sv.ShapeVariant == shapeVariant);
 
             if (SelectedShapeVariant != null)
-                _selectedShapeIndex = ShapeVariants.FindIndex(sv => sv.ShapeVariant == shapeVariant);
-            else if (ShapeVariants.Count > 0)
-                SelectedShapeVariant = ShapeVariants.First();
+                _selectedShapeIndex = _shapeVariants.FindIndex(sv => sv.ShapeVariant == shapeVariant);
+            else if (_shapeVariants.Count > 0)
+                SelectedShapeVariant = _shapeVariants.First();
             else
                 SelectedShapeVariant = new NullShapeVariant();
         }
 
         public void ChangeToNextShapeVariant()
         {
-            if (_selectedShapeIndex >= ShapeVariants.Count - 1)
+            if (_selectedShapeIndex >= _shapeVariants.Count - 1)
                 _selectedShapeIndex = 0;
             else
                 _selectedShapeIndex++;
 
-            SelectedShapeVariant = ShapeVariants[_selectedShapeIndex];
+            SelectedShapeVariant = _shapeVariants[_selectedShapeIndex];
         }
     }
 }

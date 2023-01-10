@@ -75,19 +75,19 @@ namespace PlanningExtended.Designators
             planDesignation.InvokeUpdate(PlanDesignationType.Unknown, PlanDesignationUpdateType.Color);
         }
 
-        public override void RenderHighlight(List<IntVec3> dragCells)
-        {
-            CellArea cellArea = new(dragCells);
-            AreaDimensions areaDimensions = cellArea.Dimensions;
+        //public override void RenderHighlight(List<IntVec3> dragCells)
+        //{
+        //    CellArea cellArea = new(dragCells);
+        //    AreaDimensions areaDimensions = cellArea.Dimensions;
 
-            List<IntVec3> cells = new();
+        //    List<IntVec3> cells = new();
 
-            foreach (IntVec3 cell in dragCells)
-                if (IsShapeCellValid(cell, areaDimensions))
-                    cells.Add(cell);
+        //    foreach (IntVec3 cell in dragCells)
+        //        if (IsShapeCellValid(cell, areaDimensions))
+        //            cells.Add(cell);
 
-            DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
-        }
+        //    DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
+        //}
 
         public override void DoExtraGuiControls(float leftX, float bottomY)
         {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
 using PlanningExtended.Plans;
-using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using Verse;
 
@@ -46,13 +45,6 @@ namespace PlanningExtended.Designators
             PlanManager.SetCachedPlanLayout(planLayout);
 
             Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
-        }
-
-        public override void SelectedUpdate()
-        {
-            base.SelectedUpdate();
-
-            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
         }
 
         public override void DrawMouseAttachments()

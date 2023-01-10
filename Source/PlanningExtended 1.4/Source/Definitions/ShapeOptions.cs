@@ -8,6 +8,8 @@
 
         Thickness,
 
-        NumberOfSegments
+        NumberOfSegmentsX,
+
+        NumberOfSegmentsZ
     }
 }

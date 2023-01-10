@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Plans.Appearances;
 using PlanningExtended.Settings;
 using RimWorld;
 using UnityEngine;
@@ -15,6 +16,10 @@ namespace PlanningExtended.Designators
         public override bool DragDrawOutline => false;
 
         protected PlanningSettings Settings => PlanningMod.Settings;
+
+        protected virtual bool DrawMapBounds => true;
+
+        protected virtual bool DrawMouseOverBrackets => true;
 
         protected virtual bool HasLeftClickPopupMenu => false;
 
@@ -75,7 +80,7 @@ namespace PlanningExtended.Designators
 
             if (useMouseIcon)
                 GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, null, null);
-            }
+        }
 
         //public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         //{
@@ -94,9 +99,13 @@ namespace PlanningExtended.Designators
 
         public override void SelectedUpdate()
         {
-            // TODO: are both required?
-            GenUI.RenderMouseoverBracket();
-            GenDraw.DrawNoBuildEdgeLines();
+            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
+
+            if (DrawMouseOverBrackets)
+                GenUI.RenderMouseoverBracket();
+
+            if (DrawMapBounds)
+                GenDraw.DrawNoBuildEdgeLines();
         }
 
         protected virtual bool ShowLeftClickPopupMenu()

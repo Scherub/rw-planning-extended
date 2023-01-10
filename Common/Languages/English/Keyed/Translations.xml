@@ -101,4 +101,20 @@
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
+  <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
+  <PlanningExtended.Shapes.Variants.LineSimple>Line Simple</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
+  <PlanningExtended.Shapes.Variants.RectangleFilled>Rectangle Filled</PlanningExtended.Shapes.Variants.RectangleFilled>
+  <PlanningExtended.Shapes.Variants.RectangleGrid>Rectangle Grid</PlanningExtended.Shapes.Variants.RectangleGrid>
+  <PlanningExtended.Shapes.Variants.RectangleOutline>Rectangle Outline</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.EllipseFilled>Ellipse Filled</PlanningExtended.Shapes.Variants.EllipseFilled>
+  <PlanningExtended.Shapes.Variants.EllipseOutline>Ellipse Outline</PlanningExtended.Shapes.Variants.EllipseOutline>
+
+  <PlanningExtended.Shapes.ChangeShapeVariant>Change Shape Variant</PlanningExtended.Shapes.ChangeShapeVariant>
+  
+  <PlanningExtended.Shapes.NumberOf>Number of {0}</PlanningExtended.Shapes.NumberOf>
+  <PlanningExtended.Shapes.Columns>Columns</PlanningExtended.Shapes.Columns>
+  <PlanningExtended.Shapes.Rows>Rows</PlanningExtended.Shapes.Rows>
+  <PlanningExtended.Shapes.Cells>Cells</PlanningExtended.Shapes.Cells>
+
 </LanguageData>

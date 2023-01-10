@@ -14,7 +14,7 @@ namespace PlanningExtended.Designators
             : base("PlanWalls")
         {
             hotKey = PlanningKeyBindingDefOf.Planning_PlanWalls;
-            SelectedShape.SelectShapeVariant(ShapeVariant.OpenRectangle);
+            SelectedShape.SelectShapeVariant(ShapeVariant.RectangleOutline);
         }
     }
 }
