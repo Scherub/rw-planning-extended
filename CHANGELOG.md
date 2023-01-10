@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.1
+- Added Russian language support
+
 ## 1.6.0
 - Fixed sound not playing on 'Plan xxx' button click
 - Added custom keybinding for color picker
