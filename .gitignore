@@ -28,6 +28,9 @@ x86/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
+# Idea folder
+.idea/
+
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
