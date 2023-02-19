@@ -8,7 +8,7 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 
 - Draw colored designations, such as walls, doors, objects and floors
 - Optionally skip (don't overwrite) already placed plan designations
-- Use different shapes, e.g. rectangle, area, cross
+- Use different shapes, e.g. points, lines, rectangles
 - Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans
 - Undo / Redo your planned actions
@@ -16,42 +16,55 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 - Change plan texture sets and opacity for each plan type individually
 - Convert your plan from vanilla Rimworld or MorePlanning mod
 
-### Coming soon
-
-- Add more shapes, such as lines, grids and circles
-- Add shape options, e.g. inner grid margin, rotate cross, ...
-- Improved grabbing position while pasting
-
 ### Planned
 
-- Toolbox
-- Text overlay to describe areas
+- Improve grabbing position while pasting
+- Add more shapes, such as ellipse, fixed shapes (e.g. sun lamp, max room size)
+- Add more shape options, e.g. width
+- Add plan groups / layers
+- Add ability to convert plan to real blueprints
+- Add toolbox
+- Add text overlay to describe areas
+- Add mining, pipe, cable designations?
+- Add door variants
 - Display wall designations according to surrounding walls
+- Allow blueprints to be stored within save game or settings (cloud sync)
+
+## Default Shortcuts
+- Q, E: Rotation, Number of Columns
+- Z, X: Flip, Width, Number of Rows
+- V: Change Shape-Variant
+- Ctrl: Color-Picker
+- Alt: Skip / Replace
+- Shift: Shape-Modfier (e.g. square)
+- Backslash ('\\'): Global Plan Visibility Toggle
 
 ## Shapes
 
-- Lines (Rotation, Width)
-  - Line
-  - Cross
+### Variants
+
+- Point
+- Line
+  - Simple Line
+  - Line Grid
 - Rectangle
-  - Open (Rotation, Width)
-  - Grid (Rotation, Number of Segments)
-  - Area (Rotation)
-- Circle
-  - Open Ellipse (Width)
-  - Filled Ellipse
-- Fixed
+  - Filled
+  - Grid (Number of Segments)
+  - Outline
+- *Ellipse
+  - Filled
+  - Outline
+- *Fixed
   - Max Room-Size
   - Sun-Lamp
   - Orbital-Trade-Station
 
-## Shortcuts
-- Q, E: Rotation
-- Z, X: Flip, Width, Number of Segments
-- V: Change Shape-Variant
-- Ctrl: Color-Picker
-- Alt: Skip / Replace
-- Shift: Square
+**To be implemented*
+
+### Modifier
+
+- Simple Line: draws a horizontal or vertical line
+- applies square modfier
 
 ## FAQ
 
@@ -68,6 +81,12 @@ I really want this mod available in my native language!
 
 Why does my performance decrease when I paint lots of planning designations?
 > The problem is, that the designations aren't rendered in a batched call. When I add about 20.000 designations and fully zoom out (using Camera+), my FPS takes a slight hit. You will encounter the same problem, when using the MorePlanning mod or vanilla paint-tool (for floors or buildings/structures) and add that many designations.
+
+
+## Supported Languages
+- English
+- Japanese translation via sub-mod by Proxyer
+- Russian translation by mmavka
 
 ## Installation
 
