@@ -2,7 +2,8 @@
 
 namespace PlanningExtended.Cells
 {
-    public struct AreaDimensions
+    // TODO: does it need to be a record
+    public readonly record struct AreaDimensions
     {
         public int MinX { get; }
 
@@ -15,6 +16,10 @@ namespace PlanningExtended.Cells
         public int CenterX { get; }
 
         public int CenterZ { get; }
+
+        public float RealCenterX { get; }
+        
+        public float RealCenterZ { get; }
 
         public IntVec3 Min => new(MinX, 0, MinZ);
 
@@ -36,6 +41,8 @@ namespace PlanningExtended.Cells
             MaxZ = maxZ;
             CenterX = ((MaxX - MinX) / 2) + MinX;
             CenterZ = ((MaxZ - MinZ) / 2) + MinZ;
+            RealCenterX = ((MaxX - MinX) / 2f) + MinX;
+            RealCenterZ = ((MaxZ - MinZ) / 2f) + MinZ;
         }
 
         public AreaDimensions Merge(AreaDimensions areaDimensions)

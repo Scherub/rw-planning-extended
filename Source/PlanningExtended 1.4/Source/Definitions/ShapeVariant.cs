@@ -10,20 +10,20 @@
 
         FixedMaxRoomSize,
 
-        SimpleLine,
+        Points,
 
-        TwoLines,
+        LineSimple,
 
-        ThreeLines,
+        LineGrid,
 
-        OpenRectangle,
+        RectangleFilled,
 
-        GridRectangle,
+        RectangleGrid,
 
-        FilledRectangle,
+        RectangleOutline,
 
-        OpenEllipse,
+        EllipseFilled,
 
-        FilledEllipse
+        EllipseOutline
     }
 }

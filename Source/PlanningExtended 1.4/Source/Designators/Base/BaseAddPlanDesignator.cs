@@ -74,19 +74,23 @@ namespace PlanningExtended.Designators
             PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
         }
 
-        public override void RenderHighlight(List<IntVec3> dragCells)
-        {
-            CellArea cellArea = new(dragCells);
-            AreaDimensions areaDimensions = cellArea.Dimensions;
+        //public override void RenderHighlight(List<IntVec3> dragCells)
+        //{
+        //    CellArea cellArea = new(dragCells);
+        //    AreaDimensions areaDimensions = cellArea.Dimensions;
 
-            List<IntVec3> cells = new();
+        //    IntVec3 mousePosition = new(UI.MouseMapPosition());
 
-            foreach (IntVec3 cell in dragCells)
-                if (IsShapeCellValid(cell, areaDimensions))
-                    cells.Add(cell);
+        //    UpdateShape(areaDimensions, mousePosition);
 
-            DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
-        }
+        //    List<IntVec3> cells = new();
+
+        //    foreach (IntVec3 cell in dragCells)
+        //        if (IsShapeCellValid(cell, areaDimensions))
+        //            cells.Add(cell);
+
+        //    DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
+        //}
 
         //public override void DrawPanelReadout(ref float curY, float width)
         //{

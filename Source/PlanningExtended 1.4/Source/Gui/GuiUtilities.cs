@@ -41,5 +41,22 @@ namespace PlanningExtended.Gui
 
             return currentFlipDirection;
         }
+
+        public static ShapeOptionDirection DrawButtonImageShapeOption(Rect rect, Texture2D texture2D, string keyLabel, ShapeOptionDirection resultingShapeOptionDirection, ShapeOptionDirection currentShapeOptionDirection)
+        {
+            if (Widgets.ButtonImage(rect, texture2D, true))
+            {
+                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                currentShapeOptionDirection = resultingShapeOptionDirection;
+                Event.current.Use();
+            }
+
+            if (!SteamDeck.IsSteamDeck)
+            {
+                Widgets.Label(rect, keyLabel);
+            }
+
+            return currentShapeOptionDirection;
+        }
     }
 }

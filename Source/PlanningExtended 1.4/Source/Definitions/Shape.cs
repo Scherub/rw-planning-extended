@@ -3,6 +3,8 @@
     public enum Shape
     {
         Fixed,
+
+        Point,
         
         Line,
 
