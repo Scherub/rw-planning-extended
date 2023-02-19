@@ -67,13 +67,13 @@ namespace PlanningExtended.Settings
 
             listingStandard.Begin(inRect);
 
-            if (listingStandard.ButtonTextLabeled("Upgrade old plan designations", "Upgrade"))
+            if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.UpgradeOldPlans.Label".Translate(), "PlanningExtended.Actions.Upgrade".Translate()))
                 PlanUpdateManager.ApplyUpdates();
 
-            if (listingStandard.ButtonTextLabeled("Convert from Vanilla Plans", "Convert"))
+            if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.ConvertVanillaPlans.Label".Translate(), "PlanningExtended.Actions.Convert".Translate()))
                 VanillaPlanConverter.Convert();
 
-            if (listingStandard.ButtonTextLabeled("Convert from MorePlanning", "Convert"))
+            if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.ConvertMorePlanningPlans.Label".Translate(), "PlanningExtended.Actions.Convert".Translate()))
                 MorePlanningConverter.Convert();
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
