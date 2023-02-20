@@ -1,6 +1,6 @@
 # Planning Extended
 
-This mod adds learning XP for stonecutting again, as well as bulk recipes, cutting three chunks at once.
+This mod adds a more advanced planning menu.
 
 ## Features
 
@@ -43,10 +43,10 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 
 ### Variants
 
-- Point
+- Point (Number of Points)
 - Line
   - Simple Line
-  - Line Grid
+  - Line Grid (Number of Cells)
 - Rectangle
   - Filled
   - Grid (Number of Segments)
@@ -64,29 +64,45 @@ This mod adds learning XP for stonecutting again, as well as bulk recipes, cutti
 ### Modifier
 
 - Simple Line: draws a horizontal or vertical line
-- applies square modfier
-
-## FAQ
-
-Can this mod be safely added and removed at any time?
-
-> This mod can be added at any time. By removing this mod you will get a one-time error message and lose all your planning designations. Other than that, you should be fine.
-
-I feel this mod is missing something or could be improved!
-> Feel free to make any suggestions on [GitHub](https://github.com/Scherub/rw-planning-extended/). If you feel confident, you're more than welcome to branch the code and create a pull request for a newly implemented feature.
-
-
-I really want this mod available in my native language!
-> Unfortunately, I'll have to rely on the community here. So if you would like to support the project, feel free to translate this file (link coming soon).
-
-Why does my performance decrease when I paint lots of planning designations?
-> The problem is, that the designations aren't rendered in a batched call. When I add about 20.000 designations and fully zoom out (using Camera+), my FPS takes a slight hit. You will encounter the same problem, when using the MorePlanning mod or vanilla paint-tool (for floors or buildings/structures) and add that many designations.
-
+- other shapes: applies square modfier
 
 ## Supported Languages
 - English
 - Japanese translation via sub-mod by Proxyer
 - Russian translation by mmavka
+
+---
+
+## FAQ
+
+### Can this mod be safely added and removed at any time?
+> This mod can be added at any time. By removing this mod you will get a one-time error message and lose all your planning designations. Other than that, you should be fine.
+
+### Is there a way to automatically remove the plan once a building or mining task has finished?
+> Yes, there is. Go to the 'mod settings' and turn 'persistent plans' off.
+
+### My plans have disappeared!
+> Be sure they're not just hidden. You can toggle the plan visibility either in the architect menu, by clicking on the small icon in the bottom right corner or by using the global hotkey (default: '\\').
+
+### How do I convert my More Planning mod plans?
+> Be sure both mods are enabled. If the MorePlanning mod is not enabled, its plan designations won't be loaded, therefore there is nothing for this mod to convert. Go to the mod settings and press the 'Convert' button. All MorePlanning designations will be converted to WallDesignations with a color that is close to the original MorePlanning colors. So if you have changed the original colors, then the new colors won't match.
+
+### Can I use this mod together with the mod 'Designator Shapes'?
+> Yes, you can. But for it to work, you have to change the shape of this mod to 'rectangle' (right click on 'Plan Wall' button) and its variant to 'filled rectangle' (default key to switch between variants is 'V'). Otherwise, both mods try to modify the shape, which will not result in what you would expect.
+
+### I feel this mod is missing something or could be improved!
+> Feel free to make any suggestions on [GitHub](https://github.com/Scherub/rw-planning-extended/). If you feel confident, you're more than welcome to branch the code and create a pull request for a newly implemented feature.
+
+### I really want this mod available in my native language!
+> Unfortunately, I'll have to rely on the community here. I'm only fluent in German and English, everything else I require the help from one of you. If you're willing to help, then [here](https://steamcommunity.com/linkfilter/?url=https://github.com/Scherub/rw-planning-extended/blob/develop/Common/Languages/English/Keyed/Translations.xml) is the file required to translate.
+
+### Why does this mod work only with RimWorld v1.4?
+> I've tried to compile it for RimWorld v1.3. Unfortunately, there is quite a bit that I would have to add or change, to make it work. So for now, I don't think it would be worth the effort.
+
+### Why does my performance decrease when I paint lots of planning designations?
+> The problem is, that the designations aren't rendered in a batched call. When I add about 20.000 designations and fully zoom out (using Camera+), my FPS takes a slight hit. You will encounter the same problem, when using the MorePlanning mod or vanilla paint-tool (for floors or buildings/structures) and add that many designations.
+
+---
 
 ## Installation
 
