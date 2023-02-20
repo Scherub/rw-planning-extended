@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.7.1
+- Fixed missing shape translations
+
 ## 1.7.0
 - Added point shape (useful helper to measure distances or add doors)
 - Line shape now supports two types
