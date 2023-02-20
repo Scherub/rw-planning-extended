@@ -109,7 +109,7 @@ namespace PlanningExtended.Designators
 
             foreach (Shape shape in ShapesManager.AvailableShapes)
             {
-                list.Add(new FloatMenuOption(shape.ToString(), () => {
+                list.Add(new FloatMenuOption($"PlanningExtended.Shapes.{shape}".Translate(), () => {
                     Find.DesignatorManager.Select(this);
                     SelectShape(shape);
                 }));

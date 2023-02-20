@@ -110,6 +110,11 @@
 
   <PlanningExtended.Settings.ConvertMorePlanningPlans.Label>Convert from MorePlanning</PlanningExtended.Settings.ConvertMorePlanningPlans.Label>
 
+  <PlanningExtended.Shapes.Point>Point</PlanningExtended.Shapes.Point>
+  <PlanningExtended.Shapes.Line>Line</PlanningExtended.Shapes.Line>
+  <PlanningExtended.Shapes.Rectangle>Rectangle</PlanningExtended.Shapes.Rectangle>
+  <PlanningExtended.Shapes.Ellipse>Ellipse</PlanningExtended.Shapes.Ellipse>
+  
   <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Line Simple</PlanningExtended.Shapes.Variants.LineSimple>
   <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
