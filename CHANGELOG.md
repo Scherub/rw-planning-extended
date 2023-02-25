@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.7.2
+- Added missing Russian translations
+
 ## 1.7.1
 - Fixed missing shape translations
 
