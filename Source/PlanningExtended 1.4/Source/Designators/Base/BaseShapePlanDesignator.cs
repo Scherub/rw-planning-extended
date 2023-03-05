@@ -58,10 +58,6 @@ namespace PlanningExtended.Designators
             CellArea cellArea = new(dragCells);
             AreaDimensions areaDimensions = cellArea.Dimensions;
 
-            IntVec3 mousePosition = new(UI.MouseMapPosition());
-
-            SelectedShape?.UpdateShape(areaDimensions, mousePosition, IsModifierKeyPressed);
-
             List<IntVec3> cells = new();
 
             foreach (IntVec3 cell in dragCells)
@@ -79,6 +75,20 @@ namespace PlanningExtended.Designators
         protected void DrawExtraGuiControls(float leftX, float bottomY)
         {
             _shapeExtraControlManager.DrawExtraControls(leftX, bottomY, SelectedShape);
+        }
+
+        protected override void OnDrawMouseAttachment()
+        {
+            base.OnDrawMouseAttachment();
+
+            if (DesignationDragger.Dragging)
+            {
+                IntVec3 mousePosition = new(UI.MouseMapPosition());
+
+                CellArea cellArea = new(DesignationDragger.DragCells);
+
+                SelectedShape?.UpdateShape(cellArea.Dimensions, mousePosition, IsModifierKeyPressed);
+            }
         }
 
         void HandleShortcuts()
