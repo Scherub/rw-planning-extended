@@ -12,7 +12,7 @@ namespace PlanningExtended.Updates
         {
             foreach (IntVec3 cell in map.AllCells)
             {
-                Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
+                Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation and not PlanDesignation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
 
                 if (designation == null)
                     continue;

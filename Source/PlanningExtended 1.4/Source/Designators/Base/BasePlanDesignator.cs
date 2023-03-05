@@ -17,6 +17,10 @@ namespace PlanningExtended.Designators
 
         protected PlanningSettings Settings => PlanningMod.Settings;
 
+        protected DesignatorManager DesignatorManager => Find.DesignatorManager;
+
+        protected DesignationDragger DesignationDragger => DesignatorManager.Dragger;
+
         protected virtual bool DrawMapBounds => true;
 
         protected virtual bool DrawMouseOverBrackets => true;
@@ -77,6 +81,8 @@ namespace PlanningExtended.Designators
         public override void DrawMouseAttachments()
         {
             CheckPressedKeys();
+
+            OnDrawMouseAttachment();
 
             if (useMouseIcon)
                 GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, null, null);
@@ -144,6 +150,11 @@ namespace PlanningExtended.Designators
         }
 
         protected virtual void OnSkipExistingDesignationsKeyChanged(bool isPressed)
+        {
+
+        }
+
+        protected virtual void OnDrawMouseAttachment()
         {
 
         }

@@ -32,10 +32,7 @@ namespace PlanningExtended
             {
                 if (_allDesignationDefs == null)
                 {
-                    _allDesignationDefs = new(DesignationDefs.Count * 2 + 1)
-                    {
-                        DesignationDefOf.Plan,
-                    };
+                    _allDesignationDefs = new(DesignationDefs.Count * 2);
 
                     foreach (DesignationDefContainer designationDefContainer in DesignationDefs)
                         _allDesignationDefs.AddRange(designationDefContainer.DesignationDefs);
