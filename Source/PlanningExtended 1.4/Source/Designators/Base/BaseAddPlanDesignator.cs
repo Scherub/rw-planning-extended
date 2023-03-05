@@ -38,7 +38,7 @@ namespace PlanningExtended.Designators
 
             foreach (IntVec3 cell in cells)
             {
-                if (IsShapeCellValid(cell, areaDimensions) && CanDesignateCell(cell).Accepted)
+                if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
                 {
                     DesignateSingleCell(cell);
 
@@ -73,24 +73,6 @@ namespace PlanningExtended.Designators
 
             PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
         }
-
-        //public override void RenderHighlight(List<IntVec3> dragCells)
-        //{
-        //    CellArea cellArea = new(dragCells);
-        //    AreaDimensions areaDimensions = cellArea.Dimensions;
-
-        //    IntVec3 mousePosition = new(UI.MouseMapPosition());
-
-        //    UpdateShape(areaDimensions, mousePosition);
-
-        //    List<IntVec3> cells = new();
-
-        //    foreach (IntVec3 cell in dragCells)
-        //        if (IsShapeCellValid(cell, areaDimensions))
-        //            cells.Add(cell);
-
-        //    DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
-        //}
 
         //public override void DrawPanelReadout(ref float curY, float width)
         //{

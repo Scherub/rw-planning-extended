@@ -53,6 +53,8 @@ namespace PlanningExtended.Designators
                 return;
             }
 
+            OnDrawMouseAttachment();
+
             if (useMouseIcon)
                 GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color), OnPostDrawMouseAttachment);
         }
