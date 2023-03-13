@@ -4,16 +4,16 @@
   <PlanningExtended.Actions.Convert>Umwandlen</PlanningExtended.Actions.Convert>
   <PlanningExtended.Actions.Upgrade>Upgrade</PlanningExtended.Actions.Upgrade>
 
-  <PlanningExtended.Designator.PlanDoors.Label>Plane Türen</PlanningExtended.Designator.PlanDoors.Label>
+  <PlanningExtended.Designator.PlanDoors.Label>Türen planen</PlanningExtended.Designator.PlanDoors.Label>
   <PlanningExtended.Designator.PlanDoors.Desc>Platziere Planmarkierungen für Türen.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanDoors.Desc>
 
-  <PlanningExtended.Designator.PlanFloors.Label>Plane Böden</PlanningExtended.Designator.PlanFloors.Label>
+  <PlanningExtended.Designator.PlanFloors.Label>Böden planen</PlanningExtended.Designator.PlanFloors.Label>
   <PlanningExtended.Designator.PlanFloors.Desc>Platziere Planmarkierungen für Böden.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanFloors.Desc>
 
-  <PlanningExtended.Designator.PlanObjects.Label>Plane Objekte</PlanningExtended.Designator.PlanObjects.Label>
+  <PlanningExtended.Designator.PlanObjects.Label>Objekte planen</PlanningExtended.Designator.PlanObjects.Label>
   <PlanningExtended.Designator.PlanObjects.Desc>Platziere Planmarkierungen für Objekte.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanObjects.Desc>
 
-  <PlanningExtended.Designator.PlanWalls.Label>Plane Wände</PlanningExtended.Designator.PlanWalls.Label>
+  <PlanningExtended.Designator.PlanWalls.Label>Wände planen</PlanningExtended.Designator.PlanWalls.Label>
   <PlanningExtended.Designator.PlanWalls.Desc>Platziere Planmarkierungen für Wände.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanWalls.Desc>
 
   <PlanningExtended.Designator.PaintPlan.Label>Plan Übermahlen</PlanningExtended.Designator.PaintPlan.Label>
@@ -83,8 +83,8 @@
 
   <PlanningExtended.Settings.MaxUndoRedoOperations.Label>Anzahl der Rückgängig-Wiederherstellen Schritte</PlanningExtended.Settings.MaxUndoRedoOperations.Label>
 
-  <PlanningExtended.Settings.DisplayCutDesignator.Label>Plan Ausschneiden Markierung anzeigen</PlanningExtended.Settings.DisplayCutDesignator.Label>
-  <PlanningExtended.Settings.DisplayCutDesignator.Desc>Wenn aktiv wird der Ausschneidenknopf angezeigt. Wenn nicht, dann nicht.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
+  <PlanningExtended.Settings.DisplayCutDesignator.Label>Plan Ausschneiden anzeigen</PlanningExtended.Settings.DisplayCutDesignator.Label>
+  <PlanningExtended.Settings.DisplayCutDesignator.Desc>Wenn aktiv wird der Button für das Ausschneiden von Plänen angezeigt. Wenn nicht, dann nicht.</PlanningExtended.Settings.DisplayCutDesignator.Desc>
 
   <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>Plansichtbarkeit aktivieren</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
   <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>Wenn aktiv, wird der Button für die Plansichtbarkeit angezeigt. Wenn inaktiv nicht.</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
