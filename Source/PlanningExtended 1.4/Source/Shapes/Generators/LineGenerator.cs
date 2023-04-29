@@ -8,7 +8,7 @@ namespace PlanningExtended.Shapes.Generators
     {
         protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            IntVec3 endPosition = new(areaDimensions.Width == 0 ? areaDimensions.MinX : mousePosition.x, 0, areaDimensions.Height == 0 ? areaDimensions.MinZ : mousePosition.z);
+            IntVec3 endPosition = new(areaDimensions.Width == 1 ? areaDimensions.MinX : mousePosition.x, 0, areaDimensions.Height == 1 ? areaDimensions.MinZ : mousePosition.z);
             IntVec3 startPosition = areaDimensions.GetStartPosition(endPosition);
 
             AddValidCells(LinePlotter.PlotLine(startPosition, endPosition));
