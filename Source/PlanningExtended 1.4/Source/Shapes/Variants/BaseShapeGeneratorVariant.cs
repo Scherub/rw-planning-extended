@@ -24,9 +24,9 @@ namespace PlanningExtended.Shapes.Variants
             return _validCells.Contains(cell);
         }
 
-        protected override void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        protected override void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            _validCells = ShapeGenerator.Update(areaDimensions, mousePosition);
+            _validCells = ShapeGenerator.Update(areaDimensions, mousePosition, applyShapeDimensionsModifier);
         }
     }
 }

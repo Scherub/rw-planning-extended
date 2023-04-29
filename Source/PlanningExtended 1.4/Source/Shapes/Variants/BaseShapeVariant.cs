@@ -23,12 +23,12 @@ namespace PlanningExtended.Shapes.Variants
             _shapeModifier = shapeModifier;
         }
 
-        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyModifier)
+        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            if (applyModifier)
+            if (applyShapeDimensionsModifier)
                 areaDimensions = _shapeModifier.Update(areaDimensions, mousePosition);
 
-            OnUpdateShape(areaDimensions, mousePosition);
+            OnUpdateShape(areaDimensions, mousePosition, applyShapeDimensionsModifier);
         }
 
         public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
@@ -50,7 +50,7 @@ namespace PlanningExtended.Shapes.Variants
                 ChangeShapeOption(SecondShapeOption, shapeOptionDirection);
         }
 
-        protected virtual void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        protected virtual void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
 
         }

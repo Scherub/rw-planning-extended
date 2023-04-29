@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
 using Verse;
 
@@ -13,7 +12,7 @@ namespace PlanningExtended.Shapes.Generators
 
         readonly HashSet<IntVec3> _validCells = new();
 
-        public HashSet<IntVec3> Update(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        public HashSet<IntVec3> Update(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
             // TODO: implement equals
             if (!_requiresUpdate && areaDimensions == _areaDimensions)
@@ -27,7 +26,7 @@ namespace PlanningExtended.Shapes.Generators
 
             _validCells.Clear();
 
-            OnUpdate(areaDimensions, mousePosition);
+            OnUpdate(areaDimensions, mousePosition, applyShapeDimensionsModifier);
 
             _requiresUpdate = false;
 
@@ -64,7 +63,7 @@ namespace PlanningExtended.Shapes.Generators
 
         }
 
-        protected abstract void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition);
+        protected abstract void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier);
 
         protected void RequiresUpdate()
         {
@@ -74,6 +73,11 @@ namespace PlanningExtended.Shapes.Generators
         protected void AddValidCell(int x, int z)
         {
             _validCells.Add(new IntVec3(x, 0, z));
+        }
+
+        protected void AddValidCells(IEnumerable<IntVec3> cells)
+        {
+            _validCells.AddRange(cells);
         }
     }
 }
