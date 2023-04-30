@@ -3,7 +3,7 @@ using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Points
 {
-    internal class PointShapeVariant : BaseShapeSegmentsVariant<RectangleGenerator>
+    internal class PointShapeVariant : BaseShapeSegmentsVariant<PointGridGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.Points;
 
@@ -13,7 +13,7 @@ namespace PlanningExtended.Shapes.Variants.Points
 
 
         public PointShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(false, false, false, true), false)
+            : base(new SquareShapeModifier(), new PointGridGenerator(), false)
         {
         }
     }
