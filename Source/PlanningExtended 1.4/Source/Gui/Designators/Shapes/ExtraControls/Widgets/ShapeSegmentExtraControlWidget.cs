@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using PlanningExtended.Gui;
-using PlanningExtended.Gui.Grid;
+using PlanningExtended.Gui.Controls.Grid;
 using PlanningExtended.Shapes;
 using PlanningExtended.Shapes.Variants;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators.Gui.Shapes.ExtraControls
+namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 {
     internal class ShapeSegmentExtraControlWidget : BaseShapeExtraControlWidget
     {

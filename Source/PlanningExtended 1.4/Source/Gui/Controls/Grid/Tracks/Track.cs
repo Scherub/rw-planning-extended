@@ -1,4 +1,4 @@
-﻿namespace PlanningExtended.Gui.Grid.Tracks
+﻿namespace PlanningExtended.Gui.Controls.Grid.Tracks
 {
     internal abstract class Track
     {

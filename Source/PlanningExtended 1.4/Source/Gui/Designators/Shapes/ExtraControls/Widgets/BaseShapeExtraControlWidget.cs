@@ -5,7 +5,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace PlanningExtended.Designators.Gui.Shapes.ExtraControls
+namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 {
     internal abstract class BaseShapeExtraControlWidget
     {

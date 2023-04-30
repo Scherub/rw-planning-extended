@@ -5,7 +5,7 @@ using PlanningExtended.Shapes;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators.Gui.Shapes.ExtraControls
+namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 {
     internal class ShapeExtraControlManager
     {

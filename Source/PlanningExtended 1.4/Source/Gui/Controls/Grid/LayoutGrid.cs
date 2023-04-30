@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PlanningExtended.Gui.Grid.Tracks;
+using PlanningExtended.Gui.Controls.Grid.Tracks;
 using UnityEngine;
 
-namespace PlanningExtended.Gui.Grid
+namespace PlanningExtended.Gui.Controls.Grid
 {
     internal class LayoutGrid
     {
