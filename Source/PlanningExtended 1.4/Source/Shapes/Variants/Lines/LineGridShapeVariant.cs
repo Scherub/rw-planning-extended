@@ -3,7 +3,7 @@ using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Lines
 {
-    internal class LineGridShapeVariant : BaseShapeSegmentsVariant<RectangleGenerator>
+    internal class LineGridShapeVariant : BaseShapeSegmentsVariant<OldRectangleGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.LineGrid;
 
@@ -12,7 +12,7 @@ namespace PlanningExtended.Shapes.Variants.Lines
         public override ShapeOptions SecondShapeOption => ShapeOptions.NumberOfSegmentsX;
 
         public LineGridShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(false, false, true, false), true)
+            : base(new SquareShapeModifier(), new OldRectangleGenerator(false, false, true, false), true)
         {
         }
     }

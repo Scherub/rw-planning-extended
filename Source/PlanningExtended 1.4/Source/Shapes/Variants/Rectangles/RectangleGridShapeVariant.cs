@@ -3,7 +3,7 @@ using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Rectangles
 {
-    internal class RectangleGridShapeVariant : BaseShapeSegmentsVariant<RectangleGenerator>
+    internal class RectangleGridShapeVariant : BaseShapeSegmentsVariant<OldRectangleGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.RectangleGrid;
 
@@ -12,7 +12,7 @@ namespace PlanningExtended.Shapes.Variants.Rectangles
         public override ShapeOptions SecondShapeOption => ShapeOptions.NumberOfSegmentsX;
 
         public RectangleGridShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(true, false, true, false), true)
+            : base(new SquareShapeModifier(), new OldRectangleGenerator(true, false, true, false), true)
         {
         }
     }

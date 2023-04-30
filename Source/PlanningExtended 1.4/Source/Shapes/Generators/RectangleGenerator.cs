@@ -1,70 +1,35 @@
-﻿using PlanningExtended.Cells;
+﻿using System.Collections.Generic;
+using PlanningExtended.Cells;
 using Verse;
 
 namespace PlanningExtended.Shapes.Generators
 {
-    internal class RectangleGenerator : BaseShapeSegmentGenerator
+    internal class RectangleGenerator : BasePolygonGenerator
     {
-        bool DrawOutline { get; }
-
-        bool DrawInnerArea { get; }
-
-        bool DrawGrid { get; }
-
-        bool DrawIntersectionPoints { get; }
-
-        public RectangleGenerator(bool drawOutline, bool drawInnerArea, bool drawGrid, bool drawIntersectionPoints)
+        readonly List<LineIndex> _indices = new()
         {
-            DrawOutline = drawOutline;
-            DrawInnerArea = drawInnerArea;
-            DrawGrid = drawGrid;
-            DrawIntersectionPoints = drawIntersectionPoints;
+            new LineIndex(0, 1),
+            new LineIndex(1, 2),
+            new LineIndex(2, 3),
+            new LineIndex(3, 0)
+        };
+
+        protected override List<LineIndex> LineIndices => _indices;
+
+        public RectangleGenerator(bool fillArea)
+            : base(fillArea)
+        {
         }
 
-        protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            for (int z = areaDimensions.MinZ; z <= areaDimensions.MaxZ; z++)
-                for (int x = areaDimensions.MinX; x <= areaDimensions.MaxX; x++)
-                    if (IsCellValid(areaDimensions, x, z))
-                        AddValidCell(x, z);
-        }
-
-        bool IsCellValid(AreaDimensions areaDimensions, int x, int z)
-        {
-            if (DrawOutline)
+            return new List<IntVec3>
             {
-                if (x == areaDimensions.MinX || x == areaDimensions.MaxX)
-                    return true;
-
-                if (z == areaDimensions.MinZ || z == areaDimensions.MaxZ)
-                    return true;
-            }
-
-            if (DrawInnerArea)
-            {
-                if (x > areaDimensions.MinX || x < areaDimensions.MaxX)
-                    return true;
-
-                if (z > areaDimensions.MinZ || z < areaDimensions.MaxZ)
-                    return true;
-            }
-
-            if (DrawGrid)
-            {
-                if (SegmentsX.Contains(x))
-                    return true;
-
-                if (SegmentsZ.Contains(z))
-                    return true;
-            }
-
-            if (DrawIntersectionPoints)
-            {
-                if (SegmentsX.Contains(x) && SegmentsZ.Contains(z))
-                    return true;
-            }
-
-            return false;
+                new IntVec3(areaDimensions.MinX, 0, areaDimensions.MinZ),
+                new IntVec3(areaDimensions.MinX, 0, areaDimensions.MaxZ),
+                new IntVec3(areaDimensions.MaxX, 0, areaDimensions.MaxZ),
+                new IntVec3(areaDimensions.MaxX, 0, areaDimensions.MinZ)
+            };
         }
     }
 }
