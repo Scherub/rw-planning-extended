@@ -12,13 +12,14 @@ namespace PlanningExtended.Shapes.Generators
         protected abstract List<LineIndex> LineIndices { get; }
 
         protected BasePolygonGenerator(bool fillArea)
+            : base()
         {
             FillArea = fillArea;
         }
 
-        protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+        protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
-            List<IntVec3> vertices = GetVertices(areaDimensions, mousePosition, applyShapeDimensionsModifier);
+            List<IntVec3> vertices = GetVertices(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
 
             for (int i = 0; i < LineIndices.Count; i++)
             {
@@ -28,7 +29,7 @@ namespace PlanningExtended.Shapes.Generators
             }
         }
 
-        protected abstract List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier);
+        protected abstract List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier);
 
         protected struct LineIndex
         {

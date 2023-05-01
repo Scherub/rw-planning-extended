@@ -9,6 +9,10 @@ namespace PlanningExtended
 
         DisplayVariant = 0x01,
 
-        NumberOfSegments = 0x02,
+        Rotation = 0x02,
+
+        NumberOfSegments = 0x04,
+
+        Thickness = 0x08,
     }
 }

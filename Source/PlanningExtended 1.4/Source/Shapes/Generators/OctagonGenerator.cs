@@ -7,7 +7,7 @@ namespace PlanningExtended.Shapes.Generators
 {
     internal class OctagonGenerator : BasePolygonGenerator
     {
-        List<LineIndex> _lineIndices = new() {
+        readonly List<LineIndex> _lineIndices = new() {
             new LineIndex(0, 1),
             new LineIndex(1, 2),
             new LineIndex(2, 3),
@@ -25,15 +25,15 @@ namespace PlanningExtended.Shapes.Generators
         {
         }
 
-        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             float horizontalSideLength = OctagonUtilities.CalculateSideLength(areaDimensions.Width);
             float verticalSideLength = OctagonUtilities.CalculateSideLength(areaDimensions.Height);
 
-            int partialWidth = (int)Mathf.Round((areaDimensions.Width - horizontalSideLength) / 2f);
-            int partialHeight = (int)Mathf.Round((areaDimensions.Height - verticalSideLength) / 2f);
+            int partialWidth = Mathf.RoundToInt((areaDimensions.Width - horizontalSideLength) / 2f);
+            int partialHeight = Mathf.RoundToInt((areaDimensions.Height - verticalSideLength) / 2f);
 
-            Log.Warning($"AD: {areaDimensions}, W: {areaDimensions.Width}, H: {areaDimensions.Height}, HSL: {horizontalSideLength}, VSL: {verticalSideLength}, PW: {partialWidth}, PH: {partialHeight}, V1: {new IntVec3(areaDimensions.MinX + partialWidth, 0, areaDimensions.MaxZ)}, V2: {new IntVec3(areaDimensions.MaxX - partialWidth, 0, areaDimensions.MaxZ)}");
+            //Log.Warning($"AD: {areaDimensions}, W: {areaDimensions.Width}, H: {areaDimensions.Height}, HSL: {horizontalSideLength}, VSL: {verticalSideLength}, PW: {partialWidth}, PH: {partialHeight}, V1: {new IntVec3(areaDimensions.MinX + partialWidth, 0, areaDimensions.MaxZ)}, V2: {new IntVec3(areaDimensions.MaxX - partialWidth, 0, areaDimensions.MaxZ)}");
 
             return new List<IntVec3>
             {

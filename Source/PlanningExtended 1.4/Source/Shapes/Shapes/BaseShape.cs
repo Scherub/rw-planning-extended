@@ -14,21 +14,6 @@ namespace PlanningExtended.Shapes
 
         public BaseShapeVariant SelectedShapeVariant { get; private set; }
 
-        public virtual ShapeOptions FirstShapeOption => SelectedShapeVariant.FirstShapeOption;
-
-        public virtual ShapeOptions SecondShapeOption => SelectedShapeVariant.SecondShapeOption;
-
-        public int NumberOfAvailableShapeOtions => SelectedShapeVariant.NumberOfAvailableShapeOtions;
-
-        public IEnumerable<ShapeOptions> ShapeOptions
-        {
-            get
-            {
-                yield return FirstShapeOption;
-                yield return SecondShapeOption;
-            }
-        }
-
         public ShapeDisplayOptions ShapeDisplayOptions => SelectedShapeVariant.ShapeDisplayOptions;
 
         protected BaseShape(ShapeVariant defaultShapeVariant, params BaseShapeVariant[] shapeVariants)
@@ -38,9 +23,9 @@ namespace PlanningExtended.Shapes
             SelectShapeVariant(defaultShapeVariant);
         }
 
-        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 intVec3, bool applyModifier)
+        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            SelectedShapeVariant.UpdateShape(areaDimensions, intVec3, applyModifier);
+            SelectedShapeVariant.UpdateShape(this, areaDimensions, mousePosition, applyShapeDimensionsModifier);
         }
 
         public bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions)

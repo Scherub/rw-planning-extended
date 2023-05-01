@@ -3,9 +3,9 @@ using Verse;
 
 namespace PlanningExtended.Shapes.Modifiers
 {
-    internal class LineShapeModifier : BaseShapeModifier
+    internal class LineSimpleShapeModifier : BaseShapeDimensionsModifier
     {
-        public override AreaDimensions Update(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        public override AreaDimensions Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation)
         {
             IntVec3 endPosition = new(mousePosition.x, 0, mousePosition.z);
             IntVec3 startPosition = areaDimensions.GetStartPosition(endPosition);

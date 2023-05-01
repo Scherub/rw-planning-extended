@@ -8,9 +8,8 @@ namespace PlanningExtended.Shapes.Variants.Ellipses
         public override ShapeVariant ShapeVariant => ShapeVariant.EllipseFilled;
 
         public EllipseFilledShapeVariant()
-            : base(new SquareShapeModifier(), new EllipseGenerator(true, true))
+            : base(new SquareShapeModifier(), new EllipseGenerator(true))
         {
-
         }
     }
 }

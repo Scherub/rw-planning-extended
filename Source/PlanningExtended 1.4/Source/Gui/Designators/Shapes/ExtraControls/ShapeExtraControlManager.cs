@@ -9,7 +9,7 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 {
     internal class ShapeExtraControlManager
     {
-        readonly List<BaseShapeExtraControlWidget> _shapeExtraContols = new() { new DisplayShapeVariantExtraControlWidget(), new ShapeSegmentExtraControlWidget() };
+        readonly List<BaseShapeExtraControlWidget> _shapeExtraContols = new() { new DisplayShapeVariantExtraControlWidget(), new ShapeRotationExtraControlWidget(), new ShapeSegmentExtraControlWidget() };
 
         public void DrawExtraControls(float leftX, float bottomY, BaseShape shape)
         {

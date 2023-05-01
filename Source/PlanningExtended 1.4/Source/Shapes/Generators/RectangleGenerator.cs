@@ -21,7 +21,7 @@ namespace PlanningExtended.Shapes.Generators
         {
         }
 
-        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             return new List<IntVec3>
             {

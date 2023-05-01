@@ -1,4 +1,5 @@
-﻿using PlanningExtended.Shapes.Generators;
+﻿using PlanningExtended.Shapes.Features;
+using PlanningExtended.Shapes.Generators;
 using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Triangles
@@ -8,7 +9,7 @@ namespace PlanningExtended.Shapes.Variants.Triangles
         public override ShapeVariant ShapeVariant => ShapeVariant.TriangleOutline;
 
         public TriangleOutlineShapeVariant()
-            : base(new EquilateralTriangleShapeModifier(), new TriangleGenerator(false))
+            : base(new EquilateralTriangleShapeModifier(), new TriangleGenerator(false), new RotationShapeFeature(Direction.North, Direction.MainAxes))
         {
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Gui.Controls.Grid;
 using PlanningExtended.Shapes;
+using PlanningExtended.Shapes.Features;
 using PlanningExtended.Shapes.Variants;
 using RimWorld;
 using UnityEngine;
@@ -15,15 +16,15 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Flexible(1f), TrackDefinition.Flexible(1f) },
             Thickness.Symmetric(10f, 5f), 0f, 5f);
 
-        public override ShapeOptions ShapeOption => ShapeOptions.NumberOfSegmentsX;
-
         public override ShapeDisplayOptions ShapeDisplayOption => ShapeDisplayOptions.NumberOfSegments;
+
+        public override ShapeOptions ShapeOption => ShapeOptions.NumberOfSegmentsX;
 
         public override float RequiredHeight => 100f;
 
         protected override void OnDraw(Rect widgetRect, BaseShape shape)
         {
-            if (shape.SelectedShapeVariant is not IShapeSegmentVariant shapeSegment)
+            if (!shape.SelectedShapeVariant.ShapeFeatureManager.HasSegmentFeature)
             {
                 Text.Anchor = TextAnchor.MiddleCenter;
 
@@ -31,6 +32,8 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 
                 return;
             }
+
+            SegmentShapeFeature segmentShapeFeature = shape.SelectedShapeVariant.ShapeFeatureManager.SegmentShapeFeature;
 
             _layoutGrid.Compute(widgetRect);
 
@@ -43,8 +46,8 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             Widgets.Label(_layoutGrid.GetRect(2, 1), "PlanningExtended.Shapes.Columns".Translate());
             Widgets.Label(_layoutGrid.GetRect(2, 2), "PlanningExtended.Shapes.Rows".Translate());
 
-            Widgets.Label(_layoutGrid.GetRect(1, 1), shapeSegment.NumberOfColumns.ToString());
-            Widgets.Label(_layoutGrid.GetRect(1, 2), shapeSegment.NumberOfRows.ToString());
+            Widgets.Label(_layoutGrid.GetRect(1, 1), segmentShapeFeature.NumberOfColumns.ToString());
+            Widgets.Label(_layoutGrid.GetRect(1, 2), segmentShapeFeature.NumberOfRows.ToString());
 
             Widgets.Label(_layoutGrid.GetRect(4, 1), KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel);
             Widgets.Label(_layoutGrid.GetRect(6, 1), KeyBindingDefOf.Designator_RotateRight.MainKeyLabel);

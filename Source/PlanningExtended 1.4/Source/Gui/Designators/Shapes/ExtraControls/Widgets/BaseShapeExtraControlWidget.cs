@@ -9,9 +9,9 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 {
     internal abstract class BaseShapeExtraControlWidget
     {
-        public abstract ShapeOptions ShapeOption { get; }
-
         public abstract ShapeDisplayOptions ShapeDisplayOption { get; }
+
+        public abstract ShapeOptions ShapeOption { get; }
 
         public abstract float RequiredHeight { get; }
 
@@ -37,7 +37,7 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             {
                 SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
 
-                shapeVariant?.ChangeShapeOption(ShapeOption, shapeOptionDirection);
+                shapeVariant?.ShapeFeatureManager.ChangeShapeOption(ShapeOption, shapeOptionDirection);
             }
         }
     }

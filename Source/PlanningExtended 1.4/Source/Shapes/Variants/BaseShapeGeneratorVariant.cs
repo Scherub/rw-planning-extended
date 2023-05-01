@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
+using PlanningExtended.Shapes.Features;
 using PlanningExtended.Shapes.Generators;
 using PlanningExtended.Shapes.Modifiers;
 using Verse;
@@ -13,8 +14,8 @@ namespace PlanningExtended.Shapes.Variants
 
         protected TShapeGenerator ShapeGenerator { get; }
 
-        protected BaseShapeGeneratorVariant(BaseShapeModifier shapeModifier, TShapeGenerator shapeGenerator)
-            : base(shapeModifier)
+        protected BaseShapeGeneratorVariant(BaseShapeDimensionsModifier shapeModifier, TShapeGenerator shapeGenerator, params IShapeFeature[] shapeFeatures)
+            : base(shapeModifier, shapeFeatures)
         {
             ShapeGenerator = shapeGenerator;
         }
@@ -24,9 +25,9 @@ namespace PlanningExtended.Shapes.Variants
             return _validCells.Contains(cell);
         }
 
-        protected override void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+        protected override void OnUpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
-            _validCells = ShapeGenerator.Update(areaDimensions, mousePosition, applyShapeDimensionsModifier);
+            _validCells = ShapeGenerator.Update(shape, areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
         }
     }
 }

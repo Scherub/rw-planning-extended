@@ -6,28 +6,37 @@ namespace PlanningExtended.Shapes.Modifiers
 {
     internal class RegularHexagonShapeModifier : BasePolygonShapeModifier
     {
-        protected override IntVec3 DetermineNewSize(AreaDimensions areaDimensions)
+        protected override IntVec3 DetermineNewSize(AreaDimensions areaDimensions, Direction rotation)
         {
-            if (areaDimensions.Width < areaDimensions.Height)
+            return rotation switch
             {
-                return new IntVec3(areaDimensions.Width - 1, 0, GetHeightOfHexagon(areaDimensions.Width) - 1);
+                Direction.Vertical => DetermineNewSize(areaDimensions.Height, areaDimensions.Width).SwitchAxis(),
+                _ => DetermineNewSize(areaDimensions.Width, areaDimensions.Height)
+            };
+        }
+
+        static IntVec3 DetermineNewSize(int width, int height)
+        {
+            if (width < height)
+            {
+                return new IntVec3(width - 1, 0, GetHeightOfHexagon(width) - 1);
             }
             else
             {
-                int width = GetWidthOfHexagon(areaDimensions.Height);
+                int newWidth = GetWidthOfHexagon(height);
 
-                return width > areaDimensions.Width ? new IntVec3(areaDimensions.Width - 1, 0, GetHeightOfHexagon(areaDimensions.Width) - 1) : new IntVec3(width - 1, 0, areaDimensions.Height - 1);
+                return newWidth > width ? new IntVec3(width - 1, 0, GetHeightOfHexagon(width) - 1) : new IntVec3(newWidth - 1, 0, height - 1);
             }
         }
 
         static int GetHeightOfHexagon(float width)
         {
-            return (int)Mathf.Round(TriangleUtilities.HeightOfEquilateralTriangle(width / 2f) * 2f);
+            return Mathf.RoundToInt(TriangleUtilities.HeightOfEquilateralTriangle(width / 2f) * 2f);
         }
 
         static int GetWidthOfHexagon(int height)
         {
-            return (int)Mathf.Round(TriangleUtilities.SideLengthOfEquilateralTriangle(height / 2f) * 2f);
+            return Mathf.RoundToInt(TriangleUtilities.SideLengthOfEquilateralTriangle(height / 2f) * 2f);
         }
     }
 }

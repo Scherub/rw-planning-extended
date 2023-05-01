@@ -34,9 +34,9 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             //HandleChangeShapeVariant(shape);
         }
 
-        void HandleChangeShapeVariant(BaseShape shape)
-        {
-            shape.ChangeToNextShapeVariant();
-        }
+        //void HandleChangeShapeVariant(BaseShape shape)
+        //{
+        //    shape.ChangeToNextShapeVariant();
+        //}
     }
 }

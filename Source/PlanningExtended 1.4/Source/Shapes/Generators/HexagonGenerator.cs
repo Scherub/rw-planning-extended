@@ -16,7 +16,7 @@ namespace PlanningExtended.Shapes.Generators
             new LineIndex(1, 4),
             new LineIndex(2, 5)
         };
-        
+
         protected override List<LineIndex> LineIndices => _lineIndices;
 
         public HexagonGenerator(bool fillArea)
@@ -24,9 +24,18 @@ namespace PlanningExtended.Shapes.Generators
         {
         }
 
-        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+        protected override List<IntVec3> GetVertices(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
-            int quarterWidth =  (int)Mathf.Round(areaDimensions.Width / 4f);
+            return rotation switch
+            {
+                Direction.East or Direction.Vertical => GetVerticesDirectionVertical(areaDimensions),
+                _ => GetVerticesDirectionHorizontal(areaDimensions),
+            };
+        }
+
+        List<IntVec3> GetVerticesDirectionHorizontal(AreaDimensions areaDimensions)
+        {
+            int quarterWidth = Mathf.RoundToInt(areaDimensions.Width / 4f);
 
             return new List<IntVec3>
             {
@@ -36,6 +45,21 @@ namespace PlanningExtended.Shapes.Generators
                 new(areaDimensions.MaxX, 0, areaDimensions.CenterZ),
                 new(areaDimensions.MaxX - quarterWidth, 0, areaDimensions.MinZ),
                 new(areaDimensions.MaxX - quarterWidth, 0, areaDimensions.MaxZ)
+            };
+        }
+
+        List<IntVec3> GetVerticesDirectionVertical(AreaDimensions areaDimensions)
+        {
+            int quarterHeight = Mathf.RoundToInt(areaDimensions.Height / 4f);
+
+            return new List<IntVec3>
+            {
+                new(areaDimensions.CenterX, 0, areaDimensions.MinZ),
+                new(areaDimensions.MinX, 0, areaDimensions.MinZ + quarterHeight),
+                new(areaDimensions.MaxX, 0, areaDimensions.MinZ + quarterHeight),
+                new(areaDimensions.CenterX, 0, areaDimensions.MaxZ),
+                new(areaDimensions.MinX, 0, areaDimensions.MaxZ - quarterHeight),
+                new(areaDimensions.MaxX, 0, areaDimensions.MaxZ - quarterHeight)
             };
         }
     }

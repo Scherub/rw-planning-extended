@@ -1,4 +1,5 @@
-﻿using PlanningExtended.Shapes.Generators;
+﻿using PlanningExtended.Shapes.Features;
+using PlanningExtended.Shapes.Generators;
 using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Hexagons
@@ -8,7 +9,7 @@ namespace PlanningExtended.Shapes.Variants.Hexagons
         public override ShapeVariant ShapeVariant => ShapeVariant.HexagonOutline;
 
         public HexagonOutlineShapeVariant()
-            : base(new RegularHexagonShapeModifier(), new HexagonGenerator(false))
+            : base(new RegularHexagonShapeModifier(), new HexagonGenerator(false), new RotationShapeFeature(Direction.Horizontal, Direction.MainAxes))
         {
         }
     }

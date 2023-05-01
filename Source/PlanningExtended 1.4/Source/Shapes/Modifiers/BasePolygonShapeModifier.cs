@@ -4,16 +4,16 @@ using Verse;
 
 namespace PlanningExtended.Shapes.Modifiers
 {
-    internal abstract class BasePolygonShapeModifier : BaseShapeModifier
+    internal abstract class BasePolygonShapeModifier : BaseShapeDimensionsModifier
     {
-        public override AreaDimensions Update(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        public override AreaDimensions Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation)
         {
             int minX = areaDimensions.MinX;
             int minZ = areaDimensions.MinZ;
             int maxX = areaDimensions.MaxX;
             int maxZ = areaDimensions.MaxZ;
 
-            IntVec3 newSize = DetermineNewSize(areaDimensions);
+            IntVec3 newSize = DetermineNewSize(areaDimensions, rotation);
 
             Direction targetDirection = areaDimensions.GetDirection(mousePosition);
 
@@ -27,6 +27,6 @@ namespace PlanningExtended.Shapes.Modifiers
             };
         }
 
-        protected abstract IntVec3 DetermineNewSize(AreaDimensions areaDimensions);
+        protected abstract IntVec3 DetermineNewSize(AreaDimensions areaDimensions, Direction rotation);
     }
 }
