@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.8.0
+- Added new shapes: triangles, hexagons, octagons
+- Added new shape dimensions modifiers
+  - equilateral triangle
+  - regular hexagon
+- Added shape rotation for
+  - triangles: north, east, south, west
+  - hexagons: horizontal, vertical
+- Added German language support
+
 ## 1.7.3
 - Fixed plans not being drawn when outside visible area
 - Fixed disappearing vanilla plans while loading a map
