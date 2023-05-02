@@ -3,6 +3,7 @@ using UnityEngine;
 using Verse.Steam;
 using Verse;
 using Verse.Sound;
+using System;
 
 namespace PlanningExtended.Gui
 {
@@ -57,6 +58,23 @@ namespace PlanningExtended.Gui
             }
 
             return currentShapeOptionDirection;
+        }
+
+        public static TResult DrawImageButton<TResult>(Rect rect, Texture2D texture2D, string keyLabel, TResult currentResult, Func<TResult> func)
+        {
+            if (Widgets.ButtonImage(rect, texture2D, true))
+            {
+                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                currentResult = func();
+                Event.current.Use();
+            }
+
+            if (!SteamDeck.IsSteamDeck)
+            {
+                Widgets.Label(rect, keyLabel);
+            }
+
+            return currentResult;
         }
     }
 }

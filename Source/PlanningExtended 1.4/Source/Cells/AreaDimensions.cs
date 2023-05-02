@@ -27,9 +27,9 @@ namespace PlanningExtended.Cells
 
         public IntVec3 Center => new(CenterX, 0, CenterZ);
 
-        public int Width => MaxX - MinX;
+        public int Width => MaxX - MinX + 1;
 
-        public int Height => MaxZ - MinZ;
+        public int Height => MaxZ - MinZ + 1;
 
         public bool IsValid => MinX > -1000;
 

@@ -3,14 +3,12 @@ using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Lines
 {
-    internal class LineSimpleShapeVariant : BaseShapeGeneratorVariant<LineGenerator>
+    internal class LineSimpleShapeVariant : BaseShapeGeneratorVariant<LineSimpleGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.LineSimple;
 
-        public override ShapeOptions SecondShapeOption => ShapeOptions.Thickness;
-
         public LineSimpleShapeVariant()
-            : base(new LineShapeModifier(), new LineGenerator())
+            : base(new LineSimpleShapeModifier(), new LineSimpleGenerator())
         {
         }
     }

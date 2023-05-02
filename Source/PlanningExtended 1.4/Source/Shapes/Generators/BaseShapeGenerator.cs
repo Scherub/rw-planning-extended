@@ -1,35 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
+using PlanningExtended.Shapes.Features;
 using Verse;
 
 namespace PlanningExtended.Shapes.Generators
 {
     internal abstract class BaseShapeGenerator
     {
-        AreaDimensions _areaDimensions;
-
         bool _requiresUpdate;
+
+        AreaDimensions _areaDimensions;
 
         readonly HashSet<IntVec3> _validCells = new();
 
-        public HashSet<IntVec3> Update(AreaDimensions areaDimensions, IntVec3 mousePosition)
+        public HashSet<IntVec3> Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             // TODO: implement equals
-            if (!_requiresUpdate && areaDimensions == _areaDimensions)
+            if (!_requiresUpdate && areaDimensions == _areaDimensions && !shape.SelectedShapeVariant.ShapeFeatureManager.RequiresUpdate)
                 return _validCells;
 
             _areaDimensions = areaDimensions;
 
-            //AreaDimensions actualAreaDimensions = ApplyModifierToAreaDimensions(areaDimensions, mousePosition);
-
-            OnPreUpdate(areaDimensions);
+            if (shape.SelectedShapeVariant.ShapeFeatureManager.HasSegmentFeature)
+                OnUpdateSegments(areaDimensions, shape.SelectedShapeVariant.ShapeFeatureManager.SegmentShapeFeature);
 
             _validCells.Clear();
 
-            OnUpdate(areaDimensions, mousePosition);
+            OnUpdate(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
 
             _requiresUpdate = false;
+            shape.SelectedShapeVariant.ShapeFeatureManager.HandledUpdates();
 
             return _validCells;
         }
@@ -39,41 +39,16 @@ namespace PlanningExtended.Shapes.Generators
             return _validCells.Contains(cell);
         }
 
-        //protected virtual AreaDimensions ApplyModifierToAreaDimensions(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyModifier)
-        //{
-        //    int minX = areaDimensions.MinX;
-        //    int minZ = areaDimensions.MinZ;
-        //    int maxX = areaDimensions.MaxX;
-        //    int maxZ = areaDimensions.MaxZ;
+        protected abstract void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier);
 
-        //    if (applyModifier)
-        //    {
-        //        int length = Math.Min(areaDimensions.Width, areaDimensions.Height);
-
-        //        //IntVec3 startPosition = areaDimensions.GetStartPosition(mousePosition);
-
-        //        maxX = areaDimensions.MinX + length;
-        //        minZ = areaDimensions.MaxZ - length;
-        //    }
-
-        //    return new(minX, minZ, maxX, maxZ);
-        //}
-
-        protected virtual void OnPreUpdate(AreaDimensions areaDimensions)
+        protected virtual void OnUpdateSegments(AreaDimensions areaDimensions, SegmentShapeFeature segmentShapeFeature)
         {
 
         }
 
-        protected abstract void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition);
-
-        protected void RequiresUpdate()
+        protected void AddValidCells(IEnumerable<IntVec3> cells)
         {
-            _requiresUpdate = true;
-        }
-
-        protected void AddValidCell(int x, int z)
-        {
-            _validCells.Add(new IntVec3(x, 0, z));
+            _validCells.AddRange(cells);
         }
     }
 }

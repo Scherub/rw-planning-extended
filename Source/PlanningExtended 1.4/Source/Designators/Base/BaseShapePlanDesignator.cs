@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
-using PlanningExtended.Designators.Gui.Shapes.ExtraControls;
+using PlanningExtended.Gui.Designators.Shapes.ExtraControls;
 using PlanningExtended.Shapes;
 using RimWorld;
 using UnityEngine;
@@ -93,24 +93,10 @@ namespace PlanningExtended.Designators
 
         void HandleShortcuts()
         {
-            ShapeOptionDirection shapeOptionDirection1 = ShapeOptionDirection.None;
-            ShapeOptionDirection shapeOptionDirection2 = ShapeOptionDirection.None;
-
             if (PlanningKeyBindingDefOf.Planning_ChangeShapeVariant.KeyDownEvent)
                 SelectedShape.ChangeToNextShapeVariant();
 
-            if (KeyBindingDefOf.Designator_RotateLeft.KeyDownEvent)
-                shapeOptionDirection2 = ShapeOptionDirection.Left;
-            if (KeyBindingDefOf.Designator_RotateRight.KeyDownEvent)
-                shapeOptionDirection2 = ShapeOptionDirection.Right;
-
-            if (PlanningKeyBindingDefOf.Planning_Action1.KeyDownEvent)
-                shapeOptionDirection1 = ShapeOptionDirection.Left;
-            if (PlanningKeyBindingDefOf.Planning_Action2.KeyDownEvent)
-                shapeOptionDirection1 = ShapeOptionDirection.Right;
-
-            SelectedShape.SelectedShapeVariant.ChangeFirstShapeOption(shapeOptionDirection1);
-            SelectedShape.SelectedShapeVariant.ChangeSecondShapeOption(shapeOptionDirection2);
+            SelectedShape.SelectedShapeVariant.ShapeFeatureManager.HandleKeyboardInput();
         }
 
         List<FloatMenuOption> GetShapesMenuOptions()

@@ -8,7 +8,15 @@
         
         Line,
 
+        Triangle,
+
         Rectangle,
+
+        Pentagon,
+
+        Hexagon,
+
+        Octagon,
 
         Ellipse,
     }

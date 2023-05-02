@@ -16,11 +16,27 @@
 
         LineGrid,
 
+        TriangleFilled,
+
+        TriangleOutline,
+
         RectangleFilled,
 
         RectangleGrid,
 
         RectangleOutline,
+
+        PentagonFilled,
+
+        PentagonOutline,
+
+        HexagonFilled,
+
+        HexagonOutline,
+
+        OctagonFilled,
+
+        OctagonOutline,
 
         EllipseFilled,
 

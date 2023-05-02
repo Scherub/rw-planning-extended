@@ -1,19 +1,15 @@
-﻿using PlanningExtended.Shapes.Generators;
+﻿using PlanningExtended.Shapes.Features;
+using PlanningExtended.Shapes.Generators;
 using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Points
 {
-    internal class PointShapeVariant : BaseShapeSegmentsVariant<RectangleGenerator>
+    internal class PointShapeVariant : BaseShapeGeneratorVariant<PointGridGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.Points;
 
-        public override ShapeOptions FirstShapeOption => ShapeOptions.NumberOfSegmentsZ;
-
-        public override ShapeOptions SecondShapeOption => ShapeOptions.NumberOfSegmentsX;
-
-
         public PointShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(false, false, false, true), false)
+            : base(new SquareShapeModifier(), new PointGridGenerator(), new SegmentShapeFeature(false))
         {
         }
     }
