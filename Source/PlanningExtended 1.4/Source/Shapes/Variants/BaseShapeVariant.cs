@@ -1,4 +1,5 @@
 ﻿using PlanningExtended.Cells;
+using PlanningExtended.Shapes.Features;
 using PlanningExtended.Shapes.Modifiers;
 using Verse;
 
@@ -6,58 +7,36 @@ namespace PlanningExtended.Shapes.Variants
 {
     public abstract class BaseShapeVariant
     {
-        readonly BaseShapeModifier _shapeModifier;
+        readonly BaseShapeDimensionsModifier _shapeModifier;
+
+        protected Direction Rotation => ShapeFeatureManager.RotationShapeFeature?.Rotation ?? Direction.None;
 
         public abstract ShapeVariant ShapeVariant { get; }
 
-        public virtual ShapeOptions FirstShapeOption { get; }
+        public ShapeDisplayOptions ShapeDisplayOptions => ShapeFeatureManager.ShapeDisplayOptions;
 
-        public virtual ShapeOptions SecondShapeOption { get; }
+        public ShapeFeatureManager ShapeFeatureManager { get; }
 
-        public virtual ShapeDisplayOptions ShapeDisplayOptions => ShapeDisplayOptions.DisplayVariant;
-
-        public int NumberOfAvailableShapeOtions => NumShapeOptions(FirstShapeOption) + NumShapeOptions(SecondShapeOption);
-
-        protected BaseShapeVariant(BaseShapeModifier shapeModifier)
+        protected BaseShapeVariant(BaseShapeDimensionsModifier shapeModifier, params IShapeFeature[] shapeFeatures)
         {
             _shapeModifier = shapeModifier;
+
+            ShapeFeatureManager = new ShapeFeatureManager(shapeFeatures);
         }
 
-        public void UpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyModifier)
+        public void UpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
         {
-            if (applyModifier)
-                areaDimensions = _shapeModifier.Update(areaDimensions, mousePosition);
+            if (applyShapeDimensionsModifier)
+                areaDimensions = _shapeModifier.Update(shape, areaDimensions, mousePosition, Rotation);
 
-            OnUpdateShape(areaDimensions, mousePosition);
+            OnUpdateShape(shape, areaDimensions, mousePosition, Rotation, applyShapeDimensionsModifier);
         }
 
         public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
 
-        public virtual void ChangeShapeOption(ShapeOptions shapeOptions, ShapeOptionDirection shapeOptionDirection)
+        protected virtual void OnUpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
 
-        }
-
-        public void ChangeFirstShapeOption(ShapeOptionDirection shapeOptionDirection)
-        {
-            if (shapeOptionDirection is not ShapeOptionDirection.None)
-                ChangeShapeOption(FirstShapeOption, shapeOptionDirection);
-        }
-
-        public void ChangeSecondShapeOption(ShapeOptionDirection shapeOptionDirection)
-        {
-            if (shapeOptionDirection is not ShapeOptionDirection.None)
-                ChangeShapeOption(SecondShapeOption, shapeOptionDirection);
-        }
-
-        protected virtual void OnUpdateShape(AreaDimensions areaDimensions, IntVec3 mousePosition)
-        {
-
-        }
-
-        int NumShapeOptions(ShapeOptions shapeOptions)
-        {
-            return shapeOptions != ShapeOptions.None ? 1 : 0;
         }
     }
 }

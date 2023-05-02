@@ -112,15 +112,27 @@
 
   <PlanningExtended.Shapes.Point>Point</PlanningExtended.Shapes.Point>
   <PlanningExtended.Shapes.Line>Line</PlanningExtended.Shapes.Line>
+  <PlanningExtended.Shapes.Triangle>Triangle</PlanningExtended.Shapes.Triangle>
   <PlanningExtended.Shapes.Rectangle>Rectangle</PlanningExtended.Shapes.Rectangle>
+  <PlanningExtended.Shapes.Pentagon>Pentagon</PlanningExtended.Shapes.Pentagon>
+  <PlanningExtended.Shapes.Hexagon>Hexagon</PlanningExtended.Shapes.Hexagon>
+  <PlanningExtended.Shapes.Octagon>Octagon</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Ellipse</PlanningExtended.Shapes.Ellipse>
   
   <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Line Simple</PlanningExtended.Shapes.Variants.LineSimple>
   <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
+  <PlanningExtended.Shapes.Variants.TriangleFilled>Triangle Filled</PlanningExtended.Shapes.Variants.TriangleFilled>
+  <PlanningExtended.Shapes.Variants.TriangleOutline>Triangle Outline</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Rectangle Filled</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Rectangle Grid</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Rectangle Outline</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.PentagonFilled>Pentagon Filled</PlanningExtended.Shapes.Variants.PentagonFilled>
+  <PlanningExtended.Shapes.Variants.PentagonOutline>Pentagon Outline</PlanningExtended.Shapes.Variants.PentagonOutline>
+  <PlanningExtended.Shapes.Variants.HexagonFilled>Hexagon Filled</PlanningExtended.Shapes.Variants.HexagonFilled>
+  <PlanningExtended.Shapes.Variants.HexagonOutline>Hexagon Outline</PlanningExtended.Shapes.Variants.HexagonOutline>
+  <PlanningExtended.Shapes.Variants.OctagonFilled>Octagon Filled</PlanningExtended.Shapes.Variants.OctagonFilled>
+  <PlanningExtended.Shapes.Variants.OctagonOutline>Octagon Outline</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Ellipse Filled</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Ellipse Outline</PlanningExtended.Shapes.Variants.EllipseOutline>
 
@@ -130,5 +142,20 @@
   <PlanningExtended.Shapes.Columns>Columns</PlanningExtended.Shapes.Columns>
   <PlanningExtended.Shapes.Rows>Rows</PlanningExtended.Shapes.Rows>
   <PlanningExtended.Shapes.Cells>Cells</PlanningExtended.Shapes.Cells>
+  
+  <PlanningExtended.Direction>Direction</PlanningExtended.Direction>
+  
+  <PlanningExtended.Direction.None>None</PlanningExtended.Direction.None>
+  <PlanningExtended.Direction.North>North</PlanningExtended.Direction.North>
+  <PlanningExtended.Direction.NorthEast>North East</PlanningExtended.Direction.NorthEast>
+  <PlanningExtended.Direction.East>East</PlanningExtended.Direction.East>
+  <PlanningExtended.Direction.SouthEast>South East</PlanningExtended.Direction.SouthEast>
+  <PlanningExtended.Direction.South>South</PlanningExtended.Direction.South>
+  <PlanningExtended.Direction.SouthWest>South West</PlanningExtended.Direction.SouthWest>
+  <PlanningExtended.Direction.West>West</PlanningExtended.Direction.West>
+  <PlanningExtended.Direction.NorthWest>North West</PlanningExtended.Direction.NorthWest>
+  <PlanningExtended.Direction.Horizontal>Horizontal</PlanningExtended.Direction.Horizontal>
+  <PlanningExtended.Direction.Vertical>Vertical</PlanningExtended.Direction.Vertical>
+  <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
 
 </LanguageData>

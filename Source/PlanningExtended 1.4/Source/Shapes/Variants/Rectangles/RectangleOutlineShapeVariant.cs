@@ -8,7 +8,7 @@ namespace PlanningExtended.Shapes.Variants.Rectangles
         public override ShapeVariant ShapeVariant => ShapeVariant.RectangleOutline;
 
         public RectangleOutlineShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(true, false, false, false))
+            : base(new SquareShapeModifier(), new RectangleGenerator(false))
         {
         }
     }

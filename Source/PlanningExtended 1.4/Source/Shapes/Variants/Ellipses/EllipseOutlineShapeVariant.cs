@@ -7,12 +7,9 @@ namespace PlanningExtended.Shapes.Variants.Ellipses
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.EllipseOutline;
 
-        //public override ShapeOptions SecondShapeOption => ShapeOptions.Thickness;
-
         public EllipseOutlineShapeVariant()
-            : base(new SquareShapeModifier(), new EllipseGenerator(true, false))
+            : base(new SquareShapeModifier(), new EllipseGenerator(false))
         {
-
         }
     }
 }

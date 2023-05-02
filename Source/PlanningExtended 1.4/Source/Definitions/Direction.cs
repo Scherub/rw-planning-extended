@@ -1,23 +1,36 @@
-﻿namespace PlanningExtended
+﻿using System;
+
+namespace PlanningExtended
 {
+    [Flags]
     public enum Direction
     {
         None,
 
-        North,
+        North = 0x01,
 
-        NorthEast,
+        NorthEast = 0x02,
 
-        East,
+        East = 0x04,
 
-        SouthEast,
+        SouthEast = 0x08,
 
-        South,
+        South = 0x10,
 
-        SouthWest,
+        SouthWest = 0x20,
 
-        West,
+        West = 0x40,
 
-        NorthWest
+        NorthWest = 0x80,
+
+        Horizontal = East | West,
+
+        Vertical = North | South,
+
+        Diagonal = NorthEast | SouthEast | SouthWest | NorthWest,
+
+        MainAxes = North | East | South | West,
+
+        All = North | NorthEast | East | SouthEast | South | SouthWest | West | NorthWest
     }
 }
