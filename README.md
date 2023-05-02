@@ -8,7 +8,7 @@ This mod adds a more advanced planning menu.
 
 - Draw colored designations, such as walls, doors, objects and floors
 - Optionally skip (don't overwrite) already placed plan designations
-- Use different shapes, e.g. points, lines, rectangles
+- Use different shapes, e.g. points, lines, triangles, rectangles, grids, hexagons, octagons
 - Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans
 - Undo / Redo your planned actions
@@ -20,7 +20,7 @@ This mod adds a more advanced planning menu.
 
 - Improve grabbing position while pasting
 - Add more shapes, such as ellipse, fixed shapes (e.g. sun lamp, max room size)
-- Add more shape options, e.g. width
+- Add more shape options, e.g. thickness
 - Add plan groups / layers
 - Add ability to convert plan to real blueprints
 - Add toolbox
@@ -73,12 +73,13 @@ This mod adds a more advanced planning menu.
 ### Modifier
 
 - Simple Line: draws a horizontal or vertical line
-- Square: applies square modfier to Line Grid, Rectangle and Octagon
+- Square: applies square modifier to Points, Line Grid, Rectangle and Octagon
 - Regular: applies regular modifier to Hexagon
 - Equilateral: applies equilateral modifier to Triangle
 
 ## Supported Languages
 - English
+- German
 - Japanese translation via sub-mod by Proxyer
 - Russian translation by mmavka
 
