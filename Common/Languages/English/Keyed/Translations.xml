@@ -113,6 +113,7 @@
   <PlanningExtended.Shapes.Point>Point</PlanningExtended.Shapes.Point>
   <PlanningExtended.Shapes.Line>Line</PlanningExtended.Shapes.Line>
   <PlanningExtended.Shapes.Triangle>Triangle</PlanningExtended.Shapes.Triangle>
+  <PlanningExtended.Shapes.Quadrangle>Quadrangle</PlanningExtended.Shapes.Quadrangle>
   <PlanningExtended.Shapes.Rectangle>Rectangle</PlanningExtended.Shapes.Rectangle>
   <PlanningExtended.Shapes.Pentagon>Pentagon</PlanningExtended.Shapes.Pentagon>
   <PlanningExtended.Shapes.Hexagon>Hexagon</PlanningExtended.Shapes.Hexagon>
@@ -124,6 +125,8 @@
   <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Triangle Filled</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Triangle Outline</PlanningExtended.Shapes.Variants.TriangleOutline>
+  <PlanningExtended.Shapes.Variants.QuadrangleFilled>Quadrangle Filled</PlanningExtended.Shapes.Variants.QuadrangleFilled>
+  <PlanningExtended.Shapes.Variants.QuadrangleOutline>Quadrangle Outline</PlanningExtended.Shapes.Variants.QuadrangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Rectangle Filled</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Rectangle Grid</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Rectangle Outline</PlanningExtended.Shapes.Variants.RectangleOutline>

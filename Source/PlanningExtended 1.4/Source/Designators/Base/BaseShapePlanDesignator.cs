@@ -23,7 +23,7 @@ namespace PlanningExtended.Designators
         protected BaseShapePlanDesignator(string name)
             : base(name)
         {
-            SelectShape(Shape.Rectangle);
+            SelectShape(Shape.Quadrangle);
         }
 
         protected void SelectShape(Shape shape)

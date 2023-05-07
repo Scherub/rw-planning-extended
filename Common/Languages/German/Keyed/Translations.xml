@@ -113,6 +113,7 @@
   <PlanningExtended.Shapes.Point>Punkt</PlanningExtended.Shapes.Point>
   <PlanningExtended.Shapes.Line>Linie</PlanningExtended.Shapes.Line>
   <PlanningExtended.Shapes.Triangle>Dreieck</PlanningExtended.Shapes.Triangle>
+  <PlanningExtended.Shapes.Quadrangle>Viereck</PlanningExtended.Shapes.Quadrangle>
   <PlanningExtended.Shapes.Rectangle>Rechteck</PlanningExtended.Shapes.Rectangle>
   <PlanningExtended.Shapes.Pentagon>Fünfeck</PlanningExtended.Shapes.Pentagon>
   <PlanningExtended.Shapes.Hexagon>Sechseck</PlanningExtended.Shapes.Hexagon>
@@ -124,6 +125,8 @@
   <PlanningExtended.Shapes.Variants.LineGrid>Linienraster</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Dreieck gefüllt</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Triangle Umriss</PlanningExtended.Shapes.Variants.TriangleOutline>
+  <PlanningExtended.Shapes.Variants.QuadrangleFilled>Viereck gefüllt</PlanningExtended.Shapes.Variants.QuadrangleFilled>
+  <PlanningExtended.Shapes.Variants.QuadrangleOutline>Viereck Umriss</PlanningExtended.Shapes.Variants.QuadrangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Rechteck gefüllt</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Rechteck mit Raster</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Rechteck Umriss</PlanningExtended.Shapes.Variants.RectangleOutline>

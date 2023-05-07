@@ -20,6 +20,10 @@
 
         TriangleOutline,
 
+        QuadrangleFilled,
+
+        QuadrangleOutline,
+
         RectangleFilled,
 
         RectangleGrid,

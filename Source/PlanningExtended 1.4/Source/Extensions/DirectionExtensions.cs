@@ -31,7 +31,8 @@
                 Direction.West => Direction.NorthWest,
                 Direction.NorthWest => Direction.North,
                 Direction.Horizontal => Direction.Vertical,
-                Direction.Vertical => Direction.Horizontal,
+                Direction.Vertical => Direction.Diagonal,
+                Direction.Diagonal => Direction.Horizontal,
                 _ => Direction.None
             };
         }
@@ -58,8 +59,9 @@
                 Direction.SouthEast => Direction.East,
                 Direction.East => Direction.NorthEast,
                 Direction.NorthEast => Direction.North,
-                Direction.Horizontal => Direction.Vertical,
+                Direction.Diagonal => Direction.Vertical,
                 Direction.Vertical => Direction.Horizontal,
+                Direction.Horizontal => Direction.Diagonal,
                 _ => Direction.None
             };
         }

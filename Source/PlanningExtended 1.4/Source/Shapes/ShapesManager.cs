@@ -6,7 +6,7 @@ namespace PlanningExtended.Shapes
     {
         readonly Dictionary<Shape, BaseShape> _shapes = new();
 
-        public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Hexagon, Shape.Octagon/*, Shape.Ellipse*/ };
+        public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Quadrangle, Shape.Hexagon, Shape.Octagon/*, Shape.Ellipse*/ };
 
         public ShapesManager()
         {
@@ -14,7 +14,7 @@ namespace PlanningExtended.Shapes
             _shapes.Add(Shape.Point, new PointShape());
             _shapes.Add(Shape.Line, new LineShape());
             _shapes.Add(Shape.Triangle, new TriangleShape());
-            _shapes.Add(Shape.Rectangle, new RectangleShape());
+            _shapes.Add(Shape.Quadrangle, new QuadrangleShape());
             _shapes.Add(Shape.Hexagon, new HexagonShape());
             _shapes.Add(Shape.Octagon, new OctagonShape());
             //_shapes.Add(Shape.Ellipse, new EllipseShape());
