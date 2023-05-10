@@ -7,7 +7,7 @@ namespace PlanningExtended.Shapes
         public override Shape Shape => Shape.Triangle;
 
         public TriangleShape()
-            : base(ShapeVariant.TriangleOutline, new TriangleOutlineShapeVariant())
+            : base(ShapeVariant.TriangleFilled, new TriangleFilledShapeVariant(), new TriangleOutlineShapeVariant())
         {
         }
     }

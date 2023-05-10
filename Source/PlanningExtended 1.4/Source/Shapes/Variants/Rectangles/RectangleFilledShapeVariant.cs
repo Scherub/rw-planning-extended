@@ -3,12 +3,12 @@ using PlanningExtended.Shapes.Modifiers;
 
 namespace PlanningExtended.Shapes.Variants.Rectangles
 {
-    internal class RectangleFilledShapeVariant : BaseShapeGeneratorVariant<OldRectangleGenerator>
+    internal class RectangleFilledShapeVariant : BaseShapeGeneratorVariant<RectangleGenerator>
     {
         public override ShapeVariant ShapeVariant => ShapeVariant.RectangleFilled;
 
         public RectangleFilledShapeVariant()
-            : base(new SquareShapeModifier(), new OldRectangleGenerator(true, true, false, false))
+            : base(new SquareShapeModifier(), new RectangleGenerator(true))
         {
         }
     }

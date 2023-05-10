@@ -7,7 +7,7 @@ namespace PlanningExtended.Shapes
         public override Shape Shape => Shape.Octagon;
 
         public OctagonShape()
-            : base(ShapeVariant.OctagonOutline, new OctagonOutlineShapeVariant())
+            : base(ShapeVariant.OctagonFilled, new OctagonFilledShapeVariant(), new OctagonOutlineShapeVariant())
         {
         }
     }

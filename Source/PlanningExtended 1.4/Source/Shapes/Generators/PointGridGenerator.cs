@@ -12,6 +12,11 @@ namespace PlanningExtended.Shapes.Generators
 
         HashSet<int> _segmentsZ = new();
 
+        public PointGridGenerator()
+            : base(false)
+        {
+        }
+
         protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             AddValidCells(GetVertices(areaDimensions));

@@ -21,6 +21,7 @@ namespace PlanningExtended.Shapes.Generators
         bool DrawIntersectionPoints { get; }
 
         public OldRectangleGenerator(bool drawOutline, bool drawInnerArea, bool drawGrid, bool drawIntersectionPoints)
+            : base(false)
         {
             DrawOutline = drawOutline;
             DrawInnerArea = drawInnerArea;
