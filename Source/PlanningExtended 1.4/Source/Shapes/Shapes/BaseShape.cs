@@ -12,6 +12,8 @@ namespace PlanningExtended.Shapes
 
         readonly List<BaseShapeVariant> _shapeVariants;
 
+        public abstract Shape Shape { get; }
+
         public BaseShapeVariant SelectedShapeVariant { get; private set; }
 
         public ShapeDisplayOptions ShapeDisplayOptions => SelectedShapeVariant.ShapeDisplayOptions;
