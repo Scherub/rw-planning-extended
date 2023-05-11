@@ -10,7 +10,7 @@
 
         Triangle,
 
-        Quadrangle,
+        Rectangle,
 
         Pentagon,
 
