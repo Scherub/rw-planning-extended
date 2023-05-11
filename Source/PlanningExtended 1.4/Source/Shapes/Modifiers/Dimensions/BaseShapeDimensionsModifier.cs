@@ -1,7 +1,7 @@
 ﻿using PlanningExtended.Cells;
 using Verse;
 
-namespace PlanningExtended.Shapes.Modifiers
+namespace PlanningExtended.Shapes.Modifiers.Dimensions
 {
     public abstract class BaseShapeDimensionsModifier
     {

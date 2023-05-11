@@ -1,6 +1,6 @@
 ﻿using PlanningExtended.Shapes.Features;
 using PlanningExtended.Shapes.Generators;
-using PlanningExtended.Shapes.Modifiers;
+using PlanningExtended.Shapes.Modifiers.Dimensions;
 
 namespace PlanningExtended.Shapes.Variants.Lines
 {

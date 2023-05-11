@@ -1,5 +1,5 @@
 ﻿using PlanningExtended.Cells;
-using PlanningExtended.Shapes.Modifiers;
+using PlanningExtended.Shapes.Modifiers.Dimensions;
 using Verse;
 
 namespace PlanningExtended.Shapes.Variants
