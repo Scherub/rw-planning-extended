@@ -157,7 +157,7 @@
   <PlanningExtended.Direction.Horizontal>Horizontal</PlanningExtended.Direction.Horizontal>
   <PlanningExtended.Direction.Vertical>Vertical</PlanningExtended.Direction.Vertical>
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
-  <PlanningExtended.Direction.DiagonalSWNE>Diagonal SW to NE</PlanningExtended.Direction.DiagonalSWNE>
-  <PlanningExtended.Direction.DiagonalSENW>Diagonal SE to NW</PlanningExtended.Direction.DiagonalSENW>
+  <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
+  <PlanningExtended.Direction.DiagonalNE>Diagonal NE</PlanningExtended.Direction.DiagonalNE>
 
 </LanguageData>
