@@ -35,8 +35,8 @@ namespace PlanningExtended.Shapes.Generators
             return rotation switch
             {
                 Direction.Diagonal => GetVerticesDirectionDiagonal(areaDimensions),
-                Direction.DiagonalSENW => GetVerticesDirectionDiagonal(areaDimensions),
-                Direction.DiagonalSWNE => GetVerticesDirectionDiagonal(areaDimensions),
+                Direction.DiagonalNW => GetVerticesDirectionDiagonalNW(areaDimensions),
+                Direction.DiagonalNE => GetVerticesDirectionDiagonal(areaDimensions),
                 _ => GetVerticesDirectionHorizontal(areaDimensions),
             };
         }
@@ -63,7 +63,7 @@ namespace PlanningExtended.Shapes.Generators
             };
         }
 
-        List<IntVec3> GetVerticesDirectionDiagonalSENW(AreaDimensions areaDimensions)
+        List<IntVec3> GetVerticesDirectionDiagonalNW(AreaDimensions areaDimensions)
         {
             int minSide = Mathf.Min(areaDimensions.Width, areaDimensions.Height);
             int maxSide = Mathf.Max(areaDimensions.Width, areaDimensions.Height);
@@ -77,7 +77,6 @@ namespace PlanningExtended.Shapes.Generators
             float rectangleHeight = TriangleUtilities.CatheusOfRightIsocelesTriangle(restSide);
 
             int marginX = Mathf.RoundToInt(TriangleUtilities.HeightOfRightIsocelesTriangle(rectangleHeight));
-
 
             return new List<IntVec3>
             {
