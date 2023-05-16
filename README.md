@@ -8,7 +8,7 @@ This mod adds a more advanced planning menu.
 
 - Draw colored designations, such as walls, doors, objects and floors
 - Optionally skip (don't overwrite) already placed plan designations
-- Use different shapes, e.g. points, lines, triangles, rectangles, grids, hexagons, octagons
+- Use different shapes, e.g. points, lines, triangles, rectangles, grids, pentagons, hexagons, octagons, ellipses
 - Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans
 - Undo / Redo your planned actions
@@ -19,7 +19,7 @@ This mod adds a more advanced planning menu.
 ### Planned
 
 - Improve grabbing position while pasting
-- Add more shapes, such as ellipse, fixed shapes (e.g. sun lamp, max room size)
+- Add fixed shapes (e.g. sun lamp, max room size)
 - Add more shape options, e.g. thickness
 - Add plan groups / layers
 - Add ability to convert plan to real blueprints
@@ -48,19 +48,22 @@ This mod adds a more advanced planning menu.
   - Simple Line
   - Line Grid (Number of Cells)
 - Triangle (Rotation)
-  - *Filled
+  - Filled
   - Outline
-- Rectangle
+- Rectangle (Rotation)
   - Filled
   - Grid (Number of Segments)
   - Outline
+- Pentagon (Rotation)
+  - Filled
+  - Outline
 - Hexagon (Rotation)
-  - *Filled
+  - Filled
   - Outline
 - Octagon
-  - *Filled
+  - Filled
   - Outline
-- *Ellipse
+- Ellipse
   - Filled
   - Outline
 - *Fixed
@@ -70,7 +73,7 @@ This mod adds a more advanced planning menu.
 
 **To be implemented*
 
-### Modifier
+### Dimension Modifiers
 
 - Simple Line: draws a horizontal or vertical line
 - Square: applies square modifier to Points, Line Grid, Rectangle and Octagon
