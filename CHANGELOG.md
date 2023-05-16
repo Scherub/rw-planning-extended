@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.0
+- Added new shapes: pentagons, ellipses
+- Added diagonal option for rectangle resulting in rhombus
+- Added filled shapes
+
 ## 1.8.0
 - Added new shapes: triangles, hexagons, octagons
 - Added new shape dimensions modifiers
