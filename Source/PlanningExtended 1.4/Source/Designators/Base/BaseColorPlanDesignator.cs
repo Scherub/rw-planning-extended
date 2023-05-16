@@ -29,7 +29,7 @@ namespace PlanningExtended.Designators
         protected BaseColorPlanDesignator(string name)
             : base(name)
         {
-            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
+            defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel, PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel);
 
             colorDef = GetColorDef();
             
