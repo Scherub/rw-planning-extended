@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PlanningExtended.Cells;
 using PlanningExtended.Shapes.Features;
+using PlanningExtended.Shapes.Plotter;
 using Verse;
 
 namespace PlanningExtended.Shapes.Generators
@@ -11,32 +13,39 @@ namespace PlanningExtended.Shapes.Generators
 
         AreaDimensions _areaDimensions;
 
-        readonly HashSet<IntVec3> _validCells = new();
+        protected bool FillArea { get; }
+
+        protected HashSet<IntVec3> ValidCells { get; } = new();
+
+        protected BaseShapeGenerator(bool fillArea)
+        {
+            FillArea = fillArea;
+        }
 
         public HashSet<IntVec3> Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             // TODO: implement equals
             if (!_requiresUpdate && areaDimensions == _areaDimensions && !shape.SelectedShapeVariant.ShapeFeatureManager.RequiresUpdate)
-                return _validCells;
+                return ValidCells;
 
             _areaDimensions = areaDimensions;
 
             if (shape.SelectedShapeVariant.ShapeFeatureManager.HasSegmentFeature)
                 OnUpdateSegments(areaDimensions, shape.SelectedShapeVariant.ShapeFeatureManager.SegmentShapeFeature);
 
-            _validCells.Clear();
+            ValidCells.Clear();
 
             OnUpdate(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
 
             _requiresUpdate = false;
             shape.SelectedShapeVariant.ShapeFeatureManager.HandledUpdates();
 
-            return _validCells;
+            return ValidCells;
         }
 
         public bool IsCellValid(IntVec3 cell)
         {
-            return _validCells.Contains(cell);
+            return ValidCells.Contains(cell);
         }
 
         protected abstract void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier);
@@ -48,7 +57,20 @@ namespace PlanningExtended.Shapes.Generators
 
         protected void AddValidCells(IEnumerable<IntVec3> cells)
         {
-            _validCells.AddRange(cells);
+            ValidCells.AddRange(cells);
+        }
+
+        protected void DrawAreaFilling(HashSet<IntVec3> cells)
+        {
+            foreach (IGrouping<int, IntVec3> row in cells.GroupBy(c => c.z))
+            {
+                var orderedRow = row.OrderBy(r => r.x);
+
+                IntVec3 firstCell = row.First();
+                IntVec3 lastCell = row.Last();
+
+                AddValidCells(LinePlotter.PlotLineHorizontal(firstCell, lastCell));
+            }
         }
     }
 }

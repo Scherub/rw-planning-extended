@@ -1,5 +1,5 @@
 ﻿using PlanningExtended.Shapes.Generators;
-using PlanningExtended.Shapes.Modifiers;
+using PlanningExtended.Shapes.Modifiers.Dimensions;
 
 namespace PlanningExtended.Shapes.Variants.Ellipses
 {

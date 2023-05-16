@@ -6,18 +6,19 @@ namespace PlanningExtended.Shapes
     {
         readonly Dictionary<Shape, BaseShape> _shapes = new();
 
-        public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Hexagon, Shape.Octagon/*, Shape.Ellipse*/ };
+        public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse };
 
         public ShapesManager()
         {
-            //_shapes.Add(Shape.Fixed, new FixedShape());
-            _shapes.Add(Shape.Point, new PointShape());
-            _shapes.Add(Shape.Line, new LineShape());
-            _shapes.Add(Shape.Triangle, new TriangleShape());
-            _shapes.Add(Shape.Rectangle, new RectangleShape());
-            _shapes.Add(Shape.Hexagon, new HexagonShape());
-            _shapes.Add(Shape.Octagon, new OctagonShape());
-            //_shapes.Add(Shape.Ellipse, new EllipseShape());
+            //Register(new FixedShape());
+            Register(new PointShape());
+            Register(new LineShape());
+            Register(new TriangleShape());
+            Register(new RectangleShape());
+            Register(new PentagonShape());
+            Register(new HexagonShape());
+            Register(new OctagonShape());
+            Register(new EllipseShape());
         }
 
         public BaseShape GetShape(Shape shape)
@@ -26,6 +27,11 @@ namespace PlanningExtended.Shapes
                 return baseShape;
 
             throw new KeyNotFoundException();
+        }
+
+        void Register(BaseShape shape)
+        {
+            _shapes.Add(shape.Shape, shape);
         }
     }
 }

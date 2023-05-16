@@ -34,9 +34,9 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
 
                     widgetStartY -= extraControlWidget.RequiredHeight;
 
-                    Rect controlRect = new(winRect.x, widgetStartY, winRect.width, extraControlWidget.RequiredHeight);
+                    Rect widgetRect = new(winRect.x, widgetStartY, winRect.width, extraControlWidget.RequiredHeight);
 
-                    extraControlWidget.Draw(controlRect, shape);
+                    extraControlWidget.Draw(widgetRect, shape);
 
                     i++;
                 }

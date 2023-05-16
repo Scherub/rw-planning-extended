@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Shapes.Modifiers
+namespace PlanningExtended.Shapes.Modifiers.Dimensions
 {
     internal class RegularHexagonShapeModifier : BasePolygonShapeModifier
     {

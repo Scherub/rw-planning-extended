@@ -4,8 +4,10 @@ namespace PlanningExtended.Shapes
 {
     internal class RectangleShape : BaseShape
     {
+        public override Shape Shape => Shape.Rectangle;
+
         public RectangleShape()
-            : base(ShapeVariant.RectangleFilled, new RectangleOutlineShapeVariant(), new RectangleGridShapeVariant(), new RectangleFilledShapeVariant())
+            : base(ShapeVariant.RectangleFilled, new RectangleFilledShapeVariant(), new RectangleGridShapeVariant(), new RectangleOutlineShapeVariant())
         {
         }
     }

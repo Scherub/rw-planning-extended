@@ -23,11 +23,17 @@ namespace PlanningExtended
 
         NorthWest = 0x80,
 
+        DiagonalNW = 0x100,
+
+        DiagonalNE = 0x200,
+
         Horizontal = East | West,
 
         Vertical = North | South,
 
         Diagonal = NorthEast | SouthEast | SouthWest | NorthWest,
+
+        DiagonalAll = Diagonal | DiagonalNE | DiagonalNW,
 
         MainAxes = North | East | South | West,
 

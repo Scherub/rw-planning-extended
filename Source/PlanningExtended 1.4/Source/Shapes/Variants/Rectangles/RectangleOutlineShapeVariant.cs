@@ -1,5 +1,6 @@
-﻿using PlanningExtended.Shapes.Generators;
-using PlanningExtended.Shapes.Modifiers;
+﻿using PlanningExtended.Shapes.Features;
+using PlanningExtended.Shapes.Generators;
+using PlanningExtended.Shapes.Modifiers.Dimensions;
 
 namespace PlanningExtended.Shapes.Variants.Rectangles
 {
@@ -8,7 +9,7 @@ namespace PlanningExtended.Shapes.Variants.Rectangles
         public override ShapeVariant ShapeVariant => ShapeVariant.RectangleOutline;
 
         public RectangleOutlineShapeVariant()
-            : base(new SquareShapeModifier(), new RectangleGenerator(false))
+            : base(new SquareShapeModifier(), new RectangleGenerator(false), new RotationShapeFeature(Direction.Horizontal, Direction.Horizontal | Direction.Diagonal))
         {
         }
     }

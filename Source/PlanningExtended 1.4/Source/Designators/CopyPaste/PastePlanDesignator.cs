@@ -1,5 +1,7 @@
-﻿using PlanningExtended.Cells;
+﻿using System.Collections.Generic;
+using PlanningExtended.Cells;
 using PlanningExtended.Gui;
+using PlanningExtended.Gui.Controls.Grid;
 using PlanningExtended.Plans;
 using RimWorld;
 using UnityEngine;
@@ -10,6 +12,11 @@ namespace PlanningExtended.Designators
 {
     public class PastePlanDesignator : BaseUndoRedoPlanDesignator
     {
+        readonly LayoutGrid _layoutGrid = new(
+            new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Fixed(64f), TrackDefinition.Fixed(10f), TrackDefinition.Fixed(64f), TrackDefinition.Flexible(1f) },
+            new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Fixed(64f), TrackDefinition.Flexible(1f), TrackDefinition.Fixed(64f), TrackDefinition.Flexible(1f) },
+            Thickness.Symmetric(10f, 0f), 0f, 0f);
+
         PlanLayout _selectedPlanLayout = null;
 
         public override int DraggableDimensions => 0;
@@ -88,33 +95,25 @@ namespace PlanningExtended.Designators
 
             Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, () =>
             {
+                _layoutGrid.Compute(new Rect(0f, 0f, width, height));
+
                 Text.Anchor = TextAnchor.MiddleCenter;
                 Text.Font = GameFont.Medium;
 
                 RotationDirection rotationDirection = RotationDirection.None;
                 FlipDirection flipDirection = FlipDirection.None;
 
-                Rect rect = new(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
+                rotationDirection = GuiUtilities.DrawImageButton(_layoutGrid.GetRect(1, 1), Textures.RotateLeft, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, rotationDirection, () => RotationDirection.Counterclockwise);
+                rotationDirection = GuiUtilities.DrawImageButton(_layoutGrid.GetRect(3, 1), Textures.RotateRight, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, rotationDirection, () => RotationDirection.Clockwise);
 
-                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateLeft, KeyBindingDefOf.Designator_RotateLeft.MainKeyLabel, RotationDirection.Counterclockwise, rotationDirection);
-
-                rect = new(winRect.width / 2f + 5f, 15f, 64f, 64f);
-
-                rotationDirection = GuiUtilities.DrawButtonImageRotation(rect, Textures.RotateRight, KeyBindingDefOf.Designator_RotateRight.MainKeyLabel, RotationDirection.Clockwise, rotationDirection);
-
-                rect = new(winRect.width / 2f - 64f - 5f, winRect.height / 2f + 15f, 64f, 64f);
-
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_Action1.MainKeyLabel, FlipDirection.Horizontally, flipDirection);
-
-                rect = new(winRect.width / 2f + 5f, winRect.height / 2f + 15f, 64f, 64f);
-
-                flipDirection = GuiUtilities.DrawButtonImageFlip(rect, Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_Action2.MainKeyLabel, FlipDirection.Vertically, flipDirection);
+                flipDirection = GuiUtilities.DrawImageButton(_layoutGrid.GetRect(1, 3), Textures.FlipHorizontal, PlanningKeyBindingDefOf.Planning_Action1.MainKeyLabel, flipDirection, () => FlipDirection.Horizontally);
+                flipDirection = GuiUtilities.DrawImageButton(_layoutGrid.GetRect(3, 3), Textures.FlipVertical, PlanningKeyBindingDefOf.Planning_Action2.MainKeyLabel, flipDirection, () => FlipDirection.Vertically);
 
                 Text.Anchor = TextAnchor.UpperLeft;
                 Text.Font = GameFont.Small;
 
                 HandleRotationFlip(rotationDirection, flipDirection);
-            }, true, false, 1f, null);
+            });
         }
 
         protected override void OnSkipExistingDesignationsKeyChanged(bool isPressed)

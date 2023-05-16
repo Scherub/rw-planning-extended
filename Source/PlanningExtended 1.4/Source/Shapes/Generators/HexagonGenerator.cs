@@ -28,7 +28,7 @@ namespace PlanningExtended.Shapes.Generators
         {
             return rotation switch
             {
-                Direction.East or Direction.Vertical => GetVerticesDirectionVertical(areaDimensions),
+                Direction.Vertical => GetVerticesDirectionVertical(areaDimensions),
                 _ => GetVerticesDirectionHorizontal(areaDimensions),
             };
         }

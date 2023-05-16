@@ -7,17 +7,22 @@ namespace PlanningExtended.Shapes.Generators
 {
     internal abstract class BasePolygonGenerator : BaseShapeGenerator
     {
-        protected bool FillArea { get; }
-
         protected abstract List<LineIndex> LineIndices { get; }
 
         protected BasePolygonGenerator(bool fillArea)
-            : base()
+            : base(fillArea)
         {
-            FillArea = fillArea;
         }
 
         protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
+        {
+            DrawOutline(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
+
+            if (FillArea)
+                DrawAreaFilling(ValidCells);
+        }
+
+        protected virtual void DrawOutline(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
         {
             List<IntVec3> vertices = GetVertices(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
 
@@ -34,7 +39,7 @@ namespace PlanningExtended.Shapes.Generators
         protected struct LineIndex
         {
             public int Start;
-            
+
             public int End;
 
             public LineIndex(int start, int end)

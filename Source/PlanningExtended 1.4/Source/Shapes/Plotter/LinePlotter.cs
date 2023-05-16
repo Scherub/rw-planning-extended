@@ -8,6 +8,34 @@ namespace PlanningExtended.Shapes.Plotter
     {
         public static IEnumerable<IntVec3> PlotLine(IntVec3 startPosition, IntVec3 endPosition)
         {
+            if (startPosition.x == endPosition.x)
+                return PlotLineVertical(startPosition, endPosition);
+            else if (startPosition.z == endPosition.z)
+                return PlotLineHorizontal(startPosition, endPosition);
+            else
+                return PlotLineAny(startPosition, endPosition);
+        }
+
+        public static IEnumerable<IntVec3> PlotLineHorizontal(IntVec3 startPosition, IntVec3 endPosition)
+        {
+            if (startPosition.x > endPosition.x)
+                (startPosition, endPosition) = (endPosition, startPosition);
+
+            for (int x = startPosition.x; x <= endPosition.x; x++)
+                yield return new IntVec3(x, 0, startPosition.z);
+        }
+        
+        public static IEnumerable<IntVec3> PlotLineVertical(IntVec3 startPosition, IntVec3 endPosition)
+        {
+            if (startPosition.z > endPosition.z)
+                (startPosition, endPosition) = (endPosition, startPosition);
+
+            for (int z = startPosition.z; z <= endPosition.z; z++)
+                yield return new IntVec3(startPosition.x, 0, z);
+        }
+
+        public static IEnumerable<IntVec3> PlotLineAny(IntVec3 startPosition, IntVec3 endPosition)
+        {
             // derivation of Bresenham's line algorithm: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 
             int deltaX = endPosition.x - startPosition.x;

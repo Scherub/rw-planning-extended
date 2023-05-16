@@ -5,19 +5,19 @@
   <PlanningExtended.Actions.Upgrade>Upgrade</PlanningExtended.Actions.Upgrade>
 
   <PlanningExtended.Designator.PlanDoors.Label>Türen planen</PlanningExtended.Designator.PlanDoors.Label>
-  <PlanningExtended.Designator.PlanDoors.Desc>Platziere Pläne für Türen.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanDoors.Desc>
+  <PlanningExtended.Designator.PlanDoors.Desc>Platziere Pläne für Türen.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.\n\nHalte {1} um die Größe anzupassen.</PlanningExtended.Designator.PlanDoors.Desc>
 
   <PlanningExtended.Designator.PlanFloors.Label>Böden planen</PlanningExtended.Designator.PlanFloors.Label>
-  <PlanningExtended.Designator.PlanFloors.Desc>Platziere Pläne für Böden.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanFloors.Desc>
+  <PlanningExtended.Designator.PlanFloors.Desc>Platziere Pläne für Böden.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.\n\nHalte {1} um die Größe anzupassen.</PlanningExtended.Designator.PlanFloors.Desc>
 
   <PlanningExtended.Designator.PlanObjects.Label>Objekte planen</PlanningExtended.Designator.PlanObjects.Label>
-  <PlanningExtended.Designator.PlanObjects.Desc>Platziere Pläne für Objekte.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanObjects.Desc>
+  <PlanningExtended.Designator.PlanObjects.Desc>Platziere Pläne für Objekte.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.\n\nHalte {1} um die Größe anzupassen.</PlanningExtended.Designator.PlanObjects.Desc>
 
   <PlanningExtended.Designator.PlanWalls.Label>Wände planen</PlanningExtended.Designator.PlanWalls.Label>
-  <PlanningExtended.Designator.PlanWalls.Desc>Platziere Pläne für Wände.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PlanWalls.Desc>
+  <PlanningExtended.Designator.PlanWalls.Desc>Platziere Pläne für Wände.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.\n\nHalte {1} um die Größe anzupassen.</PlanningExtended.Designator.PlanWalls.Desc>
 
   <PlanningExtended.Designator.PaintPlan.Label>Plan übermalen</PlanningExtended.Designator.PaintPlan.Label>
-  <PlanningExtended.Designator.PaintPlan.Desc>Übermale existierende Pläne.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.</PlanningExtended.Designator.PaintPlan.Desc>
+  <PlanningExtended.Designator.PaintPlan.Desc>Übermale existierende Pläne.\n\nRechtsklicke um verschiedene Formen auszuwählen.\n\nHalte {0} um eine bestehende Farbe auszuwählen.\n\nHalte {1} um die Größe anzupassen.</PlanningExtended.Designator.PaintPlan.Desc>
 
   <PlanningExtended.Designator.RemovePlan.Label>Pläne entfernen</PlanningExtended.Designator.RemovePlan.Label>
   <PlanningExtended.Designator.RemovePlan.Desc>Enterne existierende Pläne.</PlanningExtended.Designator.RemovePlan.Desc>
@@ -157,5 +157,7 @@
   <PlanningExtended.Direction.Horizontal>Horizontal</PlanningExtended.Direction.Horizontal>
   <PlanningExtended.Direction.Vertical>Vertikal</PlanningExtended.Direction.Vertical>
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
+  <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
+  <PlanningExtended.Direction.DiagonalNE>Diagonal NO</PlanningExtended.Direction.DiagonalNE>
 
 </LanguageData>
