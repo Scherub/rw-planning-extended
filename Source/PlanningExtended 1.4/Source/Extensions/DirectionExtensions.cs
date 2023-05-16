@@ -31,10 +31,10 @@
                 Direction.West => Direction.NorthWest,
                 Direction.NorthWest => Direction.North,
                 Direction.Horizontal => Direction.Vertical,
-                Direction.Vertical => Direction.Diagonal,
-                Direction.Diagonal => Direction.DiagonalSWNE,
-                Direction.DiagonalSWNE => Direction.DiagonalSENW,
-                Direction.DiagonalSENW => Direction.Horizontal,
+                Direction.Vertical => Direction.DiagonalNE,
+                Direction.DiagonalNE => Direction.Diagonal,
+                Direction.Diagonal => Direction.DiagonalNW,
+                Direction.DiagonalNW => Direction.Horizontal,
                 _ => Direction.None
             };
         }
@@ -61,10 +61,10 @@
                 Direction.SouthEast => Direction.East,
                 Direction.East => Direction.NorthEast,
                 Direction.NorthEast => Direction.North,
-                Direction.Horizontal => Direction.DiagonalSENW,
-                Direction.DiagonalSENW => Direction.DiagonalSWNE,
-                Direction.DiagonalSWNE => Direction.Diagonal,
-                Direction.Diagonal => Direction.Vertical,
+                Direction.Horizontal => Direction.DiagonalNW,
+                Direction.DiagonalNW => Direction.Diagonal,
+                Direction.Diagonal => Direction.DiagonalNE,
+                Direction.DiagonalNE => Direction.Vertical,
                 Direction.Vertical => Direction.Horizontal,
                 _ => Direction.None
             };
