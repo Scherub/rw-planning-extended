@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.9.1
+- Fixed removal of planning designations when canceling orders
+
 ## 1.9.0
 - Added new shapes: pentagons, ellipses
 - Added diagonal option for rectangle resulting in rhombus
