@@ -72,7 +72,7 @@ namespace PlanningExtended.Plans.Appearances
                 PlanDesignationType.PlanFloors => planFloor.TextureSet,
                 PlanDesignationType.PlanObjects => planObject.TextureSet,
                 PlanDesignationType.PlanWall => planWall.TextureSet,
-                _ => PlanTextureSet.Dashed
+                _ => PlanTextureSet.Round
             };
         }
 

@@ -6,9 +6,9 @@ namespace PlanningExtended.Settings
 {
     public class PlanningSettings : ModSettings
     {
-        Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = new();
+        Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = [];
 
-        List<string> lastLoadedPlans = new();
+        List<string> lastLoadedPlans = [];
         public List<string> LastLoadedPlans => lastLoadedPlans;
 
         public bool useUndoRedo = Default.UseUndoRedo;
@@ -109,7 +109,7 @@ namespace PlanningExtended.Settings
 
         public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
         {
-            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Dashed;
+            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Round;
         }
 
         public void AddLastLoadedPlan(string planName, bool autoSave = true)
@@ -134,12 +134,12 @@ namespace PlanningExtended.Settings
 
         void InitData()
         {
-            lastLoadedPlans ??= new();
-            planDesignationSettings ??= new();
+            lastLoadedPlans ??= [];
+            planDesignationSettings ??= [];
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
                 if (!planDesignationSettings.ContainsKey(planDesignationType))
-                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Dashed);
+                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round);
         }
 
         IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
