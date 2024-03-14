@@ -18,7 +18,7 @@ namespace PlanningExtended.Plans.Gui
 
         string typingName = "";
 
-        protected List<PlanFileInfo> files = new();
+        protected List<PlanFileInfo> files = [];
 
         protected virtual string InteractButtonLabel => "Error";
 
@@ -69,8 +69,12 @@ namespace PlanningExtended.Plans.Gui
                     Widgets.BeginGroup(rowRect);
                     
                     Rect deleteRect = new(rowRect.width - 36f, (rowRect.height - 36f) / 2f, 36f, 36f);
-                    
+
+#if RIMWORLD_1_4
                     if (Widgets.ButtonImage(deleteRect, TexButton.DeleteX, Color.white, GenUI.SubtleMouseoverColor, true))
+#else
+                    if (Widgets.ButtonImage(deleteRect, TexButton.Delete, Color.white, GenUI.SubtleMouseoverColor, true))
+#endif
                     {
                         FileInfo localFile = planFileInfo.FileInfo;
                         Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmDelete".Translate(localFile.Name), delegate

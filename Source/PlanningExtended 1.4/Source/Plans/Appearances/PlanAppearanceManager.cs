@@ -34,7 +34,7 @@ namespace PlanningExtended.Plans.Appearances
 
         static PlanAppearanceManager()
         {
-            planAppearances = new[] { planDoor, planFloor, planObject, planWall }.ToList();
+            planAppearances = [planDoor, planFloor, planObject, planWall];
 
             DetermineVisibility();
         }
@@ -72,7 +72,7 @@ namespace PlanningExtended.Plans.Appearances
                 PlanDesignationType.PlanFloors => planFloor.TextureSet,
                 PlanDesignationType.PlanObjects => planObject.TextureSet,
                 PlanDesignationType.PlanWall => planWall.TextureSet,
-                _ => PlanTextureSet.Dashed
+                _ => PlanTextureSet.Round
             };
         }
 
