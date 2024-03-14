@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.0
+- Added support for RimWorld 1.5
+- Changed default texture set to 'Round'
+
 ## 1.9.1
 - Fixed removal of planning designations when canceling orders
 
