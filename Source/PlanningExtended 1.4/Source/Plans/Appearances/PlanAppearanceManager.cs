@@ -34,7 +34,7 @@ namespace PlanningExtended.Plans.Appearances
 
         static PlanAppearanceManager()
         {
-            planAppearances = new[] { planDoor, planFloor, planObject, planWall }.ToList();
+            planAppearances = [planDoor, planFloor, planObject, planWall];
 
             DetermineVisibility();
         }

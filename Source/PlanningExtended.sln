@@ -5,6 +5,14 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningExtended 1.4", "PlanningExtended 1.4\PlanningExtended 1.4.csproj", "{E2BDBBCA-843D-4CB3-AE29-93C319D5DA5A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningExtended 1.5", "PlanningExtended 1.5\PlanningExtended 1.5.csproj", "{B991592A-1219-4875-AC7F-AA8A7A0D273D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6952B04A-D049-4D74-9145-FD39D04855C4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,10 @@ Global
 		{E2BDBBCA-843D-4CB3-AE29-93C319D5DA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2BDBBCA-843D-4CB3-AE29-93C319D5DA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2BDBBCA-843D-4CB3-AE29-93C319D5DA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B991592A-1219-4875-AC7F-AA8A7A0D273D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B991592A-1219-4875-AC7F-AA8A7A0D273D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B991592A-1219-4875-AC7F-AA8A7A0D273D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B991592A-1219-4875-AC7F-AA8A7A0D273D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

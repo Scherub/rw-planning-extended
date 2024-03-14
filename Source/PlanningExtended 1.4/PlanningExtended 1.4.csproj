@@ -2,16 +2,22 @@
 
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<Version>1.9.1</Version>
 		<!--<Nullable>enable</Nullable>-->
 		<RootNamespace>PlanningExtended</RootNamespace>
 		<AssemblyName>PlanningExtended</AssemblyName>
 		<ModDirectory>$(SolutionDir)..\1.4\Assemblies\</ModDirectory>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);RIMWORLD_1_4</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);RIMWORLD_1_4</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3563" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3901" />
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
 	</ItemGroup>
 

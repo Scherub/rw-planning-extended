@@ -1,0 +1,253 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<!--<Nullable>enable</Nullable>-->
+		<RootNamespace>PlanningExtended</RootNamespace>
+		<AssemblyName>PlanningExtended</AssemblyName>
+		<ModDirectory>$(SolutionDir)..\1.5\Assemblies\</ModDirectory>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants);RIMWORLD_1_5</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);RIMWORLD_1_5</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4034-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.1.1" />
+	</ItemGroup>
+
+
+	<Target Name="CopyAssemblyToModDirectory" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModDirectory)" />
+		<Message Importance="high" Text="Copied '$(TargetFileName)' to '$(ModDirectory).'" />
+	</Target>
+
+	<ItemGroup>
+		<Folder Include="Source\Definitions\" />
+		<Folder Include="Source\Defs\" />
+		<Folder Include="Source\Designations\Placer\" />
+		<Folder Include="Source\Designators\Base\" />
+		<Folder Include="Source\Designators\Color\" />
+		<Folder Include="Source\Designators\LoadSave\" />
+		<Folder Include="Source\Designators\Other\" />
+		<Folder Include="Source\Designators\Paint\" />
+		<Folder Include="Source\Designators\Remove\" />
+		<Folder Include="Source\Designators\UndoRedo\" />
+		<Folder Include="Source\Designators\CopyPaste\" />
+		<Folder Include="Source\Designators\Add\" />
+		<Folder Include="Source\Extensions\" />
+		<Folder Include="Source\Gui\Controls\Grid\Tracks\" />
+		<Folder Include="Source\Gui\Common\" />
+		<Folder Include="Source\Gui\Designators\Shapes\ExtraControls\Widgets\" />
+		<Folder Include="Source\Math\" />
+		<Folder Include="Source\Patches\" />
+		<Folder Include="Source\Plans\Gui\" />
+		<Folder Include="Source\Plans\Maps\" />
+		<Folder Include="Source\Plans\Materials\" />
+		<Folder Include="Source\Plans\Models\" />
+		<Folder Include="Source\Plans\Converters\" />
+		<Folder Include="Source\Plans\Appearances\" />
+		<Folder Include="Source\Plans\Persistence\" />
+		<Folder Include="Source\Settings\" />
+		<Folder Include="Source\Shapes\Modifiers\Content\" />
+		<Folder Include="Source\Shapes\Modifiers\Dimensions\" />
+		<Folder Include="Source\Shapes\Plotter\" />
+		<Folder Include="Source\Shapes\Shapes\" />
+		<Folder Include="Source\Shapes\Generators\" />
+		<Folder Include="Source\Shapes\Features\" />
+		<Folder Include="Source\Shapes\Variants\Hexagons\" />
+		<Folder Include="Source\Shapes\Variants\Lines\" />
+		<Folder Include="Source\Shapes\Variants\Octagons\" />
+		<Folder Include="Source\Shapes\Variants\Pentagons\" />
+		<Folder Include="Source\Shapes\Variants\Points\" />
+		<Folder Include="Source\Shapes\Variants\Rectangles\" />
+		<Folder Include="Source\Shapes\Variants\Triangles\" />
+		<Folder Include="Source\Shapes\Variants\Fixed\" />
+		<Folder Include="Source\Shapes\Variants\Ellipses\" />
+		<Folder Include="Source\UndoRedo\" />
+		<Folder Include="Source\Updates\" />
+		<Folder Include="Source\Colors\" />
+		<Folder Include="Source\Cells\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\PlanningExtended 1.4\Source\Cells\AreaDimensions.cs" Link="Source\Cells\AreaDimensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Cells\CellArea.cs" Link="Source\Cells\CellArea.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Cells\CellUtilities.cs" Link="Source\Cells\CellUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Colors\ColorUtilities.cs" Link="Source\Colors\ColorUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\ColorDefinitions.cs" Link="Source\Definitions\ColorDefinitions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\Direction.cs" Link="Source\Definitions\Direction.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\FlipDirection.cs" Link="Source\Definitions\FlipDirection.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanDesignationType.cs" Link="Source\Definitions\PlanDesignationType.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanDesignationUpdateType.cs" Link="Source\Definitions\PlanDesignationUpdateType.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanningDesignationDefOf.cs" Link="Source\Definitions\PlanningDesignationDefOf.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanningKeyBindingDefOf.cs" Link="Source\Definitions\PlanningKeyBindingDefOf.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanTextureSet.cs" Link="Source\Definitions\PlanTextureSet.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\PlanVisibility.cs" Link="Source\Definitions\PlanVisibility.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\Shape.cs" Link="Source\Definitions\Shape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\ShapeDisplayOptions.cs" Link="Source\Definitions\ShapeDisplayOptions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\ShapeOptionDirection.cs" Link="Source\Definitions\ShapeOptionDirection.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\ShapeOptions.cs" Link="Source\Definitions\ShapeOptions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\ShapeVariant.cs" Link="Source\Definitions\ShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Definitions\Textures.cs" Link="Source\Definitions\Textures.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Defs\DefsUpdater.cs" Link="Source\Defs\DefsUpdater.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Defs\DesignationDefContainer.cs" Link="Source\Defs\DesignationDefContainer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Defs\DesignationDefUtilities.cs" Link="Source\Defs\DesignationDefUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\Placer\BasePlanDesignationPlacer.cs" Link="Source\Designations\Placer\BasePlanDesignationPlacer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\Placer\PlanDoorDesignationPlacer.cs" Link="Source\Designations\Placer\PlanDoorDesignationPlacer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\Placer\PlanFloorDesignationPlacer.cs" Link="Source\Designations\Placer\PlanFloorDesignationPlacer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\Placer\PlanObjectDesignationPlacer.cs" Link="Source\Designations\Placer\PlanObjectDesignationPlacer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\Placer\PlanWallDesignationPlacer.cs" Link="Source\Designations\Placer\PlanWallDesignationPlacer.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\PlanDesignation.cs" Link="Source\Designations\PlanDesignation.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\PlanDesignationPlacerUtilities.cs" Link="Source\Designations\PlanDesignationPlacerUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\PlanDesignationTypeConverter.cs" Link="Source\Designations\PlanDesignationTypeConverter.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designations\PlanDesignationUtilities.cs" Link="Source\Designations\PlanDesignationUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Add\PlanDoorsDesignator.cs" Link="Source\Designators\Add\PlanDoorsDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Add\PlanFloorsDesignator.cs" Link="Source\Designators\Add\PlanFloorsDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Add\PlanObjectsDesignator.cs" Link="Source\Designators\Add\PlanObjectsDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Add\PlanWallsDesignator.cs" Link="Source\Designators\Add\PlanWallsDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BaseAddPlanDesignator.cs" Link="Source\Designators\Base\BaseAddPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BaseClickDesignator.cs" Link="Source\Designators\Base\BaseClickDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BaseColorPlanDesignator.cs" Link="Source\Designators\Base\BaseColorPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BasePlanDesignator.cs" Link="Source\Designators\Base\BasePlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BasePlanMenuDesignator.cs" Link="Source\Designators\Base\BasePlanMenuDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BaseShapePlanDesignator.cs" Link="Source\Designators\Base\BaseShapePlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Base\BaseUndoRedoPlanDesignator.cs" Link="Source\Designators\Base\BaseUndoRedoPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Color\ColorPickerDesignator.cs" Link="Source\Designators\Color\ColorPickerDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\CopyPaste\CopyPlanDesignator.cs" Link="Source\Designators\CopyPaste\CopyPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\CopyPaste\CutPlanDesignator.cs" Link="Source\Designators\CopyPaste\CutPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\CopyPaste\PastePlanDesignator.cs" Link="Source\Designators\CopyPaste\PastePlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\LoadSave\LoadPlanDesignator.cs" Link="Source\Designators\LoadSave\LoadPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\LoadSave\SavePlanDesignator.cs" Link="Source\Designators\LoadSave\SavePlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Other\ChangePlanAppearanceDesignator.cs" Link="Source\Designators\Other\ChangePlanAppearanceDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Other\TogglePlanVisibilityDesignator.cs" Link="Source\Designators\Other\TogglePlanVisibilityDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Paint\PaintPlanDesignator.cs" Link="Source\Designators\Paint\PaintPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\Remove\RemovePlanDesignator.cs" Link="Source\Designators\Remove\RemovePlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\UndoRedo\RedoPlanDesignator.cs" Link="Source\Designators\UndoRedo\RedoPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Designators\UndoRedo\UndoPlanDesignator.cs" Link="Source\Designators\UndoRedo\UndoPlanDesignator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\AreaDimensionsExtensions.cs" Link="Source\Extensions\AreaDimensionsExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\DesignationManagerExtensions.cs" Link="Source\Extensions\DesignationManagerExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\DirectionExtensions.cs" Link="Source\Extensions\DirectionExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\IntVec2Extensions.cs" Link="Source\Extensions\IntVec2Extensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\IntVec3Extensions.cs" Link="Source\Extensions\IntVec3Extensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\ListingStandardExtensions.cs" Link="Source\Extensions\ListingStandardExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\PlanCellExtensions.cs" Link="Source\Extensions\PlanCellExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\PlanLayoutExtensions.cs" Link="Source\Extensions\PlanLayoutExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Extensions\ShapeOptionsExtensions.cs" Link="Source\Extensions\ShapeOptionsExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Common\Thickness.cs" Link="Source\Gui\Common\Thickness.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\LayoutGrid.cs" Link="Source\Gui\Controls\Grid\LayoutGrid.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\TrackDefinition.cs" Link="Source\Gui\Controls\Grid\TrackDefinition.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\TrackSizeType.cs" Link="Source\Gui\Controls\Grid\TrackSizeType.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\Tracks\FixedTrack.cs" Link="Source\Gui\Controls\Grid\Tracks\FixedTrack.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\Tracks\FlexibleTrack.cs" Link="Source\Gui\Controls\Grid\Tracks\FlexibleTrack.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Controls\Grid\Tracks\Track.cs" Link="Source\Gui\Controls\Grid\Tracks\Track.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Designators\Shapes\ExtraControls\ShapeExtraControlManager.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\ShapeExtraControlManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Designators\Shapes\ExtraControls\Widgets\BaseShapeExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\BaseShapeExtraControlWidget.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Designators\Shapes\ExtraControls\Widgets\DisplayShapeVariantExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\DisplayShapeVariantExtraControlWidget.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeRotationExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeRotationExtraControlWidget.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeSegmentExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeSegmentExtraControlWidget.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Gui\GuiUtilities.cs" Link="Source\Gui\GuiUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Math\OctagonUtilities.cs" Link="Source\Math\OctagonUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Math\TriangleUtilities.cs" Link="Source\Math\TriangleUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Patches\PatchDesignation.cs" Link="Source\Patches\PatchDesignation.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Patches\PatchDesignatorCancel.cs" Link="Source\Patches\PatchDesignatorCancel.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Patches\PatchPlaySettings.cs" Link="Source\Patches\PatchPlaySettings.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\PlanningMod.cs" Link="Source\PlanningMod.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\PlanningModStartUp.cs" Link="Source\PlanningModStartUp.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Appearances\PlanAppearance.cs" Link="Source\Plans\Appearances\PlanAppearance.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Appearances\PlanAppearanceManager.cs" Link="Source\Plans\Appearances\PlanAppearanceManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Converters\MorePlanningConverter.cs" Link="Source\Plans\Converters\MorePlanningConverter.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Converters\VanillaPlanConverter.cs" Link="Source\Plans\Converters\VanillaPlanConverter.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Gui\LoadPlanDialog.cs" Link="Source\Plans\Gui\LoadPlanDialog.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Gui\PlanListDialog.cs" Link="Source\Plans\Gui\PlanListDialog.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Gui\SavePlanDialog.cs" Link="Source\Plans\Gui\SavePlanDialog.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Maps\PlanMapComponent.cs" Link="Source\Plans\Maps\PlanMapComponent.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Materials\PlanMaterialsManager.cs" Link="Source\Plans\Materials\PlanMaterialsManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Models\PlanCell.cs" Link="Source\Plans\Models\PlanCell.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Models\PlanInfo.cs" Link="Source\Plans\Models\PlanInfo.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Models\PlanLayout.cs" Link="Source\Plans\Models\PlanLayout.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Persistence\PlanFileInfo.cs" Link="Source\Plans\Persistence\PlanFileInfo.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\Persistence\PlanPersistenceManager.cs" Link="Source\Plans\Persistence\PlanPersistenceManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\PlanLayoutUtilities.cs" Link="Source\Plans\PlanLayoutUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Plans\PlanManager.cs" Link="Source\Plans\PlanManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Settings\PlanDesignationSetting.cs" Link="Source\Settings\PlanDesignationSetting.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Settings\PlanningSettings.cs" Link="Source\Settings\PlanningSettings.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Settings\SettingsGuiUtilities.cs" Link="Source\Settings\SettingsGuiUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\BaseShapeFeature.cs" Link="Source\Shapes\Features\BaseShapeFeature.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\IShapeFeature.cs" Link="Source\Shapes\Features\IShapeFeature.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\RotationShapeFeature.cs" Link="Source\Shapes\Features\RotationShapeFeature.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\SegmentShapeFeature.cs" Link="Source\Shapes\Features\SegmentShapeFeature.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\ShapeFeatureManager.cs" Link="Source\Shapes\Features\ShapeFeatureManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Features\ThicknessShapeFeature.cs" Link="Source\Shapes\Features\ThicknessShapeFeature.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\BasePolygonGenerator.cs" Link="Source\Shapes\Generators\BasePolygonGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\BaseShapeGenerator.cs" Link="Source\Shapes\Generators\BaseShapeGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\EllipseGenerator.cs" Link="Source\Shapes\Generators\EllipseGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\HexagonGenerator.cs" Link="Source\Shapes\Generators\HexagonGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\LineSimpleGenerator.cs" Link="Source\Shapes\Generators\LineSimpleGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\OctagonGenerator.cs" Link="Source\Shapes\Generators\OctagonGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\OldRectangleGenerator.cs" Link="Source\Shapes\Generators\OldRectangleGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\PentagonGenerator.cs" Link="Source\Shapes\Generators\PentagonGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\PointGridGenerator.cs" Link="Source\Shapes\Generators\PointGridGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\RectangleGenerator.cs" Link="Source\Shapes\Generators\RectangleGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Generators\TriangleGenerator.cs" Link="Source\Shapes\Generators\TriangleGenerator.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Content\BaseShapeContentModifier.cs" Link="Source\Shapes\Modifiers\Content\BaseShapeContentModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Content\FillShapeModifier.cs" Link="Source\Shapes\Modifiers\Content\FillShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Content\OutlineThicknessShapeModifier.cs" Link="Source\Shapes\Modifiers\Content\OutlineThicknessShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Content\SegmentShapeModifier.cs" Link="Source\Shapes\Modifiers\Content\SegmentShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\BasePolygonShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\BasePolygonShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\BaseShapeDimensionsModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\BaseShapeDimensionsModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\EquilateralTriangleShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\EquilateralTriangleShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\LineSimpleShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\LineSimpleShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\NullShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\NullShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\RegularHexagonShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\RegularHexagonShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Modifiers\Dimensions\SquareShapeModifier.cs" Link="Source\Shapes\Modifiers\Dimensions\SquareShapeModifier.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Plotter\EllipsePlotter.cs" Link="Source\Shapes\Plotter\EllipsePlotter.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Plotter\LinePlotter.cs" Link="Source\Shapes\Plotter\LinePlotter.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\ShapesManager.cs" Link="Source\Shapes\ShapesManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\BaseShape.cs" Link="Source\Shapes\Shapes\BaseShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\EllipseShape.cs" Link="Source\Shapes\Shapes\EllipseShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\FixedShape.cs" Link="Source\Shapes\Shapes\FixedShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\HexagonShape.cs" Link="Source\Shapes\Shapes\HexagonShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\LineShape.cs" Link="Source\Shapes\Shapes\LineShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\OctagonShape.cs" Link="Source\Shapes\Shapes\OctagonShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\PentagonShape.cs" Link="Source\Shapes\Shapes\PentagonShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\PointShape.cs" Link="Source\Shapes\Shapes\PointShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\RectangleShape.cs" Link="Source\Shapes\Shapes\RectangleShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Shapes\TriangleShape.cs" Link="Source\Shapes\Shapes\TriangleShape.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\BaseShapeGeneratorVariant.cs" Link="Source\Shapes\Variants\BaseShapeGeneratorVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\BaseShapeVariant.cs" Link="Source\Shapes\Variants\BaseShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Ellipses\EllipseFilledShapeVariant.cs" Link="Source\Shapes\Variants\Ellipses\EllipseFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Ellipses\EllipseOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Ellipses\EllipseOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Fixed\FixedMaxRoomSizeShapeVariant.cs" Link="Source\Shapes\Variants\Fixed\FixedMaxRoomSizeShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Fixed\FixedOrbitalTradingStationShapeVariant.cs" Link="Source\Shapes\Variants\Fixed\FixedOrbitalTradingStationShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Fixed\FixedSunLampShapeVariant.cs" Link="Source\Shapes\Variants\Fixed\FixedSunLampShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Hexagons\HexagonFilledShapeVariant.cs" Link="Source\Shapes\Variants\Hexagons\HexagonFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Hexagons\HexagonOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Hexagons\HexagonOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\IShapeSegmentVariant.cs" Link="Source\Shapes\Variants\IShapeSegmentVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Lines\LineGridShapeVariant.cs" Link="Source\Shapes\Variants\Lines\LineGridShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Lines\LineSimpleShapeVariant.cs" Link="Source\Shapes\Variants\Lines\LineSimpleShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\NullShapeVariant.cs" Link="Source\Shapes\Variants\NullShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Octagons\OctagonFilledShapeVariant.cs" Link="Source\Shapes\Variants\Octagons\OctagonFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Octagons\OctagonOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Octagons\OctagonOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Pentagons\PentagonFilledShapeVariant.cs" Link="Source\Shapes\Variants\Pentagons\PentagonFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Pentagons\PentagonOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Pentagons\PentagonOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Points\PointShapeVariant.cs" Link="Source\Shapes\Variants\Points\PointShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Rectangles\RectangleFilledShapeVariant.cs" Link="Source\Shapes\Variants\Rectangles\RectangleFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Rectangles\RectangleGridShapeVariant.cs" Link="Source\Shapes\Variants\Rectangles\RectangleGridShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Rectangles\RectangleOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Rectangles\RectangleOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Triangles\TriangleFilledShapeVariant.cs" Link="Source\Shapes\Variants\Triangles\TriangleFilledShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Shapes\Variants\Triangles\TriangleOutlineShapeVariant.cs" Link="Source\Shapes\Variants\Triangles\TriangleOutlineShapeVariant.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\UndoRedo\UndoRedoManager.cs" Link="Source\UndoRedo\UndoRedoManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\UndoRedo\UndoRedoSnapshot.cs" Link="Source\UndoRedo\UndoRedoSnapshot.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Updates\BaseUpdate.cs" Link="Source\Updates\BaseUpdate.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Updates\PlanUpdateManager.cs" Link="Source\Updates\PlanUpdateManager.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Updates\RotateDoorsUpdate.cs" Link="Source\Updates\RotateDoorsUpdate.cs" />
+		<Compile Include="..\PlanningExtended 1.4\Source\Updates\UpdateDesignationsToPlanDesignations.cs" Link="Source\Updates\UpdateDesignationsToPlanDesignations.cs" />
+	</ItemGroup>
+
+</Project>
