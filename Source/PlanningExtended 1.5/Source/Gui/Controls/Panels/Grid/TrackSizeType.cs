@@ -2,6 +2,8 @@
 {
     internal enum TrackSizeType
     {
+        Auto,
+
         Fixed,
 
         Flexible

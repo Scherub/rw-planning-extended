@@ -22,7 +22,7 @@ namespace PlanningExtended.Plans.Materials
         {
             foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
             {
-                PlanAppearance planAppearance = PlanAppearanceManager.PlanAppearances.FirstOrDefault(pc => pc.Type == designationDefContainer.Type);
+                PlanAppearance planAppearance = PlanAppearanceManager.PlanAppearanceStorage.PlanAppearances.FirstOrDefault(pc => pc.Type == designationDefContainer.Type);
 
                 if (planAppearance is not null)
                     foreach (var designationDef in designationDefContainer.DesignationDefs)

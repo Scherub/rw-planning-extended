@@ -1,4 +1,7 @@
 ﻿using HarmonyLib;
+#if RIMWORLD_1_5
+using PlanningExtended.Gui.Toolbox;
+#endif
 using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using Verse;
@@ -13,15 +16,27 @@ namespace PlanningExtended.Patches
             if (worldView || row == null)
                 return;
 
-            bool arePlansVisible = PlanAppearanceManager.ArePlansVisible;
-
+            bool arePlansVisible = PlanAppearanceManager.AreAllPlansVisible;
+#if RIMWORLD_1_5
+            bool isToolboxVisible = ToolboxManager.IsToolboxVisible;
+#endif
             row.ToggleableIcon(ref arePlansVisible, Textures.ShowPlanToggleIcon, "PlanningExtended.Settings.ArePlansVisible.Label".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+#if RIMWORLD_1_5
+            row.ToggleableIcon(ref isToolboxVisible, Textures.ShowPlanToolboxIcon, "PlanningExtended.Settings.IsToolboxVisible.Label".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+#endif
+            if (arePlansVisible != PlanAppearanceManager.AreAllPlansVisible)
+                PlanAppearanceManager.SetPlanVisibility(PlanDesignationType.Unknown, arePlansVisible);
 
-            if (arePlansVisible != PlanAppearanceManager.ArePlansVisible)
-                PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, arePlansVisible);
-
+#if RIMWORLD_1_5
+            if (isToolboxVisible != ToolboxManager.IsToolboxVisible)
+                ToolboxManager.ShowToolboxWindow(isToolboxVisible);
+#endif
             if (PlanningKeyBindingDefOf.Planning_TogglePlanVisibility.KeyDownEvent)
-                PlanAppearanceManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
+                PlanAppearanceManager.ToggleGlobalPlanVisibility();
+#if RIMWORLD_1_5
+            if (PlanningKeyBindingDefOf.Planning_TogglePlanningToolbox.KeyDownEvent)
+                ToolboxManager.ShowToolboxWindow(!isToolboxVisible);
+#endif
         }
     }
 }

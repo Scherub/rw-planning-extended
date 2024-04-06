@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using PlanningExtended.Cells;
-using PlanningExtended.Colors;
 using PlanningExtended.Designations;
 using PlanningExtended.Plans.Appearances;
 using RimWorld;
@@ -13,9 +12,9 @@ namespace PlanningExtended.Designators
     {
         readonly string _name;
 
-        protected abstract PlanDesignationType PlanDesignationType { get; }
-
         protected override bool HasLeftClickPopupMenu => true;
+
+        public abstract PlanDesignationType PlanDesignationType { get; }
 
         public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
 
@@ -24,7 +23,7 @@ namespace PlanningExtended.Designators
         {
             _name = name;
 
-            PlanAppearanceManager.TextureSetChanged -= TextureSetChanged;
+            PlanAppearanceManager.PlanColorChanged += PlanAppearanceManager_ColorChanged;
             PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
         }
 
@@ -101,18 +100,26 @@ namespace PlanningExtended.Designators
             return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
         }
 
-        protected override void SetColorDef(ColorDef newColorDef)
-        {
-            base.SetColorDef(newColorDef);
-
-            PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
-        }
-
         protected override ColorDef GetColorDef()
         {
-            string color = PlanningMod.Settings.GetColor(PlanDesignationType);
+            return PlanAppearanceManager.GetPlanColor(PlanDesignationType);
+        }
 
-            return ColorUtilities.GetColorDefByName(color);
+        protected override void OnColorSelection(ColorDef colorDef)
+        {
+            PlanAppearanceManager.SetPlanColor(PlanDesignationType, colorDef);
+        }
+
+        void PlanAppearanceManager_ColorChanged(PlanDesignationType planDesignationType, ColorDef newColorDef)
+        {
+            Log.Warning($"PlanChangeColorButton '{PlanDesignationType}': Color changed to '{newColorDef.defName}' for '{planDesignationType}'");
+
+            if (planDesignationType != PlanDesignationType.Unknown && planDesignationType != PlanDesignationType)
+                return;
+
+            colorDef = newColorDef;
+
+            ResetMouseAttachmentText();
         }
 
         void TextureSetChanged(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)

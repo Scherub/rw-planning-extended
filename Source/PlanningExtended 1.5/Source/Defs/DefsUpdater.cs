@@ -4,7 +4,7 @@
     {
         public static void UpdateDefs()
         {
-            bool areDesignationsPersistent = PlanningMod.Settings.areDesignationsPersistent;
+            bool areDesignationsPersistent = PlanningMod.Settings.General.areDesignationsPersistent;
 
             foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
             {

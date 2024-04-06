@@ -8,17 +8,17 @@ namespace PlanningExtended.UndoRedo
 {
     public static class UndoRedoManager
     {
-        readonly static List<UndoRedoSnapshot> _undoSnapshots = new();
+        readonly static List<UndoRedoSnapshot> _undoSnapshots = [];
 
-        readonly static List<UndoRedoSnapshot> _redoSnapshots = new();
+        readonly static List<UndoRedoSnapshot> _redoSnapshots = [];
 
         public static bool CanUndo => _undoSnapshots.Count > 0;
 
         public static bool CanRedo => _redoSnapshots.Count > 0;
 
-        public static bool UseUndoRedo => PlanningMod.Settings.useUndoRedo;
+        public static bool UseUndoRedo => PlanningMod.Settings.General.useUndoRedo;
 
-        public static int MaxUndoOperations => PlanningMod.Settings.maxUndoOperations;
+        public static int MaxUndoOperations => PlanningMod.Settings.General.maxUndoOperations;
 
         public static event Action OnChanged;
 

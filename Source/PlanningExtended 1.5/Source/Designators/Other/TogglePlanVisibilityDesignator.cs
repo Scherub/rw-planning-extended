@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PlanningExtended.Gui.Utilities;
 using PlanningExtended.Plans.Appearances;
 using UnityEngine;
 using Verse;
@@ -9,37 +10,36 @@ namespace PlanningExtended.Designators
     {
         readonly Texture icon_on, icon_off, icon_partial;
 
-        public override bool Visible => PlanningMod.Settings.displayTogglePlanVisibilityDesignator;
+        public override bool Visible => PlanningMod.Settings.General.displayTogglePlanVisibilityDesignator;
 
         public TogglePlanVisibilityDesignator()
             : base("TogglePlanVisibility", "TogglePlanVisibility_On")
         {
-            icon_on = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_On", true);
-            icon_off = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Off", true);
-            icon_partial = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Partial", true);
+            icon_on = ContentFinder<Texture2D>.Get("UI/Designators/TogglePlanVisibility_On", true);
+            icon_off = ContentFinder<Texture2D>.Get("UI/Designators/TogglePlanVisibility_Off", true);
+            icon_partial = ContentFinder<Texture2D>.Get("UI/Designators/TogglePlanVisibility_Partial", true);
 
-            PlanAppearanceManager.VisibilityChanged -= PlanAppearanceManager_VisibilityChanged;
-            PlanAppearanceManager.VisibilityChanged += PlanAppearanceManager_VisibilityChanged;
+            PlanAppearanceManager.GlobalVisibilityChanged += PlanAppearanceManager_GlobalVisibilityChanged;
         }
 
-        public override void ProcessInput(Event ev)
+        public override void Click()
         {
             if (IsPlanMenuKeyPressed)
             {
-                List<FloatMenuOption> list = GetPlanTypeMenuOptions((planDesignationType) =>
+                List<FloatMenuOption> list = GuiMenuOptionsUtilities.GetPlanTypeMenuOptions((planDesignationType) =>
                 {
-                    PlanAppearanceManager.ToggleIsPlanVisible(planDesignationType);
+                    PlanAppearanceManager.TogglePlanVisibility(planDesignationType);
                 });
 
                 Find.WindowStack.Add(new FloatMenu(list));
             }
             else
             {
-                PlanAppearanceManager.ToggleIsPlanVisible(PlanDesignationType.Unknown);
+                PlanAppearanceManager.ToggleGlobalPlanVisibility();
             }
         }
 
-        void PlanAppearanceManager_VisibilityChanged(PlanVisibility planVisibility)
+        void PlanAppearanceManager_GlobalVisibilityChanged(PlanVisibility planVisibility)
         {
             icon = planVisibility switch
             {

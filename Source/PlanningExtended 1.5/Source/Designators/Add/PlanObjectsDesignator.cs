@@ -8,7 +8,7 @@ namespace PlanningExtended.Designators
 
         protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanObjectsColored;
 
-        protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanObjects;
+        public override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanObjects;
         
         public PlanObjectsDesignator()
             : base("PlanObjects")

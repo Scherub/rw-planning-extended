@@ -8,7 +8,7 @@ namespace PlanningExtended.Designators
 {
     public class CutPlanDesignator : BaseUndoRedoPlanDesignator
     {
-        public override bool Visible => PlanningMod.Settings.displayCutDesignator;
+        public override bool Visible => PlanningMod.Settings.General.displayCutDesignator;
 
         public CutPlanDesignator()
             : base("CutPlan")

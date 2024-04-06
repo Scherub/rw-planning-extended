@@ -4,15 +4,15 @@
     {
         public TrackSizeType TrackSizeType { get; }
 
-        public float Value { get; }
+        public float Length { get; }
 
-        public TrackDefinition(TrackSizeType trackSizeType, float value)
+        public TrackDefinition(TrackSizeType trackSizeType, float length)
         {
             TrackSizeType = trackSizeType;
-            Value = value;
+            Length = length;
         }
 
-        //public static TrackDefinition Auto() => new(TrackSizeType.Auto, 0f);
+        public static TrackDefinition Auto() => new(TrackSizeType.Auto, 0f);
 
         public static TrackDefinition Flexible(float value) => new(TrackSizeType.Flexible, value);
 

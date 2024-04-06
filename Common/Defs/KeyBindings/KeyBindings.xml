@@ -11,6 +11,12 @@
 
     <KeyBindingDef>
         <category>PlanningExtended</category>
+        <defName>Planning_TogglePlanningToolbox</defName>
+        <label>toggle plan toolbox visibility</label>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
         <defName>Planning_ColorPicker</defName>
         <label>color picker</label>
         <defaultKeyCodeA>LeftControl</defaultKeyCodeA>

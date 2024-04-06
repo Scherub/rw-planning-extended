@@ -2,6 +2,8 @@
 {
     internal readonly struct Thickness
     {
+        public static Thickness Zero = new();
+
         public float Left { get; }
 
         public float Top { get; }
@@ -10,7 +12,14 @@
 
         public float Bottom { get; }
 
-        public static Thickness Zero = new(0, 0, 0, 0);
+        public float Width => Left + Right;
+
+        public float Height => Top + Bottom;
+
+        public Thickness()
+            : this(0f, 0f, 0f, 0f)
+        {
+        }
 
         public Thickness(float left, float top, float right, float bottom)
         {

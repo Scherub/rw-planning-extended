@@ -105,7 +105,7 @@ namespace PlanningExtended.Designators
 
         public override void SelectedUpdate()
         {
-            PlanAppearanceManager.SetIsPlanVisible(PlanDesignationType.Unknown, true);
+            PlanAppearanceManager.SetPlanVisibility(PlanDesignationType.Unknown, true);
 
             if (DrawMouseOverBrackets)
                 GenUI.RenderMouseoverBracket();

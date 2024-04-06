@@ -11,7 +11,7 @@ namespace PlanningExtended.Designators
     {
         protected virtual bool UseUndoRedo => true;
 
-        protected bool OverwriteDesignation => (!Settings.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
+        protected bool OverwriteDesignation => (!Settings.General.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.General.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
 
         protected BaseUndoRedoPlanDesignator(string name)
             : base(name)
@@ -85,7 +85,7 @@ namespace PlanningExtended.Designators
 
         protected string GetSkipReplaceModeString()
         {
-            if (Settings.useSkipInsteadOfReplaceAsDefault)
+            if (Settings.General.useSkipInsteadOfReplaceAsDefault)
                 return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Replace".Translate() : "PlanningExtended.Skip".Translate();
             else
                 return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();

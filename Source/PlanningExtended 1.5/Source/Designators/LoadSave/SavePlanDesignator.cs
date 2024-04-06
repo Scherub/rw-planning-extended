@@ -1,6 +1,5 @@
 ﻿using PlanningExtended.Plans;
 using PlanningExtended.Plans.Gui;
-using UnityEngine;
 using Verse;
 
 namespace PlanningExtended.Designators
@@ -15,7 +14,7 @@ namespace PlanningExtended.Designators
             PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
         }
 
-        public override void ProcessInput(Event ev)
+        public override void Click()
         {
             Find.WindowStack.Add(new SavePlanDialog(PlanManager.CachedPlanLayout));
         }

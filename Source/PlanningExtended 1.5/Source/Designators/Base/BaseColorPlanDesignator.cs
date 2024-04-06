@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlanningExtended.Gui.Utilities;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,9 +9,7 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     {
-        public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
-
-        public override Color IconDrawColor => colorDef.color;
+        bool UseCtrlForColorDialog => PlanningMod.Settings.General.useCtrlForColorDialog;
 
         protected ColorPickerDesignator colorPicker;
 
@@ -24,7 +23,11 @@ namespace PlanningExtended.Designators
 
         protected virtual Action<Rect> OnPostDrawMouseAttachment => null;
 
-        bool UseCtrlForColorDialog => PlanningMod.Settings.useCtrlForColorDialog;
+        public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
+
+        public override Color IconDrawColor => colorDef.color;
+
+        public ColorPickerDesignator ColorPicker => colorPicker;
 
         protected BaseColorPlanDesignator(string name)
             : base(name)
@@ -32,11 +35,10 @@ namespace PlanningExtended.Designators
             defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel, PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel);
 
             colorDef = GetColorDef();
-            
+
             colorPicker = new ColorPickerDesignator((newColorDef) =>
             {
-                SetColorDef(newColorDef);
-                ResetMouseAttachmentText();
+                OnColorSelection(newColorDef);
 
                 if (!IsColorPickModeEnabled)
                     Find.DesignatorManager.Select(this);
@@ -66,24 +68,11 @@ namespace PlanningExtended.Designators
 
             if (!UseCtrlForColorDialog || PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown)
             {
-                List<FloatMenuGridOption> list = new(ColorDefinitions.ColorDefs.Count + 1)
+                List<FloatMenuGridOption> list = GuiMenuOptionsUtilities.GetColorSelectionMenuGridOptions(colorPicker, (colorDef) =>
                 {
-                    new FloatMenuGridOption(Designator_Eyedropper.EyeDropperTex, () =>
-                    {
-                        Find.DesignatorManager.Select(colorPicker);
-                    }, null, new TipSignal?("DesignatorEyeDropperDesc_Paint".Translate()))
-                };
-
-                foreach (ColorDef colorDef in ColorDefinitions.ColorDefs)
-                {
-                    list.Add(new FloatMenuGridOption(BaseContent.WhiteTex, () =>
-                    {
-                        Find.DesignatorManager.Select(this);
-                        SetColorDef(colorDef);
-                        ResetMouseAttachmentText();
-
-                    }, new Color?(colorDef.color), new TipSignal?(colorDef.LabelCap)));
-                }
+                    OnColorSelection(colorDef);
+                    Find.DesignatorManager.Select(this);
+                });
 
                 Find.WindowStack.Add(new FloatMenuGrid(list));
 
@@ -105,14 +94,8 @@ namespace PlanningExtended.Designators
             return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel + ": " + "GrabExistingColor".Translate();
         }
 
-        protected virtual void SetColorDef(ColorDef newColorDef)
-        {
-            colorDef = newColorDef ?? ColorDefinitions.NonColoredDef;
-        }
+        protected abstract ColorDef GetColorDef();
 
-        protected virtual ColorDef GetColorDef()
-        {
-            return ColorDefinitions.NonColoredDef;
-        }
+        protected abstract void OnColorSelection(ColorDef colorDef);
     }
 }

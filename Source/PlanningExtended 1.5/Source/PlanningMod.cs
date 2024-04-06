@@ -1,6 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 using PlanningExtended.Defs;
+using PlanningExtended.Gui.Settings;
 using PlanningExtended.Settings;
 using UnityEngine;
 using Verse;

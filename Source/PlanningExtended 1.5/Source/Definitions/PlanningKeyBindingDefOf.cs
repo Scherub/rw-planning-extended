@@ -22,6 +22,8 @@ namespace PlanningExtended
 
         public static KeyBindingDef Planning_TogglePlanVisibility;
 
+        public static KeyBindingDef Planning_TogglePlanningToolbox;
+
         public static KeyBindingDef Planning_ChangeShapeVariant;
 
         public static KeyBindingDef Planning_Action1;

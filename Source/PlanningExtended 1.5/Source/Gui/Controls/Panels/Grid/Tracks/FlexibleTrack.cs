@@ -7,9 +7,9 @@
         {
         }
 
-        public override float ComputeLength(int numberOfTracks, float availableLength, float totalValue)
+        public override float ComputeLength(int numberOfTracks, float availableLength, float totalLength)
         {
-            Length = (availableLength / totalValue) * Definition.Value;
+            Length = (availableLength / totalLength) * Definition.Length;
 
             return availableLength;
         }

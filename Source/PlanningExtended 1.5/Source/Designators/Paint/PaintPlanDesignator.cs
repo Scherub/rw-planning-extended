@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using PlanningExtended.Cells;
-using PlanningExtended.Colors;
 using PlanningExtended.Designations;
+using PlanningExtended.Plans.Appearances;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,12 +17,14 @@ namespace PlanningExtended.Designators
 
         protected override Action<Rect> OnPostDrawMouseAttachment => (rect) => GUI.DrawTexture(rect, IconTopTexture);
 
-        Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
+        public Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
 
         public PaintPlanDesignator()
             : base("PaintPlan")
         {
             soundSucceeded = SoundDefOf.Designate_Paint;
+
+            PlanAppearanceManager.PaintPlanColorChanged += PlanAppearanceManager_PaintPlanColorChanged;
         }
 
         protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -101,19 +103,21 @@ namespace PlanningExtended.Designators
             Widgets.DrawTextureFitted(rect, IconTopTexture, iconDrawScale * 0.85f, iconProportions, iconTexCoords, iconAngle, buttonMat);
         }
 
-        protected override void SetColorDef(ColorDef newColorDef)
+        protected override void OnColorSelection(ColorDef colorDef)
         {
-            base.SetColorDef(newColorDef);
-
-            Settings.paintPlanColor = newColorDef.defName;
-            Settings.Write();
+            PlanAppearanceManager.SetPaintPlanColor(colorDef);
         }
 
         protected override ColorDef GetColorDef()
         {
-            string color = PlanningMod.Settings.paintPlanColor;
+            return PlanAppearanceManager.GetPaintPlanColor();
+        }
 
-            return ColorUtilities.GetColorDefByName(color);
+        void PlanAppearanceManager_PaintPlanColorChanged(ColorDef newColorDef)
+        {
+            colorDef = newColorDef;
+
+            ResetMouseAttachmentText();
         }
     }
 }

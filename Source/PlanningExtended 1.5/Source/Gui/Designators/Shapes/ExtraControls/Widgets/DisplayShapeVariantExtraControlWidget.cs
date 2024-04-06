@@ -13,6 +13,11 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Flexible(1f) },
             Thickness.Symmetric(0f, 5f));
 
+        public DisplayShapeVariantExtraControlWidget()
+            : base("*", "*, *", margin: Thickness.Symmetric(0f, 5f))
+        {
+        }
+
         public override ShapeOptions ShapeOption => ShapeOptions.None;
 
         public override ShapeDisplayOptions ShapeDisplayOption => ShapeDisplayOptions.DisplayVariant;

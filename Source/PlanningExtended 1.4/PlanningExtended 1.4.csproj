@@ -40,9 +40,19 @@
 		<Folder Include="Source\Designators\CopyPaste\" />
 		<Folder Include="Source\Designators\Add\" />
 		<Folder Include="Source\Extensions\" />
-		<Folder Include="Source\Gui\Controls\Grid\Tracks\" />
 		<Folder Include="Source\Gui\Common\" />
+		<Folder Include="Source\Gui\Controls\Base\" />
+		<Folder Include="Source\Gui\Controls\Panels\Grid\Tracks\" />
+		<Folder Include="Source\Gui\Controls\Panels\Grid\old\" />
+		<Folder Include="Source\Gui\Exceptions\" />
 		<Folder Include="Source\Gui\Designators\Shapes\ExtraControls\Widgets\" />
+		<Folder Include="Source\Gui\Definitions\" />
+		<Folder Include="Source\Gui\Settings\" />
+		<Folder Include="Source\Gui\Utilities\" />
+		<Folder Include="Source\Gui\Toolbox\Main\Controls\Buttons\Plan\" />
+		<Folder Include="Source\Gui\Toolbox\Main\Controls\Buttons\" />
+		<Folder Include="Source\Gui\Toolbox\Main\Controls\Panels\" />
+		<Folder Include="Source\Gui\Toolbox\Main\Windows\" />
 		<Folder Include="Source\Math\" />
 		<Folder Include="Source\Patches\" />
 		<Folder Include="Source\Plans\Gui\" />
@@ -138,19 +148,41 @@
 		<Compile Include="..\PlanningExtended 1.5\Source\Extensions\PlanCellExtensions.cs" Link="Source\Extensions\PlanCellExtensions.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Extensions\PlanLayoutExtensions.cs" Link="Source\Extensions\PlanLayoutExtensions.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Extensions\ShapeOptionsExtensions.cs" Link="Source\Extensions\ShapeOptionsExtensions.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Common\Size.cs" Link="Source\Gui\Common\Size.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Common\Thickness.cs" Link="Source\Gui\Common\Thickness.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\LayoutGrid.cs" Link="Source\Gui\Controls\Grid\LayoutGrid.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\TrackDefinition.cs" Link="Source\Gui\Controls\Grid\TrackDefinition.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\TrackSizeType.cs" Link="Source\Gui\Controls\Grid\TrackSizeType.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\Tracks\FixedTrack.cs" Link="Source\Gui\Controls\Grid\Tracks\FixedTrack.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\Tracks\FlexibleTrack.cs" Link="Source\Gui\Controls\Grid\Tracks\FlexibleTrack.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Grid\Tracks\Track.cs" Link="Source\Gui\Controls\Grid\Tracks\Track.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\BaseButton.cs" Link="Source\Gui\Controls\Base\BaseButton.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\BaseControl.cs" Link="Source\Gui\Controls\Base\BaseControl.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\Button.cs" Link="Source\Gui\Controls\Base\Button.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\ContentControl.cs" Link="Source\Gui\Controls\Base\ContentControl.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\HorizontalLine.cs" Link="Source\Gui\Controls\Base\HorizontalLine.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\IconButton.cs" Link="Source\Gui\Controls\Base\IconButton.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\Image.cs" Link="Source\Gui\Controls\Base\Image.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\Label.cs" Link="Source\Gui\Controls\Base\Label.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Base\TextButton.cs" Link="Source\Gui\Controls\Base\TextButton.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\GridPanel.cs" Link="Source\Gui\Controls\Panels\Grid\GridPanel.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\GridPosition.cs" Link="Source\Gui\Controls\Panels\Grid\GridPosition.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\old\LayoutGrid.cs" Link="Source\Gui\Controls\Panels\Grid\old\LayoutGrid.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\TrackDefinition.cs" Link="Source\Gui\Controls\Panels\Grid\TrackDefinition.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\TrackDefinitionParser.cs" Link="Source\Gui\Controls\Panels\Grid\TrackDefinitionParser.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\TrackSizeType.cs" Link="Source\Gui\Controls\Panels\Grid\TrackSizeType.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\Tracks\AutoTrack.cs" Link="Source\Gui\Controls\Panels\Grid\Tracks\AutoTrack.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\Tracks\FixedTrack.cs" Link="Source\Gui\Controls\Panels\Grid\Tracks\FixedTrack.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\Tracks\FlexibleTrack.cs" Link="Source\Gui\Controls\Panels\Grid\Tracks\FlexibleTrack.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Grid\Tracks\Track.cs" Link="Source\Gui\Controls\Panels\Grid\Tracks\Track.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\Panel.cs" Link="Source\Gui\Controls\Panels\Panel.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\Panels\StackPanel.cs" Link="Source\Gui\Controls\Panels\StackPanel.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Controls\TitleBar.cs" Link="Source\Gui\Controls\TitleBar.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Definitions\Orientation.cs" Link="Source\Gui\Definitions\Orientation.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Definitions\Visibility.cs" Link="Source\Gui\Definitions\Visibility.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Designators\Shapes\ExtraControls\ShapeExtraControlManager.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\ShapeExtraControlManager.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Designators\Shapes\ExtraControls\Widgets\BaseShapeExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\BaseShapeExtraControlWidget.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Designators\Shapes\ExtraControls\Widgets\DisplayShapeVariantExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\DisplayShapeVariantExtraControlWidget.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeRotationExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeRotationExtraControlWidget.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeSegmentExtraControlWidget.cs" Link="Source\Gui\Designators\Shapes\ExtraControls\Widgets\ShapeSegmentExtraControlWidget.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Exceptions\GuiException.cs" Link="Source\Gui\Exceptions\GuiException.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Gui\GuiUtilities.cs" Link="Source\Gui\GuiUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Settings\SettingsGuiUtilities.cs" Link="Source\Gui\Settings\SettingsGuiUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Gui\Utilities\GuiMenuOptionsUtilities.cs" Link="Source\Gui\Utilities\GuiMenuOptionsUtilities.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Math\OctagonUtilities.cs" Link="Source\Math\OctagonUtilities.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Math\TriangleUtilities.cs" Link="Source\Math\TriangleUtilities.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Patches\PatchDesignation.cs" Link="Source\Patches\PatchDesignation.cs" />
@@ -160,6 +192,7 @@
 		<Compile Include="..\PlanningExtended 1.5\Source\PlanningModStartUp.cs" Link="Source\PlanningModStartUp.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Appearances\PlanAppearance.cs" Link="Source\Plans\Appearances\PlanAppearance.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Appearances\PlanAppearanceManager.cs" Link="Source\Plans\Appearances\PlanAppearanceManager.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Appearances\PlanAppearanceStorage.cs" Link="Source\Plans\Appearances\PlanAppearanceStorage.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Converters\MorePlanningConverter.cs" Link="Source\Plans\Converters\MorePlanningConverter.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Converters\VanillaPlanConverter.cs" Link="Source\Plans\Converters\VanillaPlanConverter.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Gui\LoadPlanDialog.cs" Link="Source\Plans\Gui\LoadPlanDialog.cs" />
@@ -174,9 +207,13 @@
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\Persistence\PlanPersistenceManager.cs" Link="Source\Plans\Persistence\PlanPersistenceManager.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\PlanLayoutUtilities.cs" Link="Source\Plans\PlanLayoutUtilities.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Plans\PlanManager.cs" Link="Source\Plans\PlanManager.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Settings\PlanDesignationSetting.cs" Link="Source\Settings\PlanDesignationSetting.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\BaseSettings.cs" Link="Source\Settings\BaseSettings.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\GeneralSettings.cs" Link="Source\Settings\GeneralSettings.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\PaintPlanSettings.cs" Link="Source\Settings\PaintPlanSettings.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\PlanDesignationSettings.cs" Link="Source\Settings\PlanDesignationSettings.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Settings\PlanningSettings.cs" Link="Source\Settings\PlanningSettings.cs" />
-		<Compile Include="..\PlanningExtended 1.5\Source\Settings\SettingsGuiUtilities.cs" Link="Source\Settings\SettingsGuiUtilities.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\PlanSettings.cs" Link="Source\Settings\PlanSettings.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Settings\ToolboxSettings.cs" Link="Source\Settings\ToolboxSettings.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Shapes\Features\BaseShapeFeature.cs" Link="Source\Shapes\Features\BaseShapeFeature.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Shapes\Features\IShapeFeature.cs" Link="Source\Shapes\Features\IShapeFeature.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Shapes\Features\RotationShapeFeature.cs" Link="Source\Shapes\Features\RotationShapeFeature.cs" />

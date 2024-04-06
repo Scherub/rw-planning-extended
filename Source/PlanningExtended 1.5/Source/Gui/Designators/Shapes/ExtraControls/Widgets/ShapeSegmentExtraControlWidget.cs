@@ -16,6 +16,11 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Flexible(1f), TrackDefinition.Flexible(1f) },
             Thickness.Symmetric(10f, 5f), 0f, 5f);
 
+        public ShapeSegmentExtraControlWidget()
+            : base("10, 20, *, 20, 20, 20, 20", "*, *, *", margin: Thickness.Symmetric(10f, 5f), rowGap: 5f)
+        {
+        }
+
         public override ShapeDisplayOptions ShapeDisplayOption => ShapeDisplayOptions.NumberOfSegments;
 
         public override ShapeOptions ShapeOption => ShapeOptions.NumberOfSegmentsX;

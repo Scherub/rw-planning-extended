@@ -81,7 +81,7 @@ namespace PlanningExtended.Plans.Gui
                         {
                             localFile.Delete();
 
-                            PlanningMod.Settings.RemoveLastLoadedPlan(Path.GetFileNameWithoutExtension(localFile.Name));
+                            PlanningMod.Settings.Plan.RemoveLastLoadedPlan(Path.GetFileNameWithoutExtension(localFile.Name));
 
                             ReloadFiles();
                         }, true, null, WindowLayer.Dialog));

@@ -1,58 +1,91 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PlanningExtended.Gui.Controls.Grid;
 using PlanningExtended.Gui.Controls.Grid.Tracks;
 using UnityEngine;
 
-namespace PlanningExtended.Gui.Controls.Grid
+namespace PlanningExtended.Gui.Controls
 {
-    internal class LayoutGrid
+    internal class GridPanel : Panel
     {
         readonly List<TrackDefinition> _columnDefinitions;
 
         readonly List<TrackDefinition> _rowDefinitions;
 
-        readonly Thickness _margin;
-
-        readonly float _columnGap;
-
-        readonly float _rowGap;
-
-        Rect _rect;
-
         Dictionary<int, Track> _columns = new();
 
         Dictionary<int, Track> _rows = new();
 
-        public LayoutGrid(IEnumerable<TrackDefinition> columnDefinitions, IEnumerable<TrackDefinition> rowDefinitions, float columnGap = 0f, float rowGap = 0f)
-            : this(columnDefinitions, rowDefinitions, Thickness.Zero, columnGap, rowGap)
+        Rect _rect;
+
+        public float ColumnGap { get; set; }
+
+        public float RowGap { get; set; }
+
+        public GridPanel(string columnDefinitions, string rowDefinitions, GridPosition? gridPosition = null, Thickness? margin = null, float columnGap = 0f, float rowGap = 0f)
+            : base(gridPosition, margin)
         {
+            _columnDefinitions = TrackDefinitionParser.Parse(columnDefinitions);
+            _rowDefinitions = TrackDefinitionParser.Parse(rowDefinitions);
+            ColumnGap = columnGap;
+            RowGap = rowGap;
         }
 
-        public LayoutGrid(IEnumerable<TrackDefinition> columnDefinitions, IEnumerable<TrackDefinition> rowDefinitions, Thickness margin, float columnGap = 0f, float rowGap = 0f)
+        protected override void OnDraw(Rect rect)
         {
-            _columnDefinitions = columnDefinitions.ToList();
-            _rowDefinitions = rowDefinitions.ToList();
-            _margin = margin;
-            _columnGap = columnGap;
-            _rowGap = rowGap;
+            Arrange(rect);
+
+            foreach (BaseControl child in Children)
+                child.Draw(GetRect(child.GridPosition));
         }
 
-        public void Compute(Rect rect)
-        {
-            if (rect == _rect)
-                return;
+        //internal override Size Measure(Size availableSize)
+        //{
+        //    Size size = availableSize;
 
-            _rect = rect;
-            _columns = ComputeTracks(_columnDefinitions, rect.x, rect.width, _margin.Left, _margin.Right, _columnGap);
-            _rows = ComputeTracks(_rowDefinitions, rect.y, rect.height, _margin.Top, _margin.Bottom, _rowGap);
+        //    foreach (BaseControl child in Children)
+        //    {
+        //        child.Measure(size);
+
+        //    }
+        //}
+
+        protected override Size OnMeasure(Size availableSize)
+        {
+            
+            
+            foreach (BaseControl child in Children)
+            {
+                child.Measure(availableSize);
+
+            }
+
+
+
+            return base.OnMeasure(availableSize);
         }
 
-        public Rect GetRect(int columnStartIndex, int rowStartIndex, int columnSpan = 1, int rowSpan = 1)
+        Rect GetRect(GridPosition gridPosition)
+        {
+            return GetRect(gridPosition.ColumnStartIndex, gridPosition.RowStartIndex, gridPosition.ColumnSpan, gridPosition.RowSpan);
+        }
+
+        Rect GetRect(int columnStartIndex, int rowStartIndex, int columnSpan = 1, int rowSpan = 1)
         {
             GetTrackStartEnd(ref _columns, columnStartIndex, columnSpan, out float startX, out float lengthX);
             GetTrackStartEnd(ref _rows, rowStartIndex, rowSpan, out float startY, out float lengthY);
 
             return new Rect(startX, startY, lengthX, lengthY);
+        }
+
+        void Arrange(Rect rect)
+        {
+            if (rect == _rect)
+                return;
+
+            _rect = rect;
+            _columns = ComputeTracks(_columnDefinitions, rect.x, rect.width, Margin.Left, Margin.Right, ColumnGap);
+            _rows = ComputeTracks(_rowDefinitions, rect.y, rect.height, Margin.Top, Margin.Bottom, RowGap);
         }
 
         Dictionary<int, Track> ComputeTracks(List<TrackDefinition> trackDefinitions, float start, float availableLength, float marginStart, float marginEnd, float gapLength)
@@ -61,8 +94,9 @@ namespace PlanningExtended.Gui.Controls.Grid
 
             // 1. define indices / order
             // 2. compute total gaps
+            // 3. compute auto size
             // 3. compute fixed size
-            // 4. compute flexibel size
+            // 4. compute flexible size
             // 5. compute start position
 
             List<Track> tracks = new();
@@ -92,10 +126,10 @@ namespace PlanningExtended.Gui.Controls.Grid
         float ComputeTrackLength(List<Track> tracks, float availableLength)
         {
             int numberOfTracks = tracks.Count;
-            float totalValue = tracks.Sum(t => t.Definition.Value);
+            float totalTrackLength = tracks.Sum(t => t.Definition.Length);
 
             foreach (var track in tracks)
-                availableLength = track.ComputeLength(numberOfTracks, availableLength, totalValue);
+                availableLength = track.ComputeLength(numberOfTracks, availableLength, totalTrackLength);
 
             return availableLength;
         }
@@ -112,12 +146,12 @@ namespace PlanningExtended.Gui.Controls.Grid
         void GetTrackStartEnd(ref Dictionary<int, Track> tracks, int startIndex, int span, out float start, out float end)
         {
             if (!tracks.TryGetValue(startIndex, out Track trackStart))
-                throw new System.Exception();
+                throw new GuiException($"Didn't find grid layout start track with startIndex of {startIndex}.");
 
             start = trackStart.Start;
 
             if (!tracks.TryGetValue(startIndex + span - 1, out Track trackEnd))
-                throw new System.Exception();
+                throw new GuiException($"Didn't find grid layout end track with span of {startIndex + span - 1}.");
 
             end = trackEnd.Start + trackEnd.Length - trackStart.Start;
         }
@@ -128,7 +162,7 @@ namespace PlanningExtended.Gui.Controls.Grid
             {
                 TrackSizeType.Fixed => new FixedTrack(index, trackDefinition),
                 TrackSizeType.Flexible => new FlexibleTrack(index, trackDefinition),
-                _ => throw new System.Exception()
+                _ => throw new GuiException("TrackDefinition of unknown type.")
             };
         }
     }

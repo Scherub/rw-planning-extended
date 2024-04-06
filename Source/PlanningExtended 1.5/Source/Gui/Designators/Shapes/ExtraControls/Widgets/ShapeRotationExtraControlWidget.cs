@@ -14,6 +14,11 @@ namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
             new List<TrackDefinition>() { TrackDefinition.Flexible(1f), TrackDefinition.Fixed(64f), TrackDefinition.Flexible(1f), TrackDefinition.Fixed(30f) },
             Thickness.Symmetric(10f, 5f), 0f, 5f);
 
+        public ShapeRotationExtraControlWidget()
+            : base("*, 64, 10, 64, *", "*, 64, *, 30", margin: Thickness.Symmetric(10f, 5f), rowGap: 5f)
+        {
+        }
+
         public override ShapeDisplayOptions ShapeDisplayOption => ShapeDisplayOptions.Rotation;
 
         public override ShapeOptions ShapeOption => ShapeOptions.Rotation;

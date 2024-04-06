@@ -8,7 +8,7 @@ namespace PlanningExtended.Designators
         
         protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanDoorsColored;
 
-        protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanDoors;
+        public override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanDoors;
 
         public PlanDoorsDesignator()
             : base("PlanDoors")

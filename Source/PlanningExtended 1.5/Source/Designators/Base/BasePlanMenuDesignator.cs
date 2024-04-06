@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PlanningExtended.Designations;
+using PlanningExtended.Gui.Utilities;
 using RimWorld;
 using Verse;
 
@@ -26,7 +26,7 @@ namespace PlanningExtended.Designators
         {
             if (IsPlanMenuKeyPressed)
             {
-                return GetPlanTypeMenuOptions((planDesignationType) =>
+                return GuiMenuOptionsUtilities.GetPlanTypeMenuOptions((planDesignationType) =>
                 {
                     List<FloatMenuOption> list = getMenuOptions(planDesignationType);
 
@@ -37,22 +37,6 @@ namespace PlanningExtended.Designators
             {
                 return getMenuOptions(PlanDesignationType.Unknown);
             }
-
-        }
-
-        protected List<FloatMenuOption> GetPlanTypeMenuOptions(Action<PlanDesignationType> action)
-        {
-            List<FloatMenuOption> list = new();
-
-            foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
-            {
-                list.Add(new FloatMenuOption(planDesignationType.ToString(), () =>
-                {
-                    action(planDesignationType);
-                }));
-            }
-
-            return list;
         }
     }
 }

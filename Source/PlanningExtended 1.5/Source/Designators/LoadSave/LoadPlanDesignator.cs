@@ -2,7 +2,6 @@
 using PlanningExtended.Plans;
 using PlanningExtended.Plans.Gui;
 using PlanningExtended.Plans.Persistence;
-using UnityEngine;
 using Verse;
 
 namespace PlanningExtended.Designators
@@ -14,30 +13,29 @@ namespace PlanningExtended.Designators
         public LoadPlanDesignator()
             : base("LoadPlan")
         {
-
         }
 
-        public override void ProcessInput(Event ev)
+        public override void Click()
         {
             Find.WindowStack.Add(new LoadPlanDialog());
         }
 
         List<FloatMenuOption> GetLastLoadedPlansMenuOptions()
         {
-            List<FloatMenuOption> list = new();
+            List<FloatMenuOption> list = [];
 
-            foreach (string planName in PlanningMod.Settings.LastLoadedPlans)
+            foreach (string planName in PlanningMod.Settings.Plan.LastLoadedPlans)
             {
                 list.Add(new FloatMenuOption(planName, () =>
                 {
                     if (PlanPersistenceManager.Load(planName, out PlanInfo planInfo))
                     {
                         PlanManager.SetCachedPlanLayout(planInfo.PlanLayout);
-                        PlanningMod.Settings.AddLastLoadedPlan(planName);
+                        PlanningMod.Settings.Plan.AddLastLoadedPlan(planName);
                     }
                     else
                     {
-                        PlanningMod.Settings.RemoveLastLoadedPlan(planName);
+                        PlanningMod.Settings.Plan.RemoveLastLoadedPlan(planName);
                     }
                 }));
             }

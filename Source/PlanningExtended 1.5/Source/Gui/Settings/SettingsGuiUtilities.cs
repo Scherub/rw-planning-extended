@@ -1,9 +1,10 @@
 ﻿using PlanningExtended.Plans.Converters;
+using PlanningExtended.Settings;
 using PlanningExtended.Updates;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Settings
+namespace PlanningExtended.Gui.Settings
 {
     public static class SettingsGuiUtilities
     {
@@ -13,12 +14,12 @@ namespace PlanningExtended.Settings
             float columnWidth = inRect.width / 2f;
             float usableColumnWidth = columnWidth - margin * 2f;
 
-            DisplaySkillSelection(settings, new Rect(inRect.x + margin, inRect.y, usableColumnWidth, inRect.height));
+            DisplayLeftPane(settings, new Rect(inRect.x + margin, inRect.y, usableColumnWidth, inRect.height));
 
             DisplayRightPane(settings, new Rect(inRect.x + columnWidth + margin, inRect.y, usableColumnWidth, inRect.height));
         }
 
-        static void DisplaySkillSelection(PlanningSettings settings, Rect inRect)
+        static void DisplayLeftPane(PlanningSettings settings, Rect inRect)
         {
             Listing_Standard listingStandard = new();
 
@@ -29,21 +30,21 @@ namespace PlanningExtended.Settings
             //listingStandard.BeginSubSection();
 
 
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseUndoRedo.Label".Translate(), ref settings.useUndoRedo, "PlanningExtended.Settings.UseUndoRedo.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseUndoRedo.Label".Translate(), ref settings.General.useUndoRedo, "PlanningExtended.Settings.UseUndoRedo.Desc".Translate());
 
-            settings.maxUndoOperations = listingStandard.SliderLabel(settings.maxUndoOperations, 5, 50, () => "PlanningExtended.Settings.MaxUndoRedoOperations.Label".Translate() + " (5 - 50): " + settings.maxUndoOperations);
+            settings.General.maxUndoOperations = listingStandard.SliderLabel(settings.General.maxUndoOperations, 5, 50, () => "PlanningExtended.Settings.MaxUndoRedoOperations.Label".Translate() + " (5 - 50): " + settings.General.maxUndoOperations);
 
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayCutDesignator.Label".Translate(), ref settings.displayCutDesignator, "PlanningExtended.Settings.DisplayCutDesignator.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayCutDesignator.Label".Translate(), ref settings.General.displayCutDesignator, "PlanningExtended.Settings.DisplayCutDesignator.Desc".Translate());
             
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label".Translate(), ref settings.displayChangePlanAppearanceDesignator, "PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label".Translate(), ref settings.General.displayChangePlanAppearanceDesignator, "PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc".Translate());
             
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label".Translate(), ref settings.displayTogglePlanVisibilityDesignator, "PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label".Translate(), ref settings.General.displayTogglePlanVisibilityDesignator, "PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc".Translate());
             
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseCtrlForColorDialog.Label".Translate(), ref settings.useCtrlForColorDialog, "PlanningExtended.Settings.UseCtrlForColorDialog.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseCtrlForColorDialog.Label".Translate(), ref settings.General.useCtrlForColorDialog, "PlanningExtended.Settings.UseCtrlForColorDialog.Desc".Translate());
             
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.ArePlansPersistent.Label".Translate(), ref settings.areDesignationsPersistent, "PlanningExtended.Settings.ArePlansPersistent.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.ArePlansPersistent.Label".Translate(), ref settings.General.areDesignationsPersistent, "PlanningExtended.Settings.ArePlansPersistent.Desc".Translate());
 
-            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label".Translate(), ref settings.useSkipInsteadOfReplaceAsDefault, "PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc".Translate());
+            listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label".Translate(), ref settings.General.useSkipInsteadOfReplaceAsDefault, "PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc".Translate());
 
             //listingStandard.EndSubSection();
 

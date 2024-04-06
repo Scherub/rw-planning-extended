@@ -1,135 +1,153 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using PlanningExtended.Colors;
 using PlanningExtended.Settings;
 using RimWorld;
 using Verse.Sound;
 
 namespace PlanningExtended.Plans.Appearances
 {
-    internal class PlanAppearanceManager
+    internal static class PlanAppearanceManager
     {
-        readonly static List<PlanAppearance> planAppearances;
-        public static List<PlanAppearance> PlanAppearances => planAppearances;
-
-        readonly static PlanAppearance planDoor = CreatePlanAppearance(PlanDesignationType.PlanDoors);
-
-        readonly static PlanAppearance planFloor = CreatePlanAppearance(PlanDesignationType.PlanFloors);
-
-        readonly static PlanAppearance planObject = CreatePlanAppearance(PlanDesignationType.PlanObjects);
-
-        readonly static PlanAppearance planWall = CreatePlanAppearance(PlanDesignationType.PlanWall);
-
         static PlanningSettings Settings => PlanningMod.Settings;
 
-        public static PlanVisibility PlanVisibility { get; private set; }
+        static public PlanAppearanceStorage PlanAppearanceStorage { get; } = new();
 
-        public static bool ArePlansVisible => PlanVisibility is PlanVisibility.Visible;
+        public static PlanVisibility GlobalPlanVisibility { get; private set; }
 
+        public static bool AreAllPlansVisible => GlobalPlanVisibility is PlanVisibility.Visible;
+
+        public static event Action<ColorDef> PaintPlanColorChanged;
+
+        public static event Action<PlanDesignationType, ColorDef> PlanColorChanged;
+        
         public static event Action<PlanDesignationType, float> OpacityChanged;
 
         public static event Action<PlanDesignationType, PlanTextureSet> TextureSetChanged;
 
-        public static event Action<PlanVisibility> VisibilityChanged;
+        public static event Action<PlanDesignationType, bool> VisibilityChanged;
+
+        public static event Action<PlanVisibility> GlobalVisibilityChanged;
 
         static PlanAppearanceManager()
         {
-            planAppearances = [planDoor, planFloor, planObject, planWall];
-
-            DetermineVisibility();
+            GlobalPlanVisibility = DetermineGlobalVisibility();
         }
 
-        public static float GetPlanOpacity(PlanDesignationType planDesignationType)
+        public static void SetPaintPlanColor(ColorDef colorDef)
         {
-            return planDesignationType switch
-            {
-                PlanDesignationType.PlanDoors => planDoor.Opacity,
-                PlanDesignationType.PlanFloors => planFloor.Opacity,
-                PlanDesignationType.PlanObjects => planObject.Opacity,
-                PlanDesignationType.PlanWall => planWall.Opacity,
-                _ => 1f,
-            };
+            Settings.PaintPlan.SetColor(colorDef.defName);
+
+            PaintPlanColorChanged?.Invoke(colorDef);
+        }
+
+        public static ColorDef GetPaintPlanColor()
+        {
+            return ColorUtilities.GetColorDefByName(Settings.PaintPlan.GetColor());
+        }
+
+        public static void SetPlanColor(PlanDesignationType planDesignationType, ColorDef colorDef)
+        {
+            string colorDefName = colorDef.defName;
+
+            PlanAppearanceStorage.ModifyPlanAppearance(planDesignationType, planAppearance => planAppearance.ColorDefName = colorDefName);
+
+            Settings.Plan.SetPlanColor(planDesignationType, colorDefName);
+
+            PlanColorChanged?.Invoke(planDesignationType, colorDef);
+        }
+
+        public static string GetPlanColorDefName(PlanDesignationType planDesignationType)
+        {
+            return PlanAppearanceStorage.GetPlanAppearance(planDesignationType)?.ColorDefName ?? ColorDefinitions.DefaultColorName;
+        }
+
+        public static ColorDef GetPlanColor(PlanDesignationType planDesignationType)
+        {
+            return ColorUtilities.GetColorDefByName(GetPlanColorDefName(planDesignationType));
         }
 
         public static void SetPlanOpacity(PlanDesignationType planDesignationType, int opacityPercentage)
         {
             float opacity = opacityPercentage / 100f;
 
-            foreach (PlanAppearance planAppearance in planAppearances)
-                if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planAppearance.Type)
-                    planAppearance.Opacity = opacity;
+            PlanAppearanceStorage.ModifyPlanAppearance(planDesignationType, planAppearance => planAppearance.Opacity = opacity);
+
+            Settings.Plan.SetPlanOpacity(planDesignationType, opacity);
 
             OpacityChanged?.Invoke(planDesignationType, opacityPercentage);
-
-            Settings.SetOpacity(planDesignationType, opacity);
         }
 
-        public static PlanTextureSet GetPlanTextureSet(PlanDesignationType planDesignationType)
+        public static float GetPlanOpacity(PlanDesignationType planDesignationType)
         {
-            return planDesignationType switch
-            {
-                PlanDesignationType.PlanDoors => planDoor.TextureSet,
-                PlanDesignationType.PlanFloors => planFloor.TextureSet,
-                PlanDesignationType.PlanObjects => planObject.TextureSet,
-                PlanDesignationType.PlanWall => planWall.TextureSet,
-                _ => PlanTextureSet.Round
-            };
+            return PlanAppearanceStorage.GetPlanAppearance(planDesignationType)?.Opacity ?? 1f;
         }
 
         public static void SetPlanTextureSet(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
         {
-            foreach (PlanAppearance planAppearance in planAppearances)
-                if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planAppearance.Type)
-                    planAppearance.TextureSet = planTextureSet;
+            PlanAppearanceStorage.ModifyPlanAppearance(planDesignationType, planAppearance => planAppearance.TextureSet = planTextureSet);
+
+            Settings.Plan.SetPlanTextureSet(planDesignationType, planTextureSet);
 
             TextureSetChanged?.Invoke(planDesignationType, planTextureSet);
-
-            Settings.SetTextureSet(planDesignationType, planTextureSet);
         }
 
-        public static bool IsPlanVisible(PlanDesignationType planDesignationType)
+        public static PlanTextureSet GetPlanTextureSet(PlanDesignationType planDesignationType)
         {
-            return planDesignationType switch
-            {
-                PlanDesignationType.PlanDoors => planDoor.IsVisible,
-                PlanDesignationType.PlanFloors => planFloor.IsVisible,
-                PlanDesignationType.PlanObjects => planObject.IsVisible,
-                PlanDesignationType.PlanWall => planWall.IsVisible,
-                _ => ArePlansVisible,
-            };
+            return PlanAppearanceStorage.GetPlanAppearance(planDesignationType)?.TextureSet ?? PlanTextureSet.Round;
         }
 
-        public static void SetIsPlanVisible(PlanDesignationType planDesignationType, bool isVisible)
+        public static void SetPlanVisibility(PlanDesignationType planDesignationType, bool isVisible)
         {
-            if (isVisible == IsPlanVisible(planDesignationType))
+            if (planDesignationType != PlanDesignationType.Unknown && isVisible == GetPlanVisibility(planDesignationType))
                 return;
 
-            foreach (PlanAppearance planAppearance in planAppearances)
-                if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == planAppearance.Type)
-                    planAppearance.IsVisible = isVisible;
+            PlanAppearanceStorage.ModifyPlanAppearance(planDesignationType, planAppearance =>
+            {
+                planAppearance.IsVisible = isVisible;
+                VisibilityChanged?.Invoke(planDesignationType, isVisible);
+            });
 
-            DetermineVisibility();
+            Settings.Plan.SetPlanVisibility(planDesignationType, isVisible);
 
-            VisibilityChanged?.Invoke(PlanVisibility);
+            PlanVisibility globalPlanVisibility = DetermineGlobalVisibility();
+
+            if (globalPlanVisibility != GlobalPlanVisibility)
+            {
+                GlobalPlanVisibility = globalPlanVisibility;
+                GlobalVisibilityChanged?.Invoke(globalPlanVisibility);
+            }
         }
 
-        public static void ToggleIsPlanVisible(PlanDesignationType planDesignationType)
+        public static bool GetPlanVisibility(PlanDesignationType planDesignationType)
         {
-            bool isVisible = !IsPlanVisible(planDesignationType);
-
-            PlayPlanVisibilityOnOffSound(isVisible);
-
-            SetIsPlanVisible(planDesignationType, isVisible);
+            return PlanAppearanceStorage.GetPlanAppearance(planDesignationType)?.IsVisible ?? true;
         }
 
-        static void DetermineVisibility()
+        public static void TogglePlanVisibility(PlanDesignationType planDesignationType)
         {
-            if (planAppearances.All(p => p.IsVisible))
-                PlanVisibility = PlanVisibility.Visible;
-            else if (planAppearances.Any(p => p.IsVisible))
-                PlanVisibility = PlanVisibility.PartiallyVisible;
+            bool isVisible = GetPlanVisibility(planDesignationType);
+
+            PlayPlanVisibilityOnOffSound(!isVisible);
+
+            SetPlanVisibility(planDesignationType, !isVisible);
+        }
+
+        public static void ToggleGlobalPlanVisibility()
+        {
+            PlayPlanVisibilityOnOffSound(!AreAllPlansVisible);
+
+            SetPlanVisibility(PlanDesignationType.Unknown, !AreAllPlansVisible);
+        }
+
+        static PlanVisibility DetermineGlobalVisibility()
+        {
+            if (PlanAppearanceStorage.PlanAppearances.All(p => p.IsVisible))
+                return PlanVisibility.Visible;
+            else if (PlanAppearanceStorage.PlanAppearances.Any(p => p.IsVisible))
+                return PlanVisibility.PartiallyVisible;
             else
-                PlanVisibility = PlanVisibility.Invisible;
+                return PlanVisibility.Invisible;
         }
 
         static void PlayPlanVisibilityOnOffSound(bool isVisible)
@@ -138,11 +156,6 @@ namespace PlanningExtended.Plans.Appearances
                 SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
             else
                 SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
-        }
-
-        static PlanAppearance CreatePlanAppearance(PlanDesignationType planDesignationType)
-        {
-            return new PlanAppearance(planDesignationType, Settings.GetOpacity(planDesignationType), Settings.GetTextureSet(planDesignationType), true);
         }
     }
 }
