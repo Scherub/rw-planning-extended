@@ -49,7 +49,6 @@
   <PlanningExtended.Designator.ChangePlanAppearance.Label>Change Style</PlanningExtended.Designator.ChangePlanAppearance.Label>
   <PlanningExtended.Designator.ChangePlanAppearance.Desc>Left click to change the opacity.\n\nRight click to change the texture set.\n\nHold {0} and click to change each plan type individually.</PlanningExtended.Designator.ChangePlanAppearance.Desc>
 
-
   <PlanningExtended.SelectColoredPlan>Select a colored plan.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Grab a color from an existing plan.</PlanningExtended.PickColorFromPlan>
 

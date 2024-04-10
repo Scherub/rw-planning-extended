@@ -49,7 +49,6 @@
   <PlanningExtended.Designator.ChangePlanAppearance.Label>Stil ändern</PlanningExtended.Designator.ChangePlanAppearance.Label>
   <PlanningExtended.Designator.ChangePlanAppearance.Desc>Linksklick um die Deckkraft zu ändern.\n\nRechtsklick um das Texturset zu ändern.\n\nHalte {0} und klicke um jeden Plantypen einzelnd zu ändern.</PlanningExtended.Designator.ChangePlanAppearance.Desc>
 
-
   <PlanningExtended.SelectColoredPlan>Eine Planfarbe wählen.</PlanningExtended.SelectColoredPlan>
   <PlanningExtended.PickColorFromPlan>Farbe aus einem bestehenden Plan übernehmen.</PlanningExtended.PickColorFromPlan>
 

@@ -26,7 +26,7 @@ namespace PlanningExtended.Settings
         {
             Scribe_Values.Look(ref opacity, nameof(opacity), 1f);
             Scribe_Values.Look(ref color, nameof(color), "");
-            Scribe_Values.Look(ref textureSet, nameof(textureSet), PlanTextureSet.Dashed);
+            Scribe_Values.Look(ref textureSet, nameof(textureSet), PlanTextureSet.Round);
         }
     }
 }
