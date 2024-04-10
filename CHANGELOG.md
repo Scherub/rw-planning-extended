@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.11.0
+- Added Spanish language support
+- Fixed case where default texture set is not set to 'Round'
+
 ## 1.10.0
 - Added support for RimWorld 1.5
 - Changed default texture set to 'Round'

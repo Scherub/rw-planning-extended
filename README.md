@@ -85,6 +85,7 @@ This mod adds a more advanced planning menu.
 - German
 - Japanese translation via sub-mod by Proxyer
 - Russian translation by mmavka
+- Spanish translation by mgil10
 
 ---
 
