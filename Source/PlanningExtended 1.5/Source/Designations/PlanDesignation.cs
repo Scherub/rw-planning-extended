@@ -65,6 +65,8 @@ namespace PlanningExtended.Designations
 
         public bool IsDoor => _planType == PlanDesignationType.PlanDoors;
 
+        public bool IsFloor => _planType == PlanDesignationType.PlanFloors;
+
         public bool IsWall => _planType == PlanDesignationType.PlanWall;
 
         public bool IsDoorOrWall => IsDoor | IsWall;
