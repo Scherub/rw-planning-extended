@@ -8,9 +8,9 @@ namespace PlanningExtended.Designations.Placer
 
         protected override RotationDirection GetRotation(Map map, IntVec3 position)
         {
-            bool isRotated = MustBeRotated(map, position);
+            Orientation orientation = GetOrientation(map, position);
 
-            return isRotated ? RotationDirection.Clockwise : RotationDirection.None;
+            return orientation == Orientation.Vertical ? RotationDirection.Clockwise : RotationDirection.None;
         }
 
         protected override void OnPostDesignate(Map map, IntVec3 position, bool removedPlanDesignation)
@@ -18,7 +18,7 @@ namespace PlanningExtended.Designations.Placer
             PlanDesignationPlacerUtilities.UpdateAdjecentPositions(map, position);
         }
 
-        bool MustBeRotated(Map map, IntVec3 position)
+        Orientation GetOrientation(Map map, IntVec3 position)
         {
             PlanDesignation planDesignationNorth = map.designationManager.GetOnlyPlanDesignationAt(position + IntVec3.North);
             PlanDesignation planDesignationSouth = map.designationManager.GetOnlyPlanDesignationAt(position + IntVec3.South);
@@ -26,12 +26,18 @@ namespace PlanningExtended.Designations.Placer
             PlanDesignation planDesignationEast = map.designationManager.GetOnlyPlanDesignationAt(position + IntVec3.East);
 
             if (planDesignationWest?.IsDoorOrWall == true || planDesignationEast?.IsDoorOrWall == true)
-                return false;
+                return Orientation.Horizontal;
 
             if (planDesignationNorth?.IsDoorOrWall == true || planDesignationSouth?.IsDoorOrWall == true)
-                return true;
+                return Orientation.Vertical;
 
-            return false;
+            if (planDesignationNorth?.IsFloor == true || planDesignationSouth?.IsFloor == true)
+                return Orientation.Horizontal;
+
+            if (planDesignationWest?.IsFloor == true || planDesignationEast?.IsFloor == true)
+                return Orientation.Vertical;
+
+            return Orientation.Horizontal;
         }
     }
 }

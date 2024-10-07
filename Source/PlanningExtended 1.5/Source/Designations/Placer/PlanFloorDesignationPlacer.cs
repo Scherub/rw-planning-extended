@@ -8,8 +8,7 @@ namespace PlanningExtended.Designations.Placer
 
         protected override void OnPostDesignate(Map map, IntVec3 position, bool removedPlanDesignation)
         {
-            if (removedPlanDesignation)
-                PlanDesignationPlacerUtilities.UpdateAdjecentPositions(map, position);
+            PlanDesignationPlacerUtilities.UpdateAdjecentPositions(map, position);
         }
     }
 }

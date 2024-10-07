@@ -82,6 +82,7 @@
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\ColorDefinitions.cs" Link="Source\Definitions\ColorDefinitions.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\Direction.cs" Link="Source\Definitions\Direction.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\FlipDirection.cs" Link="Source\Definitions\FlipDirection.cs" />
+		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\Orientation.cs" Link="Source\Definitions\Orientation.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\PlanDesignationType.cs" Link="Source\Definitions\PlanDesignationType.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\PlanDesignationUpdateType.cs" Link="Source\Definitions\PlanDesignationUpdateType.cs" />
 		<Compile Include="..\PlanningExtended 1.5\Source\Definitions\PlanningDesignationDefOf.cs" Link="Source\Definitions\PlanningDesignationDefOf.cs" />
