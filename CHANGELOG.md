@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.12.0
+- Orientation of doors now takes placement of floors into account
+
 ## 1.11.0
 - Added Spanish language support
 - Fixed case where default texture set is not set to 'Round'
