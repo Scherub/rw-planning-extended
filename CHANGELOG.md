@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.13.0
+- Added Chinese language support (thanks to WYX-K)
+
 ## 1.12.0
 - Orientation of doors now takes placement of floors into account
 

@@ -81,6 +81,7 @@ This mod adds a more advanced planning menu.
 - Equilateral: applies equilateral modifier to Triangle
 
 ## Supported Languages
+- Chinese (Simplified) translation by WYX-K
 - English
 - German
 - Japanese translation via sub-mod by Proxyer

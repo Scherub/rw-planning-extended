@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Planning_TogglePlanVisibility.label>切换规划可见性</Planning_TogglePlanVisibility.label>
+  <Planning_ColorPicker.label>颜色选择器</Planning_ColorPicker.label>
+  <Planning_Modifier.label>修饰键</Planning_Modifier.label>
+  <Planning_NoOverwrite_Mode.label>不覆盖</Planning_NoOverwrite_Mode.label>
+  <Planning_PlanDoors.label>规划门</Planning_PlanDoors.label>
+  <Planning_PlanFloors.label>规划地板</Planning_PlanFloors.label>
+  <Planning_PlanObjects.label>规划物体</Planning_PlanObjects.label>
+  <Planning_PlanWalls.label>规划墙壁</Planning_PlanWalls.label>
+  <Planning_ChangeShapeVariant.label>更改形状变体</Planning_ChangeShapeVariant.label>
+  <Planning_Action1.label>动作1</Planning_Action1.label>
+  <Planning_Action2.label>动作2</Planning_Action2.label>
+  <Planning_Undo.label>撤销</Planning_Undo.label>
+  <Planning_Redo.label>重做</Planning_Redo.label>
+
+</LanguageData> 
