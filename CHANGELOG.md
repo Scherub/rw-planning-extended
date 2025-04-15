@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.13.1
+- Fixed wrong folder name for the Chinese translation
+
 ## 1.13.0
 - Added Chinese language support (thanks to WYX-K)
 
