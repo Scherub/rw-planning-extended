@@ -6,11 +6,7 @@ namespace PlanningExtended.Designators
 {
     public class BaseClickDesignator : Designator
     {
-        public override int DraggableDimensions => 0;
-
         public override bool DragDrawMeasurements => false;
-
-        public override bool DragDrawOutline => false;
 
         protected BaseClickDesignator(string name)
             : this(name, name)

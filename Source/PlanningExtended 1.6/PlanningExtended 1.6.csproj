@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net472</TargetFramework>
-		<!--<Nullable>enable</Nullable>-->
+		<TargetFramework>net48</TargetFramework>
 		<RootNamespace>PlanningExtended</RootNamespace>
 		<AssemblyName>PlanningExtended</AssemblyName>
 		<ModDirectory>$(SolutionDir)..\1.6\Assemblies\</ModDirectory>

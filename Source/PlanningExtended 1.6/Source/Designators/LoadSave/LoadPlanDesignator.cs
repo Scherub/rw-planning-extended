@@ -32,7 +32,7 @@ namespace PlanningExtended.Designators
                 {
                     if (PlanPersistenceManager.Load(planName, out PlanInfo planInfo))
                     {
-                        PlanManager.SetCachedPlanLayout(planInfo.PlanLayout);
+                        Plans.PlanManager.SetCachedPlanLayout(planInfo.PlanLayout);
                         PlanningMod.Settings.AddLastLoadedPlan(planName);
                     }
                     else

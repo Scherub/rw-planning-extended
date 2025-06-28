@@ -12,12 +12,12 @@ namespace PlanningExtended.Designators
         {
             disabled = true;
 
-            PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
+            Plans.PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
         }
 
         public override void ProcessInput(Event ev)
         {
-            Find.WindowStack.Add(new SavePlanDialog(PlanManager.CachedPlanLayout));
+            Find.WindowStack.Add(new SavePlanDialog(Plans.PlanManager.CachedPlanLayout));
         }
 
         void PlanManager_OnCachedPlanLayoutChanged(PlanLayout planLayout)

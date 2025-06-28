@@ -13,8 +13,6 @@ namespace PlanningExtended.Designators
     {
         protected override DesignationDef Designation => PlanningDesignationDefOf.PlanObjects;
 
-        public override bool DragDrawOutline => true;
-
         protected override bool HasLeftClickPopupMenu => false;
 
         public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetRemovePlanMenuOptions();

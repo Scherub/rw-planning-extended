@@ -42,7 +42,7 @@ namespace PlanningExtended.Designators
 
             PlanLayout planLayout = PlanLayoutUtilities.Create(cellArea, Map);
 
-            PlanManager.SetCachedPlanLayout(planLayout);
+            Plans.PlanManager.SetCachedPlanLayout(planLayout);
 
             Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
         }

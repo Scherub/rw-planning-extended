@@ -8,7 +8,7 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     {
-        public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
+        // public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
 
         public override Color IconDrawColor => colorDef.color;
 
@@ -56,7 +56,7 @@ namespace PlanningExtended.Designators
             OnDrawMouseAttachment();
 
             if (useMouseIcon)
-                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, false, default, new Color?(colorDef.color), OnPostDrawMouseAttachment);
+                GenUI.DrawMouseAttachment(icon, MouseAttachmentText, iconAngle, iconOffset, null, null, false, default, new Color?(colorDef.color), OnPostDrawMouseAttachment);
         }
 
         protected override bool ShowLeftClickPopupMenu()

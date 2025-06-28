@@ -60,7 +60,7 @@ namespace PlanningExtended.Designators
                 else if (!_rejectMessage.NullOrEmpty())
                     text = _rejectMessage;
                 
-                GenUI.DrawMouseAttachment(icon, text, iconAngle, iconOffset, null, false, default, null, null);
+                GenUI.DrawMouseAttachment(icon, text, iconAngle, iconOffset, null, null, false, default, null, null);
             }
         }
 

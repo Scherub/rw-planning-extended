@@ -19,8 +19,6 @@ namespace PlanningExtended.Designators
 
         PlanLayout _selectedPlanLayout = null;
 
-        public override int DraggableDimensions => 0;
-
         public override bool DragDrawMeasurements => false;
 
         protected override bool DrawMouseOverBrackets => false;
@@ -30,7 +28,7 @@ namespace PlanningExtended.Designators
         {
             disabled = true;
 
-            PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
+            Plans.PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
         }
 
         public override void ProcessInput(Event ev)

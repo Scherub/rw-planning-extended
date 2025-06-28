@@ -37,7 +37,7 @@ namespace PlanningExtended.Designators
 
             CellUtilities.ClearCells(cellArea.Dimensions, Map);
 
-            PlanManager.SetCachedPlanLayout(planLayout);
+            Plans.PlanManager.SetCachedPlanLayout(planLayout);
 
             Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
 
