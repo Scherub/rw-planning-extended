@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlanningExtended.Cells;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,7 +9,7 @@ namespace PlanningExtended.Designators
 {
     public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     {
-        // public override int DraggableDimensions => IsColorPickModeEnabled ? colorPicker.DraggableDimensions : base.DraggableDimensions;
+        //public override DrawStyleCategoryDef DrawStyleCategory => IsColorPickModeEnabled ? colorPicker.DrawStyleCategory : base.DrawStyleCategory;
 
         public override Color IconDrawColor => colorDef.color;
 
@@ -32,7 +33,7 @@ namespace PlanningExtended.Designators
             defaultDesc = $"PlanningExtended.Designator.{name}.Desc".Translate(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel, PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel);
 
             colorDef = GetColorDef();
-            
+
             colorPicker = new ColorPickerDesignator((newColorDef) =>
             {
                 SetColorDef(newColorDef);
@@ -41,6 +42,11 @@ namespace PlanningExtended.Designators
                 if (!IsColorPickModeEnabled)
                     Find.DesignatorManager.Select(this);
             }, "PlanningExtended.SelectColoredPlan".Translate(), "PlanningExtended.PickColorFromPlan".Translate());
+        }
+
+        protected override bool IsShapeCellValid(IntVec3 cell, AreaDimensions areaDimensions)
+        {
+            return IsColorPickModeEnabled ? true : base.IsShapeCellValid(cell, areaDimensions);
         }
 
         public override void DrawMouseAttachments()
