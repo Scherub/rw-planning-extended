@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <PlanningExtended.Actions.Convert>转换</PlanningExtended.Actions.Convert>
+  <PlanningExtended.Actions.Upgrade>升级</PlanningExtended.Actions.Upgrade>
+
+  <PlanningExtended.Designator.PlanDoors.Label>规划门</PlanningExtended.Designator.PlanDoors.Label>
+  <PlanningExtended.Designator.PlanDoors.Desc>放置门的规划标记。\n\n右键单击以选择不同的形状。\n\n按住 {0} 键拾取已有的颜色。\n\n按住 {1} 键修改尺寸。</PlanningExtended.Designator.PlanDoors.Desc>
+
+  <PlanningExtended.Designator.PlanFloors.Label>规划地板</PlanningExtended.Designator.PlanFloors.Label>
+  <PlanningExtended.Designator.PlanFloors.Desc>放置地板的规划标记。\n\n右键单击以选择不同的形状。\n\n按住 {0} 键拾取已有的颜色。\n\n按住 {1} 键修改尺寸。</PlanningExtended.Designator.PlanFloors.Desc>
+
+  <PlanningExtended.Designator.PlanObjects.Label>规划物体</PlanningExtended.Designator.PlanObjects.Label>
+  <PlanningExtended.Designator.PlanObjects.Desc>放置物体的规划标记。\n\n右键单击以选择不同的形状。\n\n按住 {0} 键拾取已有的颜色。\n\n按住 {1} 键修改尺寸。</PlanningExtended.Designator.PlanObjects.Desc>
+
+  <PlanningExtended.Designator.PlanWalls.Label>规划墙壁</PlanningExtended.Designator.PlanWalls.Label>
+  <PlanningExtended.Designator.PlanWalls.Desc>放置墙壁的规划标记。\n\n右键单击以选择不同的形状。\n\n按住 {0} 键拾取已有的颜色。\n\n按住 {1} 键修改尺寸。</PlanningExtended.Designator.PlanWalls.Desc>
+
+  <PlanningExtended.Designator.PaintPlan.Label>绘制规划</PlanningExtended.Designator.PaintPlan.Label>
+  <PlanningExtended.Designator.PaintPlan.Desc>在现有规划标记上绘制。\n\n右键单击以选择不同的形状。\n\n按住 {0} 键拾取已有的颜色。\n\n按住 {1} 键修改尺寸。</PlanningExtended.Designator.PaintPlan.Desc>
+
+  <PlanningExtended.Designator.RemovePlan.Label>移除规划</PlanningExtended.Designator.RemovePlan.Label>
+  <PlanningExtended.Designator.RemovePlan.Desc>移除规划标记。</PlanningExtended.Designator.RemovePlan.Desc>
+
+  <PlanningExtended.Designator.CopyPlan.Label>复制规划</PlanningExtended.Designator.CopyPlan.Label>
+  <PlanningExtended.Designator.CopyPlan.Desc>将选中区域的规划复制到剪贴板。</PlanningExtended.Designator.CopyPlan.Desc>
+
+  <PlanningExtended.Designator.CutPlan.Label>剪切规划</PlanningExtended.Designator.CutPlan.Label>
+  <PlanningExtended.Designator.CutPlan.Desc>将选中区域的规划剪切到剪贴板。</PlanningExtended.Designator.CutPlan.Desc>
+
+  <PlanningExtended.Designator.PastePlan.Label>粘贴规划</PlanningExtended.Designator.PastePlan.Label>
+  <PlanningExtended.Designator.PastePlan.Desc>将剪贴板中的规划粘贴到地图上。\n\n使用按键旋转和翻转。</PlanningExtended.Designator.PastePlan.Desc>
+
+  <PlanningExtended.Designator.UndoPlan.Label>撤销</PlanningExtended.Designator.UndoPlan.Label>
+  <PlanningExtended.Designator.UndoPlan.Desc>撤销上一步规划操作。</PlanningExtended.Designator.UndoPlan.Desc>
+
+  <PlanningExtended.Designator.RedoPlan.Label>重做</PlanningExtended.Designator.RedoPlan.Label>
+  <PlanningExtended.Designator.RedoPlan.Desc>重做上一步撤销的规划操作。</PlanningExtended.Designator.RedoPlan.Desc>
+
+  <PlanningExtended.Designator.LoadPlan.Label>加载规划</PlanningExtended.Designator.LoadPlan.Label>
+  <PlanningExtended.Designator.LoadPlan.Desc>从文件加载规划。\n\n左键单击打开对话框。\n\n右键单击快速选择最近加载的规划。</PlanningExtended.Designator.LoadPlan.Desc>
+
+  <PlanningExtended.Designator.SavePlan.Label>保存规划</PlanningExtended.Designator.SavePlan.Label>
+  <PlanningExtended.Designator.SavePlan.Desc>将最近复制的规划保存到文件。</PlanningExtended.Designator.SavePlan.Desc>
+
+  <PlanningExtended.Designator.TogglePlanVisibility.Label>可见性</PlanningExtended.Designator.TogglePlanVisibility.Label>
+  <PlanningExtended.Designator.TogglePlanVisibility.Desc>切换所有规划的可见性。\n\n按住 {0} 键并单击以单独切换每种规划类型的可见性。</PlanningExtended.Designator.TogglePlanVisibility.Desc>
+
+  <PlanningExtended.Designator.ChangePlanAppearance.Label>更改样式</PlanningExtended.Designator.ChangePlanAppearance.Label>
+  <PlanningExtended.Designator.ChangePlanAppearance.Desc>左键单击更改不透明度。\n\n右键单击更改纹理集。\n\n按住 {0} 键并单击以单独更改每种规划类型的样式。</PlanningExtended.Designator.ChangePlanAppearance.Desc>
+
+  <PlanningExtended.SelectColoredPlan>选择一个带颜色的规划。</PlanningExtended.SelectColoredPlan>
+  <PlanningExtended.PickColorFromPlan>从现有规划中拾取颜色。</PlanningExtended.PickColorFromPlan>
+
+  <PlanningExtended.NoPlanningDesignationsFound>未找到规划标记。</PlanningExtended.NoPlanningDesignationsFound>
+  <PlanningExtended.PlanningDesignationsCopied>规划标记已复制。</PlanningExtended.PlanningDesignationsCopied>
+
+  <PlanningExtended.DeletePlan>删除此规划。</PlanningExtended.DeletePlan>
+  <PlanningExtended.SavedPlanInfoAs>已将规划另存为"{0}"。</PlanningExtended.SavedPlanInfoAs>
+
+  <PlanningExtended.RemovePlanDesignations>移除 {0} 个 {1} 规划。</PlanningExtended.RemovePlanDesignations>
+
+  <PlanningExtended.Door>门</PlanningExtended.Door>
+  <PlanningExtended.Floor>地板</PlanningExtended.Floor>
+  <PlanningExtended.Object>物体</PlanningExtended.Object>
+  <PlanningExtended.Wall>墙壁</PlanningExtended.Wall>
+
+  <PlanningExtended.Mode>模式</PlanningExtended.Mode>
+
+  <PlanningExtended.Copy>复制</PlanningExtended.Copy>
+  <PlanningExtended.Cut>剪切</PlanningExtended.Cut>
+
+  <PlanningExtended.Skip>跳过</PlanningExtended.Skip>
+  <PlanningExtended.Replace>替换</PlanningExtended.Replace>
+
+  <PlanningExtended.SwitchToCut>切换到剪切</PlanningExtended.SwitchToCut>
+
+  <PlanningExtended.Settings.UndoRedo.Label>撤销-重做</PlanningExtended.Settings.UndoRedo.Label>
+
+  <PlanningExtended.Settings.UseUndoRedo.Label>启用撤销-重做系统</PlanningExtended.Settings.UseUndoRedo.Label>
+  <PlanningExtended.Settings.UseUndoRedo.Desc>决定是否使用撤销-重做系统以及按钮是否可见。</PlanningExtended.Settings.UseUndoRedo.Desc>
+
+  <PlanningExtended.Settings.MaxUndoRedoOperations.Label>撤销-重做操作的最大次数</PlanningExtended.Settings.MaxUndoRedoOperations.Label>
+
+  <PlanningExtended.Settings.DisplayCutDesignator.Label>显示剪切规划按钮</PlanningExtended.Settings.DisplayCutDesignator.Label>
+  <PlanningExtended.Settings.DisplayCutDesignator.Desc>如果启用，剪切规划按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayCutDesignator.Desc>
+
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>显示切换规划可见性按钮</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label>
+  <PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>如果启用，切换规划可见性按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc>
+
+  <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>显示更改规划外观按钮</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
+  <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>如果启用，更改规划外观按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
+
+  <PlanningExtended.Settings.ArePlansPersistent.Label>规划持久化</PlanningExtended.Settings.ArePlansPersistent.Label>
+  <PlanningExtended.Settings.ArePlansPersistent.Desc>如果启用，在同一单元格上的任务完成后，规划将保留。否则，它们将被移除。</PlanningExtended.Settings.ArePlansPersistent.Desc>
+
+  <PlanningExtended.Settings.UseCtrlForColorDialog.Label>使用 Ctrl 打开颜色对话框</PlanningExtended.Settings.UseCtrlForColorDialog.Label>
+  <PlanningExtended.Settings.UseCtrlForColorDialog.Desc>如果启用，必须按住 Ctrl 键才能显示颜色对话框。</PlanningExtended.Settings.UseCtrlForColorDialog.Desc>
+
+  <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>默认使用跳过而非替换</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>
+  <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>如果启用，默认情况下将跳过规划标记。否则，将替换它们。</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>
+
+  <PlanningExtended.Settings.ArePlansVisible.Label>显示规划</PlanningExtended.Settings.ArePlansVisible.Label>
+  <PlanningExtended.Settings.ArePlansVisible.Desc>决定规划标记是否可见。</PlanningExtended.Settings.ArePlansVisible.Desc>
+
+  <PlanningExtended.Settings.UpgradeOldPlans.Label>升级旧版规划</PlanningExtended.Settings.UpgradeOldPlans.Label>
+
+  <PlanningExtended.Settings.ConvertVanillaPlans.Label>从原版规划转换</PlanningExtended.Settings.ConvertVanillaPlans.Label>
+
+  <PlanningExtended.Settings.ConvertMorePlanningPlans.Label>从 MorePlanning 转换</PlanningExtended.Settings.ConvertMorePlanningPlans.Label>
+
+  <PlanningExtended.Shapes.Point>点</PlanningExtended.Shapes.Point>
+  <PlanningExtended.Shapes.Line>线</PlanningExtended.Shapes.Line>
+  <PlanningExtended.Shapes.Triangle>三角形</PlanningExtended.Shapes.Triangle>
+  <PlanningExtended.Shapes.Rectangle>矩形</PlanningExtended.Shapes.Rectangle>
+  <PlanningExtended.Shapes.Pentagon>五边形</PlanningExtended.Shapes.Pentagon>
+  <PlanningExtended.Shapes.Hexagon>六边形</PlanningExtended.Shapes.Hexagon>
+  <PlanningExtended.Shapes.Octagon>八边形</PlanningExtended.Shapes.Octagon>
+  <PlanningExtended.Shapes.Ellipse>椭圆</PlanningExtended.Shapes.Ellipse>
+
+  <PlanningExtended.Shapes.Variants.Points>点</PlanningExtended.Shapes.Variants.Points>
+  <PlanningExtended.Shapes.Variants.LineSimple>单线</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineGrid>网格线</PlanningExtended.Shapes.Variants.LineGrid>
+  <PlanningExtended.Shapes.Variants.TriangleFilled>实心三角形</PlanningExtended.Shapes.Variants.TriangleFilled>
+  <PlanningExtended.Shapes.Variants.TriangleOutline>空心三角形</PlanningExtended.Shapes.Variants.TriangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleFilled>实心矩形</PlanningExtended.Shapes.Variants.RectangleFilled>
+  <PlanningExtended.Shapes.Variants.RectangleGrid>网格矩形</PlanningExtended.Shapes.Variants.RectangleGrid>
+  <PlanningExtended.Shapes.Variants.RectangleOutline>空心矩形</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.PentagonFilled>实心五边形</PlanningExtended.Shapes.Variants.PentagonFilled>
+  <PlanningExtended.Shapes.Variants.PentagonOutline>空心五边形</PlanningExtended.Shapes.Variants.PentagonOutline>
+  <PlanningExtended.Shapes.Variants.HexagonFilled>实心六边形</PlanningExtended.Shapes.Variants.HexagonFilled>
+  <PlanningExtended.Shapes.Variants.HexagonOutline>空心六边形</PlanningExtended.Shapes.Variants.HexagonOutline>
+  <PlanningExtended.Shapes.Variants.OctagonFilled>实心八边形</PlanningExtended.Shapes.Variants.OctagonFilled>
+  <PlanningExtended.Shapes.Variants.OctagonOutline>空心八边形</PlanningExtended.Shapes.Variants.OctagonOutline>
+  <PlanningExtended.Shapes.Variants.EllipseFilled>实心椭圆</PlanningExtended.Shapes.Variants.EllipseFilled>
+  <PlanningExtended.Shapes.Variants.EllipseOutline>空心椭圆</PlanningExtended.Shapes.Variants.EllipseOutline>
+
+  <PlanningExtended.Shapes.ChangeShapeVariant>更改形状变体</PlanningExtended.Shapes.ChangeShapeVariant>
+
+  <PlanningExtended.Shapes.NumberOf>{0}数量</PlanningExtended.Shapes.NumberOf>
+  <PlanningExtended.Shapes.Columns>列</PlanningExtended.Shapes.Columns>
+  <PlanningExtended.Shapes.Rows>行</PlanningExtended.Shapes.Rows>
+  <PlanningExtended.Shapes.Cells>单元格</PlanningExtended.Shapes.Cells>
+
+  <PlanningExtended.Direction>方向</PlanningExtended.Direction>
+
+  <PlanningExtended.Direction.None>无</PlanningExtended.Direction.None>
+  <PlanningExtended.Direction.North>北</PlanningExtended.Direction.North>
+  <PlanningExtended.Direction.NorthEast>东北</PlanningExtended.Direction.NorthEast>
+  <PlanningExtended.Direction.East>东</PlanningExtended.Direction.East>
+  <PlanningExtended.Direction.SouthEast>东南</PlanningExtended.Direction.SouthEast>
+  <PlanningExtended.Direction.South>南</PlanningExtended.Direction.South>
+  <PlanningExtended.Direction.SouthWest>西南</PlanningExtended.Direction.SouthWest>
+  <PlanningExtended.Direction.West>西</PlanningExtended.Direction.West>
+  <PlanningExtended.Direction.NorthWest>西北</PlanningExtended.Direction.NorthWest>
+  <PlanningExtended.Direction.Horizontal>水平</PlanningExtended.Direction.Horizontal>
+  <PlanningExtended.Direction.Vertical>垂直</PlanningExtended.Direction.Vertical>
+  <PlanningExtended.Direction.Diagonal>对角线</PlanningExtended.Direction.Diagonal>
+  <PlanningExtended.Direction.DiagonalNW>对角线 (西北)</PlanningExtended.Direction.DiagonalNW>
+  <PlanningExtended.Direction.DiagonalNE>对角线 (东北)</PlanningExtended.Direction.DiagonalNE>
+
+</LanguageData> 
