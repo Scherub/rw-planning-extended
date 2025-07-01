@@ -3,7 +3,7 @@
   <packageId>Scherub.PlanningExtended</packageId>
   <name>Planning Extended</name>
   <author>Scherub</author>
-  <modVersion IgnoreIfNoMatchingField="True">1.14.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.15.0</modVersion>
   <description>This mod adds a more advanced planning menu.
 
 Features

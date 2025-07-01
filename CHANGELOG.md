@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.15.0
+- Adapted vanilla plan converter to RimWorld v1.6
+
 ## 1.14.0
 - Added support for RimWorld 1.6
 - Each RimWorld version now has its own project, so changes will only affect the latest version
