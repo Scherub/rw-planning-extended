@@ -112,6 +112,20 @@ namespace PlanningExtended.Settings
             return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Round;
         }
 
+        public void SetIsVisible(PlanDesignationType planDesignationType, bool isVisible, bool autoSave = true)
+        {
+            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+                planDesignationSetting.isVisible = isVisible;
+
+            if (autoSave)
+                Write();
+        }
+
+        public bool GetIsVisible(PlanDesignationType planDesignationType)
+        {
+            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.isVisible : true;
+        }
+
         public void AddLastLoadedPlan(string planName, bool autoSave = true)
         {
             lastLoadedPlans.RemoveAll(p => p == planName);
@@ -139,7 +153,7 @@ namespace PlanningExtended.Settings
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
                 if (!planDesignationSettings.ContainsKey(planDesignationType))
-                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round);
+                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round, true);
         }
 
         IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
