@@ -31,6 +31,8 @@ namespace PlanningExtended.Settings
 
         public string paintPlanColor = Default.PaintPlanColor;
 
+        public StartupPlanVisibility startupPlanVisibility = Default.StartupPlanVisibility;
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
@@ -43,6 +45,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
             Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
+            Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
 
             Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
             Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
@@ -121,9 +124,24 @@ namespace PlanningExtended.Settings
                 Write();
         }
 
-        public bool GetIsVisible(PlanDesignationType planDesignationType)
+        public bool IsInitiallyVisible(PlanDesignationType planDesignationType)
         {
-            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.isVisible : true;
+            return startupPlanVisibility switch
+            {
+                StartupPlanVisibility.Invisible => false,
+                StartupPlanVisibility.LastSaved => planDesignationSettings.GetValueOrDefault(planDesignationType)?.isVisible ?? true,
+                _ => true,
+            };
+        }
+
+        public void SetStartupPlanVisibility(StartupPlanVisibility startupPlanVisibility, bool autoSave = true)
+        {
+            this.startupPlanVisibility = startupPlanVisibility;
+
+            if (autoSave)
+            {
+                Write();
+            }
         }
 
         public void AddLastLoadedPlan(string planName, bool autoSave = true)
@@ -191,6 +209,8 @@ namespace PlanningExtended.Settings
             public const bool UseSkipInsteadOfReplaceAsDefault = false;
 
             public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
+
+            public const StartupPlanVisibility StartupPlanVisibility = PlanningExtended.StartupPlanVisibility.Visible;
         }
     }
 }

@@ -103,6 +103,12 @@
   <PlanningExtended.Settings.ArePlansVisible.Label>Показывать план</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Определяет, видны ли обозначения плана.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Начальная видимость планов</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Определяет видимость планов при запуске.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Обновить планы с прошлых версий</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Конвертировать из ванильных планов</PlanningExtended.Settings.ConvertVanillaPlans.Label>

@@ -103,6 +103,12 @@
   <PlanningExtended.Settings.ArePlansVisible.Label>Pläne anzeigen</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Legt fest, ob Pläne angezeigt werden.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Sichtbarkeit beim Start</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Legt die Sichtbarkeit der Pläne beim Start fest.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Sichtbar</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Unsichtbar</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Zuletzt gespeichert</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Alte Pläne upgraden</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Vanilla Pläne konvertieren</PlanningExtended.Settings.ConvertVanillaPlans.Label>
