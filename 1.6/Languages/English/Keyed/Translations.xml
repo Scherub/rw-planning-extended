@@ -100,6 +100,12 @@
   <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>Use Skip instead of Replace as default</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Label>
   <PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>If enabled, designations are skipped by default. Otherwise, they are replaced.</PlanningExtended.Settings.UseSkipInsteadOfReplaceAsDefault.Desc>
 
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Startup Plan Visibility</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determines the startup plan visibility.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Visible</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Last Saved</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
+
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
@@ -117,7 +123,7 @@
   <PlanningExtended.Shapes.Hexagon>Hexagon</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Octagon</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Ellipse</PlanningExtended.Shapes.Ellipse>
-  
+
   <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Line Simple</PlanningExtended.Shapes.Variants.LineSimple>
   <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
@@ -141,9 +147,9 @@
   <PlanningExtended.Shapes.Columns>Columns</PlanningExtended.Shapes.Columns>
   <PlanningExtended.Shapes.Rows>Rows</PlanningExtended.Shapes.Rows>
   <PlanningExtended.Shapes.Cells>Cells</PlanningExtended.Shapes.Cells>
-  
+
   <PlanningExtended.Direction>Direction</PlanningExtended.Direction>
-  
+
   <PlanningExtended.Direction.None>None</PlanningExtended.Direction.None>
   <PlanningExtended.Direction.North>North</PlanningExtended.Direction.North>
   <PlanningExtended.Direction.NorthEast>North East</PlanningExtended.Direction.NorthEast>

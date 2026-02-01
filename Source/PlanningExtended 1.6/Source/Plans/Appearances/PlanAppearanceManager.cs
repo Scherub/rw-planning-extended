@@ -144,7 +144,7 @@ namespace PlanningExtended.Plans.Appearances
 
         static PlanAppearance CreatePlanAppearance(PlanDesignationType planDesignationType)
         {
-            return new PlanAppearance(planDesignationType, Settings.GetOpacity(planDesignationType), Settings.GetTextureSet(planDesignationType), Settings.GetIsVisible(planDesignationType));
+            return new PlanAppearance(planDesignationType, Settings.GetOpacity(planDesignationType), Settings.GetTextureSet(planDesignationType), Settings.IsInitiallyVisible(planDesignationType));
         }
     }
 }
