@@ -18,6 +18,8 @@ namespace PlanningExtended.Designators
             icon_off = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Off", true);
             icon_partial = ContentFinder<Texture2D>.Get($"UI/Designators/TogglePlanVisibility_Partial", true);
 
+            icon = GetVisibilityIcon(PlanAppearanceManager.PlanVisibility);
+
             PlanAppearanceManager.VisibilityChanged -= PlanAppearanceManager_VisibilityChanged;
             PlanAppearanceManager.VisibilityChanged += PlanAppearanceManager_VisibilityChanged;
         }
@@ -41,7 +43,12 @@ namespace PlanningExtended.Designators
 
         void PlanAppearanceManager_VisibilityChanged(PlanVisibility planVisibility)
         {
-            icon = planVisibility switch
+            icon = GetVisibilityIcon(planVisibility);
+        }
+
+        Texture GetVisibilityIcon(PlanVisibility planVisibility)
+        {
+            return PlanAppearanceManager.PlanVisibility switch
             {
                 PlanVisibility.Visible => icon_on,
                 PlanVisibility.PartiallyVisible => icon_partial,
