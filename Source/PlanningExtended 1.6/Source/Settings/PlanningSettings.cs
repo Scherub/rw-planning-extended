@@ -170,8 +170,16 @@ namespace PlanningExtended.Settings
             planDesignationSettings ??= [];
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
-                if (!planDesignationSettings.ContainsKey(planDesignationType))
+            {
+                if (!planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+                {
                     planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round, true);
+                }
+                else if (startupPlanVisibility != StartupPlanVisibility.LastSaved)
+                {
+                    planDesignationSetting.isVisible = startupPlanVisibility == StartupPlanVisibility.Visible;
+                }
+            }
         }
 
         IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
