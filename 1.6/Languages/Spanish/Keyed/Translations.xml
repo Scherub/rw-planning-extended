@@ -107,9 +107,6 @@
 
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Visibilidad inicial de los planes</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determina la visibilidad de los planes al iniciar.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Visible</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Último guardado</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Actualizar planes antiguos</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -166,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>Diagonal NO</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NE</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Último guardado</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

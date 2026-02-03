@@ -107,9 +107,6 @@
 
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Sichtbarkeit beim Start</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Legt die Sichtbarkeit der Pläne beim Start fest.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Sichtbar</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Unsichtbar</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Zuletzt gespeichert</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Alte Pläne upgraden</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -166,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NO</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Sichtbar</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Unsichtbar</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Zuletzt gespeichert</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

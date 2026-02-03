@@ -104,9 +104,6 @@
 
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Startup Plan Visibility</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determines the startup plan visibility.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Visible</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Last Saved</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
 
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
@@ -166,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NE</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Last Saved</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

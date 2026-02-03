@@ -107,9 +107,6 @@
 
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Начальная видимость планов</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Определяет видимость планов при запуске.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Обновить планы с прошлых версий</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -137,5 +134,9 @@
   <PlanningExtended.Shapes.Columns>Столбцы</PlanningExtended.Shapes.Columns>
   <PlanningExtended.Shapes.Rows>Ряды</PlanningExtended.Shapes.Rows>
   <PlanningExtended.Shapes.Cells>Ячейки</PlanningExtended.Shapes.Cells>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

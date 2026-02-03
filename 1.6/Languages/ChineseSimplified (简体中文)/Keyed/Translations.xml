@@ -107,9 +107,6 @@
 
   <PlanningExtended.Settings.StartupPlanVisibility.Label>启动时规划可见性</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>决定启动时规划的可见性。</PlanningExtended.Settings.StartupPlanVisibility.Desc>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Visible>可见</PlanningExtended.Settings.StartupPlanVisibilities.Visible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.Invisible>不可见</PlanningExtended.Settings.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>上次保存</PlanningExtended.Settings.StartupPlanVisibilities.LastSaved>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>升级旧版规划</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -166,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>对角线</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>对角线 (西北)</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>对角线 (东北)</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>可见</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>不可见</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>上次保存</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>
