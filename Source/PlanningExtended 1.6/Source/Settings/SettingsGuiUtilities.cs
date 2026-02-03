@@ -27,7 +27,10 @@ namespace PlanningExtended.Settings
 
         static void DisplaySkillSelection(PlanningSettings settings, Rect inRect)
         {
-            Listing_Standard listingStandard = new();
+            Listing_Standard listingStandard = new()
+            {
+                verticalSpacing = 5f
+            };
 
             listingStandard.Begin(inRect);
 
@@ -61,7 +64,7 @@ namespace PlanningExtended.Settings
 
             //listingStandard.EndSubSection();
 
-            listingStandard.Gap(24f);
+            listingStandard.Gap(12f);
 
             listingStandard.Heading("ResetButton".Translate());
 
@@ -77,7 +80,10 @@ namespace PlanningExtended.Settings
 
         static void DisplayRightPane(PlanningSettings settings, Rect inRect)
         {
-            Listing_Standard listingStandard = new();
+            Listing_Standard listingStandard = new()
+            {
+                verticalSpacing = 5f
+            };
 
             listingStandard.Begin(inRect);
 
@@ -92,7 +98,7 @@ namespace PlanningExtended.Settings
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 
-            listingStandard.Gap(24f);
+            listingStandard.Gap(12f);
 
             //listingStandard.BeginSubSection();
 
