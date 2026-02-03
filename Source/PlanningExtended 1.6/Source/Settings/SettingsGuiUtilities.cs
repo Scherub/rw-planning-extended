@@ -5,17 +5,12 @@ using PlanningExtended.Plans.Converters;
 using PlanningExtended.Updates;
 using UnityEngine;
 using Verse;
-using static PlanningExtended.Settings.PlanningSettings;
 
 namespace PlanningExtended.Settings
 {
     public static class SettingsGuiUtilities
     {
-        private static readonly List<FloatMenuOption> startupPlanVisibilityOptions = [
-            ..Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>().Select(
-                v => new FloatMenuOption(v.Translate(), () => PlanningMod.Settings.SetStartupPlanVisibility(v))
-            )
-        ];
+        static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>().ToList();
 
         public static void DisplaySettings(PlanningSettings settings, Rect inRect)
         {
@@ -57,6 +52,8 @@ namespace PlanningExtended.Settings
 
             if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.StartupPlanVisibility.Label".Translate(), settings.startupPlanVisibility.Translate(), tooltip: "PlanningExtended.Settings.StartupPlanVisibility.Desc".Translate()))
             {
+                var startupPlanVisibilityOptions = startupPlanVisibilityValues.Select(v => new FloatMenuOption(v.Translate(), () => PlanningMod.Settings.SetStartupPlanVisibility(v))).ToList();
+
                 Find.WindowStack.Add(new FloatMenu(startupPlanVisibilityOptions));
             }
 
