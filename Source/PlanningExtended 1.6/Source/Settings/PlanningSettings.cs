@@ -128,9 +128,9 @@ namespace PlanningExtended.Settings
         {
             return startupPlanVisibility switch
             {
-                StartupPlanVisibility.Invisible => false,
+                StartupPlanVisibility.Visible => true,
                 StartupPlanVisibility.LastSaved => planDesignationSettings.GetValueOrDefault(planDesignationType)?.isVisible ?? true,
-                _ => true,
+                _ => false,
             };
         }
 
@@ -139,9 +139,7 @@ namespace PlanningExtended.Settings
             this.startupPlanVisibility = startupPlanVisibility;
 
             if (autoSave)
-            {
                 Write();
-            }
         }
 
         public void AddLastLoadedPlan(string planName, bool autoSave = true)

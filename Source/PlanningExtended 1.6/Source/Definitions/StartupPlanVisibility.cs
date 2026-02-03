@@ -3,6 +3,8 @@
 public enum StartupPlanVisibility
 {
     Visible,
+
     Invisible,
+
     LastSaved,
 }
