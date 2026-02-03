@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.16.0
+- Added saving and restoring plan visibility per plan type
+- Added option to set default plan visibility on startup (visible, invisible, last saved)
+- Added button to open plan blueprint folder in settings (on Windows)
+- Added missing Russian translations using AI
+- Improved spacing in settings
+
 ## 1.15.0
 - Adapted vanilla plan converter to RimWorld v1.6
 

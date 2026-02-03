@@ -31,6 +31,8 @@ namespace PlanningExtended.Settings
 
         public string paintPlanColor = Default.PaintPlanColor;
 
+        public StartupPlanVisibility startupPlanVisibility = Default.StartupPlanVisibility;
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
@@ -43,6 +45,7 @@ namespace PlanningExtended.Settings
             Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
             Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
             //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
+            Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
 
             Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
             Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
@@ -112,6 +115,33 @@ namespace PlanningExtended.Settings
             return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Round;
         }
 
+        public void SetIsVisible(PlanDesignationType planDesignationType, bool isVisible, bool autoSave = true)
+        {
+            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+                planDesignationSetting.isVisible = isVisible;
+
+            if (autoSave)
+                Write();
+        }
+
+        public bool IsInitiallyVisible(PlanDesignationType planDesignationType)
+        {
+            return startupPlanVisibility switch
+            {
+                StartupPlanVisibility.Visible => true,
+                StartupPlanVisibility.LastSaved => planDesignationSettings.GetValueOrDefault(planDesignationType)?.isVisible ?? true,
+                _ => false,
+            };
+        }
+
+        public void SetStartupPlanVisibility(StartupPlanVisibility startupPlanVisibility, bool autoSave = true)
+        {
+            this.startupPlanVisibility = startupPlanVisibility;
+
+            if (autoSave)
+                Write();
+        }
+
         public void AddLastLoadedPlan(string planName, bool autoSave = true)
         {
             lastLoadedPlans.RemoveAll(p => p == planName);
@@ -138,8 +168,16 @@ namespace PlanningExtended.Settings
             planDesignationSettings ??= [];
 
             foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
-                if (!planDesignationSettings.ContainsKey(planDesignationType))
-                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round);
+            {
+                if (!planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+                {
+                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round, true);
+                }
+                else if (startupPlanVisibility != StartupPlanVisibility.LastSaved)
+                {
+                    planDesignationSetting.isVisible = startupPlanVisibility == StartupPlanVisibility.Visible;
+                }
+            }
         }
 
         IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
@@ -177,6 +215,8 @@ namespace PlanningExtended.Settings
             public const bool UseSkipInsteadOfReplaceAsDefault = false;
 
             public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
+
+            public const StartupPlanVisibility StartupPlanVisibility = PlanningExtended.StartupPlanVisibility.Visible;
         }
     }
 }

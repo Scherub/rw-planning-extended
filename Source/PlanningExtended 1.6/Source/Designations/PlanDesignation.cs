@@ -86,6 +86,9 @@ namespace PlanningExtended.Designations
 
         public override void DesignationDraw()
         {
+            if (_planType == PlanDesignationType.Unknown)
+                _planType = DesignationDefUtilities.GetType(def);
+
             if (!PlanAppearanceManager.IsPlanVisible(_planType))
                 return;
 

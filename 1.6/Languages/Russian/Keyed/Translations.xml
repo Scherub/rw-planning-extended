@@ -75,6 +75,8 @@
 
   <PlanningExtended.SwitchToCut>переключиться на вырезание</PlanningExtended.SwitchToCut>
 
+  <PlanningExtended.Settings.PlanningDataFolder.Label>Папка данных планирования</PlanningExtended.Settings.PlanningDataFolder.Label>
+
   <PlanningExtended.Settings.UndoRedo.Label>Отменить-Вернуть</PlanningExtended.Settings.UndoRedo.Label>
 
   <PlanningExtended.Settings.UseUndoRedo.Label>Использовать систему Отменить-Вернуть</PlanningExtended.Settings.UseUndoRedo.Label>
@@ -103,6 +105,9 @@
   <PlanningExtended.Settings.ArePlansVisible.Label>Показывать план</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Определяет, видны ли обозначения плана.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Начальная видимость планов</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Определяет видимость планов при запуске.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Обновить планы с прошлых версий</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Конвертировать из ванильных планов</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -111,17 +116,29 @@
 
   <PlanningExtended.Shapes.Point>Точка</PlanningExtended.Shapes.Point>
   <PlanningExtended.Shapes.Line>Линия</PlanningExtended.Shapes.Line>
+  <PlanningExtended.Shapes.Triangle>Треугольник</PlanningExtended.Shapes.Triangle>
   <PlanningExtended.Shapes.Rectangle>Прямоугольник</PlanningExtended.Shapes.Rectangle>
+  <PlanningExtended.Shapes.Pentagon>Пятиугольник</PlanningExtended.Shapes.Pentagon>
+  <PlanningExtended.Shapes.Hexagon>Шестиугольник</PlanningExtended.Shapes.Hexagon>
+  <PlanningExtended.Shapes.Octagon>Восьмиугольник</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Эллипс</PlanningExtended.Shapes.Ellipse>
 
   <PlanningExtended.Shapes.Variants.Points>Точки</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Линия</PlanningExtended.Shapes.Variants.LineSimple>
   <PlanningExtended.Shapes.Variants.LineGrid>Линия сетка</PlanningExtended.Shapes.Variants.LineGrid>
+  <PlanningExtended.Shapes.Variants.TriangleFilled>Треугольник заполненный</PlanningExtended.Shapes.Variants.TriangleFilled>
+  <PlanningExtended.Shapes.Variants.TriangleOutline>Треугольник контур</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Прямоугольник заполненный</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Прямоугольник сетка</PlanningExtended.Shapes.Variants.RectangleGrid>
-  <PlanningExtended.Shapes.Variants.RectangleOutline>Прямоугольник</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleOutline>Прямоугольник контур</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.PentagonFilled>Пятиугольник заполненный</PlanningExtended.Shapes.Variants.PentagonFilled>
+  <PlanningExtended.Shapes.Variants.PentagonOutline>Пятиугольник контур</PlanningExtended.Shapes.Variants.PentagonOutline>
+  <PlanningExtended.Shapes.Variants.HexagonFilled>Шестиугольник заполненный</PlanningExtended.Shapes.Variants.HexagonFilled>
+  <PlanningExtended.Shapes.Variants.HexagonOutline>Шестиугольник контур</PlanningExtended.Shapes.Variants.HexagonOutline>
+  <PlanningExtended.Shapes.Variants.OctagonFilled>Восьмиугольник заполненный</PlanningExtended.Shapes.Variants.OctagonFilled>
+  <PlanningExtended.Shapes.Variants.OctagonOutline>Восьмиугольник контур</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Эллипс заполненный</PlanningExtended.Shapes.Variants.EllipseFilled>
-  <PlanningExtended.Shapes.Variants.EllipseOutline>Эллипс</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.EllipseOutline>Эллипс контур</PlanningExtended.Shapes.Variants.EllipseOutline>
 
   <PlanningExtended.Shapes.ChangeShapeVariant>Изменить форму</PlanningExtended.Shapes.ChangeShapeVariant>
 
@@ -129,5 +146,26 @@
   <PlanningExtended.Shapes.Columns>Столбцы</PlanningExtended.Shapes.Columns>
   <PlanningExtended.Shapes.Rows>Ряды</PlanningExtended.Shapes.Rows>
   <PlanningExtended.Shapes.Cells>Ячейки</PlanningExtended.Shapes.Cells>
+
+  <PlanningExtended.Direction>Направление</PlanningExtended.Direction>
+
+  <PlanningExtended.Direction.None>Нет</PlanningExtended.Direction.None>
+  <PlanningExtended.Direction.North>Север</PlanningExtended.Direction.North>
+  <PlanningExtended.Direction.NorthEast>Северо-Восток</PlanningExtended.Direction.NorthEast>
+  <PlanningExtended.Direction.East>Восток</PlanningExtended.Direction.East>
+  <PlanningExtended.Direction.SouthEast>Юго-Восток</PlanningExtended.Direction.SouthEast>
+  <PlanningExtended.Direction.South>Юг</PlanningExtended.Direction.South>
+  <PlanningExtended.Direction.SouthWest>Юго-Запад</PlanningExtended.Direction.SouthWest>
+  <PlanningExtended.Direction.West>Запад</PlanningExtended.Direction.West>
+  <PlanningExtended.Direction.NorthWest>Северо-Запад</PlanningExtended.Direction.NorthWest>
+  <PlanningExtended.Direction.Horizontal>Горизонтально</PlanningExtended.Direction.Horizontal>
+  <PlanningExtended.Direction.Vertical>Вертикально</PlanningExtended.Direction.Vertical>
+  <PlanningExtended.Direction.Diagonal>Диагонально</PlanningExtended.Direction.Diagonal>
+  <PlanningExtended.Direction.DiagonalNW>Диагональ СЗ</PlanningExtended.Direction.DiagonalNW>
+  <PlanningExtended.Direction.DiagonalNE>Диагональ СВ</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

@@ -75,6 +75,8 @@
 
   <PlanningExtended.SwitchToCut>cambiar a cortar</PlanningExtended.SwitchToCut>
 
+  <PlanningExtended.Settings.PlanningDataFolder.Label>Carpeta de Datos de Planificación</PlanningExtended.Settings.PlanningDataFolder.Label>
+
   <PlanningExtended.Settings.UndoRedo.Label>Deshacer-Rehacer</PlanningExtended.Settings.UndoRedo.Label>
 
   <PlanningExtended.Settings.UseUndoRedo.Label>Usar Sistema de Deshacer-Rehacer</PlanningExtended.Settings.UseUndoRedo.Label>
@@ -102,6 +104,9 @@
 
   <PlanningExtended.Settings.ArePlansVisible.Label>Mostrar Planes</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determina si las designaciones de plan son visibles o no.</PlanningExtended.Settings.ArePlansVisible.Desc>
+
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Visibilidad inicial de los planes</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determina la visibilidad de los planes al iniciar.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Actualizar planes antiguos</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -158,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>Diagonal NO</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NE</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Último guardado</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

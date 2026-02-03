@@ -75,6 +75,8 @@
 
   <PlanningExtended.SwitchToCut>Wechsel zum Ausschneiden</PlanningExtended.SwitchToCut>
 
+  <PlanningExtended.Settings.PlanningDataFolder.Label>Planungsdaten-Ordner</PlanningExtended.Settings.PlanningDataFolder.Label>
+
   <PlanningExtended.Settings.UndoRedo.Label>Rückgängig-Wiederherstellen</PlanningExtended.Settings.UndoRedo.Label>
 
   <PlanningExtended.Settings.UseUndoRedo.Label>Benutze Rückgängig-Wiederherstellen System</PlanningExtended.Settings.UseUndoRedo.Label>
@@ -102,6 +104,9 @@
 
   <PlanningExtended.Settings.ArePlansVisible.Label>Pläne anzeigen</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Legt fest, ob Pläne angezeigt werden.</PlanningExtended.Settings.ArePlansVisible.Desc>
+
+  <PlanningExtended.Settings.StartupPlanVisibility.Label>Sichtbarkeit beim Start</PlanningExtended.Settings.StartupPlanVisibility.Label>
+  <PlanningExtended.Settings.StartupPlanVisibility.Desc>Legt die Sichtbarkeit der Pläne beim Start fest.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Alte Pläne upgraden</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
@@ -158,5 +163,9 @@
   <PlanningExtended.Direction.Diagonal>Diagonal</PlanningExtended.Direction.Diagonal>
   <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NO</PlanningExtended.Direction.DiagonalNE>
+
+  <PlanningExtended.StartupPlanVisibilities.Visible>Sichtbar</PlanningExtended.StartupPlanVisibilities.Visible>
+  <PlanningExtended.StartupPlanVisibilities.Invisible>Unsichtbar</PlanningExtended.StartupPlanVisibilities.Invisible>
+  <PlanningExtended.StartupPlanVisibilities.LastSaved>Zuletzt gespeichert</PlanningExtended.StartupPlanVisibilities.LastSaved>
 
 </LanguageData>

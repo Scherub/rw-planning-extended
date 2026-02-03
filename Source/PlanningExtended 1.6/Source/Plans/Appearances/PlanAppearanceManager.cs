@@ -111,6 +111,8 @@ namespace PlanningExtended.Plans.Appearances
             DetermineVisibility();
 
             VisibilityChanged?.Invoke(PlanVisibility);
+
+            Settings.SetIsVisible(planDesignationType, isVisible);
         }
 
         public static void ToggleIsPlanVisible(PlanDesignationType planDesignationType)
@@ -142,7 +144,7 @@ namespace PlanningExtended.Plans.Appearances
 
         static PlanAppearance CreatePlanAppearance(PlanDesignationType planDesignationType)
         {
-            return new PlanAppearance(planDesignationType, Settings.GetOpacity(planDesignationType), Settings.GetTextureSet(planDesignationType), true);
+            return new PlanAppearance(planDesignationType, Settings.GetOpacity(planDesignationType), Settings.GetTextureSet(planDesignationType), Settings.IsInitiallyVisible(planDesignationType));
         }
     }
 }
