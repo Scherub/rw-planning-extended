@@ -75,6 +75,8 @@
 
   <PlanningExtended.SwitchToCut>切换到剪切</PlanningExtended.SwitchToCut>
 
+  <PlanningExtended.Settings.PlanningDataFolder.Label>规划数据文件夹</PlanningExtended.Settings.PlanningDataFolder.Label>
+
   <PlanningExtended.Settings.UndoRedo.Label>撤销-重做</PlanningExtended.Settings.UndoRedo.Label>
 
   <PlanningExtended.Settings.UseUndoRedo.Label>启用撤销-重做系统</PlanningExtended.Settings.UseUndoRedo.Label>

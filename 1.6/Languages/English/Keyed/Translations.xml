@@ -75,6 +75,8 @@
 
   <PlanningExtended.SwitchToCut>switch to cut</PlanningExtended.SwitchToCut>
 
+  <PlanningExtended.Settings.PlanningDataFolder.Label>Planning Data Folder</PlanningExtended.Settings.PlanningDataFolder.Label>
+
   <PlanningExtended.Settings.UndoRedo.Label>Undo-Redo</PlanningExtended.Settings.UndoRedo.Label>
 
   <PlanningExtended.Settings.UseUndoRedo.Label>Use Undo-Redo System</PlanningExtended.Settings.UseUndoRedo.Label>

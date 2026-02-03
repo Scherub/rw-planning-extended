@@ -8,17 +8,15 @@ namespace PlanningExtended.Plans.Persistence
 {
     public static class PlanPersistenceManager
     {
-        public static string PlanFolderPath => Path.Combine(GenFilePaths.SaveDataFolderPath, "Planning");
-
         public static string GetAbsPathForPlanInfo(string planInfoName)
         {
-            return Path.Combine(PlanFolderPath, planInfoName + ".pln");
+            return Path.Combine(PlanFilePaths.PlanFolderPath, planInfoName + ".pln");
         }
 
         public static IEnumerable<FileInfo> GetAllPlanInfoFiles()
         {
-            DirectoryInfo directoryInfo = new(PlanFolderPath);
-            
+            DirectoryInfo directoryInfo = new(PlanFilePaths.PlanFolderPath);
+
             if (!directoryInfo.Exists)
                 directoryInfo.Create();
             
@@ -72,8 +70,8 @@ namespace PlanningExtended.Plans.Persistence
 
         static void CreateDirectoryIfRequired()
         {
-            if (!Directory.Exists(PlanFolderPath))
-                Directory.CreateDirectory(PlanFolderPath);
+            if (!Directory.Exists(PlanFilePaths.PlanFolderPath))
+                Directory.CreateDirectory(PlanFilePaths.PlanFolderPath);
         }
     }
 }

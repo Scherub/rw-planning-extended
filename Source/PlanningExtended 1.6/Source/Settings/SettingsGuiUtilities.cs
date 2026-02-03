@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using PlanningExtended.Plans.Converters;
 using PlanningExtended.Updates;
+using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace PlanningExtended.Settings
 {
@@ -90,9 +92,25 @@ namespace PlanningExtended.Settings
 
             //listingStandard.Heading("SCE_WorkingAndLearningSpeed_Label".Translate(), "SCE_WorkingAndLearningSpeed_Description".Translate());
 
+            listingStandard.Gap(24f);
+
             //listingStandard.BeginSubSection();
 
+            if (Application.platform == RuntimePlatform.WindowsPlayer)
+            {
+
+                if (listingStandard.ButtonTextLabeledPct((string)"PlanningExtended.Settings.PlanningDataFolder.Label".Translate(), (string)"OpenFolder".Translate(), 0.6f, TextAnchor.MiddleLeft))
+                {
+                    Application.OpenURL(PlanFilePaths.PlanFolderPath);
+                    SoundDefOf.Click.PlayOneShotOnCamera();
+                }
+
+                listingStandard.SubLabel(PlanFilePaths.PlanFolderPath, 0.6f);
+            }
+
             //listingStandard.EndSubSection();
+
+            //listingStandard.Heading("ResetButton".Translate());
 
             listingStandard.End();
         }
