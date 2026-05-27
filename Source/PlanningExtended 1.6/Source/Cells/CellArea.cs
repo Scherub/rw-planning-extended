@@ -5,7 +5,7 @@ namespace PlanningExtended.Cells;
 
 public class CellArea
 {
-    readonly List<IntVec3> _cells = new();
+    readonly List<IntVec3> _cells = [];
 
     public IEnumerable<IntVec3> Cells => _cells;
 

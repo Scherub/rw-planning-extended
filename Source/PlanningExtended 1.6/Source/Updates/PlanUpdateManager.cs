@@ -6,11 +6,11 @@ namespace PlanningExtended.Updates;
 
 internal static class PlanUpdateManager
 {
-    static readonly List<BaseUpdate> updates = new BaseUpdate[]
-    {
+    static readonly List<BaseUpdate> updates =
+    [
         new UpdateDesignationsToPlanDesignations(),
         new RotateDoorsUpdate()
-    }.ToList();
+    ];
 
     public static void ApplyUpdates()
     {

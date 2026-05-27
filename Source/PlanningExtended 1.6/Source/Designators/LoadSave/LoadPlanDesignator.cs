@@ -14,7 +14,6 @@ public class LoadPlanDesignator : BaseClickDesignator
     public LoadPlanDesignator()
         : base("LoadPlan")
     {
-
     }
 
     public override void ProcessInput(Event ev)
@@ -24,7 +23,7 @@ public class LoadPlanDesignator : BaseClickDesignator
 
     List<FloatMenuOption> GetLastLoadedPlansMenuOptions()
     {
-        List<FloatMenuOption> list = new();
+        List<FloatMenuOption> list = [];
 
         foreach (string planName in PlanningMod.Settings.LastLoadedPlans)
         {

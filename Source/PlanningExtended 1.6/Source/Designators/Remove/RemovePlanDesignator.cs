@@ -41,7 +41,7 @@ public class RemovePlanDesignator : BaseShapePlanDesignator
 
     List<FloatMenuOption> GetRemovePlanMenuOptions()
     {
-        List<FloatMenuOption> floatMenuOptionList = new();
+        List<FloatMenuOption> floatMenuOptionList = [];
 
         foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
         {

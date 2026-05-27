@@ -8,9 +8,9 @@ namespace PlanningExtended.Shapes.Generators;
 
 internal class OldRectangleGenerator : BaseShapeGenerator
 {
-    HashSet<int> _segmentsX = new();
+    HashSet<int> _segmentsX = [];
 
-    HashSet<int> _segmentsZ = new();
+    HashSet<int> _segmentsZ = [];
 
     bool DrawOutline { get; }
 

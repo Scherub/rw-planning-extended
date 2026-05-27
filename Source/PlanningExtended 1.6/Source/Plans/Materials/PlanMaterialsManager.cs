@@ -41,7 +41,7 @@ public static class PlanMaterialsManager
         {
             foreach (DesignationDef designationDef in designationDefContainer.DesignationDefs)
             {
-                List<PlanDesignation> designations = map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation).ToList();
+                List<PlanDesignation> designations = [.. map.designationManager.designationsByDef[designationDef].Where(d => d is PlanDesignation).Select(d => d as PlanDesignation)];
 
                 foreach (var designation in designations)
                     designation.InvokeUpdate(planDesignationType, planDesignationUpdateType);

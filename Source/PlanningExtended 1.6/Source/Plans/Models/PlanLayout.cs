@@ -7,7 +7,7 @@ namespace PlanningExtended.Plans;
 
 public class PlanLayout : IExposable
 {
-    List<PlanCell> _cells = new();
+    List<PlanCell> _cells = [];
 
     public IEnumerable<PlanCell> Cells => _cells;
 

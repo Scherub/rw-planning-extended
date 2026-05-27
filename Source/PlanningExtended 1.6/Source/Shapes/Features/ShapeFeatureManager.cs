@@ -5,7 +5,7 @@ namespace PlanningExtended.Shapes.Features;
 
 public class ShapeFeatureManager
 {
-    readonly List<IShapeFeature> _shapeFeatures = new();
+    readonly List<IShapeFeature> _shapeFeatures = [];
 
     public RotationShapeFeature RotationShapeFeature { get; }
 

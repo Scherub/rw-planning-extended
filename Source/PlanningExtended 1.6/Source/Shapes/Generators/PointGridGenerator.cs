@@ -8,9 +8,9 @@ namespace PlanningExtended.Shapes.Generators;
 
 internal class PointGridGenerator : BaseShapeGenerator
 {
-    HashSet<int> _segmentsX = new();
+    HashSet<int> _segmentsX = [];
 
-    HashSet<int> _segmentsZ = new();
+    HashSet<int> _segmentsZ = [];
 
     public PointGridGenerator()
         : base(false)

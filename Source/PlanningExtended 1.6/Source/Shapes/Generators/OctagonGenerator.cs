@@ -7,7 +7,7 @@ namespace PlanningExtended.Shapes.Generators;
 
 internal class OctagonGenerator : BasePolygonGenerator
 {
-    readonly List<LineIndex> _lineIndices = new() {
+    readonly List<LineIndex> _lineIndices = [
         new LineIndex(0, 1),
         new LineIndex(1, 2),
         new LineIndex(2, 3),
@@ -16,7 +16,7 @@ internal class OctagonGenerator : BasePolygonGenerator
         new LineIndex(5, 6),
         new LineIndex(6, 7),
         new LineIndex(7, 0)
-    };
+    ];
 
     protected override List<LineIndex> LineIndices => _lineIndices;
 
@@ -35,8 +35,8 @@ internal class OctagonGenerator : BasePolygonGenerator
 
         //Log.Warning($"AD: {areaDimensions}, W: {areaDimensions.Width}, H: {areaDimensions.Height}, HSL: {horizontalSideLength}, VSL: {verticalSideLength}, PW: {partialWidth}, PH: {partialHeight}, V1: {new IntVec3(areaDimensions.MinX + partialWidth, 0, areaDimensions.MaxZ)}, V2: {new IntVec3(areaDimensions.MaxX - partialWidth, 0, areaDimensions.MaxZ)}");
 
-        return new List<IntVec3>
-        {
+        return
+        [
             new(areaDimensions.MinX, 0, areaDimensions.MaxZ - partialHeight),
             new(areaDimensions.MinX + partialWidth, 0, areaDimensions.MaxZ),
             new(areaDimensions.MaxX - partialWidth, 0, areaDimensions.MaxZ),
@@ -45,6 +45,6 @@ internal class OctagonGenerator : BasePolygonGenerator
             new(areaDimensions.MaxX - partialWidth, 0, areaDimensions.MinZ),
             new(areaDimensions.MinX + partialWidth, 0, areaDimensions.MinZ),
             new(areaDimensions.MinX, 0, areaDimensions.MinZ + partialHeight),
-        };
+        ];
     }
 }

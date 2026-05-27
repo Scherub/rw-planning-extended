@@ -22,7 +22,7 @@ public static class PlanLayoutUtilities
 
     public static PlanLayout CreateCopy(AreaDimensions areaDimensions, Map map)
     {
-        List<PlanCell> planCells = new();
+        List<PlanCell> planCells = [];
 
         if (!areaDimensions.IsValid)
             return null;
@@ -53,7 +53,7 @@ public static class PlanLayoutUtilities
 
     public static PlanLayout Create(CellArea cellArea, Map map)
     {
-        List<PlanCell> planCells = new();
+        List<PlanCell> planCells = [];
 
         foreach (var cell in cellArea.Cells)
         {
@@ -110,7 +110,7 @@ public static class PlanLayoutUtilities
     {
         //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
 
-        List<IntVec3> list = new();
+        List<IntVec3> list = [];
 
         foreach (PlanCell planCell in planLayout.Cells)
         {

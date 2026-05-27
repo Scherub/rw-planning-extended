@@ -58,7 +58,7 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
         CellArea cellArea = new(dragCells);
         AreaDimensions areaDimensions = cellArea.Dimensions;
 
-        List<IntVec3> cells = new();
+        List<IntVec3> cells = [];
 
         foreach (IntVec3 cell in dragCells)
             if (IsShapeCellValid(cell, areaDimensions))
@@ -101,7 +101,7 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
     List<FloatMenuOption> GetShapesMenuOptions()
     {
-        List<FloatMenuOption> list = new();
+        List<FloatMenuOption> list = [];
 
         foreach (Shape shape in ShapesManager.AvailableShapes)
         {

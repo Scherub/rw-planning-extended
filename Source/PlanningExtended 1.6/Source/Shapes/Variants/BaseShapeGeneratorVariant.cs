@@ -10,7 +10,7 @@ namespace PlanningExtended.Shapes.Variants;
 internal abstract class BaseShapeGeneratorVariant<TShapeGenerator> : BaseShapeVariant
     where TShapeGenerator : BaseShapeGenerator
 {
-    HashSet<IntVec3> _validCells = new();
+    HashSet<IntVec3> _validCells = [];
 
     protected TShapeGenerator ShapeGenerator { get; }
 

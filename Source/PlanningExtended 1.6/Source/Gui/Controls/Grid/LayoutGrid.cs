@@ -19,9 +19,9 @@ internal class LayoutGrid
 
     Rect _rect;
 
-    Dictionary<int, Track> _columns = new();
+    Dictionary<int, Track> _columns = [];
 
-    Dictionary<int, Track> _rows = new();
+    Dictionary<int, Track> _rows = [];
 
     public LayoutGrid(IEnumerable<TrackDefinition> columnDefinitions, IEnumerable<TrackDefinition> rowDefinitions, float columnGap = 0f, float rowGap = 0f)
         : this(columnDefinitions, rowDefinitions, Thickness.Zero, columnGap, rowGap)
@@ -30,8 +30,8 @@ internal class LayoutGrid
 
     public LayoutGrid(IEnumerable<TrackDefinition> columnDefinitions, IEnumerable<TrackDefinition> rowDefinitions, Thickness margin, float columnGap = 0f, float rowGap = 0f)
     {
-        _columnDefinitions = columnDefinitions.ToList();
-        _rowDefinitions = rowDefinitions.ToList();
+        _columnDefinitions = [.. columnDefinitions];
+        _rowDefinitions = [.. rowDefinitions];
         _margin = margin;
         _columnGap = columnGap;
         _rowGap = rowGap;
@@ -65,7 +65,7 @@ internal class LayoutGrid
         // 4. compute flexibel size
         // 5. compute start position
 
-        List<Track> tracks = new();
+        List<Track> tracks = [];
 
         for (int i = 0; i < trackDefinitions.Count; i++)
             tracks.Add(CreateTrack(i, trackDefinitions[i]));
@@ -86,7 +86,7 @@ internal class LayoutGrid
 
     float ComputeTrackLength(List<Track> tracks, TrackSizeType trackSizeType, float availableLength)
     {
-        return ComputeTrackLength(tracks.Where(td => td.Definition.TrackSizeType == trackSizeType).ToList(), availableLength);
+        return ComputeTrackLength([.. tracks.Where(td => td.Definition.TrackSizeType == trackSizeType)], availableLength);
     }
 
     float ComputeTrackLength(List<Track> tracks, float availableLength)

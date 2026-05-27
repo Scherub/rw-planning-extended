@@ -15,7 +15,7 @@ public static class DesignationManagerExtensions
 
     public static bool RemovePlanDesignationsAt(this DesignationManager designationManager, IntVec3 position)
     {
-        List<Designation> designations = designationManager.AllDesignationsAt(position).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan).ToList();
+        List<Designation> designations = [.. designationManager.AllDesignationsAt(position).Where(d => d is PlanDesignation || d.def == DesignationDefOf.Plan)];
 
         bool hasPlanDesignations = designations.Count > 0;
 

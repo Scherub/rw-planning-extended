@@ -4,9 +4,9 @@ namespace PlanningExtended.Shapes;
 
 internal class ShapesManager
 {
-    readonly Dictionary<Shape, BaseShape> _shapes = new();
+    readonly Dictionary<Shape, BaseShape> _shapes = [];
 
-    public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse };
+    public static List<Shape> AvailableShapes = [/*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse];
 
     public ShapesManager()
     {

@@ -8,9 +8,9 @@ namespace PlanningExtended.UndoRedo;
 
 public static class UndoRedoManager
 {
-    readonly static List<UndoRedoSnapshot> _undoSnapshots = new();
+    readonly static List<UndoRedoSnapshot> _undoSnapshots = [];
 
-    readonly static List<UndoRedoSnapshot> _redoSnapshots = new();
+    readonly static List<UndoRedoSnapshot> _redoSnapshots = [];
 
     public static bool CanUndo => _undoSnapshots.Count > 0;
 

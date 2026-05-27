@@ -12,7 +12,7 @@ namespace PlanningExtended.Settings;
 
 public static class SettingsGuiUtilities
 {
-    static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>().ToList();
+    static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = [.. Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>()];
 
     public static void DisplaySettings(PlanningSettings settings, Rect inRect)
     {

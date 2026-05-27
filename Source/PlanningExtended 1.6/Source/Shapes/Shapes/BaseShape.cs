@@ -20,7 +20,7 @@ public abstract class BaseShape
 
     protected BaseShape(ShapeVariant defaultShapeVariant, params BaseShapeVariant[] shapeVariants)
     {
-        _shapeVariants = new(shapeVariants);
+        _shapeVariants = [.. shapeVariants];
 
         SelectShapeVariant(defaultShapeVariant);
     }

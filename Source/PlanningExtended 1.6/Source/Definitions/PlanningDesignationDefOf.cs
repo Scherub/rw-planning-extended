@@ -13,13 +13,13 @@ public static class PlanningDesignationDefOf
     {
         get
         {
-            _designationDefs ??= new(new[]
+            _designationDefs ??= [.. new[]
             {
                 new DesignationDefContainer(PlanDesignationType.PlanWall, "PlanWalls", "Wall", PlanWalls, PlanWallsColored),
                 new DesignationDefContainer(PlanDesignationType.PlanFloors, "PlanFloors", "Floor", PlanFloors, PlanFloorsColored),
                 new DesignationDefContainer(PlanDesignationType.PlanDoors, "PlanDoors", "Door", PlanDoors, PlanDoorsColored),
                 new DesignationDefContainer(PlanDesignationType.PlanObjects, "PlanObjects", "Object", PlanObjects, PlanObjectsColored),
-            });
+            }];
 
             return _designationDefs;
         }

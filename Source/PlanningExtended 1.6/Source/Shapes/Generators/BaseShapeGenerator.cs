@@ -15,7 +15,7 @@ internal abstract class BaseShapeGenerator
 
     protected bool FillArea { get; }
 
-    protected HashSet<IntVec3> ValidCells { get; } = new();
+    protected HashSet<IntVec3> ValidCells { get; } = [];
 
     protected BaseShapeGenerator(bool fillArea)
     {

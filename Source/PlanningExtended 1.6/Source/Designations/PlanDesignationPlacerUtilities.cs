@@ -49,6 +49,6 @@ internal static class PlanDesignationPlacerUtilities
 
     static IntVec3[] GetAdjecent(IntVec3 position)
     {
-        return new[] { position + IntVec3.North, position + IntVec3.South, position + IntVec3.East, position + IntVec3.West };
+        return [position + IntVec3.North, position + IntVec3.South, position + IntVec3.East, position + IntVec3.West];
     }
 }

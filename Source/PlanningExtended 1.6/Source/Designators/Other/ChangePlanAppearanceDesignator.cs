@@ -9,9 +9,9 @@ namespace PlanningExtended.Designators;
 
 public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
 {
-    List<int> OpacityList => Enumerable.Range(1, 100).Where(i => i % 10 == 0).ToList();
+    List<int> OpacityList => [.. Enumerable.Range(1, 100).Where(i => i % 10 == 0)];
 
-    List<PlanTextureSet> PlanTextureSets => Enum.GetValues(typeof(PlanTextureSet)).Cast<PlanTextureSet>().ToList();
+    List<PlanTextureSet> PlanTextureSets => [.. Enum.GetValues(typeof(PlanTextureSet)).Cast<PlanTextureSet>()];
 
     public override bool Visible => PlanningMod.Settings.displayChangePlanAppearanceDesignator;
 
@@ -31,7 +31,7 @@ public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
 
     List<FloatMenuOption> GetOpacityMenuOptions(PlanDesignationType planDesignationType)
     {
-        List<FloatMenuOption> list = new();
+        List<FloatMenuOption> list = [];
 
         foreach (int opacity in OpacityList)
         {
@@ -46,7 +46,7 @@ public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
 
     List<FloatMenuOption> GetTextureSetMenuOptions(PlanDesignationType planDesignationType)
     {
-        List<FloatMenuOption> list = new();
+        List<FloatMenuOption> list = [];
 
         foreach (PlanTextureSet planTextureSet in PlanTextureSets)
         {

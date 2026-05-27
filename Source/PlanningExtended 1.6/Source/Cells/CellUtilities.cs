@@ -37,7 +37,7 @@ public static class CellUtilities
 
     public static HashSet<IntVec3> ClearCells(AreaDimensions areaDimensions, Map map)
     {
-        HashSet<IntVec3> removedCells = new();
+        HashSet<IntVec3> removedCells = [];
 
         foreach (var cell in GetCells(areaDimensions))
             if (map.designationManager.RemovePlanDesignationsAt(cell))

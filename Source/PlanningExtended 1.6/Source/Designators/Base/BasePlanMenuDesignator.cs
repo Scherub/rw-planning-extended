@@ -42,7 +42,7 @@ public abstract class BasePlanMenuDesignator : BaseClickDesignator
 
     protected List<FloatMenuOption> GetPlanTypeMenuOptions(Action<PlanDesignationType> action)
     {
-        List<FloatMenuOption> list = new();
+        List<FloatMenuOption> list = [];
 
         foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
         {
