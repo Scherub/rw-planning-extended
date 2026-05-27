@@ -48,6 +48,6 @@ public class PlanLayout : IExposable
     
     void DetermineAreaDimensions()
     {
-        Dimensions = CellUtilities.DetermineAreaDimensions(_cells.Select(c => c.Position.ToIntVec3)); new AreaDimensions();
+        Dimensions = CellUtilities.DetermineAreaDimensions(_cells.Select(c => c.Position.ToIntVec3));
     }
 }
