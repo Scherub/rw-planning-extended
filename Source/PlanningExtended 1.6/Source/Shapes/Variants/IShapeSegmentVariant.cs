@@ -1,9 +1,8 @@
-﻿namespace PlanningExtended.Shapes.Variants
-{
-    internal interface IShapeSegmentVariant
-    {
-        public int NumberOfColumns { get; }
+﻿namespace PlanningExtended.Shapes.Variants;
 
-        public int NumberOfRows { get; }
-    }
+internal interface IShapeSegmentVariant
+{
+    public int NumberOfColumns { get; }
+
+    public int NumberOfRows { get; }
 }

@@ -4,94 +4,93 @@ using PlanningExtended.Plans;
 using PlanningExtended.Settings;
 using Verse;
 
-namespace PlanningExtended.UndoRedo
+namespace PlanningExtended.UndoRedo;
+
+public static class UndoRedoManager
 {
-    public static class UndoRedoManager
+    readonly static List<UndoRedoSnapshot> _undoSnapshots = new();
+
+    readonly static List<UndoRedoSnapshot> _redoSnapshots = new();
+
+    public static bool CanUndo => _undoSnapshots.Count > 0;
+
+    public static bool CanRedo => _redoSnapshots.Count > 0;
+
+    public static bool UseUndoRedo => PlanningMod.Settings.useUndoRedo;
+
+    public static int MaxUndoOperations => PlanningMod.Settings.maxUndoOperations;
+
+    public static event Action OnChanged;
+
+    static UndoRedoManager()
     {
-        readonly static List<UndoRedoSnapshot> _undoSnapshots = new();
+        PlanningMod.SettingsChanged += PlanningMod_SettingsChanged;
+    }
 
-        readonly static List<UndoRedoSnapshot> _redoSnapshots = new();
+    public static void Undo(Map map)
+    {
+        if (!UseUndoRedo || !CanUndo)
+            return;
 
-        public static bool CanUndo => _undoSnapshots.Count > 0;
+        UndoRedoSnapshot undoRedoSnapshot = _undoSnapshots[_undoSnapshots.Count - 1];
 
-        public static bool CanRedo => _redoSnapshots.Count > 0;
+        PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.UndoPlanLayout, map);
 
-        public static bool UseUndoRedo => PlanningMod.Settings.useUndoRedo;
+        _undoSnapshots.RemoveAt(_undoSnapshots.Count - 1);
+        _redoSnapshots.Add(undoRedoSnapshot);
 
-        public static int MaxUndoOperations => PlanningMod.Settings.maxUndoOperations;
+        //LogText($"Undo: {undoRedoSnapshot.UndoPlanLayout}");
 
-        public static event Action OnChanged;
+        OnChanged?.Invoke();
+    }
 
-        static UndoRedoManager()
-        {
-            PlanningMod.SettingsChanged += PlanningMod_SettingsChanged;
-        }
+    public static void Redo(Map map)
+    {
+        if (!UseUndoRedo || !CanRedo)
+            return;
 
-        public static void Undo(Map map)
-        {
-            if (!UseUndoRedo || !CanUndo)
-                return;
+        UndoRedoSnapshot undoRedoSnapshot = _redoSnapshots[_redoSnapshots.Count - 1];
 
-            UndoRedoSnapshot undoRedoSnapshot = _undoSnapshots[_undoSnapshots.Count - 1];
+        PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.RedoPlanLayout, map);
 
-            PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.UndoPlanLayout, map);
+        _redoSnapshots.RemoveAt(_redoSnapshots.Count - 1);
+        _undoSnapshots.Add(undoRedoSnapshot);
 
-            _undoSnapshots.RemoveAt(_undoSnapshots.Count - 1);
-            _redoSnapshots.Add(undoRedoSnapshot);
+        //LogText($"Redo: {undoRedoSnapshot.RedoPlanLayout}");
 
-            //LogText($"Undo: {undoRedoSnapshot.UndoPlanLayout}");
+        OnChanged?.Invoke();
+    }
 
-            OnChanged?.Invoke();
-        }
+    public static void Add(PlanLayout undoPlanLayout, PlanLayout redoPlanLayout)
+    {
+        if (!UseUndoRedo)
+            return;
 
-        public static void Redo(Map map)
-        {
-            if (!UseUndoRedo || !CanRedo)
-                return;
+        UndoRedoSnapshot undoRedoSnapshot = new(undoPlanLayout, redoPlanLayout);
 
-            UndoRedoSnapshot undoRedoSnapshot = _redoSnapshots[_redoSnapshots.Count - 1];
+        _undoSnapshots.Add(undoRedoSnapshot);
+        _redoSnapshots.Clear();
 
-            PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.RedoPlanLayout, map);
+        ClearUndoSteps();
 
-            _redoSnapshots.RemoveAt(_redoSnapshots.Count - 1);
-            _undoSnapshots.Add(undoRedoSnapshot);
+        OnChanged?.Invoke();
 
-            //LogText($"Redo: {undoRedoSnapshot.RedoPlanLayout}");
+        //LogText($"Added to Undo: {undoPlanLayout} - {redoPlanLayout}");
+    }
 
-            OnChanged?.Invoke();
-        }
+    static void ClearUndoSteps()
+    {
+        while (_undoSnapshots.Count > MaxUndoOperations)
+            _undoSnapshots.RemoveAt(0);
+    }
 
-        public static void Add(PlanLayout undoPlanLayout, PlanLayout redoPlanLayout)
-        {
-            if (!UseUndoRedo)
-                return;
+    //static void LogText(string text)
+    //{
+    //    Log.Warning($"{text}: Undo-Count ({_undoSnapshots.Count}), Redo-Count ({_redoSnapshots.Count})");
+    //}
 
-            UndoRedoSnapshot undoRedoSnapshot = new(undoPlanLayout, redoPlanLayout);
-
-            _undoSnapshots.Add(undoRedoSnapshot);
-            _redoSnapshots.Clear();
-
-            ClearUndoSteps();
-
-            OnChanged?.Invoke();
-
-            //LogText($"Added to Undo: {undoPlanLayout} - {redoPlanLayout}");
-        }
-
-        static void ClearUndoSteps()
-        {
-            while (_undoSnapshots.Count > MaxUndoOperations)
-                _undoSnapshots.RemoveAt(0);
-        }
-
-        //static void LogText(string text)
-        //{
-        //    Log.Warning($"{text}: Undo-Count ({_undoSnapshots.Count}), Redo-Count ({_redoSnapshots.Count})");
-        //}
-
-        static void PlanningMod_SettingsChanged(PlanningSettings settings)
-        {
-            ClearUndoSteps();
-        }
+    static void PlanningMod_SettingsChanged(PlanningSettings settings)
+    {
+        ClearUndoSteps();
     }
 }

@@ -7,113 +7,112 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class PaintPlanDesignator : BaseColorPlanDesignator
 {
-    public class PaintPlanDesignator : BaseColorPlanDesignator
+    protected override DesignationDef Designation => PlanningDesignationDefOf.PlanDoors;
+
+    protected override DesignationDef ColoredDesignation => throw new NotImplementedException();
+
+    protected override Action<Rect> OnPostDrawMouseAttachment => (rect) => GUI.DrawTexture(rect, IconTopTexture);
+
+    Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
+
+    public PaintPlanDesignator()
+        : base("PaintPlan")
     {
-        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanDoors;
+        soundSucceeded = SoundDefOf.Designate_Paint;
+    }
 
-        protected override DesignationDef ColoredDesignation => throw new NotImplementedException();
+    protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    {
+        CellArea cellArea = new(cells);
+        AreaDimensions areaDimensions = cellArea.Dimensions;
 
-        protected override Action<Rect> OnPostDrawMouseAttachment => (rect) => GUI.DrawTexture(rect, IconTopTexture);
+        bool somethingSucceeded = false;
+        bool flag = false;
 
-        Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
-
-        public PaintPlanDesignator()
-            : base("PaintPlan")
+        foreach (IntVec3 cell in cells)
         {
-            soundSucceeded = SoundDefOf.Designate_Paint;
-        }
-
-        protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
-        {
-            CellArea cellArea = new(cells);
-            AreaDimensions areaDimensions = cellArea.Dimensions;
-
-            bool somethingSucceeded = false;
-            bool flag = false;
-
-            foreach (IntVec3 cell in cells)
+            if (IsShapeCellValid(cell, areaDimensions) && CanDesignateCell(cell).Accepted)
             {
-                if (IsShapeCellValid(cell, areaDimensions) && CanDesignateCell(cell).Accepted)
-                {
-                    DesignateSingleCell(cell);
+                DesignateSingleCell(cell);
 
-                    somethingSucceeded = true;
+                somethingSucceeded = true;
 
-                    if (!flag)
-                        flag = ShowWarningForCell(cell);
-                }
+                if (!flag)
+                    flag = ShowWarningForCell(cell);
             }
-
-            return somethingSucceeded;
         }
 
-        public override AcceptanceReport CanDesignateCell(IntVec3 c)
+        return somethingSucceeded;
+    }
+
+    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    {
+        if (IsColorPickModeEnabled)
+            return colorPicker.CanDesignateCell(c);
+
+        if (!base.CanDesignateCell(c))
+            return false;
+
+        return Map.designationManager.HasPlanDesignationAt(c);
+    }
+
+    public override void DesignateSingleCell(IntVec3 c)
+    {
+        if (IsColorPickModeEnabled)
         {
-            if (IsColorPickModeEnabled)
-                return colorPicker.CanDesignateCell(c);
-
-            if (!base.CanDesignateCell(c))
-                return false;
-
-            return Map.designationManager.HasPlanDesignationAt(c);
+            colorPicker.DesignateSingleCell(c);
+            return;
         }
 
-        public override void DesignateSingleCell(IntVec3 c)
-        {
-            if (IsColorPickModeEnabled)
-            {
-                colorPicker.DesignateSingleCell(c);
-                return;
-            }
+        PlanDesignation planDesignation = Map.designationManager.GetOnlyPlanDesignationAt(c);
 
-            PlanDesignation planDesignation = Map.designationManager.GetOnlyPlanDesignationAt(c);
+        planDesignation.colorDef = colorDef;
 
-            planDesignation.colorDef = colorDef;
+        planDesignation.InvokeUpdate(PlanDesignationType.Unknown, PlanDesignationUpdateType.Color);
+    }
 
-            planDesignation.InvokeUpdate(PlanDesignationType.Unknown, PlanDesignationUpdateType.Color);
-        }
+    //public override void RenderHighlight(List<IntVec3> dragCells)
+    //{
+    //    CellArea cellArea = new(dragCells);
+    //    AreaDimensions areaDimensions = cellArea.Dimensions;
 
-        //public override void RenderHighlight(List<IntVec3> dragCells)
-        //{
-        //    CellArea cellArea = new(dragCells);
-        //    AreaDimensions areaDimensions = cellArea.Dimensions;
+    //    List<IntVec3> cells = new();
 
-        //    List<IntVec3> cells = new();
+    //    foreach (IntVec3 cell in dragCells)
+    //        if (IsShapeCellValid(cell, areaDimensions))
+    //            cells.Add(cell);
 
-        //    foreach (IntVec3 cell in dragCells)
-        //        if (IsShapeCellValid(cell, areaDimensions))
-        //            cells.Add(cell);
+    //    DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
+    //}
 
-        //    DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
-        //}
+    public override void DoExtraGuiControls(float leftX, float bottomY)
+    {
+        DrawExtraGuiControls(leftX, bottomY);
+    }
 
-        public override void DoExtraGuiControls(float leftX, float bottomY)
-        {
-            DrawExtraGuiControls(leftX, bottomY);
-        }
+    public override void DrawIcon(Rect rect, Material buttonMat, GizmoRenderParms parms)
+    {
+        base.DrawIcon(rect, buttonMat, parms);
 
-        public override void DrawIcon(Rect rect, Material buttonMat, GizmoRenderParms parms)
-        {
-            base.DrawIcon(rect, buttonMat, parms);
+        Widgets.DrawTextureFitted(rect, IconTopTexture, iconDrawScale * 0.85f, iconProportions, iconTexCoords, iconAngle, buttonMat);
+    }
 
-            Widgets.DrawTextureFitted(rect, IconTopTexture, iconDrawScale * 0.85f, iconProportions, iconTexCoords, iconAngle, buttonMat);
-        }
+    protected override void SetColorDef(ColorDef newColorDef)
+    {
+        base.SetColorDef(newColorDef);
 
-        protected override void SetColorDef(ColorDef newColorDef)
-        {
-            base.SetColorDef(newColorDef);
+        Settings.paintPlanColor = newColorDef.defName;
+        Settings.Write();
+    }
 
-            Settings.paintPlanColor = newColorDef.defName;
-            Settings.Write();
-        }
+    protected override ColorDef GetColorDef()
+    {
+        string color = PlanningMod.Settings.paintPlanColor;
 
-        protected override ColorDef GetColorDef()
-        {
-            string color = PlanningMod.Settings.paintPlanColor;
-
-            return ColorUtilities.GetColorDefByName(color);
-        }
+        return ColorUtilities.GetColorDefByName(color);
     }
 }

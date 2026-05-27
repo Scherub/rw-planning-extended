@@ -1,30 +1,29 @@
 ﻿using System;
 using Verse;
 
-namespace PlanningExtended.Updates
+namespace PlanningExtended.Updates;
+
+internal abstract class BaseUpdate
 {
-    internal abstract class BaseUpdate
+    public abstract int Version { get; }
+
+    public bool Apply(Map map)
     {
-        public abstract int Version { get; }
+        bool result = false;
 
-        public bool Apply(Map map)
+        try
         {
-            bool result = false;
+            OnUpdate(map);
 
-            try
-            {
-                OnUpdate(map);
-
-                result = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.ToString());
-            }
-
-            return result;
+            result = true;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex.ToString());
         }
 
-        protected abstract void OnUpdate(Map map);
+        return result;
     }
+
+    protected abstract void OnUpdate(Map map);
 }

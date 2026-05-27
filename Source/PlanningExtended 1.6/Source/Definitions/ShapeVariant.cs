@@ -1,45 +1,44 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum ShapeVariant
 {
-    public enum ShapeVariant
-    {
-        Unknown,
+    Unknown,
 
-        FixedSunLamp,
+    FixedSunLamp,
 
-        FixedOrbitalTradingStation,
+    FixedOrbitalTradingStation,
 
-        FixedMaxRoomSize,
+    FixedMaxRoomSize,
 
-        Points,
+    Points,
 
-        LineSimple,
+    LineSimple,
 
-        LineGrid,
+    LineGrid,
 
-        TriangleFilled,
+    TriangleFilled,
 
-        TriangleOutline,
+    TriangleOutline,
 
-        RectangleFilled,
+    RectangleFilled,
 
-        RectangleGrid,
+    RectangleGrid,
 
-        RectangleOutline,
+    RectangleOutline,
 
-        PentagonFilled,
+    PentagonFilled,
 
-        PentagonOutline,
+    PentagonOutline,
 
-        HexagonFilled,
+    HexagonFilled,
 
-        HexagonOutline,
+    HexagonOutline,
 
-        OctagonFilled,
+    OctagonFilled,
 
-        OctagonOutline,
+    OctagonOutline,
 
-        EllipseFilled,
+    EllipseFilled,
 
-        EllipseOutline
-    }
+    EllipseOutline
 }

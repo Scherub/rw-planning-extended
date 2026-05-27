@@ -4,65 +4,64 @@ using PlanningExtended.Plans;
 using RimWorld;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class CopyPlanDesignator : BasePlanDesignator
 {
-    public class CopyPlanDesignator : BasePlanDesignator
+    readonly CutPlanDesignator cutPlanDesignator;
+
+    public CopyPlanDesignator()
+        : base("CopyPlan")
     {
-        readonly CutPlanDesignator cutPlanDesignator;
+        cutPlanDesignator = new CutPlanDesignator();
+    }
 
-        public CopyPlanDesignator()
-            : base("CopyPlan")
+    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    {
+        if (!base.CanDesignateCell(c))
+            return false;
+
+        return Map.designationManager.HasPlanDesignationAt(c);
+    }
+
+    public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
+    {
+        if (IsModifierKeyPressed)
         {
-            cutPlanDesignator = new CutPlanDesignator();
+            cutPlanDesignator.DesignateMultiCell(cells);
+            return;
         }
 
-        public override AcceptanceReport CanDesignateCell(IntVec3 c)
-        {
-            if (!base.CanDesignateCell(c))
-                return false;
+        CellArea cellArea = new(cells);
 
-            return Map.designationManager.HasPlanDesignationAt(c);
+        if (cellArea.IsEmpty)
+        {
+            Messages.Message("PlanningExtended.NoPlanningDesignationsFound".Translate(), MessageTypeDefOf.RejectInput);
+            return;
         }
 
-        public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
+        PlanLayout planLayout = PlanLayoutUtilities.Create(cellArea, Map);
+
+        Plans.PlanManager.SetCachedPlanLayout(planLayout);
+
+        Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
+    }
+
+    public override void DrawMouseAttachments()
+    {
+        CheckPressedKeys();
+
+        if (IsModifierKeyPressed)
         {
-            if (IsModifierKeyPressed)
-            {
-                cutPlanDesignator.DesignateMultiCell(cells);
-                return;
-            }
-
-            CellArea cellArea = new(cells);
-
-            if (cellArea.IsEmpty)
-            {
-                Messages.Message("PlanningExtended.NoPlanningDesignationsFound".Translate(), MessageTypeDefOf.RejectInput);
-                return;
-            }
-
-            PlanLayout planLayout = PlanLayoutUtilities.Create(cellArea, Map);
-
-            Plans.PlanManager.SetCachedPlanLayout(planLayout);
-
-            Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
+            cutPlanDesignator.DrawMouseAttachments();
+            return;
         }
 
-        public override void DrawMouseAttachments()
-        {
-            CheckPressedKeys();
+        base.DrawMouseAttachments();
+    }
 
-            if (IsModifierKeyPressed)
-            {
-                cutPlanDesignator.DrawMouseAttachments();
-                return;
-            }
-
-            base.DrawMouseAttachments();
-        }
-
-        protected override string GetMouseAttachmentText()
-        {
-            return $"{"PlanningExtended.Mode".Translate()}: {"PlanningExtended.Copy".Translate()}\n{PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel}: {"PlanningExtended.SwitchToCut".Translate()}";
-        }
+    protected override string GetMouseAttachmentText()
+    {
+        return $"{"PlanningExtended.Mode".Translate()}: {"PlanningExtended.Copy".Translate()}\n{PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel}: {"PlanningExtended.SwitchToCut".Translate()}";
     }
 }

@@ -3,26 +3,25 @@ using PlanningExtended.Plans.Gui;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class SavePlanDesignator : BaseClickDesignator
 {
-    public class SavePlanDesignator : BaseClickDesignator
+    public SavePlanDesignator()
+        : base("SavePlan")
     {
-        public SavePlanDesignator()
-            : base("SavePlan")
-        {
-            disabled = true;
+        disabled = true;
 
-            Plans.PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
-        }
+        Plans.PlanManager.OnCachedPlanLayoutChanged += PlanManager_OnCachedPlanLayoutChanged;
+    }
 
-        public override void ProcessInput(Event ev)
-        {
-            Find.WindowStack.Add(new SavePlanDialog(Plans.PlanManager.CachedPlanLayout));
-        }
+    public override void ProcessInput(Event ev)
+    {
+        Find.WindowStack.Add(new SavePlanDialog(Plans.PlanManager.CachedPlanLayout));
+    }
 
-        void PlanManager_OnCachedPlanLayoutChanged(PlanLayout planLayout)
-        {
-            disabled = false;
-        }
+    void PlanManager_OnCachedPlanLayoutChanged(PlanLayout planLayout)
+    {
+        disabled = false;
     }
 }

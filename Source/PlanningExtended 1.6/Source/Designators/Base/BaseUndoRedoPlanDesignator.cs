@@ -5,90 +5,89 @@ using PlanningExtended.UndoRedo;
 using RimWorld;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 {
-    public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
+    protected virtual bool UseUndoRedo => true;
+
+    protected bool OverwriteDesignation => (!Settings.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
+
+    protected BaseUndoRedoPlanDesignator(string name)
+        : base(name)
     {
-        protected virtual bool UseUndoRedo => true;
+    }
 
-        protected bool OverwriteDesignation => (!Settings.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
+    public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
+    {
+        if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(this.TutorTagDesignate, cells)))
+            return;
 
-        protected BaseUndoRedoPlanDesignator(string name)
-            : base(name)
+        PlanLayout undoPlanLayout = CreateUndoPlanLayout(cells);
+
+        bool result = DesignateMultiCellInternal(cells);
+
+        CreateRedoPlanLayout(undoPlanLayout);
+
+        Finalize(result);
+    }
+
+    protected virtual bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    {
+        bool somethingSucceeded = false;
+        bool flag = false;
+
+        foreach (IntVec3 cell in cells)
         {
-        }
-
-        public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
-        {
-            if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(this.TutorTagDesignate, cells)))
-                return;
-
-            PlanLayout undoPlanLayout = CreateUndoPlanLayout(cells);
-
-            bool result = DesignateMultiCellInternal(cells);
-
-            CreateRedoPlanLayout(undoPlanLayout);
-
-            Finalize(result);
-        }
-
-        protected virtual bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
-        {
-            bool somethingSucceeded = false;
-            bool flag = false;
-
-            foreach (IntVec3 cell in cells)
+            if (CanDesignateCell(cell).Accepted)
             {
-                if (CanDesignateCell(cell).Accepted)
-                {
-                    DesignateSingleCell(cell);
+                DesignateSingleCell(cell);
 
-                    somethingSucceeded = true;
+                somethingSucceeded = true;
 
-                    if (!flag)
-                        flag = ShowWarningForCell(cell);
-                }
+                if (!flag)
+                    flag = ShowWarningForCell(cell);
             }
-
-            return somethingSucceeded;
         }
 
-        protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())
-        {
-            if (!UseUndoRedo)
-                return null;
+        return somethingSucceeded;
+    }
 
-            //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
+    protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())
+    {
+        if (!UseUndoRedo)
+            return null;
 
-            AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(cells);
+        //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
 
-            return CreateUndoPlanLayout(areaDimensions);
-        }
+        AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(cells);
 
-        protected PlanLayout CreateUndoPlanLayout(AreaDimensions areaDimensions)
-        {
-            if (!UseUndoRedo)
-                return null;
+        return CreateUndoPlanLayout(areaDimensions);
+    }
 
-            return PlanLayoutUtilities.CreateCopy(areaDimensions, Map);
-        }
+    protected PlanLayout CreateUndoPlanLayout(AreaDimensions areaDimensions)
+    {
+        if (!UseUndoRedo)
+            return null;
 
-        protected void CreateRedoPlanLayout(PlanLayout undoPlanLayout)
-        {
-            if (!UseUndoRedo || undoPlanLayout == null)
-                return;
+        return PlanLayoutUtilities.CreateCopy(areaDimensions, Map);
+    }
 
-            PlanLayout redoPlanLayout = PlanLayoutUtilities.CreateCopy(undoPlanLayout.Dimensions, Map);
+    protected void CreateRedoPlanLayout(PlanLayout undoPlanLayout)
+    {
+        if (!UseUndoRedo || undoPlanLayout == null)
+            return;
 
-            UndoRedoManager.Add(undoPlanLayout, redoPlanLayout);
-        }
+        PlanLayout redoPlanLayout = PlanLayoutUtilities.CreateCopy(undoPlanLayout.Dimensions, Map);
 
-        protected string GetSkipReplaceModeString()
-        {
-            if (Settings.useSkipInsteadOfReplaceAsDefault)
-                return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Replace".Translate() : "PlanningExtended.Skip".Translate();
-            else
-                return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
-        }
+        UndoRedoManager.Add(undoPlanLayout, redoPlanLayout);
+    }
+
+    protected string GetSkipReplaceModeString()
+    {
+        if (Settings.useSkipInsteadOfReplaceAsDefault)
+            return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Replace".Translate() : "PlanningExtended.Skip".Translate();
+        else
+            return IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.Skip".Translate() : "PlanningExtended.Replace".Translate();
     }
 }

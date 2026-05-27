@@ -1,23 +1,22 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum Shape
 {
-    public enum Shape
-    {
-        Fixed,
+    Fixed,
 
-        Point,
-        
-        Line,
+    Point,
+    
+    Line,
 
-        Triangle,
+    Triangle,
 
-        Rectangle,
+    Rectangle,
 
-        Pentagon,
+    Pentagon,
 
-        Hexagon,
+    Hexagon,
 
-        Octagon,
+    Octagon,
 
-        Ellipse,
-    }
+    Ellipse,
 }

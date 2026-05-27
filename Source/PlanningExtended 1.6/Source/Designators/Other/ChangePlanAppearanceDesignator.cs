@@ -5,58 +5,57 @@ using PlanningExtended.Plans.Appearances;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
 {
-    public class ChangePlanAppearanceDesignator : BasePlanMenuDesignator
+    List<int> OpacityList => Enumerable.Range(1, 100).Where(i => i % 10 == 0).ToList();
+
+    List<PlanTextureSet> PlanTextureSets => Enum.GetValues(typeof(PlanTextureSet)).Cast<PlanTextureSet>().ToList();
+
+    public override bool Visible => PlanningMod.Settings.displayChangePlanAppearanceDesignator;
+
+    public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetMenuOptions((planDesignationType) => GetTextureSetMenuOptions(planDesignationType));
+
+    public ChangePlanAppearanceDesignator()
+        : base("ChangePlanAppearance")
     {
-        List<int> OpacityList => Enumerable.Range(1, 100).Where(i => i % 10 == 0).ToList();
+    }
 
-        List<PlanTextureSet> PlanTextureSets => Enum.GetValues(typeof(PlanTextureSet)).Cast<PlanTextureSet>().ToList();
+    public override void ProcessInput(Event ev)
+    {
+        List<FloatMenuOption> list = GetMenuOptions((planDesignationType) => GetOpacityMenuOptions(planDesignationType));
 
-        public override bool Visible => PlanningMod.Settings.displayChangePlanAppearanceDesignator;
+        Find.WindowStack.Add(new FloatMenu(list));
+    }
 
-        public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetMenuOptions((planDesignationType) => GetTextureSetMenuOptions(planDesignationType));
+    List<FloatMenuOption> GetOpacityMenuOptions(PlanDesignationType planDesignationType)
+    {
+        List<FloatMenuOption> list = new();
 
-        public ChangePlanAppearanceDesignator()
-            : base("ChangePlanAppearance")
+        foreach (int opacity in OpacityList)
         {
-        }
-
-        public override void ProcessInput(Event ev)
-        {
-            List<FloatMenuOption> list = GetMenuOptions((planDesignationType) => GetOpacityMenuOptions(planDesignationType));
-
-            Find.WindowStack.Add(new FloatMenu(list));
-        }
-
-        List<FloatMenuOption> GetOpacityMenuOptions(PlanDesignationType planDesignationType)
-        {
-            List<FloatMenuOption> list = new();
-
-            foreach (int opacity in OpacityList)
+            list.Add(new FloatMenuOption($"{opacity}%", () =>
             {
-                list.Add(new FloatMenuOption($"{opacity}%", () =>
-                {
-                    PlanAppearanceManager.SetPlanOpacity(planDesignationType, opacity);
-                }));
-            }
-
-            return list;
+                PlanAppearanceManager.SetPlanOpacity(planDesignationType, opacity);
+            }));
         }
 
-        List<FloatMenuOption> GetTextureSetMenuOptions(PlanDesignationType planDesignationType)
+        return list;
+    }
+
+    List<FloatMenuOption> GetTextureSetMenuOptions(PlanDesignationType planDesignationType)
+    {
+        List<FloatMenuOption> list = new();
+
+        foreach (PlanTextureSet planTextureSet in PlanTextureSets)
         {
-            List<FloatMenuOption> list = new();
-
-            foreach (PlanTextureSet planTextureSet in PlanTextureSets)
+            list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
             {
-                list.Add(new FloatMenuOption(planTextureSet.ToString(), () =>
-                {
-                    PlanAppearanceManager.SetPlanTextureSet(planDesignationType, planTextureSet);
-                }));
-            }
-
-            return list;
+                PlanAppearanceManager.SetPlanTextureSet(planDesignationType, planTextureSet);
+            }));
         }
+
+        return list;
     }
 }

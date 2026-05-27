@@ -7,73 +7,72 @@ using PlanningExtended.Plans;
 using RimWorld;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class RemovePlanDesignator : BaseShapePlanDesignator
 {
-    public class RemovePlanDesignator : BaseShapePlanDesignator
+    protected override DesignationDef Designation => PlanningDesignationDefOf.PlanObjects;
+
+    protected override bool HasLeftClickPopupMenu => false;
+
+    public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetRemovePlanMenuOptions();
+
+    public RemovePlanDesignator()
+        : base("RemovePlan")
     {
-        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanObjects;
+        soundSucceeded = SoundDefOf.Designate_PlanRemove;
+        hotKey = KeyBindingDefOf.Designator_Cancel;
+    }
 
-        protected override bool HasLeftClickPopupMenu => false;
+    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    {
+        if (!base.CanDesignateCell(c))
+            return false;
 
-        public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetRemovePlanMenuOptions();
+        return Map.designationManager.HasPlanDesignationAt(c);
+    }
 
-        public RemovePlanDesignator()
-            : base("RemovePlan")
+    public override void DesignateSingleCell(IntVec3 c)
+    {
+        Map.designationManager.RemovePlanDesignationsAt(c);
+
+        PlanDesignationPlacerUtilities.UpdateAdjecentPositions(Map, c);
+    }
+
+    List<FloatMenuOption> GetRemovePlanMenuOptions()
+    {
+        List<FloatMenuOption> floatMenuOptionList = new();
+
+        foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
         {
-            soundSucceeded = SoundDefOf.Designate_PlanRemove;
-            hotKey = KeyBindingDefOf.Designator_Cancel;
-        }
+            List<Designation> designationsDefault = Map.designationManager.designationsByDef[designationDefContainer.Default];
+            List<Designation> designationsColored = Map.designationManager.designationsByDef[designationDefContainer.Colored];
 
-        public override AcceptanceReport CanDesignateCell(IntVec3 c)
-        {
-            if (!base.CanDesignateCell(c))
-                return false;
+            int designationsCount = designationsDefault.Count + designationsColored.Count;
 
-            return Map.designationManager.HasPlanDesignationAt(c);
-        }
-
-        public override void DesignateSingleCell(IntVec3 c)
-        {
-            Map.designationManager.RemovePlanDesignationsAt(c);
-
-            PlanDesignationPlacerUtilities.UpdateAdjecentPositions(Map, c);
-        }
-
-        List<FloatMenuOption> GetRemovePlanMenuOptions()
-        {
-            List<FloatMenuOption> floatMenuOptionList = new();
-
-            foreach (DesignationDefContainer designationDefContainer in PlanningDesignationDefOf.DesignationDefs)
+            if (designationsCount > 0)
             {
-                List<Designation> designationsDefault = Map.designationManager.designationsByDef[designationDefContainer.Default];
-                List<Designation> designationsColored = Map.designationManager.designationsByDef[designationDefContainer.Colored];
-
-                int designationsCount = designationsDefault.Count + designationsColored.Count;
-
-                if (designationsCount > 0)
+                //designationDefContainer.Default.LabelCap
+                floatMenuOptionList.Add(new FloatMenuOption("PlanningExtended.RemovePlanDesignations".Translate(designationsCount, designationDefContainer.Label.Translate()), () =>
                 {
-                    //designationDefContainer.Default.LabelCap
-                    floatMenuOptionList.Add(new FloatMenuOption("PlanningExtended.RemovePlanDesignations".Translate(designationsCount, designationDefContainer.Label.Translate()), () =>
-                    {
-                        List<Designation> designationsDefault = Map.designationManager.designationsByDef[designationDefContainer.Default];
-                        List<Designation> designationsColored = Map.designationManager.designationsByDef[designationDefContainer.Colored];
+                    List<Designation> designationsDefault = Map.designationManager.designationsByDef[designationDefContainer.Default];
+                    List<Designation> designationsColored = Map.designationManager.designationsByDef[designationDefContainer.Colored];
 
-                        AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(designationsDefault.Select(d => d.target.Cell));
-                        AreaDimensions areaDimensionsColored = CellUtilities.DetermineAreaDimensions(designationsColored.Select(d => d.target.Cell));
+                    AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(designationsDefault.Select(d => d.target.Cell));
+                    AreaDimensions areaDimensionsColored = CellUtilities.DetermineAreaDimensions(designationsColored.Select(d => d.target.Cell));
 
-                        areaDimensions = areaDimensions.Merge(areaDimensionsColored);
+                    areaDimensions = areaDimensions.Merge(areaDimensionsColored);
 
-                        PlanLayout undoPlanLayout = CreateUndoPlanLayout(areaDimensions);
+                    PlanLayout undoPlanLayout = CreateUndoPlanLayout(areaDimensions);
 
-                        Map.designationManager.RemoveDesignations(designationsDefault);
-                        Map.designationManager.RemoveDesignations(designationsColored);
+                    Map.designationManager.RemoveDesignations(designationsDefault);
+                    Map.designationManager.RemoveDesignations(designationsColored);
 
-                        CreateRedoPlanLayout(undoPlanLayout);
-                    }));
-                }
+                    CreateRedoPlanLayout(undoPlanLayout);
+                }));
             }
-
-            return floatMenuOptionList;
         }
+
+        return floatMenuOptionList;
     }
 }

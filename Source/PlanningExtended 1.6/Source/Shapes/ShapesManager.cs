@@ -1,37 +1,36 @@
 ﻿using System.Collections.Generic;
 
-namespace PlanningExtended.Shapes
+namespace PlanningExtended.Shapes;
+
+internal class ShapesManager
 {
-    internal class ShapesManager
+    readonly Dictionary<Shape, BaseShape> _shapes = new();
+
+    public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse };
+
+    public ShapesManager()
     {
-        readonly Dictionary<Shape, BaseShape> _shapes = new();
+        //Register(new FixedShape());
+        Register(new PointShape());
+        Register(new LineShape());
+        Register(new TriangleShape());
+        Register(new RectangleShape());
+        Register(new PentagonShape());
+        Register(new HexagonShape());
+        Register(new OctagonShape());
+        Register(new EllipseShape());
+    }
 
-        public static List<Shape> AvailableShapes = new() { /*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse };
+    public BaseShape GetShape(Shape shape)
+    {
+        if (_shapes.TryGetValue(shape, out BaseShape baseShape))
+            return baseShape;
 
-        public ShapesManager()
-        {
-            //Register(new FixedShape());
-            Register(new PointShape());
-            Register(new LineShape());
-            Register(new TriangleShape());
-            Register(new RectangleShape());
-            Register(new PentagonShape());
-            Register(new HexagonShape());
-            Register(new OctagonShape());
-            Register(new EllipseShape());
-        }
+        throw new KeyNotFoundException();
+    }
 
-        public BaseShape GetShape(Shape shape)
-        {
-            if (_shapes.TryGetValue(shape, out BaseShape baseShape))
-                return baseShape;
-
-            throw new KeyNotFoundException();
-        }
-
-        void Register(BaseShape shape)
-        {
-            _shapes.Add(shape.Shape, shape);
-        }
+    void Register(BaseShape shape)
+    {
+        _shapes.Add(shape.Shape, shape);
     }
 }

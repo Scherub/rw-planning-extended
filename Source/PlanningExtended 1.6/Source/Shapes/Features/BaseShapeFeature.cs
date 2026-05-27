@@ -1,37 +1,36 @@
 ﻿using Verse;
 
-namespace PlanningExtended.Shapes.Features
+namespace PlanningExtended.Shapes.Features;
+
+public abstract class BaseShapeFeature : IShapeFeature
 {
-    public abstract class BaseShapeFeature : IShapeFeature
+    public abstract KeyBindingDef KeyBindingLeft { get; }
+
+    public abstract KeyBindingDef KeyBindingRight { get; }
+
+    public abstract ShapeDisplayOptions DisplayOptions { get; }
+
+    public abstract ShapeOptions ShapeOptions { get; }
+
+    public bool RequiresUpdate { get; private set; }
+
+    public virtual void HandleKeyboardInput()
     {
-        public abstract KeyBindingDef KeyBindingLeft { get; }
+        if (KeyBindingLeft?.KeyDownEvent == true)
+            ChangeShapeOption(ShapeOptions, ShapeOptionDirection.Left);
+        else if (KeyBindingRight?.KeyDownEvent == true)
+            ChangeShapeOption(ShapeOptions, ShapeOptionDirection.Right);
+    }
 
-        public abstract KeyBindingDef KeyBindingRight { get; }
+    public abstract void ChangeShapeOption(ShapeOptions shapeOptions, ShapeOptionDirection shapeOptionDirection);
 
-        public abstract ShapeDisplayOptions DisplayOptions { get; }
+    protected void RequestUpdate()
+    {
+        RequiresUpdate = true;
+    }
 
-        public abstract ShapeOptions ShapeOptions { get; }
-
-        public bool RequiresUpdate { get; private set; }
-
-        public virtual void HandleKeyboardInput()
-        {
-            if (KeyBindingLeft?.KeyDownEvent == true)
-                ChangeShapeOption(ShapeOptions, ShapeOptionDirection.Left);
-            else if (KeyBindingRight?.KeyDownEvent == true)
-                ChangeShapeOption(ShapeOptions, ShapeOptionDirection.Right);
-        }
-
-        public abstract void ChangeShapeOption(ShapeOptions shapeOptions, ShapeOptionDirection shapeOptionDirection);
-
-        protected void RequestUpdate()
-        {
-            RequiresUpdate = true;
-        }
-
-        public void HandledUpdate()
-        {
-            RequiresUpdate = false;
-        }
+    public void HandledUpdate()
+    {
+        RequiresUpdate = false;
     }
 }

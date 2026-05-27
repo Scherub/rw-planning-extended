@@ -1,19 +1,18 @@
 ﻿using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class PlanFloorsDesignator : BaseAddPlanDesignator
 {
-    public class PlanFloorsDesignator : BaseAddPlanDesignator
+    protected override DesignationDef Designation => PlanningDesignationDefOf.PlanFloors;
+
+    protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanFloorsColored;
+
+    protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanFloors;
+
+    public PlanFloorsDesignator()
+        : base("PlanFloors")
     {
-        protected override DesignationDef Designation => PlanningDesignationDefOf.PlanFloors;
-
-        protected override DesignationDef ColoredDesignation => PlanningDesignationDefOf.PlanFloorsColored;
-
-        protected override PlanDesignationType PlanDesignationType => PlanDesignationType.PlanFloors;
-
-        public PlanFloorsDesignator()
-            : base("PlanFloors")
-        {
-            hotKey = PlanningKeyBindingDefOf.Planning_PlanFloors;
-        }
+        hotKey = PlanningKeyBindingDefOf.Planning_PlanFloors;
     }
 }

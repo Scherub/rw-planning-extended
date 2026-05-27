@@ -1,6 +1,5 @@
-﻿namespace PlanningExtended.Shapes.Modifiers.Content
+﻿namespace PlanningExtended.Shapes.Modifiers.Content;
+
+internal class OutlineThicknessShapeModifier
 {
-    internal class OutlineThicknessShapeModifier
-    {
-    }
 }

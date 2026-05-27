@@ -4,49 +4,48 @@ using PlanningExtended.Plans;
 using RimWorld;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class CutPlanDesignator : BaseUndoRedoPlanDesignator
 {
-    public class CutPlanDesignator : BaseUndoRedoPlanDesignator
+    public override bool Visible => PlanningMod.Settings.displayCutDesignator;
+
+    public CutPlanDesignator()
+        : base("CutPlan")
     {
-        public override bool Visible => PlanningMod.Settings.displayCutDesignator;
+    }
 
-        public CutPlanDesignator()
-            : base("CutPlan")
+    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    {
+        if (!base.CanDesignateCell(c))
+            return false;
+
+        return Map.designationManager.HasPlanDesignationAt(c);
+    }
+
+    protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    {
+        CellArea cellArea = new(cells);
+
+        if (cellArea.IsEmpty)
         {
+            Messages.Message("PlanningExtended.NoPlanningDesignationsFound".Translate(), MessageTypeDefOf.RejectInput);
+            return new AcceptanceReport("PlanningExtended.NoPlanningDesignationsFound".Translate());
         }
 
-        public override AcceptanceReport CanDesignateCell(IntVec3 c)
-        {
-            if (!base.CanDesignateCell(c))
-                return false;
+        PlanLayout planLayout = PlanLayoutUtilities.Create(cellArea, Map);
 
-            return Map.designationManager.HasPlanDesignationAt(c);
-        }
+        CellUtilities.ClearCells(cellArea.Dimensions, Map);
 
-        protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
-        {
-            CellArea cellArea = new(cells);
+        Plans.PlanManager.SetCachedPlanLayout(planLayout);
 
-            if (cellArea.IsEmpty)
-            {
-                Messages.Message("PlanningExtended.NoPlanningDesignationsFound".Translate(), MessageTypeDefOf.RejectInput);
-                return new AcceptanceReport("PlanningExtended.NoPlanningDesignationsFound".Translate());
-            }
+        Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
 
-            PlanLayout planLayout = PlanLayoutUtilities.Create(cellArea, Map);
+        return true;
+    }
 
-            CellUtilities.ClearCells(cellArea.Dimensions, Map);
-
-            Plans.PlanManager.SetCachedPlanLayout(planLayout);
-
-            Messages.Message("PlanningExtended.PlanningDesignationsCopied".Translate(), MessageTypeDefOf.NeutralEvent);
-
-            return true;
-        }
-
-        protected override string GetMouseAttachmentText()
-        {
-            return $"{"PlanningExtended.Mode".Translate()}: {"PlanningExtended.Cut".Translate()}";
-        }
+    protected override string GetMouseAttachmentText()
+    {
+        return $"{"PlanningExtended.Mode".Translate()}: {"PlanningExtended.Cut".Translate()}";
     }
 }

@@ -7,118 +7,117 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
 {
-    public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
+    readonly string _name;
+
+    protected abstract PlanDesignationType PlanDesignationType { get; }
+
+    protected override bool HasLeftClickPopupMenu => true;
+
+    public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
+
+    protected BaseAddPlanDesignator(string name)
+        : base(name)
     {
-        readonly string _name;
+        _name = name;
 
-        protected abstract PlanDesignationType PlanDesignationType { get; }
+        PlanAppearanceManager.TextureSetChanged -= TextureSetChanged;
+        PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
+    }
 
-        protected override bool HasLeftClickPopupMenu => true;
+    protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    {
+        CellArea cellArea = new(cells);
+        AreaDimensions areaDimensions = cellArea.Dimensions;
 
-        public override Color IconDrawColor => colorDef != null ? colorDef.color : Color.white;
+        bool somethingSucceeded = false;
+        bool flag = false;
 
-        protected BaseAddPlanDesignator(string name)
-            : base(name)
+        foreach (IntVec3 cell in cells)
         {
-            _name = name;
-
-            PlanAppearanceManager.TextureSetChanged -= TextureSetChanged;
-            PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
-        }
-
-        protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
-        {
-            CellArea cellArea = new(cells);
-            AreaDimensions areaDimensions = cellArea.Dimensions;
-
-            bool somethingSucceeded = false;
-            bool flag = false;
-
-            foreach (IntVec3 cell in cells)
+            if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
             {
-                if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
-                {
-                    DesignateSingleCell(cell);
+                DesignateSingleCell(cell);
 
-                    somethingSucceeded = true;
+                somethingSucceeded = true;
 
-                    if (!flag)
-                        flag = ShowWarningForCell(cell);
-                }
+                if (!flag)
+                    flag = ShowWarningForCell(cell);
             }
-
-            return somethingSucceeded;
         }
 
-        public override AcceptanceReport CanDesignateCell(IntVec3 c)
+        return somethingSucceeded;
+    }
+
+    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    {
+        if (IsColorPickModeEnabled)
+            return colorPicker.CanDesignateCell(c);
+
+        if (!base.CanDesignateCell(c))
+            return false;
+
+        return OverwriteDesignation || !Map.designationManager.HasPlanDesignationAt(c);
+    }
+
+    public override void DesignateSingleCell(IntVec3 c)
+    {
+        if (IsColorPickModeEnabled)
         {
-            if (IsColorPickModeEnabled)
-                return colorPicker.CanDesignateCell(c);
-
-            if (!base.CanDesignateCell(c))
-                return false;
-
-            return OverwriteDesignation || !Map.designationManager.HasPlanDesignationAt(c);
+            colorPicker.DesignateSingleCell(c);
+            return;
         }
 
-        public override void DesignateSingleCell(IntVec3 c)
-        {
-            if (IsColorPickModeEnabled)
-            {
-                colorPicker.DesignateSingleCell(c);
-                return;
-            }
+        PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
+    }
 
-            PlanDesignationPlacerUtilities.Designate(Map, c, SelectedDesignation, colorDef);
-        }
+    //public override void DrawPanelReadout(ref float curY, float width)
+    //{
+    //    //base.DrawPanelReadout(ref curY, width);
+    //    Widgets.InfoCardButton(width - 24f - 2f, 6f, this.entDef);
 
-        //public override void DrawPanelReadout(ref float curY, float width)
-        //{
-        //    //base.DrawPanelReadout(ref curY, width);
-        //    Widgets.InfoCardButton(width - 24f - 2f, 6f, this.entDef);
+    //}
 
-        //}
+    public override void DoExtraGuiControls(float leftX, float bottomY)
+    {
+        DrawExtraGuiControls(leftX, bottomY);
+    }
 
-        public override void DoExtraGuiControls(float leftX, float bottomY)
-        {
-            DrawExtraGuiControls(leftX, bottomY);
-        }
+    protected override void OnSkipExistingDesignationsKeyChanged(bool isPressed)
+    {
+        ResetMouseAttachmentText();
+    }
 
-        protected override void OnSkipExistingDesignationsKeyChanged(bool isPressed)
-        {
-            ResetMouseAttachmentText();
-        }
+    protected override Texture2D GetIcon(string name)
+    {
+        return ContentFinder<Texture2D>.Get($"UI/Designators/{PlanAppearanceManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
+    }
 
-        protected override Texture2D GetIcon(string name)
-        {
-            return ContentFinder<Texture2D>.Get($"UI/Designators/{PlanAppearanceManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
-        }
+    protected override string GetMouseAttachmentText()
+    {
+        return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
+    }
 
-        protected override string GetMouseAttachmentText()
-        {
-            return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
-        }
+    protected override void SetColorDef(ColorDef newColorDef)
+    {
+        base.SetColorDef(newColorDef);
 
-        protected override void SetColorDef(ColorDef newColorDef)
-        {
-            base.SetColorDef(newColorDef);
+        PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
+    }
 
-            PlanningMod.Settings.SetColor(PlanDesignationType, newColorDef.defName);
-        }
+    protected override ColorDef GetColorDef()
+    {
+        string color = PlanningMod.Settings.GetColor(PlanDesignationType);
 
-        protected override ColorDef GetColorDef()
-        {
-            string color = PlanningMod.Settings.GetColor(PlanDesignationType);
+        return ColorUtilities.GetColorDefByName(color);
+    }
 
-            return ColorUtilities.GetColorDefByName(color);
-        }
-
-        void TextureSetChanged(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
-        {
-            if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == PlanDesignationType)
-                icon = GetIcon(_name);
-        }
+    void TextureSetChanged(PlanDesignationType planDesignationType, PlanTextureSet planTextureSet)
+    {
+        if (planDesignationType == PlanDesignationType.Unknown || planDesignationType == PlanDesignationType)
+            icon = GetIcon(_name);
     }
 }

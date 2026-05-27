@@ -4,74 +4,73 @@ using System.IO;
 using System.Linq;
 using Verse;
 
-namespace PlanningExtended.Plans.Persistence
+namespace PlanningExtended.Plans.Persistence;
+
+public static class PlanPersistenceManager
 {
-    public static class PlanPersistenceManager
+    public static string GetAbsPathForPlanInfo(string planInfoName)
     {
-        public static string GetAbsPathForPlanInfo(string planInfoName)
-        {
-            return Path.Combine(PlanFilePaths.PlanFolderPath, planInfoName + ".pln");
-        }
+        return Path.Combine(PlanFilePaths.PlanFolderPath, planInfoName + ".pln");
+    }
 
-        public static IEnumerable<FileInfo> GetAllPlanInfoFiles()
-        {
-            DirectoryInfo directoryInfo = new(PlanFilePaths.PlanFolderPath);
+    public static IEnumerable<FileInfo> GetAllPlanInfoFiles()
+    {
+        DirectoryInfo directoryInfo = new(PlanFilePaths.PlanFolderPath);
 
-            if (!directoryInfo.Exists)
-                directoryInfo.Create();
-            
-            return from f in directoryInfo.GetFiles()
-                   where f.Extension == ".pln"
-                   orderby f.Name
-                   select f;
-        }
+        if (!directoryInfo.Exists)
+            directoryInfo.Create();
+        
+        return from f in directoryInfo.GetFiles()
+               where f.Extension == ".pln"
+               orderby f.Name
+               select f;
+    }
 
-        public static void Save(PlanInfo planInfo, string fileName)
+    public static void Save(PlanInfo planInfo, string fileName)
+    {
+        try
         {
-            try
+            CreateDirectoryIfRequired();
+
+            string absFilePath = GetAbsPathForPlanInfo(fileName);
+
+            SafeSaver.Save(absFilePath, "savedPlanInfo", delegate
             {
-                CreateDirectoryIfRequired();
-
-                string absFilePath = GetAbsPathForPlanInfo(fileName);
-
-                SafeSaver.Save(absFilePath, "savedPlanInfo", delegate
-                {
-                    Scribe_Deep.Look(ref planInfo, "planInfo");
-                }, false);
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Exception while saving planInfo: " + ex.ToString());
-            }
-        }
-
-        public static bool Load(string fileName, out PlanInfo planInfo)
-        {
-            planInfo = null;
-
-            try
-            {
-                string absFilePath = GetAbsPathForPlanInfo(fileName);
-
-                Scribe.loader.InitLoading(absFilePath);
-
                 Scribe_Deep.Look(ref planInfo, "planInfo");
-                
-                Scribe.loader.FinalizeLoading();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Exception loading planInfo: " + ex.ToString());
-                Scribe.ForceStop();
-            }
-
-            return planInfo != null;
+            }, false);
         }
-
-        static void CreateDirectoryIfRequired()
+        catch (Exception ex)
         {
-            if (!Directory.Exists(PlanFilePaths.PlanFolderPath))
-                Directory.CreateDirectory(PlanFilePaths.PlanFolderPath);
+            Log.Error("Exception while saving planInfo: " + ex.ToString());
         }
+    }
+
+    public static bool Load(string fileName, out PlanInfo planInfo)
+    {
+        planInfo = null;
+
+        try
+        {
+            string absFilePath = GetAbsPathForPlanInfo(fileName);
+
+            Scribe.loader.InitLoading(absFilePath);
+
+            Scribe_Deep.Look(ref planInfo, "planInfo");
+            
+            Scribe.loader.FinalizeLoading();
+        }
+        catch (Exception ex)
+        {
+            Log.Error("Exception loading planInfo: " + ex.ToString());
+            Scribe.ForceStop();
+        }
+
+        return planInfo != null;
+    }
+
+    static void CreateDirectoryIfRequired()
+    {
+        if (!Directory.Exists(PlanFilePaths.PlanFolderPath))
+            Directory.CreateDirectory(PlanFilePaths.PlanFolderPath);
     }
 }

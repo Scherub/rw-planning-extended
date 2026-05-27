@@ -1,9 +1,8 @@
-﻿namespace PlanningExtended.Gui.Controls.Grid
-{
-    internal enum TrackSizeType
-    {
-        Fixed,
+﻿namespace PlanningExtended.Gui.Controls.Grid;
 
-        Flexible
-    }
+internal enum TrackSizeType
+{
+    Fixed,
+
+    Flexible
 }

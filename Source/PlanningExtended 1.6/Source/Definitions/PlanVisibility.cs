@@ -1,11 +1,10 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum PlanVisibility
 {
-    public enum PlanVisibility
-    {
-        Invisible,
+    Invisible,
 
-        Visible,
+    Visible,
 
-        PartiallyVisible
-    }
+    PartiallyVisible
 }

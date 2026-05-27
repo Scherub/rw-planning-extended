@@ -1,11 +1,10 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum FlipDirection
 {
-    public enum FlipDirection
-    {
-        None,
+    None,
 
-        Horizontally,
+    Horizontally,
 
-        Vertically
-    }
+    Vertically
 }

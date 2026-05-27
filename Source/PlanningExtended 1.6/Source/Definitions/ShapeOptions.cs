@@ -1,15 +1,14 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum ShapeOptions
 {
-    public enum ShapeOptions
-    {
-        None,
+    None,
 
-        Rotation,
+    Rotation,
 
-        Thickness,
+    Thickness,
 
-        NumberOfSegmentsX,
+    NumberOfSegmentsX,
 
-        NumberOfSegmentsZ
-    }
+    NumberOfSegmentsZ
 }

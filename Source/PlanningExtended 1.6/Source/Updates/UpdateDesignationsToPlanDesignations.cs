@@ -2,25 +2,24 @@
 using PlanningExtended.Designations;
 using Verse;
 
-namespace PlanningExtended.Updates
+namespace PlanningExtended.Updates;
+
+internal class UpdateDesignationsToPlanDesignations : BaseUpdate
 {
-    internal class UpdateDesignationsToPlanDesignations : BaseUpdate
+    public override int Version => 1;
+
+    protected override void OnUpdate(Map map)
     {
-        public override int Version => 1;
-
-        protected override void OnUpdate(Map map)
+        foreach (IntVec3 cell in map.AllCells)
         {
-            foreach (IntVec3 cell in map.AllCells)
-            {
-                Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation and not PlanDesignation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
+            Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation and not PlanDesignation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
 
-                if (designation == null)
-                    continue;
+            if (designation == null)
+                continue;
 
-                map.designationManager.RemoveDesignation(designation);
+            map.designationManager.RemoveDesignation(designation);
 
-                PlanDesignationPlacerUtilities.Designate(map, designation.target.Cell, designation.def, designation.colorDef);
-            }
+            PlanDesignationPlacerUtilities.Designate(map, designation.target.Cell, designation.def, designation.colorDef);
         }
     }
 }

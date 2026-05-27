@@ -5,71 +5,70 @@ using PlanningExtended.Shapes;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
+namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls;
+
+internal class ShapeExtraControlManager
 {
-    internal class ShapeExtraControlManager
+    readonly List<BaseShapeExtraControlWidget> _shapeExtraContols = new() { new DisplayShapeVariantExtraControlWidget(), new ShapeRotationExtraControlWidget(), new ShapeSegmentExtraControlWidget() };
+
+    public void DrawExtraControls(float leftX, float bottomY, BaseShape shape)
     {
-        readonly List<BaseShapeExtraControlWidget> _shapeExtraContols = new() { new DisplayShapeVariantExtraControlWidget(), new ShapeRotationExtraControlWidget(), new ShapeSegmentExtraControlWidget() };
+        float width = 200f;
+        float height = GetTotalRequiredWidgetHeight(shape.ShapeDisplayOptions);
 
-        public void DrawExtraControls(float leftX, float bottomY, BaseShape shape)
+        Rect winRect = new(leftX, bottomY - height, width, height);
+
+        Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, () =>
         {
-            float width = 200f;
-            float height = GetTotalRequiredWidgetHeight(shape.ShapeDisplayOptions);
+            float widgetStartY = height;
 
-            Rect winRect = new(leftX, bottomY - height, width, height);
+            TextAnchor originalAnchor = Text.Anchor;
+            GameFont originalFont = Text.Font;
 
-            Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, () =>
+            int i = 0;
+
+            foreach (var extraControlWidget in GetWidgets(shape.ShapeDisplayOptions))
             {
-                float widgetStartY = height;
+                if (i == 1)
+                    Widgets.DrawLineHorizontal(winRect.x + 5f, widgetStartY, winRect.width - 10f);
 
-                TextAnchor originalAnchor = Text.Anchor;
-                GameFont originalFont = Text.Font;
+                widgetStartY -= extraControlWidget.RequiredHeight;
 
-                int i = 0;
+                Rect widgetRect = new(winRect.x, widgetStartY, winRect.width, extraControlWidget.RequiredHeight);
 
-                foreach (var extraControlWidget in GetWidgets(shape.ShapeDisplayOptions))
-                {
-                    if (i == 1)
-                        Widgets.DrawLineHorizontal(winRect.x + 5f, widgetStartY, winRect.width - 10f);
+                extraControlWidget.Draw(widgetRect, shape);
 
-                    widgetStartY -= extraControlWidget.RequiredHeight;
+                i++;
+            }
 
-                    Rect widgetRect = new(winRect.x, widgetStartY, winRect.width, extraControlWidget.RequiredHeight);
+            Text.Anchor = originalAnchor;
+            Text.Font = originalFont;
+        }, true, false, 1f, null);
+    }
 
-                    extraControlWidget.Draw(widgetRect, shape);
+    IEnumerable<BaseShapeExtraControlWidget> GetWidgets(ShapeDisplayOptions shapeDisplayOptions)
+    {
+        var _shapeDisplayOptions = Enum.GetValues(typeof(ShapeDisplayOptions));
 
-                    i++;
-                }
-
-                Text.Anchor = originalAnchor;
-                Text.Font = originalFont;
-            }, true, false, 1f, null);
-        }
-
-        IEnumerable<BaseShapeExtraControlWidget> GetWidgets(ShapeDisplayOptions shapeDisplayOptions)
+        foreach (ShapeDisplayOptions shapeDisplayOption in _shapeDisplayOptions)
         {
-            var _shapeDisplayOptions = Enum.GetValues(typeof(ShapeDisplayOptions));
-
-            foreach (ShapeDisplayOptions shapeDisplayOption in _shapeDisplayOptions)
+            if (shapeDisplayOptions.HasFlag(shapeDisplayOption))
             {
-                if (shapeDisplayOptions.HasFlag(shapeDisplayOption))
-                {
-                    BaseShapeExtraControlWidget shapeExtraControl = _shapeExtraContols.FirstOrDefault(sec => sec.ShapeDisplayOption == shapeDisplayOption);
+                BaseShapeExtraControlWidget shapeExtraControl = _shapeExtraContols.FirstOrDefault(sec => sec.ShapeDisplayOption == shapeDisplayOption);
 
-                    if (shapeExtraControl != null)
-                        yield return shapeExtraControl;
-                }
+                if (shapeExtraControl != null)
+                    yield return shapeExtraControl;
             }
         }
+    }
 
-        float GetTotalRequiredWidgetHeight(ShapeDisplayOptions shapeDisplayOptions)
-        {
-            float requiredHeight = 0f;
+    float GetTotalRequiredWidgetHeight(ShapeDisplayOptions shapeDisplayOptions)
+    {
+        float requiredHeight = 0f;
 
-            foreach (var extraControl in GetWidgets(shapeDisplayOptions))
-                requiredHeight += extraControl.RequiredHeight;
+        foreach (var extraControl in GetWidgets(shapeDisplayOptions))
+            requiredHeight += extraControl.RequiredHeight;
 
-            return requiredHeight;
-        }
+        return requiredHeight;
     }
 }

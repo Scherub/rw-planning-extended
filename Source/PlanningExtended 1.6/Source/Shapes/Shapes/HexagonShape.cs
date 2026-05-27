@@ -1,14 +1,13 @@
 ﻿using PlanningExtended.Shapes.Variants.Hexagons;
 
-namespace PlanningExtended.Shapes
-{
-    internal class HexagonShape : BaseShape
-    {
-        public override Shape Shape => Shape.Hexagon;
+namespace PlanningExtended.Shapes;
 
-        public HexagonShape()
-            : base(ShapeVariant.HexagonFilled, new HexagonFilledShapeVariant(), new HexagonOutlineShapeVariant())
-        {
-        }
+internal class HexagonShape : BaseShape
+{
+    public override Shape Shape => Shape.Hexagon;
+
+    public HexagonShape()
+        : base(ShapeVariant.HexagonFilled, new HexagonFilledShapeVariant(), new HexagonOutlineShapeVariant())
+    {
     }
 }
