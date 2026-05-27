@@ -48,8 +48,7 @@ internal static class VanillaPlanConverter
             _ => ColorDefinitions.NonColoredDef
         };
 
-        if (colorDef == null)
-            colorDef = ColorDefinitions.NonColoredDef;
+        colorDef ??= ColorDefinitions.NonColoredDef;
 
         return colorDef;
     }

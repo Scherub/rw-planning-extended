@@ -46,7 +46,7 @@ public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
 
     protected override bool IsShapeCellValid(IntVec3 cell, AreaDimensions areaDimensions)
     {
-        return IsColorPickModeEnabled ? true : base.IsShapeCellValid(cell, areaDimensions);
+        return IsColorPickModeEnabled || base.IsShapeCellValid(cell, areaDimensions);
     }
 
     public override void DrawMouseAttachments()
