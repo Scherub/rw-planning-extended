@@ -32,7 +32,7 @@ public static class UndoRedoManager
         if (!UseUndoRedo || !CanUndo)
             return;
 
-        UndoRedoSnapshot undoRedoSnapshot = _undoSnapshots[_undoSnapshots.Count - 1];
+        UndoRedoSnapshot undoRedoSnapshot = _undoSnapshots[^1];
 
         PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.UndoPlanLayout, map);
 
@@ -49,7 +49,7 @@ public static class UndoRedoManager
         if (!UseUndoRedo || !CanRedo)
             return;
 
-        UndoRedoSnapshot undoRedoSnapshot = _redoSnapshots[_redoSnapshots.Count - 1];
+        UndoRedoSnapshot undoRedoSnapshot = _redoSnapshots[^1];
 
         PlanLayoutUtilities.DesignateSnapshot(undoRedoSnapshot.RedoPlanLayout, map);
 
