@@ -5,19 +5,19 @@ namespace PlanningExtended.Plans;
 public struct PlanCell : IExposable
 {
     IntVec2 position;
-    public IntVec2 Position => position;
+    public readonly IntVec2 Position => position;
 
     PlanDesignationType designation;
-    public PlanDesignationType Designation => designation;
+    public readonly PlanDesignationType Designation => designation;
 
     string color;
-    public string Color => color;
+    public readonly string Color => color;
 
     RotationDirection rotation;
-    public RotationDirection Rotation => rotation;
+    public readonly RotationDirection Rotation => rotation;
 
     byte variant;
-    public byte Variant => variant;
+    public readonly byte Variant => variant;
 
     public PlanCell()
         : this(IntVec2.Zero, PlanDesignationType.Unknown, null)
@@ -48,7 +48,7 @@ public struct PlanCell : IExposable
         Scribe_Values.Look(ref variant, nameof(variant));
     }
 
-    public override string ToString()
+    public override readonly string ToString()
     {
         return $"P({Position}), D({Designation}), C({Color})";
     }
