@@ -14,6 +14,8 @@ public static class SettingsGuiUtilities
 {
     static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = [.. Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>()];
 
+    static readonly List<PlanGrabbingPosition> planGrabbingPositionValues = Enum.GetValues(typeof(PlanGrabbingPosition)).Cast<PlanGrabbingPosition>().ToList();
+
     public static void DisplaySettings(PlanningSettings settings, Rect inRect)
     {
         float margin = 16f;
@@ -60,6 +62,13 @@ public static class SettingsGuiUtilities
             var startupPlanVisibilityOptions = startupPlanVisibilityValues.Select(v => new FloatMenuOption(v.Translate(), () => PlanningMod.Settings.SetStartupPlanVisibility(v))).ToList();
 
             Find.WindowStack.Add(new FloatMenu(startupPlanVisibilityOptions));
+        }
+
+        if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.PlanGrabbingPosition.Label".Translate(), settings.planGrabbingPosition.Translate(), tooltip: "PlanningExtended.Settings.PlanGrabbingPosition.Desc".Translate()))
+        {
+            var planGrabbingPositionOptions = planGrabbingPositionValues.Select(v => new FloatMenuOption(v.Translate(), () => { PlanningMod.Settings.planGrabbingPosition = v; PlanningMod.Settings.Write(); })).ToList();
+
+            Find.WindowStack.Add(new FloatMenu(planGrabbingPositionOptions));
         }
 
         //listingStandard.EndSubSection();

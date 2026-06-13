@@ -108,6 +108,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Visibilidad inicial de los planes</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determina la visibilidad de los planes al iniciar.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>Posición de Agarre del Plan</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>Determina qué punto de la vista previa del plan está unido al cursor al pegar.</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Actualizar planes antiguos</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Convertir desde planes Vanilla</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -167,5 +170,11 @@
   <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
   <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
   <PlanningExtended.StartupPlanVisibilities.LastSaved>Último guardado</PlanningExtended.StartupPlanVisibilities.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>Centro</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>Superior Izquierda</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>Superior Derecha</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>Inferior Izquierda</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>Inferior Derecha</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

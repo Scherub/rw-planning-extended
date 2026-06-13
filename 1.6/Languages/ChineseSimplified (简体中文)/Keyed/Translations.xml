@@ -108,6 +108,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>启动时规划可见性</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>决定启动时规划的可见性。</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>规划抓取位置</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>确定粘贴时规划预览的哪个点附着在光标上。</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>升级旧版规划</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>从原版规划转换</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -167,5 +170,11 @@
   <PlanningExtended.StartupPlanVisibilities.Visible>可见</PlanningExtended.StartupPlanVisibilities.Visible>
   <PlanningExtended.StartupPlanVisibilities.Invisible>不可见</PlanningExtended.StartupPlanVisibilities.Invisible>
   <PlanningExtended.StartupPlanVisibilities.LastSaved>上次保存</PlanningExtended.StartupPlanVisibilities.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>中心</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>左上</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>右上</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>左下</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>右下</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

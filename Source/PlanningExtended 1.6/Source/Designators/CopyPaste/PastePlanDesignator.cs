@@ -50,7 +50,9 @@ public class PastePlanDesignator : BaseUndoRedoPlanDesignator
 
         //GenDraw.DrawFieldEdges(_selectedPlanLayout.Cells.Select(c => c.Position.ToIntVec3).ToList());
 
-        PlanLayoutUtilities.Draw(Map, _selectedPlanLayout, UI.MouseCell(), OverwriteDesignation);
+        IntVec3 grabOffset = PlanLayoutUtilities.GetGrabOffset(_selectedPlanLayout, PlanningMod.Settings.planGrabbingPosition);
+
+        PlanLayoutUtilities.Draw(Map, _selectedPlanLayout, UI.MouseCell() - grabOffset, OverwriteDesignation);
     }
 
     public override AcceptanceReport CanDesignateCell(IntVec3 loc)
@@ -63,11 +65,13 @@ public class PastePlanDesignator : BaseUndoRedoPlanDesignator
         if (_selectedPlanLayout == null)
             return;
 
-        AreaDimensions areaDimensions = _selectedPlanLayout.Dimensions + c;
+        IntVec3 adjustedOrigin = c - PlanLayoutUtilities.GetGrabOffset(_selectedPlanLayout, PlanningMod.Settings.planGrabbingPosition);
+
+        AreaDimensions areaDimensions = _selectedPlanLayout.Dimensions + adjustedOrigin;
 
         PlanLayout undoPlanLayout = CreateUndoPlanLayout(areaDimensions);
 
-        PlanLayoutUtilities.Designate(Map, _selectedPlanLayout, c, OverwriteDesignation);
+        PlanLayoutUtilities.Designate(Map, _selectedPlanLayout, adjustedOrigin, OverwriteDesignation);
 
         CreateRedoPlanLayout(undoPlanLayout);
     }

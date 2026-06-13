@@ -27,7 +27,7 @@ public class PlanningSettings : ModSettings
 
     public bool useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
 
-    public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
+    public PlanGrabbingPosition planGrabbingPosition = Default.PlanGrabbingPosition;
 
     public string paintPlanColor = Default.PaintPlanColor;
 
@@ -44,7 +44,7 @@ public class PlanningSettings : ModSettings
         Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
         Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
         Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
-        //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
+        Scribe_Values.Look(ref planGrabbingPosition, nameof(planGrabbingPosition), Default.PlanGrabbingPosition);
         Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
 
         Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
@@ -66,7 +66,7 @@ public class PlanningSettings : ModSettings
         areDesignationsPersistent = Default.AreDesignationsPersistent;
         useCtrlForColorDialog = Default.UseCtrlForColorDialog;
         useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
-        alwaysGrabBottom = Default.AlwaysGrabBottom;
+        planGrabbingPosition = Default.PlanGrabbingPosition;
     }
 
     public void SetOpacity(PlanDesignationType planDesignationType, float opacity, bool autoSave = true)
@@ -208,7 +208,7 @@ public class PlanningSettings : ModSettings
 
         public const bool AreDesignationsPersistent = true;
 
-        public const bool AlwaysGrabBottom = false;
+        public const PlanGrabbingPosition PlanGrabbingPosition = PlanGrabbingPosition.Center;
 
         public const bool UseCtrlForColorDialog = false;
 
@@ -216,6 +216,6 @@ public class PlanningSettings : ModSettings
 
         public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
 
-        public const StartupPlanVisibility StartupPlanVisibility = PlanningExtended.StartupPlanVisibility.Visible;
+        public const StartupPlanVisibility StartupPlanVisibility = StartupPlanVisibility.Visible;
     }
 }

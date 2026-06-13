@@ -108,6 +108,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Начальная видимость планов</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Определяет видимость планов при запуске.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>Позиция захвата плана</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>Определяет, какая точка предпросмотра плана прикрепляется к курсору при вставке.</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Обновить планы с прошлых версий</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Конвертировать из ванильных планов</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -167,5 +170,11 @@
   <PlanningExtended.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.StartupPlanVisibilities.Visible>
   <PlanningExtended.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.StartupPlanVisibilities.Invisible>
   <PlanningExtended.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibilities.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>Центр</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>Верхний левый</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>Верхний правый</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>Нижний левый</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>Нижний правый</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

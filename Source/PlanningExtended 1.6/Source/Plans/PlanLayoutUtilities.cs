@@ -38,7 +38,7 @@ public static class PlanLayoutUtilities
 
             if (planDesignationType == PlanDesignationType.Unknown)
                 continue;
-            
+
             PlanCell planCell = new(cell.ToIntVec2, planDesignationType, designation?.colorDef?.defName);
 
             planCells.Add(planCell);
@@ -104,6 +104,19 @@ public static class PlanLayoutUtilities
             planCells.Add(planCell.Rotate(rotationDirection, offset));
 
         return new PlanLayout(planCells);
+    }
+
+    public static IntVec3 GetGrabOffset(PlanLayout planLayout, PlanGrabbingPosition grabbingPosition)
+    {
+        return grabbingPosition switch
+        {
+            PlanGrabbingPosition.BottomLeft => IntVec3.Zero,
+            PlanGrabbingPosition.TopLeft => new IntVec3(0, 0, planLayout.Dimensions.MaxZ),
+            PlanGrabbingPosition.TopRight => new IntVec3(planLayout.Dimensions.MaxX, 0, planLayout.Dimensions.MaxZ),
+            PlanGrabbingPosition.BottomRight => new IntVec3(planLayout.Dimensions.MaxX, 0, 0),
+            PlanGrabbingPosition.Center => new IntVec3(planLayout.Dimensions.CenterX, 0, planLayout.Dimensions.CenterZ),
+            _ => IntVec3.Zero,
+        };
     }
 
     public static void Draw(Map map, PlanLayout planLayout, IntVec3 origin, bool overwriteDesignation)

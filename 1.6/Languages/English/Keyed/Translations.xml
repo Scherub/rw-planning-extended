@@ -108,6 +108,9 @@
   <PlanningExtended.Settings.ArePlansVisible.Label>Display Plans</PlanningExtended.Settings.ArePlansVisible.Label>
   <PlanningExtended.Settings.ArePlansVisible.Desc>Determines whether plan designations are visible or not.</PlanningExtended.Settings.ArePlansVisible.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>Plan Grabbing Position</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>Determines which point of the plan preview is attached to the cursor when pasting.</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Upgrade old plans</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Convert from Vanilla plans</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -167,5 +170,11 @@
   <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
   <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
   <PlanningExtended.StartupPlanVisibilities.LastSaved>Last Saved</PlanningExtended.StartupPlanVisibilities.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>Center</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>Top Left</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>Top Right</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>Bottom Left</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>Bottom Right</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>
