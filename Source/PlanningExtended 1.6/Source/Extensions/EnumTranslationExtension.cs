@@ -17,7 +17,7 @@ internal static class EnumTranslationExtension
 
     public static string Translate(this StartupPlanVisibility startupPlanVisibility)
     {
-        return startupPlanVisibility.Translate("StartupPlanVisibilities");
+        return startupPlanVisibility.Translate(nameof(StartupPlanVisibility));
     }
 
     public static string Translate(this PlanGrabbingPosition planGrabbingPosition)

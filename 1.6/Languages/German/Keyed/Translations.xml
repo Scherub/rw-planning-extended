@@ -167,9 +167,9 @@
   <PlanningExtended.Direction.DiagonalNW>Diagonal NW</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NO</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>Sichtbar</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>Unsichtbar</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>Zuletzt gespeichert</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>Sichtbar</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>Unsichtbar</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>Zuletzt gespeichert</PlanningExtended.StartupPlanVisibility.LastSaved>
 
   <PlanningExtended.PlanGrabbingPosition.Center>Mitte</PlanningExtended.PlanGrabbingPosition.Center>
   <PlanningExtended.PlanGrabbingPosition.TopLeft>Oben Links</PlanningExtended.PlanGrabbingPosition.TopLeft>

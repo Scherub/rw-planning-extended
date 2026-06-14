@@ -167,9 +167,9 @@
   <PlanningExtended.Direction.DiagonalNW>Диагональ СЗ</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Диагональ СВ</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>Видимый</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>Невидимый</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibility.LastSaved>
 
   <PlanningExtended.PlanGrabbingPosition.Center>Центр</PlanningExtended.PlanGrabbingPosition.Center>
   <PlanningExtended.PlanGrabbingPosition.TopLeft>Верхний левый</PlanningExtended.PlanGrabbingPosition.TopLeft>

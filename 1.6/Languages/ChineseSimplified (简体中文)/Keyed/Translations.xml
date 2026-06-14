@@ -167,9 +167,9 @@
   <PlanningExtended.Direction.DiagonalNW>对角线 (西北)</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>对角线 (东北)</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>可见</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>不可见</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>上次保存</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>可见</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>不可见</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>上次保存</PlanningExtended.StartupPlanVisibility.LastSaved>
 
   <PlanningExtended.PlanGrabbingPosition.Center>中心</PlanningExtended.PlanGrabbingPosition.Center>
   <PlanningExtended.PlanGrabbingPosition.TopLeft>左上</PlanningExtended.PlanGrabbingPosition.TopLeft>
