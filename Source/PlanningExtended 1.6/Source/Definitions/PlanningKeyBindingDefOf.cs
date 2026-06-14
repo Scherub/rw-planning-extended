@@ -10,7 +10,7 @@ public static class PlanningKeyBindingDefOf
 
     public static KeyBindingDef Planning_Modifier;
 
-    public static KeyBindingDef Planning_CenterMode;
+    public static KeyBindingDef Planning_CenterDrawingMode;
 
     public static KeyBindingDef Planning_NoOverwrite_Mode;
 

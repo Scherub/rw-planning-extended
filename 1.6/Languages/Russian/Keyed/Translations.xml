@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>Пропустить</PlanningExtended.Skip>
   <PlanningExtended.Replace>Заменить</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>Модификатор формы</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>Режим центрального рисования</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>Режим замены</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>Режим пропуска</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>переключиться на вырезание</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>Папка данных планирования</PlanningExtended.Settings.PlanningDataFolder.Label>

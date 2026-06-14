@@ -4,6 +4,7 @@
   <Planning_TogglePlanVisibility.label>切换规划可见性</Planning_TogglePlanVisibility.label>
   <Planning_ColorPicker.label>颜色选择器</Planning_ColorPicker.label>
   <Planning_Modifier.label>修饰键</Planning_Modifier.label>
+  <Planning_CenterDrawingMode.label>居中绘制模式</Planning_CenterDrawingMode.label>
   <Planning_NoOverwrite_Mode.label>不覆盖</Planning_NoOverwrite_Mode.label>
   <Planning_PlanDoors.label>规划门</Planning_PlanDoors.label>
   <Planning_PlanFloors.label>规划地板</Planning_PlanFloors.label>
@@ -15,4 +16,4 @@
   <Planning_Undo.label>撤销</Planning_Undo.label>
   <Planning_Redo.label>重做</Planning_Redo.label>
 
-</LanguageData> 
+</LanguageData>

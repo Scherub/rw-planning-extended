@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>跳过</PlanningExtended.Skip>
   <PlanningExtended.Replace>替换</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>形状修改器</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>居中绘制模式</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>替换模式</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>跳过模式</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>切换到剪切</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>规划数据文件夹</PlanningExtended.Settings.PlanningDataFolder.Label>

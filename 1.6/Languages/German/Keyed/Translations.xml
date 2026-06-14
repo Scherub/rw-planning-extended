@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>Überspringen</PlanningExtended.Skip>
   <PlanningExtended.Replace>Ersetzen</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>Form-Modifikator</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>Zentrierter Zeichenmodus</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>Ersetz-Modus</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>Überspringen-Modus</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>Wechsel zum Ausschneiden</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>Planungsdaten-Ordner</PlanningExtended.Settings.PlanningDataFolder.Label>

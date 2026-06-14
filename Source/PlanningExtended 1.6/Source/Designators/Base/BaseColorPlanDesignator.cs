@@ -106,9 +106,21 @@ public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
         IsColorPickModeEnabled = PlanningKeyBindingDefOf.Planning_ColorPicker.IsDown;
     }
 
+    protected override void OnModifierKeyChanged(bool isPressed)
+    {
+        ResetMouseAttachmentText();
+    }
+
+    protected override void OnCenterModeKeyChanged(bool isPressed)
+    {
+        ResetMouseAttachmentText();
+    }
+
     protected override string GetMouseAttachmentText()
     {
-        return "Color".Translate() + ": " + colorDef.LabelCap + "\n" + PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel + ": " + "GrabExistingColor".Translate();
+        return "Color".Translate() + ": " + colorDef.LabelCap + "\n"
+            + GetPressModifierKeyString()
+            + GetPressedModfierKeyString();
     }
 
     protected virtual void SetColorDef(ColorDef newColorDef)
@@ -119,5 +131,46 @@ public abstract class BaseColorPlanDesignator : BaseShapePlanDesignator
     protected virtual ColorDef GetColorDef()
     {
         return ColorDefinitions.NonColoredDef;
+    }
+
+    string GetPressModifierKeyString()
+    {
+        if (IsColorPickModeEnabled || IsModifierKeyPressed || IsCenterModeKeyPressed || IsSkipExistingDesignationsKeyPressed)
+            return "";
+
+        List<string> modifierKeys = [];
+
+        if (PlanningKeyBindingDefOf.Planning_ColorPicker.MainKey != KeyCode.None)
+            modifierKeys.Add(PlanningKeyBindingDefOf.Planning_ColorPicker.MainKeyLabel);
+
+        if (PlanningKeyBindingDefOf.Planning_Modifier.MainKey != KeyCode.None)
+            modifierKeys.Add(PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel);
+
+        if (PlanningKeyBindingDefOf.Planning_CenterDrawingMode.MainKey != KeyCode.None)
+            modifierKeys.Add(PlanningKeyBindingDefOf.Planning_CenterDrawingMode.MainKeyLabel);
+
+        if (PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.MainKey != KeyCode.None)
+            modifierKeys.Add(PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.MainKeyLabel);
+
+        return "Press " + string.Join(", ", modifierKeys);
+    }
+
+    string GetPressedModfierKeyString()
+    {
+        string result = "";
+
+        if (IsModifierKeyPressed)
+            result += $"{PlanningKeyBindingDefOf.Planning_Modifier.MainKeyLabel}: {"PlanningExtended.ShapeModifier".Translate()}\n";
+
+        if (IsCenterModeKeyPressed)
+            result += $"{PlanningKeyBindingDefOf.Planning_CenterDrawingMode.MainKeyLabel}: {"PlanningExtended.CenterDrawingMode".Translate()}\n";
+
+        if (IsSkipExistingDesignationsKeyPressed)
+            result += $"{PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.MainKeyLabel}: " +
+            (Settings.useSkipInsteadOfReplaceAsDefault
+            ? (IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.PlaceMode.Replace".Translate() : "PlanningExtended.PlaceMode.Skip".Translate())
+            : (IsSkipExistingDesignationsKeyPressed ? "PlanningExtended.PlaceMode.Skip".Translate() : "PlanningExtended.PlaceMode.Replace".Translate()));
+
+        return result;
     }
 }

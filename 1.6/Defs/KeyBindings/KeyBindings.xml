@@ -27,7 +27,7 @@
 
     <KeyBindingDef>
         <category>PlanningExtended</category>
-        <defName>Planning_CenterMode</defName>
+        <defName>Planning_CenterDrawingMode</defName>
         <label>center drawing mode</label>
         <defaultKeyCodeA>LeftAlt</defaultKeyCodeA>
         <defaultKeyCodeB>RightAlt</defaultKeyCodeB>

@@ -4,6 +4,7 @@
   <Planning_TogglePlanVisibility.label>cambiar visibilidad del plan</Planning_TogglePlanVisibility.label>
   <Planning_ColorPicker.label>selector de color</Planning_ColorPicker.label>
   <Planning_Modifier.label>modificador</Planning_Modifier.label>
+  <Planning_CenterDrawingMode.label>modo dibujo central</Planning_CenterDrawingMode.label>
   <Planning_NoOverwrite_Mode.label>no sobrescribir</Planning_NoOverwrite_Mode.label>
   <Planning_PlanDoors.label>planificar puertas</Planning_PlanDoors.label>
   <Planning_PlanFloors.label>planificar suelos</Planning_PlanFloors.label>
@@ -16,4 +17,3 @@
   <Planning_Redo.label>Rehacer</Planning_Redo.label>
 
 </LanguageData>
-

@@ -30,15 +30,7 @@ public abstract class BasePlanDesignator : Designator
     protected bool IsSkipExistingDesignationsKeyPressed { get; private set; }
 
     string _mouseAttachmentText;
-    protected string MouseAttachmentText
-    {
-        get
-        {
-            _mouseAttachmentText ??= GetMouseAttachmentText();
-
-            return _mouseAttachmentText;
-        }
-    }
+    protected string MouseAttachmentText => _mouseAttachmentText ??= GetMouseAttachmentText();
 
     protected BasePlanDesignator(string name)
     {
@@ -135,16 +127,16 @@ public abstract class BasePlanDesignator : Designator
             OnModifierKeyChanged(IsModifierKeyPressed);
         }
 
-        if (IsCenterModeKeyPressed != PlanningKeyBindingDefOf.Planning_CenterMode.IsDown)
+        if (IsCenterModeKeyPressed != PlanningKeyBindingDefOf.Planning_CenterDrawingMode.IsDown)
         {
-            IsCenterModeKeyPressed = PlanningKeyBindingDefOf.Planning_CenterMode.IsDown;
+            IsCenterModeKeyPressed = PlanningKeyBindingDefOf.Planning_CenterDrawingMode.IsDown;
             OnCenterModeKeyChanged(IsCenterModeKeyPressed);
         }
 
         if (IsSkipExistingDesignationsKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
         {
             IsSkipExistingDesignationsKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
-            OnSkipExistingDesignationsKeyChanged(IsModifierKeyPressed);
+            OnSkipExistingDesignationsKeyChanged(IsSkipExistingDesignationsKeyPressed);
         }
     }
 

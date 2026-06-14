@@ -4,6 +4,7 @@
   <Planning_TogglePlanVisibility.label>schalte Plansichtbarkeit um</Planning_TogglePlanVisibility.label>
   <Planning_ColorPicker.label>farbdialog</Planning_ColorPicker.label>
   <Planning_Modifier.label>modifier</Planning_Modifier.label>
+  <Planning_CenterDrawingMode.label>Zentrierter Zeichenmodus</Planning_CenterDrawingMode.label>
   <Planning_NoOverwrite_Mode.label>nicht überschreiben</Planning_NoOverwrite_Mode.label>
   <Planning_PlanDoors.label>türen planen</Planning_PlanDoors.label>
   <Planning_PlanFloors.label>böden planen</Planning_PlanFloors.label>

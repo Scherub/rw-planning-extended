@@ -96,11 +96,6 @@ public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
         return ContentFinder<Texture2D>.Get($"UI/Designators/{PlanAppearanceManager.GetPlanTextureSet(PlanDesignationType)}/{name}", true);
     }
 
-    protected override string GetMouseAttachmentText()
-    {
-        return $"{"PlanningExtended.Mode".Translate()}: {GetSkipReplaceModeString()}\n" + base.GetMouseAttachmentText();
-    }
-
     protected override void SetColorDef(ColorDef newColorDef)
     {
         base.SetColorDef(newColorDef);

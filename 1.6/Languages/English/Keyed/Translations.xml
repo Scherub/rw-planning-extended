@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>Skip</PlanningExtended.Skip>
   <PlanningExtended.Replace>Replace</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>Shape Modifier</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>Center Drawing Mode</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>Replace Mode</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>Skip Mode</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>switch to cut</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>Planning Data Folder</PlanningExtended.Settings.PlanningDataFolder.Label>
