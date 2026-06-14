@@ -55,14 +55,37 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
     //    return false;
     //}
 
+    public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
+    {
+        if (IsCenterModeKeyPressed)
+            cells = CellUtilities.GetCenterModeCells(cells, new IntVec3(UI.MouseMapPosition()));
+
+        base.DesignateMultiCell(cells);
+    }
+
     public override void RenderHighlight(List<IntVec3> dragCells)
     {
-        CellArea cellArea = new(dragCells);
+        List<IntVec3> sourceCells;
+        
+        if (IsCenterModeKeyPressed)
+        {
+            sourceCells = [];
+            
+            foreach (IntVec3 cell in CellUtilities.GetCenterModeCells(dragCells, new IntVec3(UI.MouseMapPosition())))
+                if (cell.InBounds(Map) && !cell.InNoBuildEdgeArea(Map))
+                    sourceCells.Add(cell);
+        }
+        else
+        {
+            sourceCells = dragCells;
+        }
+
+        CellArea cellArea = new(sourceCells);
         AreaDimensions areaDimensions = cellArea.Dimensions;
 
         List<IntVec3> cells = [];
 
-        foreach (IntVec3 cell in dragCells)
+        foreach (IntVec3 cell in sourceCells)
             if (IsShapeCellValid(cell, areaDimensions))
                 cells.Add(cell);
 
@@ -87,7 +110,9 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
         {
             IntVec3 mousePosition = new(UI.MouseMapPosition());
 
-            CellArea cellArea = new(DesignationDragger.DragCells);
+            CellArea cellArea = IsCenterModeKeyPressed
+                ? new(CellUtilities.GetCenterModeCells(DesignationDragger.DragCells, mousePosition))
+                : new(DesignationDragger.DragCells);
 
             SelectedShape?.UpdateShape(cellArea.Dimensions, mousePosition, IsModifierKeyPressed);
         }

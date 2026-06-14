@@ -25,6 +25,8 @@ public abstract class BasePlanDesignator : Designator
 
     protected bool IsModifierKeyPressed { get; private set; }
 
+    protected bool IsCenterModeKeyPressed { get; private set; }
+
     protected bool IsSkipExistingDesignationsKeyPressed { get; private set; }
 
     string _mouseAttachmentText;
@@ -133,6 +135,12 @@ public abstract class BasePlanDesignator : Designator
             OnModifierKeyChanged(IsModifierKeyPressed);
         }
 
+        if (IsCenterModeKeyPressed != PlanningKeyBindingDefOf.Planning_CenterMode.IsDown)
+        {
+            IsCenterModeKeyPressed = PlanningKeyBindingDefOf.Planning_CenterMode.IsDown;
+            OnCenterModeKeyChanged(IsCenterModeKeyPressed);
+        }
+
         if (IsSkipExistingDesignationsKeyPressed != PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown)
         {
             IsSkipExistingDesignationsKeyPressed = PlanningKeyBindingDefOf.Planning_NoOverwrite_Mode.IsDown;
@@ -141,6 +149,11 @@ public abstract class BasePlanDesignator : Designator
     }
 
     protected virtual void OnModifierKeyChanged(bool isPressed)
+    {
+
+    }
+
+    protected virtual void OnCenterModeKeyChanged(bool isPressed)
     {
 
     }

@@ -27,10 +27,17 @@
 
     <KeyBindingDef>
         <category>PlanningExtended</category>
-        <defName>Planning_NoOverwrite_Mode</defName>
-        <label>no overwrite</label>
+        <defName>Planning_CenterMode</defName>
+        <label>center drawing mode</label>
         <defaultKeyCodeA>LeftAlt</defaultKeyCodeA>
         <defaultKeyCodeB>RightAlt</defaultKeyCodeB>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>PlanningExtended</category>
+        <defName>Planning_NoOverwrite_Mode</defName>
+        <label>no overwrite</label>
+        <defaultKeyCodeA>B</defaultKeyCodeA>
     </KeyBindingDef>
 
     <KeyBindingDef>
