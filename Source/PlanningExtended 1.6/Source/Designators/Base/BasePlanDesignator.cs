@@ -9,8 +9,6 @@ namespace PlanningExtended.Designators;
 
 public abstract class BasePlanDesignator : Designator
 {
-    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
-    
     public override bool DragDrawMeasurements => true;
 
     protected PlanningSettings Settings => PlanningMod.Settings;

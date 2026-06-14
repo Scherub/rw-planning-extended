@@ -18,6 +18,8 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
     protected BaseShape SelectedShape { get; private set; }
 
+    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
+
     public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetShapesMenuOptions();
 
     protected BaseShapePlanDesignator(string name)
@@ -105,7 +107,8 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
         foreach (Shape shape in ShapesManager.AvailableShapes)
         {
-            list.Add(new FloatMenuOption($"PlanningExtended.Shapes.{shape}".Translate(), () => {
+            list.Add(new FloatMenuOption($"PlanningExtended.Shapes.{shape}".Translate(), () =>
+            {
                 Find.DesignatorManager.Select(this);
                 SelectShape(shape);
             }));

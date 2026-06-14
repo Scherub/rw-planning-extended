@@ -10,6 +10,8 @@ public class CutPlanDesignator : BaseUndoRedoPlanDesignator
 {
     public override bool Visible => PlanningMod.Settings.displayCutDesignator;
 
+    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
+
     public CutPlanDesignator()
         : base("CutPlan")
     {

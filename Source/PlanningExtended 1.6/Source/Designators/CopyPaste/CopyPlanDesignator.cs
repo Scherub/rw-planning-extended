@@ -10,6 +10,8 @@ public class CopyPlanDesignator : BasePlanDesignator
 {
     readonly CutPlanDesignator cutPlanDesignator;
 
+    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
+
     public CopyPlanDesignator()
         : base("CopyPlan")
     {
