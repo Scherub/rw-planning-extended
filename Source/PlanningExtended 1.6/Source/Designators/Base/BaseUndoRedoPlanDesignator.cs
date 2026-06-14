@@ -80,7 +80,7 @@ public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 
         PlanLayout redoPlanLayout = PlanLayoutUtilities.CreateCopy(undoPlanLayout.Dimensions, Map);
 
-        Log.Message($"Created undo plan layout with {undoPlanLayout.Dimensions} dimensions and redo plan layout with {redoPlanLayout.Dimensions} dimensions.");
+        //Log.Message($"Created undo plan layout with {undoPlanLayout.Dimensions} dimensions and redo plan layout with {redoPlanLayout.Dimensions} dimensions.");
 
         UndoRedoManager.Add(undoPlanLayout, redoPlanLayout);
     }
