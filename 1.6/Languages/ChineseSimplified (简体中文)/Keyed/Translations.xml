@@ -141,6 +141,8 @@
   <PlanningExtended.Shapes.Variants.RectangleFilled>实心矩形</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>网格矩形</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>空心矩形</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedFilled>实心圆角矩形</PlanningExtended.Shapes.Variants.RectangleRoundedFilled>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedOutline>空心圆角矩形</PlanningExtended.Shapes.Variants.RectangleRoundedOutline>
   <PlanningExtended.Shapes.Variants.PentagonFilled>实心五边形</PlanningExtended.Shapes.Variants.PentagonFilled>
   <PlanningExtended.Shapes.Variants.PentagonOutline>空心五边形</PlanningExtended.Shapes.Variants.PentagonOutline>
   <PlanningExtended.Shapes.Variants.HexagonFilled>实心六边形</PlanningExtended.Shapes.Variants.HexagonFilled>

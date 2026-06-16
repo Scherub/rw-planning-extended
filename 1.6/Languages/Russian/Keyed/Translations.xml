@@ -141,6 +141,8 @@
   <PlanningExtended.Shapes.Variants.RectangleFilled>Прямоугольник заполненный</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Прямоугольник сетка</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Прямоугольник контур</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedFilled>Скруглый прямоугольник заполненный</PlanningExtended.Shapes.Variants.RectangleRoundedFilled>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedOutline>Скруглый прямоугольник контур</PlanningExtended.Shapes.Variants.RectangleRoundedOutline>
   <PlanningExtended.Shapes.Variants.PentagonFilled>Пятиугольник заполненный</PlanningExtended.Shapes.Variants.PentagonFilled>
   <PlanningExtended.Shapes.Variants.PentagonOutline>Пятиугольник контур</PlanningExtended.Shapes.Variants.PentagonOutline>
   <PlanningExtended.Shapes.Variants.HexagonFilled>Шестиугольник заполненный</PlanningExtended.Shapes.Variants.HexagonFilled>

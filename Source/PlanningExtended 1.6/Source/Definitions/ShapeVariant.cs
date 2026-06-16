@@ -28,6 +28,10 @@ public enum ShapeVariant
 
     RectangleOutline,
 
+    RectangleRoundedFilled,
+
+    RectangleRoundedOutline,
+
     PentagonFilled,
 
     PentagonOutline,

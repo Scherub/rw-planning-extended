@@ -7,7 +7,12 @@ internal class RectangleShape : BaseShape
     public override Shape Shape => Shape.Rectangle;
 
     public RectangleShape()
-        : base(ShapeVariant.RectangleFilled, new RectangleFilledShapeVariant(), new RectangleGridShapeVariant(), new RectangleOutlineShapeVariant())
+        : base(ShapeVariant.RectangleFilled,
+            new RectangleFilledShapeVariant(),
+            new RectangleGridShapeVariant(),
+            new RectangleOutlineShapeVariant(),
+            new RectangleRoundedFilledShapeVariant(),
+            new RectangleRoundedOutlineShapeVariant())
     {
     }
 }
