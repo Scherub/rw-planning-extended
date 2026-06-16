@@ -7,9 +7,12 @@ namespace PlanningExtended.Shapes.Generators;
 
 internal class LineSimpleGenerator : BaseShapeGenerator
 {
-    public LineSimpleGenerator()
+    bool _isPadded;
+
+    public LineSimpleGenerator(bool isPadded)
         : base(false)
     {
+        _isPadded = isPadded;
     }
 
     protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
@@ -27,6 +30,6 @@ internal class LineSimpleGenerator : BaseShapeGenerator
             endPosition = new(startPosition.x + Math.Sign(dx) * extent, 0, startPosition.z + Math.Sign(dz) * extent);
         }
 
-        AddValidCells(LinePlotter.PlotLine(startPosition, endPosition));
+        AddValidCells(LinePlotter.PlotLine(startPosition, endPosition, _isPadded));
     }
 }

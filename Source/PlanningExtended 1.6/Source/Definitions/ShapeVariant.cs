@@ -14,6 +14,8 @@ public enum ShapeVariant
 
     LineSimple,
 
+    LineSimplePadded,
+
     LineGrid,
 
     TriangleFilled,

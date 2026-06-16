@@ -134,6 +134,7 @@
 
   <PlanningExtended.Shapes.Variants.Points>点</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>单线</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>单线（填充）</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>网格线</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>实心三角形</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>空心三角形</PlanningExtended.Shapes.Variants.TriangleOutline>

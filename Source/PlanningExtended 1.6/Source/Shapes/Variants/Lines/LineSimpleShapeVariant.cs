@@ -8,7 +8,7 @@ internal class LineSimpleShapeVariant : BaseShapeGeneratorVariant<LineSimpleGene
     public override ShapeVariant ShapeVariant => ShapeVariant.LineSimple;
 
     public LineSimpleShapeVariant()
-        : base(new LineSimpleShapeModifier(), new LineSimpleGenerator())
+        : base(new LineSimpleShapeModifier(), new LineSimpleGenerator(false))
     {
     }
 }

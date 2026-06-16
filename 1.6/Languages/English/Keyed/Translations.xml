@@ -134,6 +134,7 @@
 
   <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Line Simple</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>Line Simple Padded</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>Line Grid</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Triangle Filled</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Triangle Outline</PlanningExtended.Shapes.Variants.TriangleOutline>

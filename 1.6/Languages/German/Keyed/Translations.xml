@@ -134,9 +134,10 @@
 
   <PlanningExtended.Shapes.Variants.Points>Punkte</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Einfache Linie</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>Einfache Linie (Gefüllt)</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>Linienraster</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Dreieck gefüllt</PlanningExtended.Shapes.Variants.TriangleFilled>
-  <PlanningExtended.Shapes.Variants.TriangleOutline>Triangle Umriss</PlanningExtended.Shapes.Variants.TriangleOutline>
+  <PlanningExtended.Shapes.Variants.TriangleOutline>Dreieck Umriss</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Rechteck gefüllt</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Rechteck mit Raster</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Rechteck Umriss</PlanningExtended.Shapes.Variants.RectangleOutline>

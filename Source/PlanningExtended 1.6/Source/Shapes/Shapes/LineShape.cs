@@ -7,7 +7,10 @@ internal class LineShape : BaseShape
     public override Shape Shape => Shape.Line;
 
     public LineShape()
-        : base(ShapeVariant.LineSimple, new LineSimpleShapeVariant(), new LineGridShapeVariant())
+        : base(ShapeVariant.LineSimple, 
+            new LineSimpleShapeVariant(), 
+            new LineSimplePaddedShapeVariant(), 
+            new LineGridShapeVariant())
     {
     }
 }

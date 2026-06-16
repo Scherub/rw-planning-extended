@@ -6,12 +6,14 @@ namespace PlanningExtended.Shapes.Plotter;
 
 internal static class LinePlotter
 {
-    public static IEnumerable<IntVec3> PlotLine(IntVec3 startPosition, IntVec3 endPosition)
+    public static IEnumerable<IntVec3> PlotLine(IntVec3 startPosition, IntVec3 endPosition, bool isPadded = false)
     {
         if (startPosition.x == endPosition.x)
             return PlotLineVertical(startPosition, endPosition);
         else if (startPosition.z == endPosition.z)
             return PlotLineHorizontal(startPosition, endPosition);
+        else if (isPadded)
+            return PlotLineAnyPadded(startPosition, endPosition);
         else
             return PlotLineAny(startPosition, endPosition);
     }
@@ -32,6 +34,22 @@ internal static class LinePlotter
 
         for (int z = startPosition.z; z <= endPosition.z; z++)
             yield return new IntVec3(startPosition.x, 0, z);
+    }
+
+    public static IEnumerable<IntVec3> PlotLineAnyPadded(IntVec3 startPosition, IntVec3 endPosition)
+    {
+        bool hasPrev = false;
+        IntVec3 prev = default;
+
+        foreach (IntVec3 cell in PlotLineAny(startPosition, endPosition))
+        {
+            if (hasPrev && prev.x != cell.x && prev.z != cell.z)
+                yield return new IntVec3(cell.x, 0, prev.z);
+
+            yield return cell;
+            prev = cell;
+            hasPrev = true;
+        }
     }
 
     public static IEnumerable<IntVec3> PlotLineAny(IntVec3 startPosition, IntVec3 endPosition)

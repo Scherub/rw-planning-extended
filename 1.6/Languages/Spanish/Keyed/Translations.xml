@@ -134,6 +134,7 @@
 
   <PlanningExtended.Shapes.Variants.Points>Puntos</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Línea Simple</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>Línea Simple Rellena</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>Rejilla de Línea</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Triángulo Relleno</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Contorno de Triángulo</PlanningExtended.Shapes.Variants.TriangleOutline>
