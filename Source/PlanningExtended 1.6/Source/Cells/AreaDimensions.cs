@@ -2,7 +2,6 @@
 
 namespace PlanningExtended.Cells;
 
-// TODO: does it need to be a record
 public readonly record struct AreaDimensions
 {
     public int MinX { get; }

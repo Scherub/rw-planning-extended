@@ -6,7 +6,7 @@ namespace PlanningExtended.Shapes.Modifiers.Dimensions;
 
 internal abstract class BasePolygonShapeModifier : BaseShapeDimensionsModifier
 {
-    public override AreaDimensions Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation)
+    public override AreaDimensions OnUpdate(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation)
     {
         int minX = areaDimensions.MinX;
         int minZ = areaDimensions.MinZ;

@@ -9,6 +9,8 @@ public abstract class BaseShapeVariant
 {
     readonly BaseShapeDimensionsModifier _shapeModifier;
 
+    bool _applyShapeDimensionsModifier;
+
     protected Direction Rotation => ShapeFeatureManager.RotationShapeFeature?.Rotation ?? Direction.None;
 
     public abstract ShapeVariant ShapeVariant { get; }
@@ -26,10 +28,15 @@ public abstract class BaseShapeVariant
 
     public void UpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
     {
+        if (applyShapeDimensionsModifier != _applyShapeDimensionsModifier)
+            _shapeModifier.SetRequiresUpdate();
+
         if (applyShapeDimensionsModifier)
             areaDimensions = _shapeModifier.Update(shape, areaDimensions, mousePosition, Rotation);
 
         OnUpdateShape(shape, areaDimensions, mousePosition, Rotation, applyShapeDimensionsModifier);
+
+        _applyShapeDimensionsModifier = applyShapeDimensionsModifier;
     }
 
     public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
