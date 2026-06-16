@@ -9,7 +9,7 @@ namespace PlanningExtended.Shapes.Generators;
 
 internal abstract class BaseShapeGenerator
 {
-    bool _requiresUpdate;
+    bool _applyShapeDimensionsModifier;
 
     AreaDimensions _areaDimensions;
 
@@ -24,8 +24,7 @@ internal abstract class BaseShapeGenerator
 
     public HashSet<IntVec3> Update(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
     {
-        // TODO: implement equals
-        if (!_requiresUpdate && areaDimensions == _areaDimensions && !shape.SelectedShapeVariant.ShapeFeatureManager.RequiresUpdate)
+        if (applyShapeDimensionsModifier == _applyShapeDimensionsModifier && areaDimensions == _areaDimensions && !shape.SelectedShapeVariant.ShapeFeatureManager.RequiresUpdate)
             return ValidCells;
 
         _areaDimensions = areaDimensions;
@@ -37,7 +36,7 @@ internal abstract class BaseShapeGenerator
 
         OnUpdate(areaDimensions, mousePosition, rotation, applyShapeDimensionsModifier);
 
-        _requiresUpdate = false;
+        _applyShapeDimensionsModifier = applyShapeDimensionsModifier;
         shape.SelectedShapeVariant.ShapeFeatureManager.HandledUpdates();
 
         return ValidCells;
