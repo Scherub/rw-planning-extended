@@ -8,11 +8,11 @@ internal class RectangleShape : BaseShape
 
     public RectangleShape()
         : base(ShapeVariant.RectangleFilled,
-            new RectangleFilledShapeVariant(),
-            new RectangleGridShapeVariant(),
             new RectangleOutlineShapeVariant(),
-            new RectangleRoundedFilledShapeVariant(),
-            new RectangleRoundedOutlineShapeVariant())
+            new RectangleGridShapeVariant(),
+            new RectangleFilledShapeVariant(),
+            new RectangleRoundedOutlineShapeVariant(),
+            new RectangleRoundedFilledShapeVariant())
     {
     }
 }
