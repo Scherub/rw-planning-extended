@@ -9,7 +9,9 @@ namespace PlanningExtended.Designators;
 
 public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 {
-    protected virtual bool UseUndoRedo => true;
+    protected virtual bool MakeAutoSnapshots => true;
+
+    protected bool CanMakeAutoSnapshots => MakeAutoSnapshots;
 
     protected bool OverwriteDesignation => (!Settings.useSkipInsteadOfReplaceAsDefault && !IsSkipExistingDesignationsKeyPressed) || (Settings.useSkipInsteadOfReplaceAsDefault && IsSkipExistingDesignationsKeyPressed);
 
@@ -20,14 +22,15 @@ public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 
     public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
     {
-        if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(this.TutorTagDesignate, cells)))
+        if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(TutorTagDesignate, cells)))
             return;
 
-        PlanLayout undoPlanLayout = CreateUndoPlanLayout(cells);
+        PlanLayout undoPlanLayout = CanMakeAutoSnapshots ? CreateUndoPlanLayout(cells) : null;
 
         bool result = DesignateMultiCellInternal(cells);
 
-        CreateRedoPlanLayout(undoPlanLayout);
+        if (CanMakeAutoSnapshots && result)
+            CreateRedoPlanLayout(undoPlanLayout);
 
         Finalize(result);
     }
@@ -55,9 +58,6 @@ public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 
     protected PlanLayout CreateUndoPlanLayout(IEnumerable<IntVec3> cells, IntVec3 origin = new IntVec3())
     {
-        if (!UseUndoRedo)
-            return null;
-
         //origin -= planLayout.FindMostBottomRightCell().ToIntVec3;
 
         AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(cells);
@@ -67,15 +67,12 @@ public abstract class BaseUndoRedoPlanDesignator : BasePlanDesignator
 
     protected PlanLayout CreateUndoPlanLayout(AreaDimensions areaDimensions)
     {
-        if (!UseUndoRedo)
-            return null;
-
         return PlanLayoutUtilities.CreateCopy(areaDimensions, Map);
     }
 
     protected void CreateRedoPlanLayout(PlanLayout undoPlanLayout)
     {
-        if (!UseUndoRedo || undoPlanLayout == null)
+        if (undoPlanLayout == null)
             return;
 
         PlanLayout redoPlanLayout = PlanLayoutUtilities.CreateCopy(undoPlanLayout.Dimensions, Map);

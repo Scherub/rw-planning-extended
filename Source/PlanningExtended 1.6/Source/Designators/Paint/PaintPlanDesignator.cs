@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using PlanningExtended.Cells;
 using PlanningExtended.Colors;
 using PlanningExtended.Designations;
+using PlanningExtended.Shapes.Variants.FillColor;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -19,6 +19,8 @@ public class PaintPlanDesignator : BaseColorPlanDesignator
 
     Texture2D IconTopTexture => ContentFinder<Texture2D>.Get("UI/Designators/PaintPlan_Top", true);
 
+    public bool IsFillShapeActive => SelectedShape.SelectedShapeVariant is BaseFillColorShapeVariant;
+
     public PaintPlanDesignator()
         : base("PaintPlan")
     {
@@ -27,26 +29,38 @@ public class PaintPlanDesignator : BaseColorPlanDesignator
 
     protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
     {
-        CellArea cellArea = new(cells);
-        AreaDimensions areaDimensions = cellArea.Dimensions;
+        return !IsColorPickModeEnabled && SelectedShape.SelectedShapeVariant is BaseFillColorShapeVariant fillVariant
+            ? DesignateFloodFill(cells, fillVariant)
+            : base.DesignateMultiCellInternal(cells);
+    }
 
-        bool somethingSucceeded = false;
-        bool flag = false;
+    bool DesignateFloodFill(IEnumerable<IntVec3> cells, BaseFillColorShapeVariant fillVariant)
+    {
+        // Find a valid starting cell for the flood fill.
+        var startCell = cells.FirstOrFallback(c => CanDesignateCell(c).Accepted, IntVec3.Invalid);
 
-        foreach (IntVec3 cell in cells)
+        if (!startCell.IsValid)
+            return false;
+
+        HashSet<IntVec3> cellsToFill = fillVariant.ComputeFillCells(Map, startCell);
+
+        if (cellsToFill.Count == 0)
+            return false;
+
+        var undoPlanLayout = CreateUndoPlanLayout(cellsToFill);
+
+        foreach (IntVec3 cell in cellsToFill)
         {
-            if (IsShapeCellValid(cell, areaDimensions) && CanDesignateCell(cell).Accepted)
+            PlanDesignation designation = Map.designationManager.GetOnlyPlanDesignationAt(cell);
+            if (designation != null)
             {
-                DesignateSingleCell(cell);
-
-                somethingSucceeded = true;
-
-                if (!flag)
-                    flag = ShowWarningForCell(cell);
+                designation.colorDef = colorDef;
+                designation.InvokeUpdate(PlanDesignationType.Unknown, PlanDesignationUpdateType.Color);
             }
         }
 
-        return somethingSucceeded;
+        CreateRedoPlanLayout(undoPlanLayout);
+        return true;
     }
 
     public override AcceptanceReport CanDesignateCell(IntVec3 c)
@@ -114,5 +128,10 @@ public class PaintPlanDesignator : BaseColorPlanDesignator
         string color = PlanningMod.Settings.paintPlanColor;
 
         return ColorUtilities.GetColorDefByName(color);
+    }
+
+    protected override IEnumerable<Shape> GetAdditionalShapes()
+    {
+        yield return Shape.FillColor;
     }
 }

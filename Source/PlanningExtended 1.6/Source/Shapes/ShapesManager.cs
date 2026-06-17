@@ -6,7 +6,18 @@ internal class ShapesManager
 {
     readonly Dictionary<Shape, BaseShape> _shapes = [];
 
-    public static List<Shape> AvailableShapes = [/*Shape.Fixed, */Shape.Point, Shape.Line, Shape.Triangle, Shape.Rectangle, Shape.Pentagon, Shape.Hexagon, Shape.Octagon, Shape.Ellipse];
+    public static List<Shape> AvailableShapes =
+        [
+        //Shape.Fixed,
+        Shape.Point,
+        Shape.Line,
+        Shape.Triangle,
+        Shape.Rectangle,
+        Shape.Pentagon,
+        Shape.Hexagon,
+        Shape.Octagon,
+        Shape.Ellipse
+        ];
 
     public ShapesManager()
     {
@@ -19,6 +30,7 @@ internal class ShapesManager
         Register(new HexagonShape());
         Register(new OctagonShape());
         Register(new EllipseShape());
+        Register(new FillColorShape());
     }
 
     public BaseShape GetShape(Shape shape)

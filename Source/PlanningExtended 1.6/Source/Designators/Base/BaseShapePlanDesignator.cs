@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PlanningExtended.Cells;
 using PlanningExtended.Gui.Designators.Shapes.ExtraControls;
 using PlanningExtended.Shapes;
+using PlanningExtended.Shapes.Variants.FloodFill;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,6 +19,10 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
     protected override bool HasLeftClickPopupMenu => true;
 
     protected BaseShape SelectedShape { get; private set; }
+
+    protected bool IsFloodFillShapeVariant => SelectedShape?.SelectedShapeVariant is BaseFloodFillShapeVariant;
+
+    protected override bool MakeAutoSnapshots => !IsFloodFillShapeVariant;
 
     public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
 
@@ -63,14 +69,38 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
         base.DesignateMultiCell(cells);
     }
 
+    protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    {
+        CellArea cellArea = new(cells);
+        AreaDimensions areaDimensions = cellArea.Dimensions;
+
+        bool somethingSucceeded = false;
+        bool flag = false;
+
+        foreach (IntVec3 cell in cells)
+        {
+            if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
+            {
+                DesignateSingleCell(cell);
+
+                somethingSucceeded = true;
+
+                if (!flag)
+                    flag = ShowWarningForCell(cell);
+            }
+        }
+
+        return somethingSucceeded;
+    }
+
     public override void RenderHighlight(List<IntVec3> dragCells)
     {
         List<IntVec3> sourceCells;
-        
+
         if (IsCenterModeKeyPressed)
         {
             sourceCells = [];
-            
+
             foreach (IntVec3 cell in CellUtilities.GetCenterModeCells(dragCells, new IntVec3(UI.MouseMapPosition())))
                 if (cell.InBounds(Map) && !cell.InNoBuildEdgeArea(Map))
                     sourceCells.Add(cell);
@@ -91,6 +121,8 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
         DesignatorUtility.RenderHighlightOverSelectableCells(this, cells);
     }
+
+    protected virtual IEnumerable<Shape> GetAdditionalShapes() => [];
 
     protected virtual bool IsShapeCellValid(IntVec3 cell, AreaDimensions areaDimensions)
     {
@@ -128,16 +160,16 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
     List<FloatMenuOption> GetShapesMenuOptions()
     {
-        List<FloatMenuOption> list = [];
-
-        foreach (Shape shape in ShapesManager.AvailableShapes)
-        {
-            list.Add(new FloatMenuOption($"PlanningExtended.Shapes.{shape}".Translate(), () =>
-            {
-                Find.DesignatorManager.Select(this);
-                SelectShape(shape);
-            }));
-        }
+        List<FloatMenuOption> list =
+        [
+            ..ShapesManager.AvailableShapes
+                .Concat(GetAdditionalShapes())
+                .Select(shape => new FloatMenuOption(shape.Translate(), () =>
+                {
+                    Find.DesignatorManager.Select(this);
+                    SelectShape(shape);
+                }))
+        ];
 
         return list;
     }

@@ -28,29 +28,29 @@ public abstract class BaseAddPlanDesignator : BaseColorPlanDesignator
         PlanAppearanceManager.TextureSetChanged += TextureSetChanged;
     }
 
-    protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
-    {
-        CellArea cellArea = new(cells);
-        AreaDimensions areaDimensions = cellArea.Dimensions;
+    //protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
+    //{
+    //    CellArea cellArea = new(cells);
+    //    AreaDimensions areaDimensions = cellArea.Dimensions;
 
-        bool somethingSucceeded = false;
-        bool flag = false;
+    //    bool somethingSucceeded = false;
+    //    bool flag = false;
 
-        foreach (IntVec3 cell in cells)
-        {
-            if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
-            {
-                DesignateSingleCell(cell);
+    //    foreach (IntVec3 cell in cells)
+    //    {
+    //        if (CanDesignateCell(cell).Accepted && IsShapeCellValid(cell, areaDimensions))
+    //        {
+    //            DesignateSingleCell(cell);
 
-                somethingSucceeded = true;
+    //            somethingSucceeded = true;
 
-                if (!flag)
-                    flag = ShowWarningForCell(cell);
-            }
-        }
+    //            if (!flag)
+    //                flag = ShowWarningForCell(cell);
+    //        }
+    //    }
 
-        return somethingSucceeded;
-    }
+    //    return somethingSucceeded;
+    //}
 
     public override AcceptanceReport CanDesignateCell(IntVec3 c)
     {

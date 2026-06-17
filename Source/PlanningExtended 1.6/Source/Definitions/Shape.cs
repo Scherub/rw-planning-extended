@@ -5,7 +5,7 @@ public enum Shape
     Fixed,
 
     Point,
-    
+
     Line,
 
     Triangle,
@@ -19,4 +19,6 @@ public enum Shape
     Octagon,
 
     Ellipse,
+
+    FillColor,
 }

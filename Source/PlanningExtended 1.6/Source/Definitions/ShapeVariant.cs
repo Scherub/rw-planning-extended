@@ -46,5 +46,9 @@ public enum ShapeVariant
 
     EllipseFilled,
 
-    EllipseOutline
+    EllipseOutline,
+
+    FillColorAll,
+
+    FillColorSame,
 }

@@ -131,6 +131,7 @@
   <PlanningExtended.Shapes.Hexagon>Шестиугольник</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Восьмиугольник</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Эллипс</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.FillColor>Цвет заливки</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Точки</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Линия</PlanningExtended.Shapes.Variants.LineSimple>
@@ -151,6 +152,8 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Восьмиугольник контур</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Эллипс заполненный</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Эллипс контур</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.FillColorAll>Цвет заливки все</PlanningExtended.Shapes.Variants.FillColorAll>
+  <PlanningExtended.Shapes.Variants.FillColorSame>Цвет заливки тот же тип</PlanningExtended.Shapes.Variants.FillColorSame>
 
   <PlanningExtended.Shapes.ChangeShapeVariant>Изменить форму</PlanningExtended.Shapes.ChangeShapeVariant>
 

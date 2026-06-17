@@ -24,4 +24,9 @@ internal static class EnumTranslationExtension
     {
         return planGrabbingPosition.Translate(nameof(PlanGrabbingPosition));
     }
+
+    public static string Translate(this Shape shape)
+    {
+        return shape.Translate("Shapes");
+    }
 }
