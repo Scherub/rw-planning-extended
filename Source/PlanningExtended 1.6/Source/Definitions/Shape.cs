@@ -20,5 +20,7 @@ public enum Shape
 
     Ellipse,
 
+    Fill,
+
     FillColor,
 }

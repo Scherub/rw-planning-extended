@@ -3,7 +3,7 @@ using System.Linq;
 using PlanningExtended.Cells;
 using PlanningExtended.Gui.Designators.Shapes.ExtraControls;
 using PlanningExtended.Shapes;
-using PlanningExtended.Shapes.Variants.FloodFill;
+using PlanningExtended.Shapes.Variants.Fill;
 using RimWorld;
 using UnityEngine;
 using Verse;

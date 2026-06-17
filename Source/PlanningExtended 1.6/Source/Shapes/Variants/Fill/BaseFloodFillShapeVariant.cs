@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlanningExtended.Cells;
 using PlanningExtended.Shapes.Modifiers.Dimensions;
 using Verse;
 
-namespace PlanningExtended.Shapes.Variants.FloodFill;
+namespace PlanningExtended.Shapes.Variants.Fill;
 
 internal abstract class BaseFloodFillShapeVariant : BaseShapeVariant
 {
-    const int FloodFillMaxCells = 50_000;
+    const int FloodFillMaxCells = 10_000;
 
     protected BaseFloodFillShapeVariant()
         : base(new NullShapeModifier())
     {
     }
+
+    public override bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions) => true;
+
+    public abstract HashSet<IntVec3> ComputeFillCells(Map map, IntVec3 startCell);
 
     protected HashSet<IntVec3> FloodFill(Map map, IntVec3 startCell, Func<IntVec3, bool> isCellValid)
     {
@@ -33,7 +38,7 @@ internal abstract class BaseFloodFillShapeVariant : BaseShapeVariant
             filled.Add(current);
 
             if (filled.Count > FloodFillMaxCells)
-                return null;
+                return [];
 
             foreach (IntVec3 neighbor in current.CardinalNeighbors())
             {

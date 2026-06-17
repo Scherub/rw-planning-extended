@@ -131,6 +131,7 @@
   <PlanningExtended.Shapes.Hexagon>Hexagon</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Octagon</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Ellipse</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>Fill</PlanningExtended.Shapes.Fill>
   <PlanningExtended.Shapes.FillColor>Fill Color</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Points</PlanningExtended.Shapes.Variants.Points>
@@ -152,6 +153,7 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Octagon Outline</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Ellipse Filled</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Ellipse Outline</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>Fill</PlanningExtended.Shapes.Variants.Fill>
   <PlanningExtended.Shapes.Variants.FillColorAll>Fill Color All</PlanningExtended.Shapes.Variants.FillColorAll>
   <PlanningExtended.Shapes.Variants.FillColorSame>Fill Color Same Type</PlanningExtended.Shapes.Variants.FillColorSame>
 

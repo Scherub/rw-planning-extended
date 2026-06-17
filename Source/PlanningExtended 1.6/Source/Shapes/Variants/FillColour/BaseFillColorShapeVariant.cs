@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using PlanningExtended.Cells;
 using PlanningExtended.Defs;
 using PlanningExtended.Designations;
-using PlanningExtended.Shapes.Variants.FloodFill;
+using PlanningExtended.Shapes.Variants.Fill;
 using RimWorld;
 using Verse;
 
@@ -12,9 +11,7 @@ internal abstract class BaseFillColorShapeVariant : BaseFloodFillShapeVariant
 {
     public abstract bool MatchPlanType { get; }
 
-    public override bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions) => true;
-
-    public HashSet<IntVec3> ComputeFillCells(Map map, IntVec3 startCell)
+    public override HashSet<IntVec3> ComputeFillCells(Map map, IntVec3 startCell)
     {
         PlanDesignation startDesignation = map.designationManager.GetOnlyPlanDesignationAt(startCell);
 

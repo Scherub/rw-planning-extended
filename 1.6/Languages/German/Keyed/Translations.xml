@@ -131,6 +131,7 @@
   <PlanningExtended.Shapes.Hexagon>Sechseck</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Achteck</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Ellipse</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>Füllen</PlanningExtended.Shapes.Fill>
   <PlanningExtended.Shapes.FillColor>Füllfarbe</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Punkte</PlanningExtended.Shapes.Variants.Points>
@@ -152,6 +153,7 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Achteck Umriss</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Ellipse gefüllt</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Ellipse Umriss</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>Füllen</PlanningExtended.Shapes.Variants.Fill>
   <PlanningExtended.Shapes.Variants.FillColorAll>Füllfarbe Alle</PlanningExtended.Shapes.Variants.FillColorAll>
   <PlanningExtended.Shapes.Variants.FillColorSame>Füllfarbe Gleicher Typ</PlanningExtended.Shapes.Variants.FillColorSame>
 

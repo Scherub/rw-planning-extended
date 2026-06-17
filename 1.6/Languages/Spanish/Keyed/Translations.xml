@@ -131,6 +131,7 @@
   <PlanningExtended.Shapes.Hexagon>Hexágono</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Octágono</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Elipse</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>Relleno</PlanningExtended.Shapes.Fill>
   <PlanningExtended.Shapes.FillColor>Color de Relleno</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Puntos</PlanningExtended.Shapes.Variants.Points>
@@ -152,6 +153,7 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Contorno de Octágono</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Elipse Rellena</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Contorno de Elipse</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>Relleno</PlanningExtended.Shapes.Variants.Fill>
   <PlanningExtended.Shapes.Variants.FillColorAll>Color de Relleno Todo</PlanningExtended.Shapes.Variants.FillColorAll>
   <PlanningExtended.Shapes.Variants.FillColorSame>Color de Relleno Mismo Tipo</PlanningExtended.Shapes.Variants.FillColorSame>
 

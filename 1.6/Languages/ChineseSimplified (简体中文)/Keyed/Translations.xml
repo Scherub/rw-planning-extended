@@ -130,7 +130,10 @@
   <PlanningExtended.Shapes.Pentagon>五边形</PlanningExtended.Shapes.Pentagon>
   <PlanningExtended.Shapes.Hexagon>六边形</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>八边形</PlanningExtended.Shapes.Octagon>
-  <PlanningExtended.Shapes.Ellipse>椭圆</PlanningExtended.Shapes.Ellipse>  <PlanningExtended.Shapes.FillColor>填充颜色</PlanningExtended.Shapes.FillColor>
+  <PlanningExtended.Shapes.Ellipse>湢圆</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>填充</PlanningExtended.Shapes.Fill>
+  <PlanningExtended.Shapes.FillColor>填充颜色</PlanningExtended.Shapes.FillColor>
+
   <PlanningExtended.Shapes.Variants.Points>点</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>单线</PlanningExtended.Shapes.Variants.LineSimple>
   <PlanningExtended.Shapes.Variants.LineSimplePadded>单线（填充）</PlanningExtended.Shapes.Variants.LineSimplePadded>
@@ -149,8 +152,11 @@
   <PlanningExtended.Shapes.Variants.OctagonFilled>实心八边形</PlanningExtended.Shapes.Variants.OctagonFilled>
   <PlanningExtended.Shapes.Variants.OctagonOutline>空心八边形</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>实心椭圆</PlanningExtended.Shapes.Variants.EllipseFilled>
-  <PlanningExtended.Shapes.Variants.EllipseOutline>空心椭圆</PlanningExtended.Shapes.Variants.EllipseOutline>  <PlanningExtended.Shapes.Variants.FillColorAll>填充颜色（全部）</PlanningExtended.Shapes.Variants.FillColorAll>
+  <PlanningExtended.Shapes.Variants.EllipseOutline>空心湢圆</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>填充</PlanningExtended.Shapes.Variants.Fill>
+  <PlanningExtended.Shapes.Variants.FillColorAll>填充颜色（全部）</PlanningExtended.Shapes.Variants.FillColorAll>
   <PlanningExtended.Shapes.Variants.FillColorSame>填充颜色（相同类型）</PlanningExtended.Shapes.Variants.FillColorSame>
+
   <PlanningExtended.Shapes.ChangeShapeVariant>更改形状变体</PlanningExtended.Shapes.ChangeShapeVariant>
 
   <PlanningExtended.Shapes.NumberOf>{0}数量</PlanningExtended.Shapes.NumberOf>

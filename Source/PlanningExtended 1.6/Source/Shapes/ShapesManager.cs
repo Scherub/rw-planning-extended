@@ -30,6 +30,7 @@ internal class ShapesManager
         Register(new HexagonShape());
         Register(new OctagonShape());
         Register(new EllipseShape());
+        Register(new FillShape());
         Register(new FillColorShape());
     }
 

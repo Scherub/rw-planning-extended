@@ -48,6 +48,8 @@ public enum ShapeVariant
 
     EllipseOutline,
 
+    Fill,
+
     FillColorAll,
 
     FillColorSame,
