@@ -1,13 +1,12 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum PlanTextureSet : byte
 {
-    public enum PlanTextureSet : byte
-    {
-        Dashed,
+    Dashed,
 
-        Filled,
+    Filled,
 
-        Plain,
+    Plain,
 
-        Round
-    }
+    Round
 }

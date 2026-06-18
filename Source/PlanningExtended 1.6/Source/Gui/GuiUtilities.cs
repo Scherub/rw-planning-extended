@@ -5,25 +5,24 @@ using Verse;
 using Verse.Sound;
 using Verse.Steam;
 
-namespace PlanningExtended.Gui
+namespace PlanningExtended.Gui;
+
+public static class GuiUtilities
 {
-    public static class GuiUtilities
+    public static TResult DrawImageButton<TResult>(Rect rect, Texture2D texture2D, string keyLabel, TResult currentResult, Func<TResult> resultOnClick)
     {
-        public static TResult DrawImageButton<TResult>(Rect rect, Texture2D texture2D, string keyLabel, TResult currentResult, Func<TResult> resultOnClick)
+        if (Widgets.ButtonImage(rect, texture2D, true))
         {
-            if (Widgets.ButtonImage(rect, texture2D, true))
-            {
-                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                currentResult = resultOnClick();
-                Event.current.Use();
-            }
-
-            if (!SteamDeck.IsSteamDeck)
-            {
-                Widgets.Label(rect, keyLabel);
-            }
-
-            return currentResult;
+            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+            currentResult = resultOnClick();
+            Event.current.Use();
         }
+
+        if (!SteamDeck.IsSteamDeck)
+        {
+            Widgets.Label(rect, keyLabel);
+        }
+
+        return currentResult;
     }
 }

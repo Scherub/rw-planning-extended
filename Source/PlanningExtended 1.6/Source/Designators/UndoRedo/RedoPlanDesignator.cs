@@ -3,30 +3,29 @@ using RimWorld;
 using UnityEngine;
 using Verse.Sound;
 
-namespace PlanningExtended.Designators
+namespace PlanningExtended.Designators;
+
+public class RedoPlanDesignator : BaseClickDesignator
 {
-    public class RedoPlanDesignator : BaseClickDesignator
+    public override bool Visible => PlanningMod.Settings.useUndoRedo;
+
+    public RedoPlanDesignator()
+        : base("RedoPlan")
     {
-        public override bool Visible => PlanningMod.Settings.useUndoRedo;
+        disabled = true;
+        hotKey = PlanningKeyBindingDefOf.Planning_Redo;
+        UndoRedoManager.OnChanged += UndoRedoManager_OnChanged;
+    }
 
-        public RedoPlanDesignator()
-            : base("RedoPlan")
-        {
-            disabled = true;
-            hotKey = PlanningKeyBindingDefOf.Planning_Redo;
-            UndoRedoManager.OnChanged += UndoRedoManager_OnChanged;
-        }
+    public override void ProcessInput(Event ev)
+    {
+        UndoRedoManager.Redo(Map);
 
-        public override void ProcessInput(Event ev)
-        {
-            UndoRedoManager.Redo(Map);
+        SoundDefOf.Tick_Tiny.PlayOneShotOnCamera(null);
+    }
 
-            SoundDefOf.Tick_Tiny.PlayOneShotOnCamera(null);
-        }
-
-        void UndoRedoManager_OnChanged()
-        {
-            disabled = !UndoRedoManager.CanRedo;
-        }
+    void UndoRedoManager_OnChanged()
+    {
+        disabled = !UndoRedoManager.CanRedo;
     }
 }

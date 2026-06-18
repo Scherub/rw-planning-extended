@@ -5,45 +5,44 @@ using PlanningExtended.Settings;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended
+namespace PlanningExtended;
+
+public class PlanningMod : Mod
 {
-    public class PlanningMod : Mod
+    public static Version CurrentVersion { get; } = new(1, 1, 0);
+
+    public static PlanningSettings Settings { get; private set; }
+
+    public static event Action<PlanningSettings> SettingsChanged;
+
+    public PlanningMod(ModContentPack content)
+        : base(content)
     {
-        public static Version CurrentVersion { get; } = new(1, 1, 0);
+        Settings = GetSettings<PlanningSettings>();
 
-        public static PlanningSettings Settings { get; private set; }
+        Harmony harmony = new("scherub.planningextended");
+        harmony.PatchAll();
 
-        public static event Action<PlanningSettings> SettingsChanged;
+        //DefsUpdater.UpdateDefs();
+    }
 
-        public PlanningMod(ModContentPack content)
-            : base(content)
-        {
-            Settings = GetSettings<PlanningSettings>();
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        SettingsGuiUtilities.DisplaySettings(Settings, inRect);
 
-            Harmony harmony = new("scherub.planningextended");
-            harmony.PatchAll();
+        base.DoSettingsWindowContents(inRect);
+    }
 
-            //DefsUpdater.UpdateDefs();
-        }
+    public override string SettingsCategory()
+    {
+        return "Planning Extended";
+    }
 
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            SettingsGuiUtilities.DisplaySettings(Settings, inRect);
+    public override void WriteSettings()
+    {
+        base.WriteSettings();
 
-            base.DoSettingsWindowContents(inRect);
-        }
-
-        public override string SettingsCategory()
-        {
-            return "Planning Extended";
-        }
-
-        public override void WriteSettings()
-        {
-            base.WriteSettings();
-
-            DefsUpdater.UpdateDefs();
-            SettingsChanged?.Invoke(Settings);
-        }
+        DefsUpdater.UpdateDefs();
+        SettingsChanged?.Invoke(Settings);
     }
 }

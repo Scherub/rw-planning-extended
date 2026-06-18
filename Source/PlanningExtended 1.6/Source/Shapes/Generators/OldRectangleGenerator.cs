@@ -4,102 +4,101 @@ using PlanningExtended.Shapes.Features;
 using UnityEngine;
 using Verse;
 
-namespace PlanningExtended.Shapes.Generators
+namespace PlanningExtended.Shapes.Generators;
+
+internal class OldRectangleGenerator : BaseShapeGenerator
 {
-    internal class OldRectangleGenerator : BaseShapeGenerator
+    HashSet<int> _segmentsX = [];
+
+    HashSet<int> _segmentsZ = [];
+
+    bool DrawOutline { get; }
+
+    bool DrawInnerArea { get; }
+
+    bool DrawGrid { get; }
+
+    bool DrawIntersectionPoints { get; }
+
+    public OldRectangleGenerator(bool drawOutline, bool drawInnerArea, bool drawGrid, bool drawIntersectionPoints)
+        : base(false)
     {
-        HashSet<int> _segmentsX = new();
+        DrawOutline = drawOutline;
+        DrawInnerArea = drawInnerArea;
+        DrawGrid = drawGrid;
+        DrawIntersectionPoints = drawIntersectionPoints;
+    }
 
-        HashSet<int> _segmentsZ = new();
+    protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
+    {
+        AddValidCells(GetVertices(areaDimensions));
+    }
 
-        bool DrawOutline { get; }
+    protected override void OnUpdateSegments(AreaDimensions areaDimensions, SegmentShapeFeature segmentShapeFeature)
+    {
+        CalculateSegments(areaDimensions.MinX, areaDimensions.MaxX, ref _segmentsX, segmentShapeFeature.NumberOfSegmentsX);
+        CalculateSegments(areaDimensions.MinZ, areaDimensions.MaxZ, ref _segmentsZ, segmentShapeFeature.NumberOfSegmentsZ);
 
-        bool DrawInnerArea { get; }
+        segmentShapeFeature.HandledUpdate();
+    }
 
-        bool DrawGrid { get; }
+    IEnumerable<IntVec3> GetVertices(AreaDimensions areaDimensions)
+    {
+        for (int z = areaDimensions.MinZ; z <= areaDimensions.MaxZ; z++)
+            for (int x = areaDimensions.MinX; x <= areaDimensions.MaxX; x++)
+                if (IsCellValid(areaDimensions, x, z))
+                    yield return new IntVec3(x, 0, z);
+    }
 
-        bool DrawIntersectionPoints { get; }
-
-        public OldRectangleGenerator(bool drawOutline, bool drawInnerArea, bool drawGrid, bool drawIntersectionPoints)
-            : base(false)
+    bool IsCellValid(AreaDimensions areaDimensions, int x, int z)
+    {
+        if (DrawOutline)
         {
-            DrawOutline = drawOutline;
-            DrawInnerArea = drawInnerArea;
-            DrawGrid = drawGrid;
-            DrawIntersectionPoints = drawIntersectionPoints;
+            if (x == areaDimensions.MinX || x == areaDimensions.MaxX)
+                return true;
+
+            if (z == areaDimensions.MinZ || z == areaDimensions.MaxZ)
+                return true;
         }
 
-        protected override void OnUpdate(AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
+        if (DrawInnerArea)
         {
-            AddValidCells(GetVertices(areaDimensions));
+            if (x > areaDimensions.MinX || x < areaDimensions.MaxX)
+                return true;
+
+            if (z > areaDimensions.MinZ || z < areaDimensions.MaxZ)
+                return true;
         }
 
-        protected override void OnUpdateSegments(AreaDimensions areaDimensions, SegmentShapeFeature segmentShapeFeature)
+        if (DrawGrid)
         {
-            CalculateSegments(areaDimensions.MinX, areaDimensions.MaxX, ref _segmentsX, segmentShapeFeature.NumberOfSegmentsX);
-            CalculateSegments(areaDimensions.MinZ, areaDimensions.MaxZ, ref _segmentsZ, segmentShapeFeature.NumberOfSegmentsZ);
+            if (_segmentsX.Contains(x))
+                return true;
 
-            segmentShapeFeature.HandledUpdate();
+            if (_segmentsZ.Contains(z))
+                return true;
         }
 
-        IEnumerable<IntVec3> GetVertices(AreaDimensions areaDimensions)
+        if (DrawIntersectionPoints)
         {
-            for (int z = areaDimensions.MinZ; z <= areaDimensions.MaxZ; z++)
-                for (int x = areaDimensions.MinX; x <= areaDimensions.MaxX; x++)
-                    if (IsCellValid(areaDimensions, x, z))
-                        yield return new IntVec3(x, 0, z);
+            if (_segmentsX.Contains(x) && _segmentsZ.Contains(z))
+                return true;
         }
 
-        bool IsCellValid(AreaDimensions areaDimensions, int x, int z)
+        return false;
+    }
+
+    void CalculateSegments(int min, int max, ref HashSet<int> segments, int numberOfSegments)
+    {
+        segments.Clear();
+
+        int length = max - min;
+
+        for (int i = 1; i <= numberOfSegments; i++)
         {
-            if (DrawOutline)
-            {
-                if (x == areaDimensions.MinX || x == areaDimensions.MaxX)
-                    return true;
+            int segment = Mathf.RoundToInt(i / (float)(numberOfSegments + 1) * length);
 
-                if (z == areaDimensions.MinZ || z == areaDimensions.MaxZ)
-                    return true;
-            }
-
-            if (DrawInnerArea)
-            {
-                if (x > areaDimensions.MinX || x < areaDimensions.MaxX)
-                    return true;
-
-                if (z > areaDimensions.MinZ || z < areaDimensions.MaxZ)
-                    return true;
-            }
-
-            if (DrawGrid)
-            {
-                if (_segmentsX.Contains(x))
-                    return true;
-
-                if (_segmentsZ.Contains(z))
-                    return true;
-            }
-
-            if (DrawIntersectionPoints)
-            {
-                if (_segmentsX.Contains(x) && _segmentsZ.Contains(z))
-                    return true;
-            }
-
-            return false;
-        }
-
-        void CalculateSegments(int min, int max, ref HashSet<int> segments, int numberOfSegments)
-        {
-            segments.Clear();
-
-            int length = max - min;
-
-            for (int i = 1; i <= numberOfSegments; i++)
-            {
-                int segment = Mathf.RoundToInt(i / (float)(numberOfSegments + 1) * length);
-
-                segments.Add(min + segment);
-            }
+            segments.Add(min + segment);
         }
     }
 }

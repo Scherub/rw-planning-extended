@@ -1,14 +1,13 @@
 ﻿using PlanningExtended.Defs;
 using Verse;
 
-namespace PlanningExtended
+namespace PlanningExtended;
+
+[StaticConstructorOnStartup]
+public static class PlanningModStartUp
 {
-    [StaticConstructorOnStartup]
-    public static class PlanningModStartUp
+    static PlanningModStartUp()
     {
-        static PlanningModStartUp()
-        {
-            DefsUpdater.UpdateDefs();
-        }
+        DefsUpdater.UpdateDefs();
     }
 }

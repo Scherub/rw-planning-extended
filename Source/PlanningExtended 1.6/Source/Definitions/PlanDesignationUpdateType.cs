@@ -1,13 +1,12 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+internal enum PlanDesignationUpdateType
 {
-    internal enum PlanDesignationUpdateType
-    {
-        None,
+    None,
 
-        Material,
+    Material,
 
-        Color,
+    Color,
 
-        Opacity
-    }
+    Opacity
 }

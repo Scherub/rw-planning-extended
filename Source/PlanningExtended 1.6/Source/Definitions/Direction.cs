@@ -1,42 +1,41 @@
 ﻿using System;
 
-namespace PlanningExtended
+namespace PlanningExtended;
+
+[Flags]
+public enum Direction
 {
-    [Flags]
-    public enum Direction
-    {
-        None,
+    None,
 
-        North = 0x01,
+    North = 0x01,
 
-        NorthEast = 0x02,
+    NorthEast = 0x02,
 
-        East = 0x04,
+    East = 0x04,
 
-        SouthEast = 0x08,
+    SouthEast = 0x08,
 
-        South = 0x10,
+    South = 0x10,
 
-        SouthWest = 0x20,
+    SouthWest = 0x20,
 
-        West = 0x40,
+    West = 0x40,
 
-        NorthWest = 0x80,
+    NorthWest = 0x80,
 
-        DiagonalNW = 0x100,
+    DiagonalNW = 0x100,
 
-        DiagonalNE = 0x200,
+    DiagonalNE = 0x200,
 
-        Horizontal = East | West,
+    Horizontal = East | West,
 
-        Vertical = North | South,
+    Vertical = North | South,
 
-        Diagonal = NorthEast | SouthEast | SouthWest | NorthWest,
+    Diagonal = NorthEast | SouthEast | SouthWest | NorthWest,
 
-        DiagonalAll = Diagonal | DiagonalNE | DiagonalNW,
+    DiagonalAll = Diagonal | DiagonalNE | DiagonalNW,
 
-        MainAxes = North | East | South | West,
+    MainAxes = North | East | South | West,
 
-        All = North | NorthEast | East | SouthEast | South | SouthWest | West | NorthWest
-    }
+    All = North | NorthEast | East | SouthEast | South | SouthWest | West | NorthWest
 }

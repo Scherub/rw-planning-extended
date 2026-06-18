@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>跳过</PlanningExtended.Skip>
   <PlanningExtended.Replace>替换</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>形状修改器</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>居中绘制模式</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>替换模式</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>跳过模式</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>切换到剪切</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>规划数据文件夹</PlanningExtended.Settings.PlanningDataFolder.Label>
@@ -108,6 +114,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>启动时规划可见性</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>决定启动时规划的可见性。</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>规划抓取位置</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>确定粘贴时规划预览的哪个点附着在光标上。</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>升级旧版规划</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>从原版规划转换</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -121,16 +130,21 @@
   <PlanningExtended.Shapes.Pentagon>五边形</PlanningExtended.Shapes.Pentagon>
   <PlanningExtended.Shapes.Hexagon>六边形</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>八边形</PlanningExtended.Shapes.Octagon>
-  <PlanningExtended.Shapes.Ellipse>椭圆</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Ellipse>湢圆</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>填充</PlanningExtended.Shapes.Fill>
+  <PlanningExtended.Shapes.FillColor>填充颜色</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>点</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>单线</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>单线（填充）</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>网格线</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>实心三角形</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>空心三角形</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>实心矩形</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>网格矩形</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>空心矩形</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedFilled>实心圆角矩形</PlanningExtended.Shapes.Variants.RectangleRoundedFilled>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedOutline>空心圆角矩形</PlanningExtended.Shapes.Variants.RectangleRoundedOutline>
   <PlanningExtended.Shapes.Variants.PentagonFilled>实心五边形</PlanningExtended.Shapes.Variants.PentagonFilled>
   <PlanningExtended.Shapes.Variants.PentagonOutline>空心五边形</PlanningExtended.Shapes.Variants.PentagonOutline>
   <PlanningExtended.Shapes.Variants.HexagonFilled>实心六边形</PlanningExtended.Shapes.Variants.HexagonFilled>
@@ -138,7 +152,10 @@
   <PlanningExtended.Shapes.Variants.OctagonFilled>实心八边形</PlanningExtended.Shapes.Variants.OctagonFilled>
   <PlanningExtended.Shapes.Variants.OctagonOutline>空心八边形</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>实心椭圆</PlanningExtended.Shapes.Variants.EllipseFilled>
-  <PlanningExtended.Shapes.Variants.EllipseOutline>空心椭圆</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.EllipseOutline>空心湢圆</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>填充</PlanningExtended.Shapes.Variants.Fill>
+  <PlanningExtended.Shapes.Variants.FillColorAll>填充颜色（全部）</PlanningExtended.Shapes.Variants.FillColorAll>
+  <PlanningExtended.Shapes.Variants.FillColorSame>填充颜色（相同类型）</PlanningExtended.Shapes.Variants.FillColorSame>
 
   <PlanningExtended.Shapes.ChangeShapeVariant>更改形状变体</PlanningExtended.Shapes.ChangeShapeVariant>
 
@@ -164,8 +181,14 @@
   <PlanningExtended.Direction.DiagonalNW>对角线 (西北)</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>对角线 (东北)</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>可见</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>不可见</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>上次保存</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>可见</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>不可见</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>上次保存</PlanningExtended.StartupPlanVisibility.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>中心</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>左上</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>右上</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>左下</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>右下</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

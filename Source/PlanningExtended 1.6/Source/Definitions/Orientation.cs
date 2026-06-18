@@ -1,11 +1,10 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum Orientation
 {
-    public enum Orientation
-    {
-        None,
+    None,
 
-        Horizontal,
+    Horizontal,
 
-        Vertical
-    }
+    Vertical
 }

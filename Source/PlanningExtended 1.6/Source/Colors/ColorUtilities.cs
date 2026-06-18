@@ -1,13 +1,12 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace PlanningExtended.Colors
+namespace PlanningExtended.Colors;
+
+public static class ColorUtilities
 {
-    public static class ColorUtilities
+    public static ColorDef GetColorDefByName(string defName)
     {
-        public static ColorDef GetColorDefByName(string defName)
-        {
-            return ColorDefinitions.ColorDefs.FirstOrFallback(c => c.defName == defName, ColorDefinitions.NonColoredDef);
-        }
+        return ColorDefinitions.ColorDefs.FirstOrFallback(c => c.defName == defName, ColorDefinitions.NonColoredDef);
     }
 }

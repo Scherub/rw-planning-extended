@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>Пропустить</PlanningExtended.Skip>
   <PlanningExtended.Replace>Заменить</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>Модификатор формы</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>Режим центрального рисования</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>Режим замены</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>Режим пропуска</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>переключиться на вырезание</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>Папка данных планирования</PlanningExtended.Settings.PlanningDataFolder.Label>
@@ -108,6 +114,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Начальная видимость планов</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Определяет видимость планов при запуске.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>Позиция захвата плана</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>Определяет, какая точка предпросмотра плана прикрепляется к курсору при вставке.</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Обновить планы с прошлых версий</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Конвертировать из ванильных планов</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -122,15 +131,20 @@
   <PlanningExtended.Shapes.Hexagon>Шестиугольник</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Восьмиугольник</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Эллипс</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>Заливка</PlanningExtended.Shapes.Fill>
+  <PlanningExtended.Shapes.FillColor>Цвет заливки</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Точки</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Линия</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>Линия (заполненная)</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>Линия сетка</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Треугольник заполненный</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Треугольник контур</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Прямоугольник заполненный</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Прямоугольник сетка</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Прямоугольник контур</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedFilled>Скруглый прямоугольник заполненный</PlanningExtended.Shapes.Variants.RectangleRoundedFilled>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedOutline>Скруглый прямоугольник контур</PlanningExtended.Shapes.Variants.RectangleRoundedOutline>
   <PlanningExtended.Shapes.Variants.PentagonFilled>Пятиугольник заполненный</PlanningExtended.Shapes.Variants.PentagonFilled>
   <PlanningExtended.Shapes.Variants.PentagonOutline>Пятиугольник контур</PlanningExtended.Shapes.Variants.PentagonOutline>
   <PlanningExtended.Shapes.Variants.HexagonFilled>Шестиугольник заполненный</PlanningExtended.Shapes.Variants.HexagonFilled>
@@ -139,6 +153,9 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Восьмиугольник контур</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Эллипс заполненный</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Эллипс контур</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>Заливка</PlanningExtended.Shapes.Variants.Fill>
+  <PlanningExtended.Shapes.Variants.FillColorAll>Цвет заливки все</PlanningExtended.Shapes.Variants.FillColorAll>
+  <PlanningExtended.Shapes.Variants.FillColorSame>Цвет заливки тот же тип</PlanningExtended.Shapes.Variants.FillColorSame>
 
   <PlanningExtended.Shapes.ChangeShapeVariant>Изменить форму</PlanningExtended.Shapes.ChangeShapeVariant>
 
@@ -164,8 +181,14 @@
   <PlanningExtended.Direction.DiagonalNW>Диагональ СЗ</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Диагональ СВ</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>Видимый</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>Невидимый</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>Видимый</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>Невидимый</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>Последнее сохранение</PlanningExtended.StartupPlanVisibility.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>Центр</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>Верхний левый</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>Верхний правый</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>Нижний левый</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>Нижний правый</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

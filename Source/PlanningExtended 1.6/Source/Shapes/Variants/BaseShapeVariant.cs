@@ -3,40 +3,46 @@ using PlanningExtended.Shapes.Features;
 using PlanningExtended.Shapes.Modifiers.Dimensions;
 using Verse;
 
-namespace PlanningExtended.Shapes.Variants
+namespace PlanningExtended.Shapes.Variants;
+
+public abstract class BaseShapeVariant
 {
-    public abstract class BaseShapeVariant
+    readonly BaseShapeDimensionsModifier _shapeModifier;
+
+    bool _applyShapeDimensionsModifier;
+
+    protected Direction Rotation => ShapeFeatureManager.RotationShapeFeature?.Rotation ?? Direction.None;
+
+    public abstract ShapeVariant ShapeVariant { get; }
+
+    public ShapeDisplayOptions ShapeDisplayOptions => ShapeFeatureManager.ShapeDisplayOptions;
+
+    public ShapeFeatureManager ShapeFeatureManager { get; }
+
+    protected BaseShapeVariant(BaseShapeDimensionsModifier shapeModifier, params IShapeFeature[] shapeFeatures)
     {
-        readonly BaseShapeDimensionsModifier _shapeModifier;
+        _shapeModifier = shapeModifier;
 
-        protected Direction Rotation => ShapeFeatureManager.RotationShapeFeature?.Rotation ?? Direction.None;
+        ShapeFeatureManager = new ShapeFeatureManager(shapeFeatures);
+    }
 
-        public abstract ShapeVariant ShapeVariant { get; }
+    public void UpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
+    {
+        if (applyShapeDimensionsModifier != _applyShapeDimensionsModifier)
+            _shapeModifier.SetRequiresUpdate();
 
-        public ShapeDisplayOptions ShapeDisplayOptions => ShapeFeatureManager.ShapeDisplayOptions;
+        if (applyShapeDimensionsModifier)
+            areaDimensions = _shapeModifier.Update(shape, areaDimensions, mousePosition, Rotation);
 
-        public ShapeFeatureManager ShapeFeatureManager { get; }
+        OnUpdateShape(shape, areaDimensions, mousePosition, Rotation, applyShapeDimensionsModifier);
 
-        protected BaseShapeVariant(BaseShapeDimensionsModifier shapeModifier, params IShapeFeature[] shapeFeatures)
-        {
-            _shapeModifier = shapeModifier;
+        _applyShapeDimensionsModifier = applyShapeDimensionsModifier;
+    }
 
-            ShapeFeatureManager = new ShapeFeatureManager(shapeFeatures);
-        }
+    public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
 
-        public void UpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, bool applyShapeDimensionsModifier)
-        {
-            if (applyShapeDimensionsModifier)
-                areaDimensions = _shapeModifier.Update(shape, areaDimensions, mousePosition, Rotation);
+    protected virtual void OnUpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
+    {
 
-            OnUpdateShape(shape, areaDimensions, mousePosition, Rotation, applyShapeDimensionsModifier);
-        }
-
-        public abstract bool IsCellValid(IntVec3 cell, AreaDimensions areaDimensions);
-
-        protected virtual void OnUpdateShape(BaseShape shape, AreaDimensions areaDimensions, IntVec3 mousePosition, Direction rotation, bool applyShapeDimensionsModifier)
-        {
-
-        }
     }
 }

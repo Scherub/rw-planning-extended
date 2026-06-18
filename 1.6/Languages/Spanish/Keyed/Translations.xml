@@ -73,6 +73,12 @@
   <PlanningExtended.Skip>Omitir</PlanningExtended.Skip>
   <PlanningExtended.Replace>Reemplazar</PlanningExtended.Replace>
 
+  <PlanningExtended.ShapeModifier>Modificador de Forma</PlanningExtended.ShapeModifier>
+  <PlanningExtended.CenterDrawingMode>Modo Dibujo Central</PlanningExtended.CenterDrawingMode>
+
+  <PlanningExtended.PlaceMode.Replace>Modo Reemplazar</PlanningExtended.PlaceMode.Replace>
+  <PlanningExtended.PlaceMode.Skip>Modo Omitir</PlanningExtended.PlaceMode.Skip>
+
   <PlanningExtended.SwitchToCut>cambiar a cortar</PlanningExtended.SwitchToCut>
 
   <PlanningExtended.Settings.PlanningDataFolder.Label>Carpeta de Datos de Planificación</PlanningExtended.Settings.PlanningDataFolder.Label>
@@ -108,6 +114,9 @@
   <PlanningExtended.Settings.StartupPlanVisibility.Label>Visibilidad inicial de los planes</PlanningExtended.Settings.StartupPlanVisibility.Label>
   <PlanningExtended.Settings.StartupPlanVisibility.Desc>Determina la visibilidad de los planes al iniciar.</PlanningExtended.Settings.StartupPlanVisibility.Desc>
 
+  <PlanningExtended.Settings.PlanGrabbingPosition.Label>Posición de Agarre del Plan</PlanningExtended.Settings.PlanGrabbingPosition.Label>
+  <PlanningExtended.Settings.PlanGrabbingPosition.Desc>Determina qué punto de la vista previa del plan está unido al cursor al pegar.</PlanningExtended.Settings.PlanGrabbingPosition.Desc>
+
   <PlanningExtended.Settings.UpgradeOldPlans.Label>Actualizar planes antiguos</PlanningExtended.Settings.UpgradeOldPlans.Label>
 
   <PlanningExtended.Settings.ConvertVanillaPlans.Label>Convertir desde planes Vanilla</PlanningExtended.Settings.ConvertVanillaPlans.Label>
@@ -122,15 +131,20 @@
   <PlanningExtended.Shapes.Hexagon>Hexágono</PlanningExtended.Shapes.Hexagon>
   <PlanningExtended.Shapes.Octagon>Octágono</PlanningExtended.Shapes.Octagon>
   <PlanningExtended.Shapes.Ellipse>Elipse</PlanningExtended.Shapes.Ellipse>
+  <PlanningExtended.Shapes.Fill>Relleno</PlanningExtended.Shapes.Fill>
+  <PlanningExtended.Shapes.FillColor>Color de Relleno</PlanningExtended.Shapes.FillColor>
 
   <PlanningExtended.Shapes.Variants.Points>Puntos</PlanningExtended.Shapes.Variants.Points>
   <PlanningExtended.Shapes.Variants.LineSimple>Línea Simple</PlanningExtended.Shapes.Variants.LineSimple>
+  <PlanningExtended.Shapes.Variants.LineSimplePadded>Línea Simple Rellena</PlanningExtended.Shapes.Variants.LineSimplePadded>
   <PlanningExtended.Shapes.Variants.LineGrid>Rejilla de Línea</PlanningExtended.Shapes.Variants.LineGrid>
   <PlanningExtended.Shapes.Variants.TriangleFilled>Triángulo Relleno</PlanningExtended.Shapes.Variants.TriangleFilled>
   <PlanningExtended.Shapes.Variants.TriangleOutline>Contorno de Triángulo</PlanningExtended.Shapes.Variants.TriangleOutline>
   <PlanningExtended.Shapes.Variants.RectangleFilled>Rectángulo Relleno</PlanningExtended.Shapes.Variants.RectangleFilled>
   <PlanningExtended.Shapes.Variants.RectangleGrid>Rejilla de Rectángulo</PlanningExtended.Shapes.Variants.RectangleGrid>
   <PlanningExtended.Shapes.Variants.RectangleOutline>Contorno de Rectángulo</PlanningExtended.Shapes.Variants.RectangleOutline>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedFilled>Rectángulo Redondeado Relleno</PlanningExtended.Shapes.Variants.RectangleRoundedFilled>
+  <PlanningExtended.Shapes.Variants.RectangleRoundedOutline>Contorno de Rectángulo Redondeado</PlanningExtended.Shapes.Variants.RectangleRoundedOutline>
   <PlanningExtended.Shapes.Variants.PentagonFilled>Pentágono Relleno</PlanningExtended.Shapes.Variants.PentagonFilled>
   <PlanningExtended.Shapes.Variants.PentagonOutline>Contorno de Pentágono</PlanningExtended.Shapes.Variants.PentagonOutline>
   <PlanningExtended.Shapes.Variants.HexagonFilled>Hexágono Relleno</PlanningExtended.Shapes.Variants.HexagonFilled>
@@ -139,6 +153,9 @@
   <PlanningExtended.Shapes.Variants.OctagonOutline>Contorno de Octágono</PlanningExtended.Shapes.Variants.OctagonOutline>
   <PlanningExtended.Shapes.Variants.EllipseFilled>Elipse Rellena</PlanningExtended.Shapes.Variants.EllipseFilled>
   <PlanningExtended.Shapes.Variants.EllipseOutline>Contorno de Elipse</PlanningExtended.Shapes.Variants.EllipseOutline>
+  <PlanningExtended.Shapes.Variants.Fill>Relleno</PlanningExtended.Shapes.Variants.Fill>
+  <PlanningExtended.Shapes.Variants.FillColorAll>Color de Relleno Todo</PlanningExtended.Shapes.Variants.FillColorAll>
+  <PlanningExtended.Shapes.Variants.FillColorSame>Color de Relleno Mismo Tipo</PlanningExtended.Shapes.Variants.FillColorSame>
 
   <PlanningExtended.Shapes.ChangeShapeVariant>Cambiar Variante de Forma</PlanningExtended.Shapes.ChangeShapeVariant>
 
@@ -164,8 +181,14 @@
   <PlanningExtended.Direction.DiagonalNW>Diagonal NO</PlanningExtended.Direction.DiagonalNW>
   <PlanningExtended.Direction.DiagonalNE>Diagonal NE</PlanningExtended.Direction.DiagonalNE>
 
-  <PlanningExtended.StartupPlanVisibilities.Visible>Visible</PlanningExtended.StartupPlanVisibilities.Visible>
-  <PlanningExtended.StartupPlanVisibilities.Invisible>Invisible</PlanningExtended.StartupPlanVisibilities.Invisible>
-  <PlanningExtended.StartupPlanVisibilities.LastSaved>Último guardado</PlanningExtended.StartupPlanVisibilities.LastSaved>
+  <PlanningExtended.StartupPlanVisibility.Visible>Visible</PlanningExtended.StartupPlanVisibility.Visible>
+  <PlanningExtended.StartupPlanVisibility.Invisible>Invisible</PlanningExtended.StartupPlanVisibility.Invisible>
+  <PlanningExtended.StartupPlanVisibility.LastSaved>Último guardado</PlanningExtended.StartupPlanVisibility.LastSaved>
+
+  <PlanningExtended.PlanGrabbingPosition.Center>Centro</PlanningExtended.PlanGrabbingPosition.Center>
+  <PlanningExtended.PlanGrabbingPosition.TopLeft>Superior Izquierda</PlanningExtended.PlanGrabbingPosition.TopLeft>
+  <PlanningExtended.PlanGrabbingPosition.TopRight>Superior Derecha</PlanningExtended.PlanGrabbingPosition.TopRight>
+  <PlanningExtended.PlanGrabbingPosition.BottomLeft>Inferior Izquierda</PlanningExtended.PlanGrabbingPosition.BottomLeft>
+  <PlanningExtended.PlanGrabbingPosition.BottomRight>Inferior Derecha</PlanningExtended.PlanGrabbingPosition.BottomRight>
 
 </LanguageData>

@@ -2,221 +2,220 @@
 using PlanningExtended.Designations;
 using Verse;
 
-namespace PlanningExtended.Settings
+namespace PlanningExtended.Settings;
+
+public class PlanningSettings : ModSettings
 {
-    public class PlanningSettings : ModSettings
+    Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = [];
+
+    List<string> lastLoadedPlans = [];
+    public List<string> LastLoadedPlans => lastLoadedPlans;
+
+    public bool useUndoRedo = Default.UseUndoRedo;
+
+    public int maxUndoOperations = Default.MaxUndoRedoSteps;
+
+    public bool displayCutDesignator = Default.DisplayCutDesignator;
+
+    public bool displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
+
+    public bool displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
+
+    public bool areDesignationsPersistent = Default.AreDesignationsPersistent;
+
+    public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
+
+    public bool useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
+
+    public PlanGrabbingPosition planGrabbingPosition = Default.PlanGrabbingPosition;
+
+    public string paintPlanColor = Default.PaintPlanColor;
+
+    public StartupPlanVisibility startupPlanVisibility = Default.StartupPlanVisibility;
+
+    public override void ExposeData()
     {
-        Dictionary<PlanDesignationType, PlanDesignationSetting> planDesignationSettings = [];
+        Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
+        Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), Default.MaxUndoRedoSteps);
+        Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), Default.DisplayCutDesignator);
+        Scribe_Values.Look(ref displayChangePlanAppearanceDesignator, nameof(displayChangePlanAppearanceDesignator), Default.DisplayChangePlanAppearanceDesignator);
+        Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
+        Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
+        Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
+        Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
+        Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
+        Scribe_Values.Look(ref planGrabbingPosition, nameof(planGrabbingPosition), Default.PlanGrabbingPosition);
+        Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
 
-        List<string> lastLoadedPlans = [];
-        public List<string> LastLoadedPlans => lastLoadedPlans;
+        Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
+        Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
 
-        public bool useUndoRedo = Default.UseUndoRedo;
+        if (Scribe.mode == LoadSaveMode.LoadingVars)
+            InitData();
 
-        public int maxUndoOperations = Default.MaxUndoRedoSteps;
+        base.ExposeData();
+    }
 
-        public bool displayCutDesignator = Default.DisplayCutDesignator;
+    public void Reset()
+    {
+        useUndoRedo = Default.UseUndoRedo;
+        maxUndoOperations = Default.MaxUndoRedoSteps;
+        displayCutDesignator = Default.DisplayCutDesignator;
+        displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
+        displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
+        areDesignationsPersistent = Default.AreDesignationsPersistent;
+        useCtrlForColorDialog = Default.UseCtrlForColorDialog;
+        useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
+        planGrabbingPosition = Default.PlanGrabbingPosition;
+    }
 
-        public bool displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
+    public void SetOpacity(PlanDesignationType planDesignationType, float opacity, bool autoSave = true)
+    {
+        foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+            planDesignationSetting.opacity = opacity;
 
-        public bool displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
+        if (autoSave)
+            Write();
+    }
 
-        public bool areDesignationsPersistent = Default.AreDesignationsPersistent;
+    public float GetOpacity(PlanDesignationType planDesignationType)
+    {
+        return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.opacity : 1f;
+    }
 
-        public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
+    public void SetColor(PlanDesignationType planDesignationType, string color, bool autoSave = true)
+    {
+        foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+            planDesignationSetting.color = color;
 
-        public bool useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
+        if (autoSave)
+            Write();
+    }
 
-        public bool alwaysGrabBottom = Default.AlwaysGrabBottom;
+    public string GetColor(PlanDesignationType planDesignationType)
+    {
+        if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+            if (!string.IsNullOrEmpty(planDesignationSetting.color))
+                return planDesignationSetting.color;
 
-        public string paintPlanColor = Default.PaintPlanColor;
+        return ColorDefinitions.DefaultColorName;
+    }
 
-        public StartupPlanVisibility startupPlanVisibility = Default.StartupPlanVisibility;
+    public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet, bool autoSave = true)
+    {
+        foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+            planDesignationSetting.textureSet = textureSet;
 
-        public override void ExposeData()
+        if (autoSave)
+            Write();
+    }
+
+    public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
+    {
+        return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Round;
+    }
+
+    public void SetIsVisible(PlanDesignationType planDesignationType, bool isVisible, bool autoSave = true)
+    {
+        foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
+            planDesignationSetting.isVisible = isVisible;
+
+        if (autoSave)
+            Write();
+    }
+
+    public bool IsInitiallyVisible(PlanDesignationType planDesignationType)
+    {
+        return startupPlanVisibility switch
         {
-            Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
-            Scribe_Values.Look(ref maxUndoOperations, nameof(maxUndoOperations), Default.MaxUndoRedoSteps);
-            Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), Default.DisplayCutDesignator);
-            Scribe_Values.Look(ref displayChangePlanAppearanceDesignator, nameof(displayChangePlanAppearanceDesignator), Default.DisplayChangePlanAppearanceDesignator);
-            Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
-            Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
-            Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
-            Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
-            Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
-            //Scribe_Values.Look(ref alwaysGrabBottom, nameof(alwaysGrabBottom), false);
-            Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
+            StartupPlanVisibility.Visible => true,
+            StartupPlanVisibility.LastSaved => planDesignationSettings.GetValueOrDefault(planDesignationType)?.isVisible ?? true,
+            _ => false,
+        };
+    }
 
-            Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
-            Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
+    public void SetStartupPlanVisibility(StartupPlanVisibility startupPlanVisibility, bool autoSave = true)
+    {
+        this.startupPlanVisibility = startupPlanVisibility;
 
-            if (Scribe.mode == LoadSaveMode.LoadingVars)
-                InitData();
+        if (autoSave)
+            Write();
+    }
 
-            base.ExposeData();
-        }
+    public void AddLastLoadedPlan(string planName, bool autoSave = true)
+    {
+        lastLoadedPlans.RemoveAll(p => p == planName);
+        lastLoadedPlans.Add(planName);
 
-        public void Reset()
+        if (lastLoadedPlans.Count > 10)
+            lastLoadedPlans.RemoveAt(0);
+
+        if (autoSave)
+            Write();
+    }
+
+    public void RemoveLastLoadedPlan(string planName, bool autoSave = true)
+    {
+        lastLoadedPlans.RemoveAll(p => p == planName);
+
+        if (autoSave)
+            Write();
+    }
+
+    void InitData()
+    {
+        lastLoadedPlans ??= [];
+        planDesignationSettings ??= [];
+
+        foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
         {
-            useUndoRedo = Default.UseUndoRedo;
-            maxUndoOperations = Default.MaxUndoRedoSteps;
-            displayCutDesignator = Default.DisplayCutDesignator;
-            displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
-            displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
-            areDesignationsPersistent = Default.AreDesignationsPersistent;
-            useCtrlForColorDialog = Default.UseCtrlForColorDialog;
-            useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
-            alwaysGrabBottom = Default.AlwaysGrabBottom;
+            if (!planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
+            {
+                planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round, true);
+            }
+            else if (startupPlanVisibility != StartupPlanVisibility.LastSaved)
+            {
+                planDesignationSetting.isVisible = startupPlanVisibility == StartupPlanVisibility.Visible;
+            }
         }
+    }
 
-        public void SetOpacity(PlanDesignationType planDesignationType, float opacity, bool autoSave = true)
+    IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
+    {
+        if (planDesignationType == PlanDesignationType.Unknown)
         {
-            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
-                planDesignationSetting.opacity = opacity;
-
-            if (autoSave)
-                Write();
+            foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
+                yield return planDesignationSetting;
         }
-
-        public float GetOpacity(PlanDesignationType planDesignationType)
-        {
-            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.opacity : 1f;
-        }
-
-        public void SetColor(PlanDesignationType planDesignationType, string color, bool autoSave = true)
-        {
-            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
-                planDesignationSetting.color = color;
-
-            if (autoSave)
-                Write();
-        }
-
-        public string GetColor(PlanDesignationType planDesignationType)
+        else
         {
             if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
-                if (!string.IsNullOrEmpty(planDesignationSetting.color))
-                    return planDesignationSetting.color;
-
-            return ColorDefinitions.DefaultColorName;
+                yield return planDesignationSetting;
         }
+    }
 
-        public void SetTextureSet(PlanDesignationType planDesignationType, PlanTextureSet textureSet, bool autoSave = true)
-        {
-            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
-                planDesignationSetting.textureSet = textureSet;
+    class Default
+    {
+        public const bool UseUndoRedo = true;
 
-            if (autoSave)
-                Write();
-        }
+        public const int MaxUndoRedoSteps = 20;
 
-        public PlanTextureSet GetTextureSet(PlanDesignationType planDesignationType)
-        {
-            return planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting) ? planDesignationSetting.textureSet : PlanTextureSet.Round;
-        }
+        public const bool DisplayCutDesignator = true;
 
-        public void SetIsVisible(PlanDesignationType planDesignationType, bool isVisible, bool autoSave = true)
-        {
-            foreach (PlanDesignationSetting planDesignationSetting in GetPlanDesignationSettings(planDesignationType))
-                planDesignationSetting.isVisible = isVisible;
+        public const bool DisplayChangePlanAppearanceDesignator = true;
 
-            if (autoSave)
-                Write();
-        }
+        public const bool DisplayTogglePlanVisibilityDesignator = true;
 
-        public bool IsInitiallyVisible(PlanDesignationType planDesignationType)
-        {
-            return startupPlanVisibility switch
-            {
-                StartupPlanVisibility.Visible => true,
-                StartupPlanVisibility.LastSaved => planDesignationSettings.GetValueOrDefault(planDesignationType)?.isVisible ?? true,
-                _ => false,
-            };
-        }
+        public const bool AreDesignationsPersistent = true;
 
-        public void SetStartupPlanVisibility(StartupPlanVisibility startupPlanVisibility, bool autoSave = true)
-        {
-            this.startupPlanVisibility = startupPlanVisibility;
+        public const PlanGrabbingPosition PlanGrabbingPosition = PlanGrabbingPosition.Center;
 
-            if (autoSave)
-                Write();
-        }
+        public const bool UseCtrlForColorDialog = false;
 
-        public void AddLastLoadedPlan(string planName, bool autoSave = true)
-        {
-            lastLoadedPlans.RemoveAll(p => p == planName);
-            lastLoadedPlans.Add(planName);
+        public const bool UseSkipInsteadOfReplaceAsDefault = false;
 
-            if (lastLoadedPlans.Count > 10)
-                lastLoadedPlans.RemoveAt(0);
+        public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
 
-            if (autoSave)
-                Write();
-        }
-
-        public void RemoveLastLoadedPlan(string planName, bool autoSave = true)
-        {
-            lastLoadedPlans.RemoveAll(p => p == planName);
-
-            if (autoSave)
-                Write();
-        }
-
-        void InitData()
-        {
-            lastLoadedPlans ??= [];
-            planDesignationSettings ??= [];
-
-            foreach (PlanDesignationType planDesignationType in PlanDesignationUtilities.GetPlanDesignationTypes())
-            {
-                if (!planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
-                {
-                    planDesignationSettings[planDesignationType] = new PlanDesignationSetting(1f, "", PlanTextureSet.Round, true);
-                }
-                else if (startupPlanVisibility != StartupPlanVisibility.LastSaved)
-                {
-                    planDesignationSetting.isVisible = startupPlanVisibility == StartupPlanVisibility.Visible;
-                }
-            }
-        }
-
-        IEnumerable<PlanDesignationSetting> GetPlanDesignationSettings(PlanDesignationType planDesignationType)
-        {
-            if (planDesignationType == PlanDesignationType.Unknown)
-            {
-                foreach (PlanDesignationSetting planDesignationSetting in planDesignationSettings.Values)
-                    yield return planDesignationSetting;
-            }
-            else
-            {
-                if (planDesignationSettings.TryGetValue(planDesignationType, out PlanDesignationSetting planDesignationSetting))
-                    yield return planDesignationSetting;
-            }
-        }
-
-        class Default
-        {
-            public const bool UseUndoRedo = true;
-
-            public const int MaxUndoRedoSteps = 20;
-
-            public const bool DisplayCutDesignator = true;
-
-            public const bool DisplayChangePlanAppearanceDesignator = true;
-
-            public const bool DisplayTogglePlanVisibilityDesignator = true;
-
-            public const bool AreDesignationsPersistent = true;
-
-            public const bool AlwaysGrabBottom = false;
-
-            public const bool UseCtrlForColorDialog = false;
-
-            public const bool UseSkipInsteadOfReplaceAsDefault = false;
-
-            public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
-
-            public const StartupPlanVisibility StartupPlanVisibility = PlanningExtended.StartupPlanVisibility.Visible;
-        }
+        public const StartupPlanVisibility StartupPlanVisibility = StartupPlanVisibility.Visible;
     }
 }

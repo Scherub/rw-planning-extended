@@ -1,6 +1,5 @@
-﻿namespace PlanningExtended.Shapes.Modifiers.Content
+﻿namespace PlanningExtended.Shapes.Modifiers.Content;
+
+internal class FillShapeModifier
 {
-    internal class FillShapeModifier
-    {
-    }
 }

@@ -1,23 +1,22 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum PlanDesignationType
 {
-    public enum PlanDesignationType
-    {
-        Unknown,
+    Unknown,
 
-        PlanWall,
+    PlanWall,
 
-        PlanWallColored,
+    PlanWallColored,
 
-        PlanDoors,
+    PlanDoors,
 
-        PlanDoorsColored,
+    PlanDoorsColored,
 
-        PlanObjects,
+    PlanObjects,
 
-        PlanObjectsColored,
+    PlanObjectsColored,
 
-        PlanFloors,
-        
-        PlanFloorsColored
-    }
+    PlanFloors,
+    
+    PlanFloorsColored
 }

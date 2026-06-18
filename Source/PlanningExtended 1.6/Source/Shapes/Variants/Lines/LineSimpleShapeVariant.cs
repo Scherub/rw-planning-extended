@@ -1,15 +1,14 @@
 ﻿using PlanningExtended.Shapes.Generators;
 using PlanningExtended.Shapes.Modifiers.Dimensions;
 
-namespace PlanningExtended.Shapes.Variants.Lines
-{
-    internal class LineSimpleShapeVariant : BaseShapeGeneratorVariant<LineSimpleGenerator>
-    {
-        public override ShapeVariant ShapeVariant => ShapeVariant.LineSimple;
+namespace PlanningExtended.Shapes.Variants.Lines;
 
-        public LineSimpleShapeVariant()
-            : base(new LineSimpleShapeModifier(), new LineSimpleGenerator())
-        {
-        }
+internal class LineSimpleShapeVariant : BaseShapeGeneratorVariant<LineSimpleGenerator>
+{
+    public override ShapeVariant ShapeVariant => ShapeVariant.LineSimple;
+
+    public LineSimpleShapeVariant()
+        : base(new LineSimpleShapeModifier(), new LineSimpleGenerator(false))
+    {
     }
 }

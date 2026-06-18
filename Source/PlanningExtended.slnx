@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="PlanningExtended 1.4/PlanningExtended 1.4.csproj" />
+  <Project Path="PlanningExtended 1.5/PlanningExtended 1.5.csproj" />
+  <Project Path="PlanningExtended 1.6/PlanningExtended 1.6.csproj" />
+</Solution>

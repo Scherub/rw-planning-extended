@@ -1,55 +1,54 @@
 ﻿using System;
 using Verse;
 
-namespace PlanningExtended.Plans
+namespace PlanningExtended.Plans;
+
+public class PlanInfo : IExposable
 {
-    public class PlanInfo : IExposable
+    string name;
+    public string Name => name;
+
+    public string fileName;
+
+    public DateTime created;
+    public DateTime Created => created;
+
+    PlanLayout planLayout;
+    public PlanLayout PlanLayout => planLayout;
+
+    public PlanInfo()
     {
-        string name;
-        public string Name => name;
+    }
 
-        public string fileName;
+    public PlanInfo(string name, DateTime created, PlanLayout planLayout)
+    {
+        this.name = name;
+        this.created = created;
+        this.planLayout = planLayout;
+    }
 
-        public DateTime created;
-        public DateTime Created => created;
+    public void ExposeData()
+    {
+        Scribe_Values.Look(ref name, nameof(Name));
+        ExposeDateTime(ref created, nameof(Created));
+        Scribe_Deep.Look(ref planLayout, nameof(PlanLayout));
+    }
 
-        PlanLayout planLayout;
-        public PlanLayout PlanLayout => planLayout;
-
-        public PlanInfo()
+    void ExposeDateTime(ref DateTime dateTime, string label)
+    {
+        if (Scribe.mode == LoadSaveMode.LoadingVars)
         {
+            long ticks = dateTime.Ticks;
+
+            Scribe_Values.Look(ref ticks, label);
+
+            created = new(ticks);
         }
-
-        public PlanInfo(string name, DateTime created, PlanLayout planLayout)
+        else if (Scribe.mode == LoadSaveMode.Saving)
         {
-            this.name = name;
-            this.created = created;
-            this.planLayout = planLayout;
-        }
+            long ticks = created.Ticks;
 
-        public void ExposeData()
-        {
-            Scribe_Values.Look(ref name, nameof(Name));
-            ExposeDateTime(ref created, nameof(Created));
-            Scribe_Deep.Look(ref planLayout, nameof(PlanLayout));
-        }
-
-        void ExposeDateTime(ref DateTime dateTime, string label)
-        {
-            if (Scribe.mode == LoadSaveMode.LoadingVars)
-            {
-                long ticks = dateTime.Ticks;
-
-                Scribe_Values.Look(ref ticks, label);
-
-                created = new(ticks);
-            }
-            else if (Scribe.mode == LoadSaveMode.Saving)
-            {
-                long ticks = created.Ticks;
-
-                Scribe_Values.Look(ref ticks, label);
-            }
+            Scribe_Values.Look(ref ticks, label);
         }
     }
 }

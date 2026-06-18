@@ -1,11 +1,10 @@
-﻿namespace PlanningExtended
+﻿namespace PlanningExtended;
+
+public enum ShapeOptionDirection
 {
-    public enum ShapeOptionDirection
-    {
-        None,
+    None,
 
-        Left,
+    Left,
 
-        Right
-    }
+    Right
 }

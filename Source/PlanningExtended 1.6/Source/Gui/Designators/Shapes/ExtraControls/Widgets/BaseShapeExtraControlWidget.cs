@@ -5,40 +5,39 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls
+namespace PlanningExtended.Gui.Designators.Shapes.ExtraControls;
+
+internal abstract class BaseShapeExtraControlWidget
 {
-    internal abstract class BaseShapeExtraControlWidget
+    public abstract ShapeDisplayOptions ShapeDisplayOption { get; }
+
+    public abstract ShapeOptions ShapeOption { get; }
+
+    public abstract float RequiredHeight { get; }
+
+    public void Draw(Rect widgetRect, BaseShape shape)
     {
-        public abstract ShapeDisplayOptions ShapeDisplayOption { get; }
+        if (shape.SelectedShapeVariant == null)
+            return;
 
-        public abstract ShapeOptions ShapeOption { get; }
+        TextAnchor originalAnchor = Text.Anchor;
+        GameFont originalFont = Text.Font;
 
-        public abstract float RequiredHeight { get; }
+        OnDraw(widgetRect, shape);
 
-        public void Draw(Rect widgetRect, BaseShape shape)
+        Text.Anchor = originalAnchor;
+        Text.Font = originalFont;
+    }
+
+    protected abstract void OnDraw(Rect widgetRect, BaseShape shape);
+
+    protected void HandleShapeOptionDirection(BaseShapeVariant shapeVariant, ShapeOptionDirection shapeOptionDirection)
+    {
+        if (shapeOptionDirection != ShapeOptionDirection.None)
         {
-            if (shape.SelectedShapeVariant == null)
-                return;
+            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
 
-            TextAnchor originalAnchor = Text.Anchor;
-            GameFont originalFont = Text.Font;
-
-            OnDraw(widgetRect, shape);
-
-            Text.Anchor = originalAnchor;
-            Text.Font = originalFont;
-        }
-
-        protected abstract void OnDraw(Rect widgetRect, BaseShape shape);
-
-        protected void HandleShapeOptionDirection(BaseShapeVariant shapeVariant, ShapeOptionDirection shapeOptionDirection)
-        {
-            if (shapeOptionDirection != ShapeOptionDirection.None)
-            {
-                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-
-                shapeVariant?.ShapeFeatureManager.ChangeShapeOption(ShapeOption, shapeOptionDirection);
-            }
+            shapeVariant?.ShapeFeatureManager.ChangeShapeOption(ShapeOption, shapeOptionDirection);
         }
     }
 }
