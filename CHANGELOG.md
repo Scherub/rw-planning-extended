@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.17.0
+- Added support for different plan grabbing positions when pasting a plan, defaults to center
+- Added support for drawing a plan from a center point, default key binding is the ALT key
+- Added new shapes and shape variants
+  - Padded Line Variant: Can be used to draw closed walls that are neither horizontal nor vertical
+  - Rounded Rectangle: A rectangle with rounded corners, provides Outline and Filled variants
+  - Fill Shape: Can be used to fill an enclosed area with the selected plan tiles
+  - Fill Color Shape: Clicking on a single plan tile will paint all connected plan tiles of the same color with the selected color
+    - Fill Color All Variant: Will recolor all tiles independent of the clicked plan tile type
+    - Fill Color Same Variant: Will recolor only tiles of the same plan tile type
+- Changed key bindings of Replace / Skip plan mode to B key
+- Changed mouse attached text when adding or painting a plan to support the new options
+- Improved the diagonal line snapping
+- Improved shape modifier re-calculation to only apply when necessary
+- Fixed Shape update not applying when pressing / releasing shape modifier key without changing the dragged area
+- Fixed usage of DrawStyleCategory in Designator
+  - Fixes dragging on designators where it is not supposed to happen, such as `PastePlanDesignator`
+  - Fixes creating two undo-redo operations when using the `PastePlanDesignator`
+
 ## 1.16.0
 - Added saving and restoring plan visibility per plan type
 - Added option to set default plan visibility on startup (visible, invisible, last saved)

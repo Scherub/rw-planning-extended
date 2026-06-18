@@ -3,21 +3,24 @@
   <packageId>Scherub.PlanningExtended</packageId>
   <name>Planning Extended</name>
   <author>Scherub</author>
-  <modVersion IgnoreIfNoMatchingField="True">1.16.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.17.0</modVersion>
   <description>This mod adds a more advanced planning menu.
 
 Features
 
 - Draw colored designations, such as walls, doors, objects and floors
-- Optionally skip (don't overwrite) already placed plan designations
-- Use different shapes, e.g. points, lines, triangles, rectangles, hexagons, octagons
+- Use different shapes, e.g. points, lines, triangles, rectangles, grids, pentagons, hexagons, octagons, ellipses
+- Start drawing from a center point, instead of always from the corner
+- Fill an enclosed planned area with plan designations
+- Paint over existing plan designations, or just (fill) paint all at once with a single click
+- Decide to replace or skip already placed plan designations
+- Keep plan designations even after mining or building over them
 - Load / Save plan blueprints, quickly select last loaded plans
-- Cut / Copy / Paste your plans
-- Undo / Redo your planned actions
-- Show / Hide your planning designations (incl. global shortcut)
+- Cut / Copy / Paste your plans, also rotate or flip them
+- Undo / Redo planned actions
+- Show / Hide planning designations (incl. global shortcut)
 - Change plan texture sets and opacity for each plan type individually
-- Convert your plans from vanilla RimWorld or MorePlanning mod
-- More coming soon</description>
+- Convert your plan from vanilla Rimworld or MorePlanning mod</description>
   <supportedVersions>
     <li>1.4</li>
     <li>1.5</li>
