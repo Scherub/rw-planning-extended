@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>PlanningExtended</RootNamespace>
+		<AssemblyName>PlanningExtended</AssemblyName>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<ModDirectory>$(SolutionDir)..\1.7\Assemblies\</ModDirectory>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants);RIMWORLD_1_7</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DefineConstants>$(DefineConstants);RIMWORLD_1_7</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.7.4977-alpha.1" />
+		<PackageReference Include="Lib.Harmony" Version="3.0.0-rc.2" />
+	</ItemGroup>
+
+	<!-- Source files are shared with the v1.6 project. Exclude a file here and add a version-specific copy to this project if it needs to diverge. -->
+	<ItemGroup>
+		<Compile Include="..\PlanningExtended 1.6\Source\**\*.cs" Link="Source\%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<Target Name="CopyAssemblyToModDirectory" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModDirectory)" />
+		<Message Importance="high" Text="Copied '$(TargetFileName)' to '$(ModDirectory).'" />
+	</Target>
+
+</Project>

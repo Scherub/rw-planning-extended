@@ -6,6 +6,9 @@
 		<RootNamespace>PlanningExtended</RootNamespace>
 		<AssemblyName>PlanningExtended</AssemblyName>
 		<ModDirectory>$(SolutionDir)..\1.4\Assemblies\</ModDirectory>
+		<!-- Archived version: frozen at the last release. -->
+		<LangVersion>12.0</LangVersion>
+		<Version>1.12.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

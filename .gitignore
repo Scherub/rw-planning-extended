@@ -120,3 +120,5 @@ UpgradeLog*.htm
 
 *.bat
 *.dll
+!1.4/Assemblies/*.dll
+!1.5/Assemblies/*.dll
