@@ -23,6 +23,12 @@ public class PlanningMod : Mod
         Harmony harmony = new("scherub.planningextended");
         harmony.PatchAll();
 
+#if RIMWORLD_1_6
+        Log.Message("[Planning Extended] Loaded v1.6 assembly");
+#elif RIMWORLD_1_7
+        Log.Message("[Planning Extended] Loaded v1.7 assembly");
+#endif
+
         //DefsUpdater.UpdateDefs();
     }
 
