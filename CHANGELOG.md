@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.18.0
+- Added support for RimWorld v1.7
+- Archived v1.4, v1.5 versions
+
 ## 1.17.0
 - Added support for different plan grabbing positions when pasting a plan, defaults to center
 - Added support for drawing a plan from a center point, default key binding is the ALT key
