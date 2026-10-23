@@ -99,6 +99,9 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Display Change Plan Appearance Designator</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>If enabled, the change plan appearance designator button is visible. If disabled, it is not.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Display Vanilla Plan Designators</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>If enabled, the vanilla add plan and remove plan designator buttons are visible. If disabled, they are not.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent Plans</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>If enabled, plans stay after a task has been finished on the same cell. Otherwise, they will be removed.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 

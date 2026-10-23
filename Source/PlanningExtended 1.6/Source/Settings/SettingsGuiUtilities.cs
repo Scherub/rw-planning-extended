@@ -51,6 +51,8 @@ public static class SettingsGuiUtilities
 
         listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Label".Translate(), ref settings.displayTogglePlanVisibilityDesignator, "PlanningExtended.Settings.DisplayTogglePlanVisibilityDesignator.Desc".Translate());
 
+        listingStandard.CheckboxLabeled("PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label".Translate(), ref settings.displayVanillaPlanDesignators, "PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc".Translate());
+
         listingStandard.CheckboxLabeled("PlanningExtended.Settings.UseCtrlForColorDialog.Label".Translate(), ref settings.useCtrlForColorDialog, "PlanningExtended.Settings.UseCtrlForColorDialog.Desc".Translate());
 
         listingStandard.CheckboxLabeled("PlanningExtended.Settings.ArePlansPersistent.Label".Translate(), ref settings.areDesignationsPersistent, "PlanningExtended.Settings.ArePlansPersistent.Desc".Translate());

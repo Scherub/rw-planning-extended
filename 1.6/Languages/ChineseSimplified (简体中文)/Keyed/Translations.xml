@@ -99,6 +99,9 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>显示更改规划外观按钮</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>如果启用，更改规划外观按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>显示原版规划按钮</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>如果启用，原版的添加规划和移除规划按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>规划持久化</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>如果启用，在同一单元格上的任务完成后，规划将保留。否则，它们将被移除。</PlanningExtended.Settings.ArePlansPersistent.Desc>
 

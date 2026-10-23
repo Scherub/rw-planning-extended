@@ -99,6 +99,9 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Mostrar Designador de Cambio de Apariencia de Planes</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Si está habilitado, el botón del designador de cambio de apariencia de planes es visible. Si no, no lo es.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Mostrar Designadores de Planes Vanilla</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>Si está habilitado, los botones de los designadores vanilla para añadir y eliminar planes son visibles. Si no, no lo son.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Planes Persistentes</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Si está habilitado, los planes permanecen después de que una tarea ha sido terminada en la misma celda. De lo contrario, serán eliminados.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 

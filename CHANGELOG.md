@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Added option to show or hide the vanilla Add Plan and Remove Plan designators, hidden by default
+
 ## 1.18.0
 - Added support for RimWorld v1.7
 - Archived v1.4, v1.5 versions
@@ -165,3 +168,4 @@
 - Use different shapes, e.g. rectangle, area, cross
 - Copy / Cut / Paste your plans
 - Undo / Redo your planned actions
+

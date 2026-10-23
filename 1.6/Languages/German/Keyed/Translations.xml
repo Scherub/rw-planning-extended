@@ -99,6 +99,9 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Button Planaussehen anzeigen</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Wenn aktiviert, wird der Button für das Planaussehen angezeigt. Andernfalls nicht.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Vanilla Plan-Buttons anzeigen</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>Wenn aktiviert, werden die Vanilla-Buttons zum Hinzufügen und Entfernen von Plänen angezeigt. Andernfalls nicht.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistente Pläne</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Wenn aktiviert, bleiben Pläne bestehen, nachdem auf der selben Zelle eine Aufgabe beendet wurde. Andernfalls werden sie entfernt.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 

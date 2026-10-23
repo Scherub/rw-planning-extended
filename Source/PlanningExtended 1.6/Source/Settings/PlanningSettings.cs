@@ -21,6 +21,8 @@ public class PlanningSettings : ModSettings
 
     public bool displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
 
+    public bool displayVanillaPlanDesignators = Default.DisplayVanillaPlanDesignators;
+
     public bool areDesignationsPersistent = Default.AreDesignationsPersistent;
 
     public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
@@ -40,6 +42,7 @@ public class PlanningSettings : ModSettings
         Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), Default.DisplayCutDesignator);
         Scribe_Values.Look(ref displayChangePlanAppearanceDesignator, nameof(displayChangePlanAppearanceDesignator), Default.DisplayChangePlanAppearanceDesignator);
         Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
+        Scribe_Values.Look(ref displayVanillaPlanDesignators, nameof(displayVanillaPlanDesignators), Default.DisplayVanillaPlanDesignators);
         Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
         Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
         Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
@@ -63,6 +66,7 @@ public class PlanningSettings : ModSettings
         displayCutDesignator = Default.DisplayCutDesignator;
         displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
         displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
+        displayVanillaPlanDesignators = Default.DisplayVanillaPlanDesignators;
         areDesignationsPersistent = Default.AreDesignationsPersistent;
         useCtrlForColorDialog = Default.UseCtrlForColorDialog;
         useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
@@ -205,6 +209,8 @@ public class PlanningSettings : ModSettings
         public const bool DisplayChangePlanAppearanceDesignator = true;
 
         public const bool DisplayTogglePlanVisibilityDesignator = true;
+
+        public const bool DisplayVanillaPlanDesignators = false;
 
         public const bool AreDesignationsPersistent = true;
 

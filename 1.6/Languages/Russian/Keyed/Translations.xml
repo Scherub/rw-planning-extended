@@ -99,6 +99,9 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Показать кнопку внешнего вида плана</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Определяет, будет ли видна кнопка указателя внешнего вида плана.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Показать стандартные кнопки планирования</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>Определяет, будут ли видны стандартные кнопки добавления и удаления плана.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Постоянные планы</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Определяет, остаются ли планы после завершения задачи в той же ячейке.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 
