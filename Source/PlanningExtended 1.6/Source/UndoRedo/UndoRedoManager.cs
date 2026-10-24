@@ -78,6 +78,17 @@ public static class UndoRedoManager
         //LogText($"Added to Undo: {undoPlanLayout} - {redoPlanLayout}");
     }
 
+    public static void Clear()
+    {
+        if (!CanUndo && !CanRedo)
+            return;
+
+        _undoSnapshots.Clear();
+        _redoSnapshots.Clear();
+
+        OnChanged?.Invoke();
+    }
+
     static void ClearUndoSteps()
     {
         while (_undoSnapshots.Count > MaxUndoOperations)

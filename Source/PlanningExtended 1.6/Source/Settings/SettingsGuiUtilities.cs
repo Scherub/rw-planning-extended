@@ -12,9 +12,13 @@ namespace PlanningExtended.Settings;
 
 public static class SettingsGuiUtilities
 {
-    static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = [.. Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>()];
+    static readonly List<StartupPlanVisibility> startupPlanVisibilityValues = Enum.GetValues(typeof(StartupPlanVisibility)).Cast<StartupPlanVisibility>().ToList();
 
     static readonly List<PlanGrabbingPosition> planGrabbingPositionValues = Enum.GetValues(typeof(PlanGrabbingPosition)).Cast<PlanGrabbingPosition>().ToList();
+
+    static readonly List<GravshipPlanTransferArea> gravshipPlanTransferAreaValues = Enum.GetValues(typeof(GravshipPlanTransferArea)).Cast<GravshipPlanTransferArea>().ToList();
+
+    static readonly List<GravshipLandingPlanMode> gravshipLandingPlanModeValues = Enum.GetValues(typeof(GravshipLandingPlanMode)).Cast<GravshipLandingPlanMode>().ToList();
 
     public static void DisplaySettings(PlanningSettings settings, Rect inRect)
     {
@@ -125,10 +129,36 @@ public static class SettingsGuiUtilities
             listingStandard.SubLabel(PlanFilePaths.PlanFolderPath, 0.6f);
         }
 
+        if (ModsConfig.OdysseyActive)
+            DisplayGravshipSettings(settings, listingStandard);
+
         //listingStandard.EndSubSection();
 
         //listingStandard.Heading("ResetButton".Translate());
 
         listingStandard.End();
+    }
+
+    static void DisplayGravshipSettings(PlanningSettings settings, Listing_Standard listingStandard)
+    {
+        listingStandard.Gap(12f);
+
+        listingStandard.Heading("PlanningExtended.Settings.Gravship.Label".Translate());
+
+        if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.GravshipPlanTransferArea.Label".Translate(), settings.gravshipPlanTransferArea.Translate(), tooltip: "PlanningExtended.Settings.GravshipPlanTransferArea.Desc".Translate()))
+        {
+            var options = gravshipPlanTransferAreaValues.Select(v => new FloatMenuOption(v.Translate(), () => { PlanningMod.Settings.gravshipPlanTransferArea = v; PlanningMod.Settings.Write(); })).ToList();
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        if (listingStandard.ButtonTextLabeled("PlanningExtended.Settings.GravshipLandingPlanMode.Label".Translate(), settings.gravshipLandingPlanMode.Translate(), tooltip: "PlanningExtended.Settings.GravshipLandingPlanMode.Desc".Translate()))
+        {
+            var options = gravshipLandingPlanModeValues.Select(v => new FloatMenuOption(v.Translate(), () => { PlanningMod.Settings.gravshipLandingPlanMode = v; PlanningMod.Settings.Write(); })).ToList();
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        listingStandard.CheckboxLabeled("PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label".Translate(), ref settings.keepGravshipRangePlansOnTakeoff, "PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc".Translate());
     }
 }

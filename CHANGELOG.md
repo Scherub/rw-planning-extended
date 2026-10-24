@@ -2,6 +2,11 @@
 
 ## Unreleased
 - Added option to show or hide the vanilla Add Plan and Remove Plan designators, hidden by default
+- Added transferring plans with a gravship to a new map (Odyssey)
+  - Option to transfer plans on the substructure only (default) or all plans within gravship range
+  - Option to clear (default) or overwrite existing plans at the landing site
+  - Option to keep plans outside the substructure at the takeoff site when transferring the gravship range (default)
+  - All plans within gravship range are copied to the planning clipboard on landing
 
 ## 1.18.0
 - Added support for RimWorld v1.7

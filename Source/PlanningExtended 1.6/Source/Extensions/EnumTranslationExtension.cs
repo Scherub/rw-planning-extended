@@ -25,6 +25,16 @@ internal static class EnumTranslationExtension
         return planGrabbingPosition.Translate(nameof(PlanGrabbingPosition));
     }
 
+    public static string Translate(this GravshipPlanTransferArea gravshipPlanTransferArea)
+    {
+        return gravshipPlanTransferArea.Translate(nameof(GravshipPlanTransferArea));
+    }
+
+    public static string Translate(this GravshipLandingPlanMode gravshipLandingPlanMode)
+    {
+        return gravshipLandingPlanMode.Translate(nameof(GravshipLandingPlanMode));
+    }
+
     public static string Translate(this Shape shape)
     {
         return shape.Translate("Shapes");

@@ -102,6 +102,17 @@
   <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>显示原版规划按钮</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
   <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>如果启用，原版的添加规划和移除规划按钮可见。如果禁用，则不可见。</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
 
+  <PlanningExtended.Settings.Gravship.Label>重力飞船</PlanningExtended.Settings.Gravship.Label>
+
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Label>要转移的规划</PlanningExtended.Settings.GravshipPlanTransferArea.Label>
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Desc>决定哪些规划随重力飞船一起移动。\n\n底层结构：仅底层结构上的规划。\n重力飞船范围：重力引擎和重力场扩展器范围内的所有规划。</PlanningExtended.Settings.GravshipPlanTransferArea.Desc>
+
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Label>着陆点的现有规划</PlanningExtended.Settings.GravshipLandingPlanMode.Label>
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Desc>清除：在放置重力飞船的规划之前，移除着陆区域内的现有规划。\n覆盖：仅在重力飞船带来规划的位置替换现有规划。</PlanningExtended.Settings.GravshipLandingPlanMode.Desc>
+
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>起飞时保留底层结构外的规划</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>仅适用于重力飞船范围。如果启用，范围内不在底层结构上的规划会被复制，并保留在起飞地点。否则会被移动。</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>规划持久化</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>如果启用，在同一单元格上的任务完成后，规划将保留。否则，它们将被移除。</PlanningExtended.Settings.ArePlansPersistent.Desc>
 
@@ -193,5 +204,13 @@
   <PlanningExtended.PlanGrabbingPosition.TopRight>右上</PlanningExtended.PlanGrabbingPosition.TopRight>
   <PlanningExtended.PlanGrabbingPosition.BottomLeft>左下</PlanningExtended.PlanGrabbingPosition.BottomLeft>
   <PlanningExtended.PlanGrabbingPosition.BottomRight>右下</PlanningExtended.PlanGrabbingPosition.BottomRight>
+
+  <PlanningExtended.GravshipPlanTransferArea.Substructure>底层结构</PlanningExtended.GravshipPlanTransferArea.Substructure>
+  <PlanningExtended.GravshipPlanTransferArea.GravshipRange>重力飞船范围</PlanningExtended.GravshipPlanTransferArea.GravshipRange>
+
+  <PlanningExtended.GravshipLandingPlanMode.Clear>清除</PlanningExtended.GravshipLandingPlanMode.Clear>
+  <PlanningExtended.GravshipLandingPlanMode.Overwrite>覆盖</PlanningExtended.GravshipLandingPlanMode.Overwrite>
+
+  <PlanningExtended.GravshipPlansCopied>重力飞船范围内的所有规划已复制到规划剪贴板。</PlanningExtended.GravshipPlansCopied>
 
 </LanguageData>

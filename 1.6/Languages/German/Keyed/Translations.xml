@@ -102,6 +102,17 @@
   <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Vanilla Plan-Buttons anzeigen</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
   <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>Wenn aktiviert, werden die Vanilla-Buttons zum Hinzufügen und Entfernen von Plänen angezeigt. Andernfalls nicht.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
 
+  <PlanningExtended.Settings.Gravship.Label>Gravschiff</PlanningExtended.Settings.Gravship.Label>
+
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Label>Zu übertragende Pläne</PlanningExtended.Settings.GravshipPlanTransferArea.Label>
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Desc>Bestimmt, welche Pläne mit einem Gravschiff reisen.\n\nSubstruktur: Nur Pläne auf der Substruktur.\nGravschiff-Reichweite: Alle Pläne in Reichweite des Gravantriebs und der Gravfeld-Erweiterer.</PlanningExtended.Settings.GravshipPlanTransferArea.Desc>
+
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Label>Bestehende Pläne am Landeplatz</PlanningExtended.Settings.GravshipLandingPlanMode.Label>
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Desc>Entfernen: Bestehende Pläne im Landebereich werden entfernt, bevor die Pläne des Gravschiffs platziert werden.\nÜberschreiben: Bestehende Pläne werden nur dort ersetzt, wo das Gravschiff einen Plan mitbringt.</PlanningExtended.Settings.GravshipLandingPlanMode.Desc>
+
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>Pläne außerhalb der Substruktur beim Start behalten</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>Gilt nur für Gravschiff-Reichweite. Wenn aktiviert, werden Pläne in Reichweite, die nicht auf der Substruktur liegen, kopiert und bleiben auch am Startplatz. Andernfalls werden sie verschoben.</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistente Pläne</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Wenn aktiviert, bleiben Pläne bestehen, nachdem auf der selben Zelle eine Aufgabe beendet wurde. Andernfalls werden sie entfernt.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 
@@ -193,5 +204,13 @@
   <PlanningExtended.PlanGrabbingPosition.TopRight>Oben Rechts</PlanningExtended.PlanGrabbingPosition.TopRight>
   <PlanningExtended.PlanGrabbingPosition.BottomLeft>Unten Links</PlanningExtended.PlanGrabbingPosition.BottomLeft>
   <PlanningExtended.PlanGrabbingPosition.BottomRight>Unten Rechts</PlanningExtended.PlanGrabbingPosition.BottomRight>
+
+  <PlanningExtended.GravshipPlanTransferArea.Substructure>Substruktur</PlanningExtended.GravshipPlanTransferArea.Substructure>
+  <PlanningExtended.GravshipPlanTransferArea.GravshipRange>Gravschiff-Reichweite</PlanningExtended.GravshipPlanTransferArea.GravshipRange>
+
+  <PlanningExtended.GravshipLandingPlanMode.Clear>Entfernen</PlanningExtended.GravshipLandingPlanMode.Clear>
+  <PlanningExtended.GravshipLandingPlanMode.Overwrite>Überschreiben</PlanningExtended.GravshipLandingPlanMode.Overwrite>
+
+  <PlanningExtended.GravshipPlansCopied>Alle Pläne in Gravschiff-Reichweite wurden in die Planungs-Zwischenablage kopiert.</PlanningExtended.GravshipPlansCopied>
 
 </LanguageData>
