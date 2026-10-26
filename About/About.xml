@@ -3,7 +3,7 @@
   <packageId>Scherub.PlanningExtended</packageId>
   <name>Planning Extended</name>
   <author>Scherub</author>
-  <modVersion IgnoreIfNoMatchingField="True">1.18.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.19.0</modVersion>
   <description>This mod adds a more advanced planning menu.
 
 Features
@@ -15,6 +15,7 @@ Features
 - Paint over existing plan designations, or just (fill) paint all at once with a single click
 - Decide to replace or skip already placed plan designations
 - Keep plan designations even after mining or building over them
+- Plans move with gravships (Odyssey)
 - Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans, also rotate or flip them
 - Undo / Redo planned actions
