@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <!-- Same as the vanilla filled rectangle, but the outline and cell count are drawn by the shape designators, as they know the actual shape. -->
+  <DrawStyleDef>
+    <defName>PlanningExtended_Shape</defName>
+    <label>shape</label>
+    <uiIconPath>UI/Widgets/DrawStyles/RectangleFilled</uiIconPath>
+    <drawStyleType>DrawStyle_FilledRectangle</drawStyleType>
+    <drawOutline>false</drawOutline>
+    <drawArea>false</drawArea>
+  </DrawStyleDef>
+
+  <DrawStyleCategoryDef>
+    <defName>PlanningExtended_Shape</defName>
+    <styles>
+      <li>PlanningExtended_Shape</li>
+    </styles>
+  </DrawStyleCategoryDef>
+
+</Defs>

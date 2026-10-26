@@ -21,6 +21,8 @@ public class PlanningSettings : ModSettings
 
     public bool displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
 
+    public bool displayVanillaPlanDesignators = Default.DisplayVanillaPlanDesignators;
+
     public bool areDesignationsPersistent = Default.AreDesignationsPersistent;
 
     public bool useCtrlForColorDialog = Default.UseCtrlForColorDialog;
@@ -33,6 +35,12 @@ public class PlanningSettings : ModSettings
 
     public StartupPlanVisibility startupPlanVisibility = Default.StartupPlanVisibility;
 
+    public GravshipPlanTransferArea gravshipPlanTransferArea = Default.GravshipPlanTransferArea;
+
+    public GravshipLandingPlanMode gravshipLandingPlanMode = Default.GravshipLandingPlanMode;
+
+    public bool keepGravshipRangePlansOnTakeoff = Default.KeepGravshipRangePlansOnTakeoff;
+
     public override void ExposeData()
     {
         Scribe_Values.Look(ref useUndoRedo, nameof(useUndoRedo), Default.UseUndoRedo);
@@ -40,12 +48,16 @@ public class PlanningSettings : ModSettings
         Scribe_Values.Look(ref displayCutDesignator, nameof(displayCutDesignator), Default.DisplayCutDesignator);
         Scribe_Values.Look(ref displayChangePlanAppearanceDesignator, nameof(displayChangePlanAppearanceDesignator), Default.DisplayChangePlanAppearanceDesignator);
         Scribe_Values.Look(ref displayTogglePlanVisibilityDesignator, nameof(displayTogglePlanVisibilityDesignator), Default.DisplayTogglePlanVisibilityDesignator);
+        Scribe_Values.Look(ref displayVanillaPlanDesignators, nameof(displayVanillaPlanDesignators), Default.DisplayVanillaPlanDesignators);
         Scribe_Values.Look(ref areDesignationsPersistent, nameof(areDesignationsPersistent), Default.AreDesignationsPersistent);
         Scribe_Values.Look(ref useCtrlForColorDialog, nameof(useCtrlForColorDialog), Default.UseCtrlForColorDialog);
         Scribe_Values.Look(ref useSkipInsteadOfReplaceAsDefault, nameof(useSkipInsteadOfReplaceAsDefault), Default.UseSkipInsteadOfReplaceAsDefault);
         Scribe_Values.Look(ref paintPlanColor, nameof(paintPlanColor), Default.PaintPlanColor);
         Scribe_Values.Look(ref planGrabbingPosition, nameof(planGrabbingPosition), Default.PlanGrabbingPosition);
         Scribe_Values.Look(ref startupPlanVisibility, nameof(startupPlanVisibility), Default.StartupPlanVisibility);
+        Scribe_Values.Look(ref gravshipPlanTransferArea, nameof(gravshipPlanTransferArea), Default.GravshipPlanTransferArea);
+        Scribe_Values.Look(ref gravshipLandingPlanMode, nameof(gravshipLandingPlanMode), Default.GravshipLandingPlanMode);
+        Scribe_Values.Look(ref keepGravshipRangePlansOnTakeoff, nameof(keepGravshipRangePlansOnTakeoff), Default.KeepGravshipRangePlansOnTakeoff);
 
         Scribe_Collections.Look(ref lastLoadedPlans, nameof(lastLoadedPlans));
         Scribe_Collections.Look(ref planDesignationSettings, nameof(planDesignationSettings), LookMode.Value, LookMode.Deep);
@@ -63,10 +75,14 @@ public class PlanningSettings : ModSettings
         displayCutDesignator = Default.DisplayCutDesignator;
         displayChangePlanAppearanceDesignator = Default.DisplayChangePlanAppearanceDesignator;
         displayTogglePlanVisibilityDesignator = Default.DisplayTogglePlanVisibilityDesignator;
+        displayVanillaPlanDesignators = Default.DisplayVanillaPlanDesignators;
         areDesignationsPersistent = Default.AreDesignationsPersistent;
         useCtrlForColorDialog = Default.UseCtrlForColorDialog;
         useSkipInsteadOfReplaceAsDefault = Default.UseSkipInsteadOfReplaceAsDefault;
         planGrabbingPosition = Default.PlanGrabbingPosition;
+        gravshipPlanTransferArea = Default.GravshipPlanTransferArea;
+        gravshipLandingPlanMode = Default.GravshipLandingPlanMode;
+        keepGravshipRangePlansOnTakeoff = Default.KeepGravshipRangePlansOnTakeoff;
     }
 
     public void SetOpacity(PlanDesignationType planDesignationType, float opacity, bool autoSave = true)
@@ -206,6 +222,8 @@ public class PlanningSettings : ModSettings
 
         public const bool DisplayTogglePlanVisibilityDesignator = true;
 
+        public const bool DisplayVanillaPlanDesignators = false;
+
         public const bool AreDesignationsPersistent = true;
 
         public const PlanGrabbingPosition PlanGrabbingPosition = PlanGrabbingPosition.Center;
@@ -217,5 +235,11 @@ public class PlanningSettings : ModSettings
         public const string PaintPlanColor = ColorDefinitions.DefaultColorName;
 
         public const StartupPlanVisibility StartupPlanVisibility = StartupPlanVisibility.Visible;
+
+        public const GravshipPlanTransferArea GravshipPlanTransferArea = GravshipPlanTransferArea.Substructure;
+
+        public const GravshipLandingPlanMode GravshipLandingPlanMode = GravshipLandingPlanMode.Overwrite;
+
+        public const bool KeepGravshipRangePlansOnTakeoff = true;
     }
 }

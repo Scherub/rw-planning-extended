@@ -99,6 +99,20 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Показать кнопку внешнего вида плана</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>Определяет, будет ли видна кнопка указателя внешнего вида плана.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Показать стандартные кнопки планирования</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>Определяет, будут ли видны стандартные кнопки добавления и удаления плана.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
+  <PlanningExtended.Settings.Gravship.Label>Гравикорабль</PlanningExtended.Settings.Gravship.Label>
+
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Label>Переносимые планы</PlanningExtended.Settings.GravshipPlanTransferArea.Label>
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Desc>Определяет, какие планы перемещаются вместе с гравикораблём.\n\nПодструктура: Только планы на подструктуре.\nРадиус гравикорабля: Все планы в радиусе гравидвигателя и расширителей гравиполя.</PlanningExtended.Settings.GravshipPlanTransferArea.Desc>
+
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Label>Существующие планы в месте посадки</PlanningExtended.Settings.GravshipLandingPlanMode.Label>
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Desc>Очистить: Существующие планы в зоне посадки удаляются перед размещением планов гравикорабля.\nПерезаписать: Существующие планы заменяются только там, где гравикорабль приносит свой план.</PlanningExtended.Settings.GravshipLandingPlanMode.Desc>
+
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>Сохранять планы вне подструктуры при взлёте</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>Действует только для режима «Радиус гравикорабля». Если включено, планы в радиусе, находящиеся не на подструктуре, копируются и остаются на месте взлёта. Иначе они перемещаются.</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Постоянные планы</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>Определяет, остаются ли планы после завершения задачи в той же ячейке.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 
@@ -190,5 +204,13 @@
   <PlanningExtended.PlanGrabbingPosition.TopRight>Верхний правый</PlanningExtended.PlanGrabbingPosition.TopRight>
   <PlanningExtended.PlanGrabbingPosition.BottomLeft>Нижний левый</PlanningExtended.PlanGrabbingPosition.BottomLeft>
   <PlanningExtended.PlanGrabbingPosition.BottomRight>Нижний правый</PlanningExtended.PlanGrabbingPosition.BottomRight>
+
+  <PlanningExtended.GravshipPlanTransferArea.Substructure>Подструктура</PlanningExtended.GravshipPlanTransferArea.Substructure>
+  <PlanningExtended.GravshipPlanTransferArea.GravshipRange>Радиус гравикорабля</PlanningExtended.GravshipPlanTransferArea.GravshipRange>
+
+  <PlanningExtended.GravshipLandingPlanMode.Clear>Очистить</PlanningExtended.GravshipLandingPlanMode.Clear>
+  <PlanningExtended.GravshipLandingPlanMode.Overwrite>Перезаписать</PlanningExtended.GravshipLandingPlanMode.Overwrite>
+
+  <PlanningExtended.GravshipPlansCopied>Все планы в радиусе гравикорабля скопированы в буфер обмена планирования.</PlanningExtended.GravshipPlansCopied>
 
 </LanguageData>

@@ -99,6 +99,20 @@
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>Display Change Plan Appearance Designator</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Label>
   <PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>If enabled, the change plan appearance designator button is visible. If disabled, it is not.</PlanningExtended.Settings.DisplayChangePlanAppearanceDesignator.Desc>
 
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>Display Vanilla Plan Designators</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Label>
+  <PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>If enabled, the vanilla add plan and remove plan designator buttons are visible. If disabled, they are not.</PlanningExtended.Settings.DisplayVanillaPlanDesignators.Desc>
+
+  <PlanningExtended.Settings.Gravship.Label>Gravship</PlanningExtended.Settings.Gravship.Label>
+
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Label>Plans to Transfer</PlanningExtended.Settings.GravshipPlanTransferArea.Label>
+  <PlanningExtended.Settings.GravshipPlanTransferArea.Desc>Determines which plans travel with a gravship.\n\nSubstructure: Only plans on the substructure.\nGravship Range: All plans within range of the grav engine and grav field extenders.</PlanningExtended.Settings.GravshipPlanTransferArea.Desc>
+
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Label>Existing Plans at Landing Site</PlanningExtended.Settings.GravshipLandingPlanMode.Label>
+  <PlanningExtended.Settings.GravshipLandingPlanMode.Desc>Clear: Existing plans in the landing area are removed before the gravship plans are placed.\nOverwrite: Existing plans are only replaced where the gravship brings a plan.</PlanningExtended.Settings.GravshipLandingPlanMode.Desc>
+
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>Keep Plans outside Substructure on Takeoff</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Label>
+  <PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>Only applies to Gravship Range. If enabled, plans within range that are not on the substructure are copied and also stay at the takeoff site. Otherwise, they are moved.</PlanningExtended.Settings.KeepGravshipRangePlansOnTakeoff.Desc>
+
   <PlanningExtended.Settings.ArePlansPersistent.Label>Persistent Plans</PlanningExtended.Settings.ArePlansPersistent.Label>
   <PlanningExtended.Settings.ArePlansPersistent.Desc>If enabled, plans stay after a task has been finished on the same cell. Otherwise, they will be removed.</PlanningExtended.Settings.ArePlansPersistent.Desc>
 
@@ -190,5 +204,13 @@
   <PlanningExtended.PlanGrabbingPosition.TopRight>Top Right</PlanningExtended.PlanGrabbingPosition.TopRight>
   <PlanningExtended.PlanGrabbingPosition.BottomLeft>Bottom Left</PlanningExtended.PlanGrabbingPosition.BottomLeft>
   <PlanningExtended.PlanGrabbingPosition.BottomRight>Bottom Right</PlanningExtended.PlanGrabbingPosition.BottomRight>
+
+  <PlanningExtended.GravshipPlanTransferArea.Substructure>Substructure</PlanningExtended.GravshipPlanTransferArea.Substructure>
+  <PlanningExtended.GravshipPlanTransferArea.GravshipRange>Gravship Range</PlanningExtended.GravshipPlanTransferArea.GravshipRange>
+
+  <PlanningExtended.GravshipLandingPlanMode.Clear>Clear</PlanningExtended.GravshipLandingPlanMode.Clear>
+  <PlanningExtended.GravshipLandingPlanMode.Overwrite>Overwrite</PlanningExtended.GravshipLandingPlanMode.Overwrite>
+
+  <PlanningExtended.GravshipPlansCopied>All plans within gravship range have been copied to the planning clipboard.</PlanningExtended.GravshipPlansCopied>
 
 </LanguageData>

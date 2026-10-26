@@ -12,10 +12,11 @@ public static class PlanManager
     {
     }
 
-    public static void SetCachedPlanLayout(PlanLayout planLayout)
+    public static void SetCachedPlanLayout(PlanLayout planLayout, bool notifyChange = true)
     {
         CachedPlanLayout = planLayout;
 
-        OnCachedPlanLayoutChanged?.Invoke(planLayout);
+        if (notifyChange)
+            OnCachedPlanLayoutChanged?.Invoke(planLayout);
     }
 }
