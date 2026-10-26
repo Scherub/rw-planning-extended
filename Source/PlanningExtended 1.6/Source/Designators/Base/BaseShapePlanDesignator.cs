@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PlanningExtended.Cells;
+using PlanningExtended.Gui.Designators.Shapes;
 using PlanningExtended.Gui.Designators.Shapes.ExtraControls;
 using PlanningExtended.Shapes;
 using PlanningExtended.Shapes.Variants.Fill;
-using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -24,7 +24,10 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
     protected override bool MakeAutoSnapshots => !IsFloodFillShapeVariant;
 
-    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
+    // Outline, measurements and cell count are drawn by the designator itself, see OnDrawMouseAttachment.
+    public override DrawStyleCategoryDef DrawStyleCategory => PlanningDrawStyleCategoryDefOf.PlanningExtended_Shape;
+
+    public override bool DragDrawMeasurements => false;
 
     public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions => GetShapesMenuOptions();
 
@@ -63,10 +66,7 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
 
     public override void DesignateMultiCell(IEnumerable<IntVec3> cells)
     {
-        if (IsCenterModeKeyPressed)
-            cells = CellUtilities.GetCenterModeCells(cells, new IntVec3(UI.MouseMapPosition()));
-
-        base.DesignateMultiCell(cells);
+        base.DesignateMultiCell(GetShapeSourceCells(cells, new IntVec3(UI.MouseMapPosition())));
     }
 
     protected override bool DesignateMultiCellInternal(IEnumerable<IntVec3> cells)
@@ -138,16 +138,45 @@ public abstract class BaseShapePlanDesignator : BaseUndoRedoPlanDesignator
     {
         base.OnDrawMouseAttachment();
 
-        if (DesignationDragger.Dragging)
-        {
-            IntVec3 mousePosition = new(UI.MouseMapPosition());
+        if (!DesignationDragger.Dragging)
+            return;
 
-            CellArea cellArea = IsCenterModeKeyPressed
-                ? new(CellUtilities.GetCenterModeCells(DesignationDragger.DragCells, mousePosition))
-                : new(DesignationDragger.DragCells);
+        IntVec3 mousePosition = new(UI.MouseMapPosition());
 
-            SelectedShape?.UpdateShape(cellArea.Dimensions, mousePosition, IsModifierKeyPressed);
-        }
+        CellArea cellArea = new(GetShapeSourceCells(DesignationDragger.DragCells, mousePosition));
+
+        SelectedShape?.UpdateShape(cellArea.Dimensions, mousePosition, IsModifierKeyPressed);
+
+        if (Event.current.type == EventType.Repaint)
+            ShapeDragOverlay.Draw(GetDraggedAreaDimensions(mousePosition), mousePosition, GetShapeCellCount(cellArea));
+    }
+
+    IEnumerable<IntVec3> GetShapeSourceCells(IEnumerable<IntVec3> dragCells, IntVec3 mousePosition)
+    {
+        return IsCenterModeKeyPressed ? CellUtilities.GetCenterModeCells(dragCells, mousePosition) : dragCells;
+    }
+
+    // The dragged rectangle, including cells that can't be designated, mirrored in center mode.
+    AreaDimensions GetDraggedAreaDimensions(IntVec3 mousePosition)
+    {
+        AreaDimensions areaDimensions = CellUtilities.DetermineAreaDimensions(DesignationDragger.CellBuffer);
+
+        return IsCenterModeKeyPressed ? CellUtilities.GetCenterModeAreaDimensions(areaDimensions, mousePosition) : areaDimensions;
+    }
+
+    // Same cells as in DesignateMultiCellInternal. Flood fill variants are not counted, as they would have to be computed every frame.
+    int GetShapeCellCount(CellArea cellArea)
+    {
+        if (IsFloodFillShapeVariant)
+            return 0;
+
+        int count = 0;
+
+        foreach (IntVec3 cell in cellArea.Cells)
+            if (IsShapeCellValid(cell, cellArea.Dimensions) && CanDesignateCell(cell).Accepted)
+                count++;
+
+        return count;
     }
 
     void HandleShortcuts()

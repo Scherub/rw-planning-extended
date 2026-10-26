@@ -50,8 +50,16 @@ public static class CellUtilities
     {
         AreaDimensions areaDimensions = DetermineAreaDimensions(dragCells);
 
+        return areaDimensions.IsValid ? [.. GetCells(GetCenterModeAreaDimensions(areaDimensions, cursor))] : [.. dragCells];
+    }
+
+    /// <summary>
+    /// Mirrors the dragged area around the drag start, which is the corner opposite to the cursor.
+    /// </summary>
+    public static AreaDimensions GetCenterModeAreaDimensions(AreaDimensions areaDimensions, IntVec3 cursor)
+    {
         if (!areaDimensions.IsValid)
-            return [.. dragCells];
+            return areaDimensions;
 
         // If cursor is at max, start is at min, otherwise start is at max
         int startX = (cursor.x == areaDimensions.MaxX) ? areaDimensions.MinX : areaDimensions.MaxX;
@@ -60,17 +68,6 @@ public static class CellUtilities
         int halfWidth = areaDimensions.MaxX - areaDimensions.MinX;
         int halfHeight = areaDimensions.MaxZ - areaDimensions.MinZ;
 
-        int newMinX = startX - halfWidth;
-        int newMaxX = startX + halfWidth;
-        int newMinZ = startZ - halfHeight;
-        int newMaxZ = startZ + halfHeight;
-
-        List<IntVec3> result = [];
-        
-        for (int z = newMinZ; z <= newMaxZ; z++)
-            for (int x = newMinX; x <= newMaxX; x++)
-                result.Add(new IntVec3(x, 0, z));
-
-        return result;
+        return new AreaDimensions(startX - halfWidth, startZ - halfHeight, startX + halfWidth, startZ + halfHeight);
     }
 }
