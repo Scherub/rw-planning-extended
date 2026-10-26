@@ -13,12 +13,13 @@ This mod adds a more advanced planning menu.
 - Paint over existing plan designations, or just (fill) paint all at once with a single click
 - Decide to replace or skip already placed plan designations
 - Keep plan designations even after mining or building over them
+- Plans move with gravships (Odyssey)
 - Load / Save plan blueprints, quickly select last loaded plans
 - Cut / Copy / Paste your plans, also rotate or flip them
 - Undo / Redo planned actions
 - Show / Hide planning designations (incl. global shortcut)
 - Change plan texture sets and opacity for each plan type individually
-- Convert your plan from vanilla Rimworld or MorePlanning mod
+- Convert your plan from vanilla RimWorld or MorePlanning mod
 
 ### Planned
 
