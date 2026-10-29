@@ -222,7 +222,7 @@ public class PlanningSettings : ModSettings
 
         public const bool DisplayTogglePlanVisibilityDesignator = true;
 
-        public const bool DisplayVanillaPlanDesignators = false;
+        public const bool DisplayVanillaPlanDesignators = true;
 
         public const bool AreDesignationsPersistent = true;
 
