@@ -12,14 +12,14 @@ namespace PlanningExtended.Updates
         {
             foreach (IntVec3 cell in map.AllCells)
             {
-                Designation designation = map.designationManager.AllDesignationsAt(cell).Where(d => d is Designation and not PlanDesignation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def)).FirstOrDefault();
+                foreach (Designation designation in map.designationManager.AllDesignationsAt(cell)
+                    .Where(d => d is Designation and not PlanDesignation && PlanningDesignationDefOf.AllDesignationDefs.Contains(d.def))
+                    .ToList())
+                {
+                    map.designationManager.RemoveDesignation(designation);
 
-                if (designation == null)
-                    continue;
-
-                map.designationManager.RemoveDesignation(designation);
-
-                PlanDesignationPlacerUtilities.Designate(map, designation.target.Cell, designation.def, designation.colorDef);
+                    PlanDesignationPlacerUtilities.Designate(map, designation.target.Cell, designation.def, designation.colorDef);
+                }
             }
         }
     }
