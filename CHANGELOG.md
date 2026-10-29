@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.19.1
+- Changed default settings of displaying vanilla Add Plan and Remove Plan designators to true
+
 ## 1.19.0
 - Added option to show or hide the vanilla Add Plan and Remove Plan designators, hidden by default
 - Added transferring plans with a gravship to a new map (Odyssey)
